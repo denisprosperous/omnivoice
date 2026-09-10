@@ -92,6 +92,13 @@ export function PreviewOpsPanel() {
         : "Every surface (landing picker, HUD, hook switcher, library, registry, audit) reflects the matrix: Kom, Lamnso', Bayangi (active) · Bafut, Oku, Babanki, Mankon, Ngie (planned).",
       status: "done",
     },
+    {
+      title: fr ? "Ajout v4.1 — moisson de ressources kom attestées (SIL/OLAC/Berkeley/find.bible)" : "v4.1 Addition — attested Kom resource harvest (SIL/OLAC/Berkeley/find.bible)",
+      body: fr
+        ? "Moisson en ligne des 8 registres stipulés : série d'alphabétisation SIL (Ghesɨ̀nà 1/2, Yêm Woyn Kom 1, Ŋwàʼlɨ̀ àkòyn 1, Sweet Nectar 1.2/2, Kɨtɨ̂ Woyn 2.1), lexique kom–anglais de 225 pp. (Jones 2001), grammaire/phonologie/tons (Shultz & Jones), Nouveau Testament kom 2004 avec audio dramatisé (bible.is), 44 mots attestés + règles tonales (HTS/LTS/M) depuis le papier de Hyman (UC Berkeley). Intégré dans l'aile Grassfields de la bibliothèque ; 5 PDF sil.org à accès restreint documentés."
+        : "Live harvest of all 8 stipulated records: SIL literacy series (Ghesɨ̀nà 1/2, Yêm Woyn Kom 1, Ŋwàʼlɨ̀ àkòyn 1, Sweet Nectar 1.2/2, Kɨtɨ̂ Woyn 2.1), the 225-pp. Kom–English lexicon (Jones 2001), grammar/phonology/tone papers (Shultz & Jones), the 2004 Kom New Testament with dramatized audio (bible.is), plus 44 attested words + tone rules (HTS/LTS/M) from Hyman's UC Berkeley paper. Integrated into the Library Grassfields wing; 5 access-gated sil.org PDFs documented.",
+      status: "done",
+    },
   ];
 
   const typeLabels: Record<string, string> = {

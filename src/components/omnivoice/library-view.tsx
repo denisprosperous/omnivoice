@@ -7,6 +7,9 @@
 //    (§2.8), ASR fine-tuning plan + model registries (§4.1), offline language
 //    packs (§4.4), voice model status (§2.7), Bayangi data collection plan.
 // 3. Language Registry Console (v3.0): add new dialects/local languages.
+// 4. Kom Attested Literature & Resources (v4.1 resource harvest): SIL Cameroon
+//    primer series + linguistic descriptions + lexicon + Kom NT audio access
+//    points + Hyman-attested tone-marked vocabulary — see lib/data/kom-resources.ts.
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
@@ -21,6 +24,11 @@ import {
 } from "@/lib/data/grassfields";
 import { RegistryConsole, statusLabel } from "./registry-console";
 import { DiyWorkshop } from "./diy-workshop";
+import {
+  KOM_LITERATURE, KOM_LANGUAGE_DESCRIPTIONS, KOM_LEXICAL_RESOURCES, KOM_SCRIPTURE,
+  KOM_ATTESTED_VOCAB, KOM_ATTESTED_VOCAB_SOURCE, KOM_TONE_ANALYSIS,
+  KOM_RESOURCE_HARVEST, KOM_OLAC_ALTERNATE_NAMES, type ResourceStatus,
+} from "@/lib/data/kom-resources";
 import { cn } from "@/lib/utils";
 import { BookOpen, Calculator, FlaskConical, Languages, Landmark, Palette, Dumbbell, Drum, Monitor, type LucideIcon } from "lucide-react";
 
@@ -77,11 +85,11 @@ export function LibraryView() {
         </header>
 
         {/* Wing switcher */}
-        <div className="flex gap-2" role="tablist" aria-label="Library wings">
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Library wings">
           <button
             role="tab" aria-selected={wing === "schemes"} onClick={() => setWing("schemes")}
             className={cn(
-              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
               wing === "schemes" ? "border-amber-700 bg-amber-700 text-white shadow" : "border-amber-200 bg-white text-amber-800 hover:border-amber-400"
             )}
           >
@@ -90,7 +98,7 @@ export function LibraryView() {
           <button
             role="tab" aria-selected={wing === "grassfields"} onClick={() => setWing("grassfields")}
             className={cn(
-              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
               wing === "grassfields" ? "border-lime-700 bg-lime-700 text-white shadow" : "border-lime-200 bg-white text-lime-800 hover:border-lime-500"
             )}
           >
@@ -99,7 +107,7 @@ export function LibraryView() {
           <button
             role="tab" aria-selected={wing === "registry"} onClick={() => setWing("registry")}
             className={cn(
-              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
               wing === "registry" ? "border-sky-700 bg-sky-700 text-white shadow" : "border-sky-200 bg-white text-sky-800 hover:border-sky-500"
             )}
           >
@@ -108,7 +116,7 @@ export function LibraryView() {
           <button
             role="tab" aria-selected={wing === "diy"} onClick={() => setWing("diy")}
             className={cn(
-              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
               wing === "diy" ? "border-orange-600 bg-orange-600 text-white shadow" : "border-orange-200 bg-white text-orange-800 hover:border-orange-400"
             )}
           >
@@ -369,6 +377,9 @@ function GrassfieldsExpansion({
         </div>
       </section>
 
+      {/* v4.1 — Kom Attested Literature & Resources (online harvest) */}
+      <KomResourcePanel fr={fr} />
+
       {/* §2.9 CEFR progression */}
       <section aria-label={t("cefrPath", fr ? "fr" : "en")} className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
         <h3 className="mb-2 text-sm font-extrabold text-amber-900">🪜 {t("cefrPath", fr ? "fr" : "en")}</h3>
@@ -485,6 +496,190 @@ function GrassfieldsExpansion({
             ? "Minimum 500h de parole transcrite par langue (optimal 1000h+) · Vérification humaine dans la boucle pour les évaluations critiques."
             : "Minimum 500h of transcribed speech per language (optimal 1,000h+) · Human-in-the-loop verification for critical assessments."}
         </p>
+      </section>
+    </div>
+  );
+}
+
+// ============================================================================
+// KOM ATTESTED LITERATURE & RESOURCES (v4.1 resource harvest)
+// Grounds Kom content in the stipulated SIL Cameroon archive records, the OLAC
+// catalogue, the Kom New Testament access points, and Hyman's attested
+// tone-marked vocabulary. Data: src/lib/data/kom-resources.ts
+// ============================================================================
+
+const RESOURCE_BADGE: Record<ResourceStatus, { label: string; labelFr: string; cls: string }> = {
+  ONLINE_PDF: { label: "PDF", labelFr: "PDF", cls: "bg-lime-600 text-white" },
+  NOT_ONLINE: { label: "PRINT", labelFr: "IMPRIMÉ", cls: "bg-stone-200 text-stone-600" },
+  ONLINE_AUDIO: { label: "AUDIO", labelFr: "AUDIO", cls: "bg-sky-600 text-white" },
+  ONLINE_APP: { label: "APP", labelFr: "APP", cls: "bg-indigo-600 text-white" },
+  ONLINE_DB: { label: "DATA", labelFr: "DONNÉES", cls: "bg-purple-600 text-white" },
+  ACCESS_GATED: { label: "PDF · gated", labelFr: "PDF · bloqué", cls: "bg-orange-500 text-white" },
+};
+
+function KomResourcePanel({ fr }: { fr: boolean }) {
+  return (
+    <div className="space-y-4">
+      {/* Harvest summary */}
+      <section aria-label={fr ? "Littérature kom attestée" : "Kom attested literature"} className="rounded-2xl border-2 border-emerald-300 bg-gradient-to-br from-emerald-50 to-white p-4 shadow-sm">
+        <h3 className="text-sm font-extrabold text-emerald-900">📚 {fr ? "Littérature kom attestée — moisson SIL/OLAC (v4.1)" : "Kom Attested Literature & Resources — SIL/OLAC Harvest (v4.1)"}</h3>
+        <p className="mt-1 text-xs leading-relaxed text-emerald-900/80">
+          {fr
+            ? `Contenu kom ancré dans les archives SIL Cameroon et la linguistique publiée : ${KOM_RESOURCE_HARVEST.stipulatedResolved}/${KOM_RESOURCE_HARVEST.stipulatedRecords} registres stipulés traités · ${KOM_LITERATURE.length} titres de la série d'alphabétisation · ${KOM_LANGUAGE_DESCRIPTIONS.length} descriptions linguistiques · ${KOM_LEXICAL_RESOURCES.length} ressources lexicales · ${KOM_ATTESTED_VOCAB.length} mots attestés (Hyman, UC Berkeley) · ${KOM_SCRIPTURE.accessPoints.length} points d'accès au Nouveau Testament.`
+            : `Kom content grounded in the SIL Cameroon archives and published linguistics: ${KOM_RESOURCE_HARVEST.stipulatedResolved}/${KOM_RESOURCE_HARVEST.stipulatedRecords} stipulated records processed · ${KOM_LITERATURE.length} literacy titles · ${KOM_LANGUAGE_DESCRIPTIONS.length} language descriptions · ${KOM_LEXICAL_RESOURCES.length} lexical resources · ${KOM_ATTESTED_VOCAB.length} attested words (Hyman, UC Berkeley) · ${KOM_SCRIPTURE.accessPoints.length} New Testament access points.`}
+        </p>
+        <p className="mt-1.5 break-words text-[10px] leading-snug text-emerald-800">
+          {KOM_RESOURCE_HARVEST.sources.join(" · ")}
+        </p>
+      </section>
+
+      {/* Literacy primer series */}
+      <section className="rounded-2xl border-2 border-emerald-200 bg-white p-4 shadow-sm">
+        <h4 className="mb-1 text-sm font-extrabold text-emerald-900">📖 {fr ? "Série d'alphabétisation (éditions SIL)" : "Literacy Primer & Book Series (SIL editions)"}</h4>
+        <p className="mb-3 text-[11px] text-amber-700">
+          {fr
+            ? "La chaine complète d'apprentissage de la lecture en kom — du pré-primer à l'arithmétique et aux matières scientifiques (MLE)."
+            : "The complete Kom literacy ladder — pre-primer through arithmetic and science/citizenship subjects (MLE)."}
+        </p>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[560px] text-left text-xs">
+            <thead>
+              <tr className="border-b border-emerald-200 text-[10px] uppercase text-emerald-700">
+                <th className="py-1.5 pr-2">{fr ? "Titre (kom)" : "Title (Kom)"}</th>
+                <th className="py-1.5 pr-2">{fr ? "Titre anglais" : "English title"}</th>
+                <th className="py-1.5 pr-2">{fr ? "Année" : "Year"}</th>
+                <th className="py-1.5 pr-2">{fr ? "Pages" : "Pages"}</th>
+                <th className="py-1.5 pr-2">SIL</th>
+                <th className="py-1.5">{fr ? "Disponibilité" : "Availability"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {KOM_LITERATURE.map((b) => {
+                const badge = RESOURCE_BADGE[b.status];
+                return (
+                  <tr key={b.id} className="border-b border-emerald-50 align-top">
+                    <td className="py-1.5 pr-2 font-extrabold text-emerald-900">
+                      {b.title}
+                      <span className="block text-[10px] font-normal text-amber-600">{[...(b.authors || []), ...(b.translators || []).map((x) => `${x} (tr.)`)].join(" · ")}{b.sponsoredBy ? ` — ${b.sponsoredBy}` : ""}</span>
+                    </td>
+                    <td className="py-1.5 pr-2 text-amber-800">{b.altTitle}</td>
+                    <td className="py-1.5 pr-2 font-bold text-amber-900">{b.year}</td>
+                    <td className="py-1.5 pr-2 text-amber-800">{b.pages || "—"}</td>
+                    <td className="py-1.5 pr-2 font-mono text-[10px] text-amber-600">{b.silEntry}</td>
+                    <td className="py-1.5">
+                      <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-extrabold", badge.cls)}>{fr ? badge.labelFr : badge.label}</span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-2 text-[10px] leading-snug text-emerald-800">
+          {fr
+            ? "Astuce : Kɨtɨ̂ Woyn Kom 2.1 a déjà été adapté en bafut et en oku — deux de nos langues planifiées — ce qui en fait le modèle direct de ces extensions. Les PDF à accès restreint (sil.org) sont documentés dans kom-resources.ts pour récupération hors bac à sable."
+            : "Note: Kɨtɨ̂ Woyn Kom 2.1 has already been adapted into Bafut and Oku — two of our PLANNED languages — making the Kom edition the direct template for those expansions. Access-gated sil.org PDF URLs are documented in kom-resources.ts for retrieval from an unrestricted network."}
+        </p>
+      </section>
+
+      {/* Linguistic descriptions + lexical resources */}
+      <section className="grid gap-4 md:grid-cols-2">
+        <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
+          <h4 className="mb-2 text-sm font-extrabold text-amber-900">🔬 {fr ? "Descriptions linguistiques (SIL)" : "Language Descriptions (SIL)"}</h4>
+          <ul className="space-y-1.5 text-xs text-amber-900">
+            {KOM_LANGUAGE_DESCRIPTIONS.map((d) => (
+              <li key={d.silEntry} className="rounded-lg bg-amber-50 p-2">
+                <b>{d.title}</b> <span className="text-amber-600">({d.author}, {d.year}{d.pages ? `, ${d.pages} pp.` : ""})</span>
+                <br /><span className="text-[10px] text-amber-700">{d.role}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-2xl border-2 border-sky-200 bg-white p-4 shadow-sm">
+          <h4 className="mb-2 text-sm font-extrabold text-sky-900">🗝️ {fr ? "Lexiques & dictionnaires" : "Lexicons & Dictionaries"}</h4>
+          <ul className="space-y-1.5 text-xs text-amber-900">
+            {KOM_LEXICAL_RESOURCES.map((x) => (
+              <li key={x.silEntry} className="rounded-lg bg-sky-50 p-2">
+                <b>{x.title}</b> <span className="text-amber-600">({x.compiler}, {x.year}{x.pages ? `, ${x.pages} pp.` : ""})</span>
+                <br /><span className="text-[10px] text-amber-700">{x.role}</span>
+              </li>
+            ))}
+          </ul>
+          <h4 className="mb-2 mt-3 text-sm font-extrabold text-sky-900">✝️ {fr ? "Nouveau Testament en kom (2004)" : "The New Testament in Kom (2004)"}</h4>
+          <p className="text-[11px] text-amber-700">{KOM_SCRIPTURE.edition} · {KOM_SCRIPTURE.script} · {KOM_SCRIPTURE.curator}</p>
+          <ul className="mt-1.5 space-y-1 text-xs">
+            {KOM_SCRIPTURE.accessPoints.map((a) => (
+              <li key={a.url}>
+                <a href={a.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[28px] items-center gap-1.5 rounded-lg bg-sky-50 px-2 py-1 font-bold text-sky-800 hover:bg-sky-100">
+                  <span className={cn("rounded-full px-1.5 py-0.5 text-[9px] font-extrabold", RESOURCE_BADGE[a.kind].cls)}>{fr ? RESOURCE_BADGE[a.kind].labelFr : RESOURCE_BADGE[a.kind].label}</span>
+                  {a.label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-1.5 text-[10px] leading-snug text-amber-600">{KOM_SCRIPTURE.role}</p>
+        </div>
+      </section>
+
+      {/* Attested vocabulary — playable */}
+      <section className="rounded-2xl border-2 border-emerald-300 bg-white p-4 shadow-sm">
+        <h4 className="mb-1 text-sm font-extrabold text-emerald-900">🔊 {fr ? "Vocabulaire kom attesté — Hyman (UC Berkeley)" : "Attested Kom Vocabulary — Hyman (UC Berkeley)"}</h4>
+        <p className="mb-3 text-[11px] text-amber-700">
+          {fr
+            ? "Mots tirés des tableaux 1–9 du papier de Hyman (terrain Bamenda 1974/1977, orthographe Chia 1984). Touchez pour écouter — classes nominales et patrons tonaux indiqués."
+            : "Words from Tables 1–9 of Hyman's Kom paper (fieldwork Bamenda 1974/1977, Chia 1984 orthography). Tap to listen — noun class and tone pattern shown."}
+        </p>
+        <div className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+          {KOM_ATTESTED_VOCAB.map((w) => (
+            <button
+              key={w.kom + w.en}
+              onClick={() => { playXp(); void speak(w.kom, "kwe", "bkm"); }}
+              className="flex min-h-[44px] items-center justify-between gap-2 rounded-xl border-2 border-emerald-100 bg-emerald-50/50 px-2.5 py-1.5 text-left transition-all hover:border-emerald-400 hover:bg-emerald-50"
+              aria-label={`Listen: ${w.kom} — ${w.en}`}
+            >
+              <span>
+                <span className="block text-sm font-extrabold text-emerald-900">{w.kom}</span>
+                <span className="block text-[10px] text-amber-700">{w.en}{w.nounClass ? ` · cl. ${w.nounClass}` : ""}{w.tonePattern ? ` · ${w.tonePattern}` : ""}</span>
+              </span>
+              <span className="text-[9px] font-bold uppercase text-emerald-700">Kom ▸</span>
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 text-[10px] leading-snug text-emerald-800">{KOM_ATTESTED_VOCAB_SOURCE}</p>
+      </section>
+
+      {/* Tone analysis — engine validation */}
+      <section className="rounded-2xl border-2 border-lime-300 bg-lime-50/60 p-4 shadow-sm">
+        <h4 className="mb-1 text-sm font-extrabold text-lime-900">🎚️ {fr ? "Analyse tonale attestée — validation du moteur" : "Attested Tone Analysis — Engine Validation"}</h4>
+        <p className="text-[11px] text-lime-900/80">{KOM_TONE_ANALYSIS.source}</p>
+        <div className="mt-2 grid gap-2 text-xs md:grid-cols-2">
+          <div className="rounded-xl bg-white p-2.5">
+            <b className="text-lime-900">{fr ? "Tones sous-jacents" : "Underlying tones"}</b>
+            <p className="mt-0.5 text-amber-800">{KOM_TONE_ANALYSIS.underlyingTones}</p>
+            <ul className="mt-1 space-y-0.5 text-[11px] text-amber-700">
+              {KOM_TONE_ANALYSIS.surfaceMid.map((m) => <li key={m}>• {m}</li>)}
+            </ul>
+            <p className="mt-1 text-[11px] text-amber-800"><b>{fr ? "Contours" : "Contours"}:</b> {KOM_TONE_ANALYSIS.contours}</p>
+          </div>
+          <div className="rounded-xl bg-white p-2.5">
+            <b className="text-lime-900">{fr ? "Règles tonales" : "Tone rules"}</b>
+            <ul className="mt-0.5 space-y-1 text-[11px] text-amber-800">
+              {KOM_TONE_ANALYSIS.rules.map((r) => <li key={r.name}><b>{r.name}</b> — {r.detail}</li>)}
+            </ul>
+            <p className="mt-1 text-[11px] text-amber-800"><b>{fr ? "Patrons" : "Patterns"}:</b> {KOM_TONE_ANALYSIS.patterns}</p>
+          </div>
+        </div>
+        <p className="mt-2 rounded-xl bg-lime-100/70 p-2 text-[11px] font-semibold leading-snug text-lime-900">✅ {KOM_TONE_ANALYSIS.platformFit}</p>
+      </section>
+
+      {/* OLAC alternate names + access notes */}
+      <section className="rounded-2xl border-2 border-stone-200 bg-white p-4 shadow-sm">
+        <h4 className="mb-1 text-sm font-extrabold text-stone-800">🏷️ {fr ? "Noms alternatifs (catalogue OLAC)" : "Alternate Names (OLAC catalogue)"}</h4>
+        <p className="text-xs text-amber-800">{KOM_OLAC_ALTERNATE_NAMES.join(" · ")}</p>
+        <h4 className="mb-1 mt-2 text-sm font-extrabold text-stone-800">🗒️ {fr ? "Notes d'accès aux sources" : "Source Access Notes"}</h4>
+        <ul className="space-y-0.5 break-words text-[10px] leading-snug text-amber-700">
+          {KOM_RESOURCE_HARVEST.accessNotes.map((n) => <li key={n}>• {n}</li>)}
+        </ul>
       </section>
     </div>
   );

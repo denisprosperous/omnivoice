@@ -1,0 +1,492 @@
+     1→"use client";
+     2→// Content Library — two wings + registry console:
+     3→// 1. Official Schemes (units/contents, ELOs, resources + national core skills + domains)
+     4→// 2. Grassfields Languages Expansion Pack (v3.0 §2): 8 language profiles (Kom &
+     5→//    Lamnso' separate; Bayangi added), GACL orthography, tone-marked sample
+     6→//    vocabulary (playable), CEFR progression (§2.9), content library targets
+     7→//    (§2.8), ASR fine-tuning plan + model registries (§4.1), offline language
+     8→//    packs (§4.4), voice model status (§2.7), Bayangi data collection plan.
+     9→// 3. Language Registry Console (v3.0): add new dialects/local languages.
+    10→import React from "react";
+    11→import { useApp } from "@/lib/store";
+    12→import { t } from "@/lib/i18n";
+    13→import { PatternBand, Spinner } from "./shared";
+    14→import { speak } from "@/lib/voice-client";
+    15→import { playXp } from "@/lib/sound-engine";
+    16→import {
+    17→  GRASSFIELDS_LANGUAGES, GACL, KOM_TONES, LAMNSO_GRAPHEMES, CORE_PHRASES,
+    18→  CONTENT_TARGETS, CONTENT_SOURCES, CEFR_PROGRESSION, ASR_MODELS, TTS_MODELS,
+    19→  FINE_TUNING_PLAN, LANGUAGE_PACKS, VOICE_MODEL_STATUS, LANGUAGE_CLASSIFICATION, LANGUAGE_RESOURCES,
+    20→  BAYANGI_DATA_COLLECTION_PLAN,
+    21→} from "@/lib/data/grassfields";
+    22→import { RegistryConsole, statusLabel } from "./registry-console";
+    23→import { DiyWorkshop } from "./diy-workshop";
+    24→import { cn } from "@/lib/utils";
+    25→import { BookOpen, Calculator, FlaskConical, Languages, Landmark, Palette, Dumbbell, Drum, Monitor, type LucideIcon } from "lucide-react";
+    26→
+    27→const SUBJECT_ICONS: Record<string, LucideIcon> = {
+    28→  "book-open": BookOpen, calculator: Calculator, "flask-conical": FlaskConical,
+    29→  languages: Languages, landmark: Landmark, palette: Palette, dumbbell: Dumbbell,
+    30→  drum: Drum, monitor: Monitor,
+    31→};
+    32→
+    33→interface SchemeWeek { id: string; subjectId: string; month: number; week: number; components: string[]; contents: string[]; outcomes: string[]; resources: string[] }
+    34→interface Subject { id: string; nameEn: string; nameFr: string; domain: string; weighting: number; color: string; icon: string }
+    35→
+    36→export function LibraryView() {
+    37→  const { lang } = useApp();
+    38→  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "diy">("schemes");
+    39→  const [weeks, setWeeks] = React.useState<SchemeWeek[]>([]);
+    40→  const [subjects, setSubjects] = React.useState<Subject[]>([]);
+    41→  const [domains, setDomains] = React.useState<Array<{ name: string; weighting: number }>>([]);
+    42→  const [coreSkills, setCoreSkills] = React.useState<string[]>([]);
+    43→  const [filter, setFilter] = React.useState("english");
+    44→  const [loading, setLoading] = React.useState(true);
+    45→  const [selLang, setSelLang] = React.useState<string>("bkm");
+    46→
+    47→  React.useEffect(() => {
+    48→    (async () => {
+    49→      try {
+    50→        const res = await fetch("/api/curriculum");
+    51→        const data = await res.json();
+    52→        setWeeks(data.schemeWeeks || []);
+    53→        setSubjects(data.subjects || []);
+    54→        setDomains(data.domains || []);
+    55→        setCoreSkills(data.nationalCoreSkills || []);
+    56→      } finally {
+    57→        setLoading(false);
+    58→      }
+    59→    })();
+    60→  }, []);
+    61→
+    62→  const shown = weeks.filter((w) => w.subjectId === filter);
+    63→  const fr = lang === "fr";
+    64→  const sel = GRASSFIELDS_LANGUAGES.find((l) => l.code === selLang);
+    65→
+    66→  return (
+    67→    <main className="min-h-screen bg-[#FFFBEB] pb-24">
+    68→      <PatternBand />
+    69→      <div className="mx-auto max-w-5xl space-y-5 px-4 py-5">
+    70→        <header>
+    71→          <h1 className="text-2xl font-extrabold text-amber-900">📚 {t("library", lang)}</h1>
+    72→          <p className="text-sm text-amber-700">
+    73→            {fr
+    74→              ? "Programme officiel (Class 3, Mois 1 — La Maison) + Pack d'extension langues des Grassfields (v3.0, 8 langues) + Registre des langues."
+    75→              : "Official schemes (Class 3, Month 1 — The Home) + Grassfields Expansion Pack (v3.0, 8 languages) + Language Registry."}
+    76→          </p>
+    77→        </header>
+    78→
+    79→        {/* Wing switcher */}
+    80→        <div className="flex gap-2" role="tablist" aria-label="Library wings">
+    81→          <button
+    82→            role="tab" aria-selected={wing === "schemes"} onClick={() => setWing("schemes")}
+    83→            className={cn(
+    84→              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+    85→              wing === "schemes" ? "border-amber-700 bg-amber-700 text-white shadow" : "border-amber-200 bg-white text-amber-800 hover:border-amber-400"
+    86→            )}
+    87→          >
+    88→            📖 {fr ? "Programme officiel" : "Official Schemes"}
+    89→          </button>
+    90→          <button
+    91→            role="tab" aria-selected={wing === "grassfields"} onClick={() => setWing("grassfields")}
+    92→            className={cn(
+    93→              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+    94→              wing === "grassfields" ? "border-lime-700 bg-lime-700 text-white shadow" : "border-lime-200 bg-white text-lime-800 hover:border-lime-500"
+    95→            )}
+    96→          >
+    97→            🪶 {t("expansionPack", lang)}
+    98→          </button>
+    99→          <button
+   100→            role="tab" aria-selected={wing === "registry"} onClick={() => setWing("registry")}
+   101→            className={cn(
+   102→              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+   103→              wing === "registry" ? "border-sky-700 bg-sky-700 text-white shadow" : "border-sky-200 bg-white text-sky-800 hover:border-sky-500"
+   104→            )}
+   105→          >
+   106→            🧩 {t("registryConsole", lang)}
+   107→          </button>
+   108→          <button
+   109→            role="tab" aria-selected={wing === "diy"} onClick={() => setWing("diy")}
+   110→            className={cn(
+   111→              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+   112→              wing === "diy" ? "border-orange-600 bg-orange-600 text-white shadow" : "border-orange-200 bg-white text-orange-800 hover:border-orange-400"
+   113→            )}
+   114→          >
+   115→            🔨 {t("diyWorkshop", lang)}
+   116→          </button>
+   117→        </div>
+   118→
+   119→        {wing === "registry" ? (
+   120→          <RegistryConsole />
+   121→        ) : wing === "diy" ? (
+   122→          <DiyWorkshop />
+   123→        ) : wing === "grassfields" ? (
+   124→          <GrassfieldsExpansion fr={fr} selLang={selLang} setSelLang={setSelLang} sel={sel} />
+   125→        ) : (
+   126→          <>
+   127→            {/* Domain weightings */}
+   128→            <section className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm" aria-label={t("domains", lang)}>
+   129→              <h2 className="mb-3 text-sm font-extrabold text-amber-900">{t("domains", lang)}</h2>
+   130→              <div className="space-y-2">
+   131→                {domains.map((d) => (
+   132→                  <div key={d.name}>
+   133→                    <div className="mb-0.5 flex justify-between text-xs font-bold text-amber-800">
+   134→                      <span>{d.name}</span><span>{d.weighting}%</span>
+   135→                    </div>
+   136→                    <div className="h-2 overflow-hidden rounded-full bg-amber-100">
+   137→                      <div className="h-full rounded-full bg-gradient-to-r from-amber-400 to-orange-600" style={{ width: `${d.weighting * 1.5}%` }} />
+   138→                    </div>
+   139→                  </div>
+   140→                ))}
+   141→              </div>
+   142→            </section>
+   143→
+   144→            {/* Subject filter */}
+   145→            <div className="flex flex-wrap gap-1.5" role="tablist" aria-label={t("subjects", lang)}>
+   146→              {subjects.map((s) => (
+   147→                <button
+   148→                  key={s.id}
+   149→                  role="tab"
+   150→                  aria-selected={filter === s.id}
+   151→                  onClick={() => setFilter(s.id)}
+   152→                  className={cn(
+   153→                    "min-h-[36px] rounded-full border-2 px-3 text-xs font-bold transition-all",
+   154→                    filter === s.id ? "border-amber-700 bg-amber-700 text-white shadow" : "border-amber-200 bg-white text-amber-800 hover:border-amber-400"
+   155→                  )}
+   156→                >
+   157→                  <span className="mr-1 inline-flex align-middle" aria-hidden>
+   158→                    {React.createElement(SUBJECT_ICONS[s.icon] || BookOpen, { size: 13 })}
+   159→                  </span>
+   160→                  {lang === "fr" ? s.nameFr : s.nameEn}
+   161→                </button>
+   162→              ))}
+   163→            </div>
+   164→
+   165→            {loading ? <Spinner /> : (
+   166→              <div className="grid gap-3 md:grid-cols-2">
+   167→                {shown.map((w) => (
+   168→                  <article key={w.id} className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+   169→                    <h3 className="mb-1 text-sm font-extrabold text-lime-900">
+   170→                      {fr ? "Semaine" : "Week"} {w.week} — {fr ? "Mois" : "Month"} {w.month}
+   171→                    </h3>
+   172→                    <div className="mb-2 flex flex-wrap gap-1">
+   173→                      {w.components.map((c) => (
+   174→                        <span key={c} className="rounded-full bg-lime-100 px-2 py-0.5 text-[10px] font-bold text-lime-800">{c}</span>
+   175→                      ))}
+   176→                    </div>
+   177→                    <h4 className="text-[10px] font-bold uppercase tracking-wide text-amber-600">{fr ? "Unités / Contenus" : "Units / Contents"}</h4>
+   178→                    <ul className="mb-2 space-y-0.5 text-xs text-amber-900">
+   179→                      {w.contents.map((c) => <li key={c}>• {c}</li>)}
+   180→                    </ul>
+   181→                    <h4 className="text-[10px] font-bold uppercase tracking-wide text-orange-600">{fr ? "Résultats attendus" : "Expected Learning Outcomes"}</h4>
+   182→                    <ul className="mb-2 space-y-0.5 text-xs text-orange-900">
+   183→                      {w.outcomes.map((o) => <li key={o}>✓ {o}</li>)}
+   184→                    </ul>
+   185→                    <h4 className="text-[10px] font-bold uppercase tracking-wide text-amber-600">{fr ? "Ressources" : "Resources"}</h4>
+   186→                    <p className="text-xs text-amber-700">{w.resources.join(" · ")}</p>
+   187→                  </article>
+   188→                ))}
+   189→              </div>
+   190→            )}
+   191→
+   192→            {/* National Core Skills */}
+   193→            <section className="rounded-2xl border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-white p-4 shadow-sm">
+   194→              <h2 className="mb-2 text-sm font-extrabold text-orange-900">
+   195→                🇨🇲 {fr ? "Compétences de Base Nationales" : "National Core Skills"}
+   196→              </h2>
+   197→              <ol className="space-y-1 text-xs text-orange-900">
+   198→                {coreSkills.map((s, i) => <li key={i}>{i + 1}. {s}</li>)}
+   199→              </ol>
+   200→            </section>
+   201→          </>
+   202→        )}
+   203→      </div>
+   204→    </main>
+   205→  );
+   206→}
+   207→
+   208→// ============================================================================
+   209→// GRASSFIELDS EXPANSION PACK WING (v2.0 §2)
+   210→// ============================================================================
+   211→function GrassfieldsExpansion({
+   212→  fr, selLang, setSelLang, sel,
+   213→}: {
+   214→  fr: boolean;
+   215→  selLang: string;
+   216→  setSelLang: (l: string) => void;
+   217→  sel?: (typeof GRASSFIELDS_LANGUAGES)[number];
+   218→}) {
+   219→  return (
+   220→    <div className="space-y-4" role="tabpanel" aria-label={t("expansionPack", fr ? "fr" : "en")}>
+   221→      <section className="rounded-2xl border-2 border-lime-300 bg-gradient-to-br from-lime-50 to-white p-4 shadow-sm">
+   222→        <h2 className="text-base font-extrabold text-lime-900">🪶 {t("expansionPack", fr ? "fr" : "en")}</h2>
+   223→        <p className="mt-1 text-xs leading-relaxed text-lime-900/80">{t("expansionIntro", fr ? "fr" : "en")}</p>
+   224→        <p className="mt-2 text-[11px] text-lime-800">
+   225→          {GACL.fullName} ({GACL.established}) · {fr ? "Langues tonales" : "Tonal languages"}: Kom 3 tones · Lamnso&apos; vowel length · Bayangi {fr ? "à documenter" : "to be documented"}
+   226→        </p>
+   227→        <p className="mt-1 text-[11px] font-bold text-lime-900">
+   228→          {fr ? "Matrice corrigée : 8 langues — kom et lamnso' distincts · bayangi ajouté (Nouveau)." : "Corrected matrix: 8 languages — Kom and Lamnso' distinct · Bayangi added (New)."}
+   229→        </p>
+   230→      </section>
+   231→
+   232→      {/* §2.2 Language profiles */}
+   233→      <section aria-label={t("languageProfile", fr ? "fr" : "en")} className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+   234→        <h3 className="mb-3 text-sm font-extrabold text-lime-900">🌍 {t("languageProfile", fr ? "fr" : "en")}</h3>
+   235→        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+   236→          {GRASSFIELDS_LANGUAGES.map((l) => (
+   237→            <button
+   238→              key={l.code}
+   239→              onClick={() => setSelLang(l.code)}
+   240→              aria-pressed={selLang === l.code}
+   241→              className={cn(
+   242→                "min-h-[44px] rounded-xl border-2 p-3 text-left transition-all",
+   243→                selLang === l.code ? "border-lime-700 bg-lime-50 shadow-sm" : "border-lime-100 bg-white hover:border-lime-400"
+   244→              )}
+   245→            >
+   246→              <div className="flex items-center justify-between">
+   247→                <span className="text-sm font-extrabold text-lime-900">{l.flag} {l.name}</span>
+   248→                <span className={cn(
+   249→                  "rounded-full px-1.5 py-0.5 text-[9px] font-extrabold uppercase",
+   250→                  l.status === "ACTIVE" ? "bg-lime-600 text-white" : l.status === "ACTIVE_PLACEHOLDER" ? "bg-orange-500 text-white" : "bg-stone-200 text-stone-600"
+   251→                )}>{statusLabel(l.status, fr)}</span>
+   252→              </div>
+   253→              <p className="mt-0.5 text-[10px] text-amber-700">ISO {l.iso} · {l.nativeName}</p>
+   254→              <p className="text-[10px] text-amber-700">{l.region} — {l.division}</p>
+   255→              <p className="text-[10px] text-amber-700">🗣️ {l.speakers}</p>
+   256→              <p className="mt-1 text-[10px] leading-snug text-lime-800">{l.tones}</p>
+   257→              <p className="mt-1 text-[9px] font-bold uppercase text-stone-500">
+   258→                {statusLabel(l.status, fr) === "Draft" ? "" : `${fr ? "Phase" : "Phase"}: `}{VOICE_MODEL_STATUS[l.code]?.phase}
+   259→              </p>
+   260→              <p className="mt-1 text-[9px] font-semibold text-amber-600">
+   261→                {t("contentCoverage", fr ? "fr" : "en")}: {l.contentLibrary.vocabulary} {fr ? "mots" : "words"} · {l.contentLibrary.dialogues} {fr ? "dialogues" : "dialogues"} · {l.contentLibrary.songs} {fr ? "chants" : "songs"} · {l.contentLibrary.stories} {fr ? "histoires" : "stories"}
+   262→              </p>
+   263→            </button>
+   264→          ))}
+   265→        </div>
+   266→
+   267→        {sel && (
+   268→          <div className="mt-3 grid gap-3 rounded-xl bg-lime-50/70 p-3 text-xs md:grid-cols-2">
+   269→            <div>
+   270→              <h4 className="mb-1 font-extrabold text-lime-900">{sel.name} — {fr ? "détails" : "details"}</h4>
+   271→              <p className="text-amber-900"><b>{fr ? "Noms alternatifs" : "Alternate names"}:</b> {sel.alternateNames.join(", ")}</p>
+   272→              <p className="text-amber-900"><b>{fr ? "Classification" : "Classification"}:</b> {LANGUAGE_CLASSIFICATION[sel.code] || "Narrow Grassfields"}</p>
+   273→              <p className="text-amber-900"><b>{fr ? "Notation tonale" : "Tone notation"}:</b> {sel.toneNotation.system} — {sel.toneNotation.detail}</p>
+   274→              <p className="text-amber-900"><b>{fr ? "Données d'entraînement" : "Training data"}:</b> {sel.trainingHours}</p>
+   275→              <p className="text-amber-900"><b>{fr ? "Modèle ASR" : "ASR model"}:</b> {sel.asrModel || (fr ? "en attente de données" : "pending data collection")}</p>
+   276→              <p className="text-amber-900"><b>{fr ? "Voix TTS" : "TTS voice"}:</b> {sel.ttsVoice || (fr ? "en attente de données" : "pending data collection")}</p>
+   277→              <p className="text-amber-900"><b>{fr ? "ASR" : "ASR"}:</b> {VOICE_MODEL_STATUS[sel.code]?.asr}</p>
+   278→              <p className="text-amber-900"><b>{fr ? "TTS" : "TTS"}:</b> {VOICE_MODEL_STATUS[sel.code]?.tts}</p>
+   279→              {sel.culturalContext && (
+   280→                <p className="text-amber-900"><b>{fr ? "Contexte culturel" : "Cultural context"}:</b> {sel.culturalContext}</p>
+   281→              )}
+   282→            </div>
+   283→            <div>
+   284→              <h4 className="mb-1 font-extrabold text-lime-900">{fr ? "Ressources d'apprentissage" : "Learning resources"}</h4>
+   285→              <ul className="space-y-0.5 text-amber-900">
+   286→                {(LANGUAGE_RESOURCES[sel.code] || []).map((r) => <li key={r}>• {r}</li>)}
+   287→              </ul>
+   288→              {sel.code === "byv" && (
+   289→                <div className="mt-2 rounded-xl border-2 border-dashed border-orange-400 bg-orange-50/70 p-2.5">
+   290→                  <h5 className="text-[11px] font-extrabold uppercase tracking-wide text-orange-700">⏳ {t("dataCollection", fr ? "fr" : "en")} — Bayangi (v3.0)</h5>
+   291→                  <p className="mt-1 text-[11px] text-orange-900"><b>{fr ? "Cible" : "Target"}:</b> {BAYANGI_DATA_COLLECTION_PLAN.targetHours}h · <b>{fr ? "Partenaire" : "Partner"}:</b> {BAYANGI_DATA_COLLECTION_PLAN.partner} · <b>{fr ? "Échéance" : "Timeline"}:</b> {BAYANGI_DATA_COLLECTION_PLAN.timeline}</p>
+   292→                  <ol className="mt-1 list-decimal space-y-0.5 pl-4 text-[11px] text-orange-900">
+   293→                    {BAYANGI_DATA_COLLECTION_PLAN.steps.map((s) => <li key={s}>{s}</li>)}
+   294→                  </ol>
+   295→                </div>
+   296→              )}
+   297→            </div>
+   298→          </div>
+   299→        )}
+   300→      </section>
+   301→
+   302→      {/* §2.6 GACL Orthography */}
+   303→      <section aria-label={t("orthography", fr ? "fr" : "en")} className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
+   304→        <h3 className="mb-2 text-sm font-extrabold text-amber-900">✍️ {t("orthography", fr ? "fr" : "en")} ({GACL.established})</h3>
+   305→        <div className="grid gap-3 text-xs md:grid-cols-3">
+   306→          <div className="rounded-xl bg-amber-50 p-3">
+   307→            <h4 className="mb-1 font-bold text-amber-900">{fr ? "Caractères spéciaux" : "Special characters"}</h4>
+   308→            <p className="text-lg tracking-widest text-amber-900">{GACL.specialCharacters.join("  ")}</p>
+   309→            <h4 className="mb-1 mt-2 font-bold text-amber-900">{fr ? "Digrammes" : "Digraphs"}</h4>
+   310→            <p className="text-amber-900">{GACL.digraphs.join(" · ")}</p>
+   311→            <h4 className="mb-1 mt-2 font-bold text-amber-900">{fr ? "Prénasalisées" : "Prenasalized"}</h4>
+   312→            <p className="text-amber-900">{GACL.prenasalized.join(" · ")}</p>
+   313→            <h4 className="mb-1 mt-2 font-bold text-amber-900">{fr ? "Labialisées / Palatalisées" : "Labialized / Palatalized"}</h4>
+   314→            <p className="text-amber-900">{[...GACL.labialized, ...GACL.palatalized].join(" · ")}</p>
+   315→          </div>
+   316→          <div className="rounded-xl bg-lime-50 p-3">
+   317→            <h4 className="mb-1 font-bold text-lime-900">{fr ? "Les 3 tons du kom" : "Kom's 3 tones"}</h4>
+   318→            <ul className="space-y-1 text-lime-900">
+   319→              {KOM_TONES.map((k) => (
+   320→                <li key={k.tone}><b>{k.tone}</b> — {k.mark}</li>
+   321→              ))}
+   322→            </ul>
+   323→            <h4 className="mb-1 mt-2 font-bold text-lime-900">{fr ? "Graphèmes du lamnso'" : "Lamnso' graphemes"}</h4>
+   324→            <ul className="space-y-0.5 text-lime-900">
+   325→              {LAMNSO_GRAPHEMES.map((g) => <li key={g.phon}>{g.phon} = “{g.graph}”</li>)}
+   326→            </ul>
+   327→          </div>
+   328→          <div className="rounded-xl bg-orange-50 p-3">
+   329→            <h4 className="mb-1 font-bold text-orange-900">{fr ? "Principes fondamentaux" : "Core principles"}</h4>
+   330→            <ul className="list-disc space-y-1 pl-3 text-orange-900">
+   331→              {GACL.corePrinciples.map((p) => <li key={p}>{p}</li>)}
+   332→            </ul>
+   333→          </div>
+   334→        </div>
+   335→      </section>
+   336→
+   337→      {/* §2.3/§2.4 Sample vocabulary — playable */}
+   338→      <section aria-label={t("sampleVocabulary", fr ? "fr" : "en")} className="rounded-2xl border-2 border-lime-300 bg-white p-4 shadow-sm">
+   339→        <h3 className="mb-1 text-sm font-extrabold text-lime-900">🔊 {t("sampleVocabulary", fr ? "fr" : "en")}</h3>
+   340→        <p className="mb-3 text-[11px] text-amber-700">
+   341→          {fr ? "Touchez une phrase pour écouter la voix du personnage (Kwe). Les tons sont marqués selon le GACL." : "Tap a phrase to hear the character voice (Kwe). Tones are marked per the GACL."}
+   342→        </p>
+   343→        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+   344→          {CORE_PHRASES.map((p) => (
+   345→            <div key={p.en} className="rounded-xl border-2 border-lime-100 bg-lime-50/50 p-2.5">
+   346→              <div className="text-[10px] font-bold uppercase tracking-wide text-amber-600">{p.en} {p.note && <span className="font-normal">· {p.note}</span>}</div>
+   347→              {p.bkm && (
+   348→                <button
+   349→                  onClick={() => { playXp(); void speak(p.bkm!, "kwe", "bkm"); }}
+   350→                  className="mt-1 flex min-h-[36px] w-full items-center justify-between rounded-lg bg-white px-2 py-1 text-left hover:bg-lime-100"
+   351→                  aria-label={`Listen: ${p.bkm} (Kom)`}
+   352→                >
+   353→                  <span className="text-sm font-extrabold text-lime-900">🪶 {p.bkm}</span>
+   354→                  <span className="text-[9px] font-bold uppercase text-lime-700">Kom ▸</span>
+   355→                </button>
+   356→              )}
+   357→              {p.lns && (
+   358→                <button
+   359→                  onClick={() => { playXp(); void speak(p.lns!, "kwe", "lns"); }}
+   360→                  className="mt-1 flex min-h-[36px] w-full items-center justify-between rounded-lg bg-white px-2 py-1 text-left hover:bg-lime-100"
+   361→                  aria-label={`Listen: ${p.lns} (Lamnso')`}
+   362→                >
+   363→                  <span className="text-sm font-extrabold text-lime-900">🪶 {p.lns}</span>
+   364→                  <span className="text-[9px] font-bold uppercase text-lime-700">Lamnso&apos; ▸</span>
+   365→                </button>
+   366→              )}
+   367→            </div>
+   368→          ))}
+   369→        </div>
+   370→      </section>
+   371→
+   372→      {/* §2.9 CEFR progression */}
+   373→      <section aria-label={t("cefrPath", fr ? "fr" : "en")} className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
+   374→        <h3 className="mb-2 text-sm font-extrabold text-amber-900">🪜 {t("cefrPath", fr ? "fr" : "en")}</h3>
+   375→        <div className="overflow-x-auto">
+   376→          <table className="w-full min-w-[480px] text-left text-xs">
+   377→            <thead>
+   378→              <tr className="border-b border-amber-200 text-[10px] uppercase text-amber-600">
+   379→                <th className="py-1.5 pr-2">{fr ? "Niveau" : "Level"}</th>
+   380→                <th className="py-1.5 pr-2">{fr ? "Compétence en langue des Grassfields" : "Grassfields language competency"}</th>
+   381→                <th className="py-1.5">CEFR</th>
+   382→              </tr>
+   383→            </thead>
+   384→            <tbody>
+   385→              {CEFR_PROGRESSION.map((r) => (
+   386→                <tr key={r.level} className="border-b border-amber-50">
+   387→                  <td className="py-1.5 pr-2 font-bold text-amber-900">{r.level}</td>
+   388→                  <td className="py-1.5 pr-2 text-amber-800">{r.competency}</td>
+   389→                  <td className="py-1.5 font-extrabold text-lime-700">{r.cefr}</td>
+   390→                </tr>
+   391→              ))}
+   392→            </tbody>
+   393→          </table>
+   394→        </div>
+   395→      </section>
+   396→
+   397→      {/* §2.8 Content library targets + sources */}
+   398→      <section className="grid gap-4 md:grid-cols-2">
+   399→        <div className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+   400→          <h3 className="mb-2 text-sm font-extrabold text-lime-900">🗂️ {fr ? "Types de contenu requis" : "Required content types"}</h3>
+   401→          <table className="w-full text-left text-xs">
+   402→            <tbody>
+   403→              {CONTENT_TARGETS.map((c) => (
+   404→                <tr key={c.type} className="border-b border-lime-50">
+   405→                  <td className="py-1.5 pr-2 font-bold text-lime-900">{c.type}</td>
+   406→                  <td className="py-1.5 pr-2 text-amber-800">{c.quantity}</td>
+   407→                  <td className="py-1.5 text-amber-600">{c.purpose}</td>
+   408→                </tr>
+   409→              ))}
+   410→            </tbody>
+   411→          </table>
+   412→        </div>
+   413→        <div className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+   414→          <h3 className="mb-2 text-sm font-extrabold text-lime-900">📥 {fr ? "Sources de contenu" : "Content sources"}</h3>
+   415→          <ul className="space-y-1 text-xs text-amber-900">
+   416→            {CONTENT_SOURCES.map((s) => <li key={s}>• {s}</li>)}
+   417→          </ul>
+   418→          <h3 className="mb-2 mt-3 text-sm font-extrabold text-lime-900">💾 {t("languagePacks", fr ? "fr" : "en")}</h3>
+   419→          <ul className="space-y-1 text-xs text-amber-900">
+   420→            {GRASSFIELDS_LANGUAGES.map((l) => (
+   421→              <li key={l.code} className="flex items-center justify-between gap-2 rounded-lg bg-lime-50 px-2 py-1.5">
+   422→                <span className="font-bold">{l.flag} {l.name}</span>
+   423→                <span className="text-[10px] text-amber-700">{LANGUAGE_PACKS[l.code]?.file} · ~{LANGUAGE_PACKS[l.code]?.sizeMb}MB</span>
+   424→              </li>
+   425→            ))}
+   426→          </ul>
+   427→        </div>
+   428→      </section>
+   429→
+   430→      {/* §4.1 Model registries + fine-tuning plan */}
+   431→      <section className="grid gap-4 md:grid-cols-2">
+   432→        <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
+   433→          <h3 className="mb-2 text-sm font-extrabold text-amber-900">🎙️ ASR — {fr ? "modèles africains" : "African language models"}</h3>
+   434→          <ul className="space-y-1.5 text-xs text-amber-900">
+   435→            {ASR_MODELS.map((m) => (
+   436→              <li key={m.model} className="rounded-lg bg-amber-50 p-2">
+   437→                <b>{m.model}</b> <span className="text-amber-600">({m.architecture})</span> — {m.use}
+   438→                <br /><span className="text-[10px] text-amber-700">{m.languages} · Grassfields: {m.grassfields}</span>
+   439→              </li>
+   440→            ))}
+   441→          </ul>
+   442→        </div>
+   443→        <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
+   444→          <h3 className="mb-2 text-sm font-extrabold text-amber-900">🔈 TTS — {fr ? "solutions de synthèse" : "synthesis solutions"}</h3>
+   445→          <ul className="space-y-1.5 text-xs text-amber-900">
+   446→            {TTS_MODELS.map((m) => (
+   447→              <li key={m.solution} className="rounded-lg bg-amber-50 p-2">
+   448→                <b>{m.solution}</b> <span className="text-amber-600">({m.type})</span>
+   449→                <br /><span className="text-[10px] text-amber-700">{m.languages} · Grassfields: {m.grassfields} · {m.note}</span>
+   450→              </li>
+   451→            ))}
+   452→          </ul>
+   453→        </div>
+   454→      </section>
+   455→
+   456→      <section className="rounded-2xl border-2 border-lime-300 bg-lime-50/60 p-4 shadow-sm">
+   457→        <h3 className="mb-2 text-sm font-extrabold text-lime-900">🛠️ {t("fineTuning", fr ? "fr" : "en")}</h3>
+   458→        <div className="overflow-x-auto">
+   459→          <table className="w-full min-w-[420px] text-left text-xs">
+   460→            <thead>
+   461→              <tr className="border-b border-lime-200 text-[10px] uppercase text-lime-700">
+   462→                <th className="py-1.5 pr-2">{fr ? "Langue" : "Language"}</th>
+   463→                <th className="py-1.5 pr-2">{fr ? "Modèle de base" : "Base model"}</th>
+   464→                <th className="py-1.5 pr-2">{fr ? "Données requises" : "Data needed"}</th>
+   465→                <th className="py-1.5">Priorité</th>
+   466→              </tr>
+   467→            </thead>
+   468→            <tbody>
+   469→              {FINE_TUNING_PLAN.map((f) => (
+   470→                <tr key={f.language} className="border-b border-lime-100/60">
+   471→                  <td className="py-1.5 pr-2 font-bold text-lime-900">{f.language}</td>
+   472→                  <td className="py-1.5 pr-2 text-amber-800">{f.baseModel}</td>
+   473→                  <td className="py-1.5 pr-2 text-amber-800">{f.data}</td>
+   474→                  <td className={cn(
+   475→                    "py-1.5 font-extrabold",
+   476→                    f.priority === "HIGH" ? "text-red-600" : f.priority === "MEDIUM" ? "text-amber-600" : "text-stone-500"
+   477→                  )}>{f.priority}</td>
+   478→                </tr>
+   479→              ))}
+   480→            </tbody>
+   481→          </table>
+   482→        </div>
+   483→        <p className="mt-2 text-[11px] text-lime-900">
+   484→          {fr
+   485→            ? "Minimum 500h de parole transcrite par langue (optimal 1000h+) · Vérification humaine dans la boucle pour les évaluations critiques."
+   486→            : "Minimum 500h of transcribed speech per language (optimal 1,000h+) · Human-in-the-loop verification for critical assessments."}
+   487→        </p>
+   488→      </section>
+   489→    </div>
+   490→  );
+   491→}
+   492→

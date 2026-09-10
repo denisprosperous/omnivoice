@@ -1,0 +1,367 @@
+{
+  "code": 200,
+  "data": {
+    "description": "A collection of curated Bibles, Resources and Films",
+    "external": {
+      "alternate": {
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=am": {
+          "hreflang": "am"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ar": {
+          "hreflang": "ar"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=bn": {
+          "hreflang": "bn"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=de": {
+          "hreflang": "de"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=en": {
+          "hreflang": "x-default"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=es": {
+          "hreflang": "es"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=fr": {
+          "hreflang": "fr"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=gu": {
+          "hreflang": "gu"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ha": {
+          "hreflang": "ha"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=hn": {
+          "hreflang": "hn"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=id": {
+          "hreflang": "id"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ig": {
+          "hreflang": "ig"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=it": {
+          "hreflang": "it"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ja": {
+          "hreflang": "ja"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=jv": {
+          "hreflang": "jv"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=kn": {
+          "hreflang": "kn"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ko": {
+          "hreflang": "ko"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=mai": {
+          "hreflang": "mai"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ml": {
+          "hreflang": "ml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=mr": {
+          "hreflang": "mr"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=my": {
+          "hreflang": "my"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=or": {
+          "hreflang": "or"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=pa": {
+          "hreflang": "pa"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=pl": {
+          "hreflang": "pl"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=pt": {
+          "hreflang": "pt"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ru": {
+          "hreflang": "ru"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=su": {
+          "hreflang": "su"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=sw": {
+          "hreflang": "sw"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ta": {
+          "hreflang": "ta"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=te": {
+          "hreflang": "te"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=th": {
+          "hreflang": "th"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=tl": {
+          "hreflang": "tl"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=tr": {
+          "hreflang": "tr"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=uk": {
+          "hreflang": "uk"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ur": {
+          "hreflang": "ur"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=vi": {
+          "hreflang": "vi"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=yo": {
+          "hreflang": "yo"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=yue": {
+          "hreflang": "yue"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=zh": {
+          "hreflang": "zh"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=zu": {
+          "hreflang": "zu"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/am.xml": {
+          "hreflang": "am",
+          "title": "find.bible - አማርኛ",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ar.xml": {
+          "hreflang": "ar",
+          "title": "find.bible - عربي",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/bn.xml": {
+          "hreflang": "bn",
+          "title": "find.bible - বাংলা",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/de.xml": {
+          "hreflang": "de",
+          "title": "find.bible - Deutsch",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/en.xml": {
+          "title": "find.bible RSS Feed",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/es.xml": {
+          "hreflang": "es",
+          "title": "find.bible - español",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/fr.xml": {
+          "hreflang": "fr",
+          "title": "find.bible - Français",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/gu.xml": {
+          "hreflang": "gu",
+          "title": "find.bible - ગુજરાતી",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ha.xml": {
+          "hreflang": "ha",
+          "title": "find.bible - Hausa",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/hn.xml": {
+          "hreflang": "hn",
+          "title": "find.bible - हिंदी",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/id.xml": {
+          "hreflang": "id",
+          "title": "find.bible - Bahasa Indonesia",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ig.xml": {
+          "hreflang": "ig",
+          "title": "find.bible - Igbo",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/it.xml": {
+          "hreflang": "it",
+          "title": "find.bible - Italiano",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ja.xml": {
+          "hreflang": "ja",
+          "title": "find.bible - 日本語",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/jv.xml": {
+          "hreflang": "jv",
+          "title": "find.bible - Basa Jawa",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/kn.xml": {
+          "hreflang": "kn",
+          "title": "find.bible - ಕನ್ನಡ",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ko.xml": {
+          "hreflang": "ko",
+          "title": "find.bible - 한국어",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/mai.xml": {
+          "hreflang": "mai",
+          "title": "find.bible - मैथिली",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ml.xml": {
+          "hreflang": "ml",
+          "title": "find.bible - മലയാളം",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/mr.xml": {
+          "hreflang": "mr",
+          "title": "find.bible - मराठी",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/my.xml": {
+          "hreflang": "my",
+          "title": "find.bible - မြန်မာ",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/or.xml": {
+          "hreflang": "or",
+          "title": "find.bible - ଓଡ଼ିଆ",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/pa.xml": {
+          "hreflang": "pa",
+          "title": "find.bible - ਪੰਜਾਬੀ",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/pl.xml": {
+          "hreflang": "pl",
+          "title": "find.bible - Polski",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/pt.xml": {
+          "hreflang": "pt",
+          "title": "find.bible - Português",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ru.xml": {
+          "hreflang": "ru",
+          "title": "find.bible - Русский",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/su.xml": {
+          "hreflang": "su",
+          "title": "find.bible - ᮘᮞ ᮞᮥᮔ᮪ᮓ",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/sw.xml": {
+          "hreflang": "sw",
+          "title": "find.bible - kiswahili",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ta.xml": {
+          "hreflang": "ta",
+          "title": "find.bible - தமிழ்",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/te.xml": {
+          "hreflang": "te",
+          "title": "find.bible - தெலுங்கு",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/th.xml": {
+          "hreflang": "th",
+          "title": "find.bible - ไทย",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/tl.xml": {
+          "hreflang": "tl",
+          "title": "find.bible - Tagalog",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/tr.xml": {
+          "hreflang": "tr",
+          "title": "find.bible - Türkçe",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/uk.xml": {
+          "hreflang": "uk",
+          "title": "find.bible - Українська",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ur.xml": {
+          "hreflang": "ur",
+          "title": "find.bible - اردو",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/vi.xml": {
+          "hreflang": "vi",
+          "title": "find.bible - Tiếng Việt",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/yo.xml": {
+          "hreflang": "yo",
+          "title": "find.bible - Yorùbá",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/yue.xml": {
+          "hreflang": "yue",
+          "title": "find.bible - 粵語",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/zh.xml": {
+          "hreflang": "zh",
+          "title": "find.bible - 汉语",
+          "type": "application/rss+xml"
+        },
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/zu.xml": {
+          "hreflang": "zu",
+          "title": "find.bible - isiZulu",
+          "type": "application/rss+xml"
+        }
+      },
+      "canonical": {
+        "https://web.archive.org/web/20251008062229/https://dev.find.bible/": {}
+      },
+      "icon": {
+        "https://web.archive.org/web/20251008062229im_/https://dev.find.bible/images/favicon/favicon.ico": {
+          "type": "image/x-icon"
+        }
+      },
+      "sitemap": {
+        "https://dev.find.bible/sitemap.xml": {
+          "type": "application/xml"
+        }
+      }
+    },
+    "html": "<html lang=\"en\" dir=\"ltr\" class=\"h-full dark no-js\"> <head><script src=\"https://web-static.archive.org/_static/js/athena.js\" type=\"text/javascript\"></script>\n<script type=\"text/javascript\">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app54.us.archive.org';v.server_ms=950;archive_analytics.send_pageview({});});</script>\n<script type=\"text/javascript\" src=\"https://web-static.archive.org/_static/js/bundle-playback.js?v=2N_sDSC0\" charset=\"utf-8\"></script>\n<script type=\"text/javascript\" src=\"https://web-static.archive.org/_static/js/wombat.js?v=o9P2E1FK\" charset=\"utf-8\"></script>\n<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={\"autoplay\":\"on\",\"unmuteOverlay\":\"hidden\",\"showSwfDownload\":true};</script>\n<script type=\"text/javascript\" src=\"https://web-static.archive.org/_static/js/ruffle/ruffle.js\"></script>\n<script type=\"text/javascript\">\n    __wm.init(\"https://web.archive.org/web\");\n  __wm.wombat(\"https://dev.find.bible/\",\"20251008062229\",\"https://web.archive.org/\",\"web\",\"https://web-static.archive.org/_static/\",\n\t      \"1759904549\");\n</script>\n<link rel=\"stylesheet\" type=\"text/css\" href=\"https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3\">\n<link rel=\"stylesheet\" type=\"text/css\" href=\"https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv\">\n<!-- End Wayback Rewrite JS Include -->\n<meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"icon\" type=\"image/x-icon\" href=\"/web/20251008062229im_/https://dev.find.bible/images/favicon/favicon.ico\"><title>Home | find.bible</title><meta name=\"description\" itemprop=\"description\" property=\"og:description\" content=\"A collection of curated Bibles, Resources and Films\"><meta itemprop=\"name\" content=\"Home\"><meta itemprop=\"description\" content=\"A collection of curated Bibles, Resources and Films\"><meta property=\"og:type\" content=\"website\"><meta property=\"og:title\" content=\"Home\"><meta property=\"og:description\" content=\"A collection of curated Bibles, Resources and Films\"><meta name=\"theme-color\" content=\"#059669\"><!-- Hreflang tags for all available locales --><link rel=\"alternate\" hreflang=\"am\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=am\"><link rel=\"alternate\" hreflang=\"ar\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ar\"><link rel=\"alternate\" hreflang=\"de\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=de\"><link rel=\"alternate\" hreflang=\"bn\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=bn\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=en\"><link rel=\"alternate\" hreflang=\"es\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=es\"><link rel=\"alternate\" hreflang=\"gu\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=gu\"><link rel=\"alternate\" hreflang=\"hn\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=hn\"><link rel=\"alternate\" hreflang=\"ha\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ha\"><link rel=\"alternate\" hreflang=\"fr\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=fr\"><link rel=\"alternate\" hreflang=\"id\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=id\"><link rel=\"alternate\" hreflang=\"ig\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ig\"><link rel=\"alternate\" hreflang=\"it\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=it\"><link rel=\"alternate\" hreflang=\"ja\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ja\"><link rel=\"alternate\" hreflang=\"jv\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=jv\"><link rel=\"alternate\" hreflang=\"kn\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=kn\"><link rel=\"alternate\" hreflang=\"mai\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=mai\"><link rel=\"alternate\" hreflang=\"ko\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ko\"><link rel=\"alternate\" hreflang=\"ml\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ml\"><link rel=\"alternate\" hreflang=\"mr\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=mr\"><link rel=\"alternate\" hreflang=\"my\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=my\"><link rel=\"alternate\" hreflang=\"or\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=or\"><link rel=\"alternate\" hreflang=\"pl\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=pl\"><link rel=\"alternate\" hreflang=\"pt\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=pt\"><link rel=\"alternate\" hreflang=\"pa\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=pa\"><link rel=\"alternate\" hreflang=\"ru\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ru\"><link rel=\"alternate\" hreflang=\"su\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=su\"><link rel=\"alternate\" hreflang=\"sw\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=sw\"><link rel=\"alternate\" hreflang=\"ta\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ta\"><link rel=\"alternate\" hreflang=\"te\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=te\"><link rel=\"alternate\" hreflang=\"th\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=th\"><link rel=\"alternate\" hreflang=\"tl\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=tl\"><link rel=\"alternate\" hreflang=\"tr\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=tr\"><link rel=\"alternate\" hreflang=\"uk\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=uk\"><link rel=\"alternate\" hreflang=\"ur\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=ur\"><link rel=\"alternate\" hreflang=\"vi\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=vi\"><link rel=\"alternate\" hreflang=\"yue\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=yue\"><link rel=\"alternate\" hreflang=\"yo\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=yo\"><link rel=\"alternate\" hreflang=\"zh\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=zh\"><link rel=\"alternate\" hreflang=\"zu\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=zu\"><!-- Default language (English) --><link rel=\"alternate\" hreflang=\"x-default\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?locale=en\"><!-- Canonical URL (current page without locale param) --><link rel=\"canonical\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/\"><!-- Website Structured Data --><script type=\"application/ld+json\">{\"@context\":\"https://web.archive.org/web/20251008062229/https://schema.org\",\"@type\":\"WebSite\",\"name\":\"find.bible\",\"alternateName\":\"Find a Bible\",\"url\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible\",\"description\":\"A collection of curated Bibles, Resources and Films\",\"inLanguage\":[\"am\",\"ar\",\"de\",\"bn\",\"en\",\"es\",\"gu\",\"hn\",\"ha\",\"fr\",\"id\",\"ig\",\"it\",\"ja\",\"jv\",\"kn\",\"mai\",\"ko\",\"ml\",\"mr\",\"my\",\"or\",\"pl\",\"pt\",\"pa\",\"ru\",\"su\",\"sw\",\"ta\",\"te\",\"th\",\"tl\",\"tr\",\"uk\",\"ur\",\"vi\",\"yue\",\"yo\",\"zh\",\"zu\"],\"potentialAction\":{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible/?search={search_term_string}\"},\"query-input\":\"required name=search_term_string\"},\"sameAs\":[],\"publisher\":{\"@type\":\"Organization\",\"name\":\"Digital Bible Society\",\"url\":\"https://web.archive.org/web/20251008062229/https://dbs.org\"}}</script> <!-- Organization Structured Data --><script type=\"application/ld+json\">{\"@context\":\"https://web.archive.org/web/20251008062229/https://schema.org\",\"@type\":\"Organization\",\"name\":\"find.bible\",\"url\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible\",\"description\":\"A collection of curated Bibles, Resources and Films\",\"foundingDate\":\"2006\",\"contactPoint\":{\"@type\":\"ContactPoint\",\"contactType\":\"customer service\",\"url\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible/about/contact\"}}</script> <!-- Dataset Structured Data --><script type=\"application/ld+json\">{\"@context\":\"https://web.archive.org/web/20251008062229/https://schema.org\",\"@type\":\"Dataset\",\"name\":\"find.bible Database\",\"description\":\"A comprehensive database of Bible translations, languages, and organizations worldwide\",\"url\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible\",\"keywords\":[\"Bible\",\"translations\",\"languages\",\"Scripture\",\"Christianity\"],\"license\":\"https://web.archive.org/web/20251008062229/https://creativecommons.org/licenses/by/4.0/\",\"creator\":{\"@type\":\"Organization\",\"name\":\"Digital Bible Society\",\"url\":\"https://web.archive.org/web/20251008062229/https://dbs.org\"},\"distribution\":{\"@type\":\"DataDownload\",\"encodingFormat\":\"application/json\",\"contentUrl\":\"https://web.archive.org/web/20251008062229/http://localhost:8089/assets/data/site.json\"}}</script> <!-- Breadcrumb Structured Data (if applicable) --><!-- Multilingual Structured Data --><script type=\"application/ld+json\">{\"@context\":\"https://web.archive.org/web/20251008062229/https://schema.org\",\"@type\":\"WebPage\",\"url\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible/\",\"inLanguage\":\"en\",\"isPartOf\":{\"@type\":\"WebSite\",\"@id\":\"https://web.archive.org/web/20251008062229/https://dev.find.bible\"}}</script><!-- Main RSS feed (English) --><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible RSS Feed\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/en.xml\"><!-- Multilingual RSS feeds --><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - አማርኛ\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/am.xml\" hreflang=\"am\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - عربي\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ar.xml\" hreflang=\"ar\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Deutsch\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/de.xml\" hreflang=\"de\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - বাংলা\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/bn.xml\" hreflang=\"bn\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - español\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/es.xml\" hreflang=\"es\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - ગુજરાતી\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/gu.xml\" hreflang=\"gu\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - हिंदी\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/hn.xml\" hreflang=\"hn\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Hausa\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ha.xml\" hreflang=\"ha\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Français\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/fr.xml\" hreflang=\"fr\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Bahasa Indonesia\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/id.xml\" hreflang=\"id\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Igbo\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ig.xml\" hreflang=\"ig\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Italiano\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/it.xml\" hreflang=\"it\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - 日本語\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ja.xml\" hreflang=\"ja\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Basa Jawa\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/jv.xml\" hreflang=\"jv\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - ಕನ್ನಡ\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/kn.xml\" hreflang=\"kn\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - मैथिली\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/mai.xml\" hreflang=\"mai\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - 한국어\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ko.xml\" hreflang=\"ko\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - മലയാളം\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ml.xml\" hreflang=\"ml\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - मराठी\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/mr.xml\" hreflang=\"mr\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - မြန်မာ\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/my.xml\" hreflang=\"my\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - ଓଡ଼ିଆ\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/or.xml\" hreflang=\"or\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Polski\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/pl.xml\" hreflang=\"pl\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Português\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/pt.xml\" hreflang=\"pt\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - ਪੰਜਾਬੀ\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/pa.xml\" hreflang=\"pa\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Русский\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ru.xml\" hreflang=\"ru\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - ᮘᮞ ᮞᮥᮔ᮪ᮓ\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/su.xml\" hreflang=\"su\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - kiswahili\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/sw.xml\" hreflang=\"sw\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - தமிழ்\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ta.xml\" hreflang=\"ta\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - தெலுங்கு\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/te.xml\" hreflang=\"te\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - ไทย\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/th.xml\" hreflang=\"th\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Tagalog\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/tl.xml\" hreflang=\"tl\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Türkçe\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/tr.xml\" hreflang=\"tr\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Українська\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/uk.xml\" hreflang=\"uk\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - اردو\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/ur.xml\" hreflang=\"ur\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Tiếng Việt\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/vi.xml\" hreflang=\"vi\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - 粵語\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/yue.xml\" hreflang=\"yue\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - Yorùbá\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/yo.xml\" hreflang=\"yo\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - 汉语\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/zh.xml\" hreflang=\"zh\"><link rel=\"alternate\" type=\"application/rss+xml\" title=\"find.bible - isiZulu\" href=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/rss/zu.xml\" hreflang=\"zu\"><!-- Sitemap discovery --><link rel=\"sitemap\" type=\"application/xml\" href=\"https://dev.find.bible/sitemap.xml\"><meta name=\"astro-view-transitions-enabled\" content=\"true\"><meta name=\"astro-view-transitions-fallback\" content=\"animate\"><script type=\"module\" src=\"/web/20251008062229jm_/https://dev.find.bible/_astro/ClientRouter.astro_astro_type_script_index_0_lang.Cf2AfnBD.js\"></script><script type=\"module\" src=\"/web/20251008062229jm_/https://dev.find.bible/_astro/BasicScripts.astro_astro_type_script_index_0_lang.9WJC0Drt.js\"></script> <script>\n  // Define helper functions first\n  function attachEvent(selector, event, fn) {\n    const matches = document.querySelectorAll(selector);\n    if (matches && matches.length) {\n      matches.forEach((elem) => {\n        elem.addEventListener(event, fn, false);\n      });\n    }\n  }\n\n  const setDarkMode = () => {\n    const isDarkModePreferred = () => {\n      return localStorage.theme === \"dark\" ||\n             (!(\"theme\" in localStorage) && window.matchMedia(\"(prefers-color-scheme: dark)\").matches);\n    };\n\n    const updateTogglerUI = (isDark) => {\n      const togglers = document.querySelectorAll(\"[data-aw-toggle-color-scheme]\");\n      togglers.forEach(toggler => {\n        toggler.setAttribute(\"aria-label\", isDark ? \"Switch to light mode\" : \"Switch to dark mode\");\n      });\n    };\n\n    const toggleDarkMode = () => {\n      const isDark = document.documentElement.classList.toggle(\"dark\");\n      updateTogglerUI(isDark);\n      localStorage.theme = isDark ? \"dark\" : \"light\";\n    };\n\n    const preferredDarkMode = isDarkModePreferred();\n    document.documentElement.classList.toggle(\"dark\", preferredDarkMode);\n    updateTogglerUI(preferredDarkMode);\n    attachEvent(\"[data-aw-toggle-color-scheme]\", \"click\", toggleDarkMode);\n  };\n\n  const clearNoJsFeatures = () => {\n    document.documentElement.classList.remove(\"no-js\");\n  };\n\n  // Attach event listeners\n  document.addEventListener(\"DOMContentLoaded\", () => {\n    setDarkMode();\n    clearNoJsFeatures();\n  });\n  \n  document.addEventListener(\"astro:after-swap\", () => {\n    setDarkMode();\n    clearNoJsFeatures();\n  });\n</script> <script defer src=\"https://web.archive.org/web/20251008062229js_/https://stats.dbs.org/getinfo\" data-website-id=\"fb11b445-fe64-419a-8e6c-56cbfdf971f5\"></script><link rel=\"stylesheet\" href=\"/web/20251008062229cs_/https://dev.find.bible/_astro/add.C3_1Nijg.css\">\n<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}\n#worldmap[data-astro-cid-yf4h252u] path[data-astro-cid-yf4h252u]{opacity:.7}#worldmap[data-astro-cid-yf4h252u] path[data-astro-cid-yf4h252u]{fill:#ddd;stroke:#1c1917;stroke-width:2px}#worldmap[data-astro-cid-yf4h252u] path[data-astro-cid-yf4h252u]:hover{opacity:1;stroke:#000}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"1\"]{fill:#f2f2f2}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"2\"]{fill:#f7fcfd}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"3\"]{fill:#e5f5f9}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"4\"]{fill:#ccece6}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"5\"]{fill:#99d8c9}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"6\"]{fill:#66c2a4}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"6\"]{fill:#41ae76}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"7\"]{fill:#238b45}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"8\"]{fill:#006d2c}#worldmap[data-astro-cid-yf4h252u].current-view-pop path[data-astro-cid-yf4h252u][data-pop=\"9\"]{fill:#00441b}#worldmap[data-astro-cid-yf4h252u].current-view-wwl path[data-astro-cid-yf4h252u][data-wwl=\"1\"]{fill:#eba500}#worldmap[data-astro-cid-yf4h252u].current-view-wwl path[data-astro-cid-yf4h252u][data-wwl=\"2\"]{fill:#e05c16}#worldmap[data-astro-cid-yf4h252u].current-view-wwl path[data-astro-cid-yf4h252u][data-wwl=\"3\"]{fill:#c01f1c}\n</style><script type=\"module\" src=\"/web/20251008062229jm_/https://dev.find.bible/_astro/page.CPvyyiTs.js\"></script><style>[data-astro-transition-scope=\"astro-vey6yenu-1\"] { view-transition-name: astro-vey6yenu-1; }@layer astro { ::view-transition-old(astro-vey6yenu-1) { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeOut; }::view-transition-new(astro-vey6yenu-1) { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(astro-vey6yenu-1) { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(astro-vey6yenu-1) { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeIn; } }[data-astro-transition-fallback=\"old\"] [data-astro-transition-scope=\"astro-vey6yenu-1\"],\n\t\t\t[data-astro-transition-fallback=\"old\"][data-astro-transition-scope=\"astro-vey6yenu-1\"] { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeOut; }[data-astro-transition-fallback=\"new\"] [data-astro-transition-scope=\"astro-vey6yenu-1\"],\n\t\t\t[data-astro-transition-fallback=\"new\"][data-astro-transition-scope=\"astro-vey6yenu-1\"] { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback=\"old\"] [data-astro-transition-scope=\"astro-vey6yenu-1\"],\n\t\t\t[data-astro-transition=back][data-astro-transition-fallback=\"old\"][data-astro-transition-scope=\"astro-vey6yenu-1\"] { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback=\"new\"] [data-astro-transition-scope=\"astro-vey6yenu-1\"],\n\t\t\t[data-astro-transition=back][data-astro-transition-fallback=\"new\"][data-astro-transition-scope=\"astro-vey6yenu-1\"] { \n\tanimation-duration: 180ms;\n\tanimation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);\n\tanimation-fill-mode: both;\n\tanimation-name: astroFadeIn; }</style></head> <body class=\"antialiased text-stone-900 dark:text-stone-300 tracking-tight h-screen dark:bg-none dark:bg-black\"><!-- BEGIN WAYBACK TOOLBAR INSERT -->\n<script>__wm.rw(0);</script>\n<div id=\"wm-ipp-base\" lang=\"en\" style=\"display:none;direction:ltr;\" toolbar-mode=\"auto\">\n<div id=\"wm-ipp\" style=\"position:fixed;left:0;top:0;right:0;\">\n<div id=\"donato\" style=\"position:relative;width:100%;height:0;\">\n  <div id=\"donato-base\">\n    <iframe id=\"donato-if\" src=\"https://archive.org/includes/donate.php?as_page=1&platform=wb&referer=https%3A//web.archive.org/web/20251008062229/https%3A/dev.find.bible/\" scrolling=\"no\" frameborder=\"0\" style=\"width:100%; height:100%\">\n    </iframe>\n  </div>\n</div><div id=\"wm-ipp-inside\">\n  <div id=\"wm-toolbar\" style=\"position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;\" nav=\"async\">\n    <div id=\"wm-logo\" style=\"/*width:110px;*/padding-top:12px;\">\n      <a href=\"/web/\" title=\"Wayback Machine home page\"><img src=\"https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png\" srcset=\"https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x\" alt=\"Wayback Machine\" style=\"width:100px\" border=\"0\"></a>\n    </div>\n    <div class=\"c\" style=\"display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;\">\n      <form class=\"u\" style=\"display:flex;flex-direction:row;flex-wrap:nowrap;\" target=\"_top\" method=\"get\" action=\"/web/submit\" name=\"wmtb\" id=\"wmtb\"><input type=\"text\" name=\"url\" id=\"wmtbURL\" value=\"https://dev.find.bible/\" onfocus=\"this.focus();this.select();\" style=\"flex:1;\"><input type=\"hidden\" name=\"type\" value=\"replay\"><input type=\"hidden\" name=\"date\" value=\"20251008062229\"><input type=\"submit\" value=\"Go\">\n      </form>\n      <div style=\"display:flex;flex-flow:row nowrap;align-items:flex-end;\">\n                <div class=\"s\" id=\"wm-nav-captures\" style=\"flex:1;\">\n                    <a class=\"t\" href=\"/web/20251008062229*/https://dev.find.bible/\" title=\"See a list of every capture for this URL\">12 captures</a>\n          <div class=\"r\" title=\"Timespan for captures of this URL\">11 Sep 2023 - 06 Dec 2025</div>\n          </div>\n        <div class=\"k\">\n          <a href=\"\" id=\"wm-graph-anchor\">\n            <div id=\"wm-ipp-sparkline\" title=\"Explore captures for this URL\" style=\"position: relative\">\n              <canvas id=\"wm-sparkline-canvas\" width=\"775\" height=\"27\" border=\"0\"></canvas>\n            </div>\n          </a>\n        </div>\n      </div>\n    </div>\n    <div class=\"n\">\n      <table>\n        <tbody>\n          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->\n          <tr class=\"m\">\n            <td class=\"b\" nowrap=\"nowrap\">Sep</td>\n            <td class=\"c\" id=\"displayMonthEl\" title=\"You are here: 06:22:29 Oct 08, 2025\">OCT</td>\n            <td class=\"f\" nowrap=\"nowrap\">Nov</td>\n          </tr>\n          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->\n          <tr class=\"d\">\n            <td class=\"b\" nowrap=\"nowrap\"><span class=\"ta\"></span></td>\n            <td class=\"c\" id=\"displayDayEl\" style=\"width:34px;font-size:22px;white-space:nowrap;\" title=\"You are here: 06:22:29 Oct 08, 2025\">08</td>\n            <td class=\"f\" nowrap=\"nowrap\"><span class=\"ta\"></span></td>\n          </tr>\n          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->\n          <tr class=\"y\">\n            <td class=\"b\" nowrap=\"nowrap\">2024</td>\n            <td class=\"c\" id=\"displayYearEl\" title=\"You are here: 06:22:29 Oct 08, 2025\">2025</td>\n            <td class=\"f\" nowrap=\"nowrap\">2026</td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <div class=\"r\" style=\"display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;\">\n      <div id=\"wm-btns\" style=\"text-align:right;height:23px;\">\n                <span class=\"xxs\">\n          <div id=\"wm-save-snapshot-success\">success</div>\n          <div id=\"wm-save-snapshot-fail\">fail</div>\n          <a id=\"wm-save-snapshot-open\" href=\"#\" title=\"Share via My Web Archive\">\n            <span class=\"iconochive-web\"></span>\n          </a>\n          <a href=\"https://archive.org/account/login.php\" title=\"Sign In\" id=\"wm-sign-in\">\n            <span class=\"iconochive-person\"></span>\n          </a>\n          <span id=\"wm-save-snapshot-in-progress\" class=\"iconochive-web\"></span>\n        </span>\n                <a class=\"xxs\" href=\"https://help.archive.org/help/category/the-wayback-machine/\" title=\"Get some help using the Wayback Machine\" style=\"top:-6px;\"><span class=\"iconochive-question\" style=\"color:rgb(87,186,244);font-size:160%;\"></span></a>\n        <a id=\"wm-tb-close\" href=\"#close\" style=\"top:-2px;\" title=\"Close the toolbar\"><span class=\"iconochive-remove-circle\" style=\"color:#888888;font-size:240%;\"></span></a>\n      </div>\n      <div id=\"wm-share\" class=\"xxs\">\n        <a href=\"/web/20251008062229/http://web.archive.org/screenshot/https://dev.find.bible/\" id=\"wm-screenshot\" title=\"screenshot\">\n          <span class=\"wm-icon-screen-shot\"></span>\n        </a>\n        <a href=\"#\" id=\"wm-video\" title=\"video\">\n          <span class=\"iconochive-movies\"></span>\n        </a>\n        <a id=\"wm-share-facebook\" href=\"#\" data-url=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/\" title=\"Share on Facebook\" style=\"margin-right:5px;\" target=\"_blank\"><span class=\"iconochive-facebook\" style=\"color:#3b5998;font-size:160%;\"></span></a>\n        <a id=\"wm-share-twitter\" href=\"#\" data-url=\"https://web.archive.org/web/20251008062229/https://dev.find.bible/\" title=\"Share on Twitter\" style=\"margin-right:5px;\" target=\"_blank\"><span class=\"iconochive-twitter\" style=\"color:#1dcaff;font-size:160%;\"></span></a>\n      </div>\n      <div style=\"padding-right:2px;text-align:right;white-space:nowrap;\">\n        <a id=\"wm-expand\" class=\"wm-btn wm-closed\" href=\"#expand\"><span id=\"wm-expand-icon\" class=\"iconochive-down-solid\"></span> <span class=\"xxs\" style=\"font-size:80%;\">About this capture</span></a>\n      </div>\n    </div>\n  </div>\n    <div id=\"wm-capinfo\" style=\"border-top:1px solid #777;display:none; overflow: hidden\">\n        <div id=\"wm-capinfo-notice\" source=\"api\"></div>\n                <div id=\"wm-capinfo-collected-by\">\n    <div style=\"background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;\">COLLECTED BY</div>\n    <div style=\"padding:3px;position:relative\" id=\"wm-collected-by-content\">\n      <div style=\"display:inline-block;vertical-align:top;width:49%;\">\n\t\t\t<span class=\"c-logo\" style=\"background-image:url(https://archive.org/services/img/commoncrawl)\"></span>\n\t\t<div>Collection: <a style=\"color:#33f;\" href=\"https://archive.org/details/commoncrawl\" target=\"_new\"><span class=\"wm-title\">Common Crawl</span></a></div>\n\t\t<div style=\"max-height:75px;overflow:hidden;position:relative;\">\n\t  <div style=\"position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);\"></div>\n\t  Web crawl data from Common Crawl.\n\t</div>\n\t      </div>\n    </div>\n    </div>\n    <div id=\"wm-capinfo-timestamps\">\n    <div style=\"background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;\" title=\"Timestamps for the elements of this page\">TIMESTAMPS</div>\n    <div>\n      <div id=\"wm-capresources\" style=\"margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important\"></div>\n      <div id=\"wm-capresources-loading\" style=\"text-align:left;margin:0 20px 5px 5px;display:none\"><img src=\"https://web-static.archive.org/_static/images/loading.gif\" alt=\"loading\"></div>\n    </div>\n    </div>\n  </div></div></div></div><div id=\"wm-ipp-print\">The Wayback Machine - https://web.archive.org/web/20251008062229/https://dev.find.bible/</div>\n<script type=\"text/javascript\">//<![CDATA[\n__wm.bt(775,27,25,2,\"web\",\"https://dev.find.bible/\",\"20251008062229\",1996,\"https://web-static.archive.org/_static/\",[\"https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3\",\"https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv\"], false);\n  __wm.rw(1);\n//]]></script>\n<!-- END WAYBACK TOOLBAR INSERT -->\n   <div class=\"flex grow flex-col justify-between m-auto h-screen\"> <header class=\"sticky top-0 z-40 flex-none mx-auto w-full bg-stone-100/80 dark:bg-stone-900/90 backdrop-blur-sm border-stone-300 dark:border-stone-600 border-b\"> <div class=\"py-1 px-3 md:px-4 flex flex-wrap lg:flex-nowrap justify-around max-w-6xl mx-auto\"> <div> <a href=\"/web/20251008062229/https://dev.find.bible/\"> <img class=\"hidden md:block size-16\" src=\"/web/20251008062229im_/https://dev.find.bible/images/logo.svg\" alt=\"Find.Bible\"> </a> </div> <div id=\"search-wrapper\" class=\"relative w-full\"> <div class=\"block sm:w-1/2 md:w-3/4 mx-auto lg:w-full max-w-xl my-1 md:py-1 lg:py-2\"> <div class=\"relative mt-1 ml-12 mr-6\"> <div class=\"pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-stone-400\"> <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewbox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"w-6 h-6\" /> </div> <input id=\"search-input\" type=\"search\" placeholder=\"Search ...\" aria-label=\"Search\" autocomplete=\"off\" data-t-placeholder=\"search\" data-scope=\"all\" class=\"block w-full rounded-md border border-stone-400 py-2 pl-10 text-sm text-stone-800 shadow-lg placeholder-stone-800 dark:border-stone-700 dark:bg-stone-600 dark:text-stone-100 dark:placeholder-stone-100\"> </div> </div> <div id=\"search-results-wrapper\" class=\"relative w-full\"></div> </div> <script type=\"module\" src=\"/web/20251008062229jm_/https://dev.find.bible/_astro/Search.astro_astro_type_script_index_0_lang.Cp9t_ZnC.js\"></script> <ul class=\"flex flex-row items-center sm:pt-0 self-center w-auto mx-auto sm:text-sm md:text-base xl:text-lg whitespace-nowrap\"> <li><a data-t=\"bibles\" href=\"/web/20251008062229/https://dev.find.bible/bibles/\" class=\"hover:text-stone-900 dark:hover:text-white px-2 md:px-4 py-1\">Bibles</a></li> <li><a data-t=\"languages\" href=\"/web/20251008062229/https://dev.find.bible/languages\" class=\"hover:text-stone-900 dark:hover:text-white px-2 md:px-4 py-1\">Languages</a></li> <li><a data-t=\"countries\" href=\"/web/20251008062229/https://dev.find.bible/countries\" class=\"hover:text-stone-900 dark:hover:text-white px-2 md:px-4 py-1\">Countries</a></li> <li><a data-t=\"organizations\" href=\"/web/20251008062229/https://dev.find.bible/organizations\" class=\"hover:text-stone-900 dark:hover:text-white px-2 md:px-4 py-1\">Organizations</a></li> <li><a data-t=\"about\" href=\"/web/20251008062229/https://dev.find.bible/about\" class=\"hover:text-stone-900 dark:hover:text-white px-2 md:px-4 py-1\">About</a></li> <li><a href=\"/web/20251008062229/https://dev.find.bible/translation\" class=\"text-stone-500 dark:bg-stone-800 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 focus:outline-none focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 rounded-lg text-sm py-2 px-2 inline-flex items-center\"> <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"h-5 w-5 dark:placeholder-stone-400\" viewbox=\"0 0 20 20\" /> <span data-t=\"translate_title\" class=\"text-xs font-medium\">English</span> </a></li> <li class=\"flex justify-center items-center ml-2\"> <button id=\"dark-mode-toggle\" type=\"button\" class=\"text-stone-500 dark:text-stone-400 dark:bg-stone-800 hover:bg-stone-100 dark:hover:bg-stone-700 rounded-lg text-sm p-1.5 hidden sm:inline-flex items-center\" aria-label=\"Toggle between Dark and Light mode\" data-aw-toggle-color-scheme=\"\"> <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"w-6 h-6\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" stroke-width=\"1.75\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" /> </button> </li> </ul> <script type=\"module\" src=\"/web/20251008062229jm_/https://dev.find.bible/_astro/MainMenu.astro_astro_type_script_index_0_lang.DST2hVkV.js\"></script> </div> </header>  <main class=\"pb-24 bg-white dark:bg-stone-800 w-full mx-auto grow border border-stone-300 dark:border-stone-600 border-t-0\" data-astro-transition-scope=\"astro-vey6yenu-1\">  <div class=\"relative\" data-astro-cid-yf4h252u=\"\"> <div id=\"map-controls\" class=\"z-30 absolute top-4 left-4 flex flex-col\" data-astro-cid-yf4h252u=\"\"> <button id=\"zoom-in-button\" title=\"Zoom In\" class=\"text-white text-2xl bg-stone-900 dark:bg-stone-950 rounded-lg w-8 h-8\" data-astro-cid-yf4h252u=\"\">+</button> <button id=\"zoom-out-button\" title=\"Zoom Out\" class=\"text-white text-2xl bg-stone-900 dark:bg-stone-950 rounded-lg w-8 h-8 mt-2\" data-astro-cid-yf4h252u=\"\">-</button> <button id=\"wwl-activate-button\" title=\"World Watch List\" class=\"group text-white text-2xl bg-stone-900 dark:bg-stone-950 rounded-lg w-8 hover:w-auto h-8 mt-2 flex justify-center items-center\" data-astro-cid-yf4h252u=\"\"> <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" class=\"size-5\" viewbox=\"0 0 20 20\" data-astro-cid-yf4h252u=\"\" /> <span class=\"hidden group-hover:inline-block text-sm overflow-hidden px-2\" data-astro-cid-yf4h252u=\"\">World Watch List 2024</span> </button> <button id=\"pop-activate-button\" title=\"Population\" class=\"group text-white text-2xl bg-stone-900 dark:bg-stone-950 rounded-lg w-8 hover:w-auto h-8 mt-2 flex justify-center items-center\" data-astro-cid-yf4h252u=\"\"> <svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 20 20\" fill=\"currentColor\" class=\"size-5\" data-astro-cid-yf4h252u=\"\" /> <span class=\"hidden group-hover:inline-block text-sm overflow-hidden px-2\" data-astro-cid-yf4h252u=\"\">World Population Cloropleth Map</span> </button> </div> <svg id=\"worldmap\" class=\"current-view-wwl w-full h-[50vh] z-0 relative bg-[#78B9C4] dark:bg-stone-900\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" version=\"1.0\" viewbox=\"83 45 2528 1200\" data-astro-cid-yf4h252u=\"\" /> </div> <div id=\"tooltip\" class=\"absolute hidden bg-stone-800 text-white px-2 rounded-md pointer-events-none\" data-astro-cid-yf4h252u=\"\"></div> <script>\n    function initializeSvgInteractions() {\n        const svg = document.getElementById('worldmap');\n        const tooltip = document.getElementById('tooltip');\n        \n        if (!svg || !tooltip) {\n            return; // Exit early if elements don't exist on this page\n        }\n        let isPanning = false;\n        let startX = 0, startY = 0;\n        let viewBox = { x: 0, y: 0, width: 800, height: 600 };\n\n        function setInitialViewBox() {\n            const svgRect = svg.getBoundingClientRect();\n            const contentWidth = 2528;\n            const contentHeight = 1200;\n            const contentAspectRatio = contentWidth / contentHeight;\n            const containerAspectRatio = svgRect.width / svgRect.height;\n            let viewBoxWidth, viewBoxHeight;\n            if (containerAspectRatio > contentAspectRatio) {\n                viewBoxHeight = contentHeight;\n                viewBoxWidth = contentHeight * containerAspectRatio;\n            } else {\n                viewBoxWidth = contentWidth;\n                viewBoxHeight = contentWidth / containerAspectRatio;\n            }\n            viewBox = {\n                x: 83 - (viewBoxWidth - contentWidth) / 2,\n                y: 45 - (viewBoxHeight - contentHeight) / 2,\n                width: viewBoxWidth,\n                height: viewBoxHeight,\n            };\n            svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`);\n        }\n\n        function showTooltip(event) {\n            const target = event.target.closest('a');\n            if (target) {\n                const title = target.getAttribute('title');\n                if (title) {\n\n                    const { clientX: mouseX, clientY: mouseY } = event;\n                    tooltip.style.left = `${mouseX + 10}px`;\n                    tooltip.style.top = `${mouseY + 10}px`;\n\n                    tooltip.innerText = title;\n\n                    tooltip.style.display = 'block';\n                }\n            }\n        }\n\n        function hideTooltip() {\n            tooltip.style.display = 'none';\n        }\n\n        svg.addEventListener('mouseover', showTooltip);\n        svg.addEventListener('mousemove', showTooltip);\n        svg.addEventListener('mouseout', hideTooltip);\n\n        // Existing event listeners for panning and zooming\n        svg.addEventListener('mousedown', e => {\n            isPanning = true;\n            startX = e.clientX;\n            startY = e.clientY;\n        });\n\n        svg.addEventListener('mousemove', (e) => {\n            if (isPanning) {\n                viewBox.x += startX - e.clientX;\n                viewBox.y += startY - e.clientY;\n                svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`);\n                startX = e.clientX;\n                startY = e.clientY;\n            }\n        });\n\n        svg.addEventListener('mouseup', () => isPanning = false);\n        svg.addEventListener('mouseleave', () => isPanning = false);\n\n        svg.addEventListener('wheel', (e) => {\n            e.preventDefault();\n            const scaleFactor = 1 - e.deltaY * 0.002;\n            zoom(scaleFactor, e.clientX, e.clientY);\n        });\n\n        function zoom(scaleFactor, clientX, clientY) {\n            const svgPoint = svg.createSVGPoint();\n            const loc = Object.assign(svgPoint, { x: clientX, y: clientY }).matrixTransform(svg.getScreenCTM().inverse());\n            const newWidth = viewBox.width * scaleFactor;\n            const newHeight = viewBox.height * scaleFactor;\n            if ((newWidth <= 5500 && newHeight <= 5500) || scaleFactor < 1) {\n                if (newWidth >= 100 && newHeight >= 100) {\n                    viewBox.x = loc.x - (loc.x - viewBox.x) * scaleFactor;\n                    viewBox.y = loc.y - (loc.y - viewBox.y) * scaleFactor;\n                    viewBox.width = newWidth;\n                    viewBox.height = newHeight;\n                    svg.setAttribute('viewBox', `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`);\n                }\n            }\n        }\n\n        document.getElementById('zoom-in-button').addEventListener('click', () => {\n            zoom(0.8, svg.clientWidth / 2, svg.clientHeight / 2);\n        });\n\n        document.getElementById('zoom-out-button').addEventListener('click', () => {\n            zoom(1.2, svg.clientWidth / 2, svg.clientHeight / 2);\n        });\n\n        function activateView(buttonId, viewClass) {\n            document.getElementById(buttonId).addEventListener('click', () => {\n                const worldMap = document.querySelector('#worldmap');\n                worldMap.classList.forEach(className => {\n                    if (className.startsWith('current-view-')) {\n                        worldMap.classList.remove(className);\n                    }\n                });\n                worldMap.classList.add(viewClass);\n            });\n        }\n\n        activateView('wwl-activate-button', 'current-view-wwl');\n        activateView('pop-activate-button', 'current-view-pop');\n\n        setInitialViewBox();\n    }\n    // Ensure that the script runs after both DOMContentLoaded and astro:after-swap events\n    document.addEventListener('DOMContentLoaded', initializeSvgInteractions);\n    document.addEventListener('astro:after-swap', initializeSvgInteractions);\n</script> <div class=\"overflow-hidden mt-2 lg:py-12\"> <div class=\"relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 mt-6\"> <div class=\"relative mb-12\"> <h2 data-t=\"home.tagline_title\" class=\"text-center text-3xl font-bold leading-8 tracking-tight text-stone-900 dark:text-stone-100 sm:text-4xl\">\nCataloging the World's Scriptures\n</h2> <p class=\"mx-auto mt-4 max-w-3xl text-center text-xl text-stone-500 dark:text-stone-300\" data-t=\"home.tagline_subtitle\" data-bible-count=\"5,446\" data-resource-count=\"21,593\" data-language-count=\"7,899\" data-organization-count=\"1,023\">\nCataloging 5,446 Bible Versions and 21,593 Scripture Resources in 7,899 Languages representing 1,023 Agencies.\n</p> </div> <div class=\"flex space-between justify-center mx-auto mt-4\"> <div class=\"relative p-2 mx-2 bg-white dark:bg-stone-900 rounded-lg my-4 shadow-md hover:border-stone-400\"> <a href=\"/web/20251008062229/https://dev.find.bible/resources/collections\" class=\"mt-0 text-stone-800 dark:text-stone-300 text-center mx-auto\"> <p class=\"text-sm pb-1 px-1\"> Collections </p> </a> </div><div class=\"relative p-2 mx-2 bg-white dark:bg-stone-900 rounded-lg my-4 shadow-md hover:border-stone-400\"> <a href=\"/web/20251008062229/https://dev.find.bible/countries/maps/\" class=\"mt-0 text-stone-800 dark:text-stone-300 text-center mx-auto\"> <p class=\"text-sm pb-1 px-1\"> Countries Map </p> </a> </div><div class=\"relative p-2 mx-2 bg-white dark:bg-stone-900 rounded-lg my-4 shadow-md hover:border-stone-400\"> <a href=\"/web/20251008062229/https://dev.find.bible/languages/world-map/\" class=\"mt-0 text-stone-800 dark:text-stone-300 text-center mx-auto\"> <p class=\"text-sm pb-1 px-1\"> Languages map </p> </a> </div><div class=\"relative p-2 mx-2 bg-white dark:bg-stone-900 rounded-lg my-4 shadow-md hover:border-stone-400\"> <a href=\"/web/20251008062229/https://dev.find.bible/organizations/maps/\" class=\"mt-0 text-stone-800 dark:text-stone-300 text-center mx-auto\"> <p class=\"text-sm pb-1 px-1\"> Agencies map </p> </a> </div> </div> </div> </div>  </main> <footer data-astro-cid-b2avyow5=\"\">\nFind a Bible is a collaborative project of the\n<a target=\"_blank\" rel=\"noreferrer\" class=\"link-emerald\" href=\"https://web.archive.org/web/20251008062229/https://forum-intl.org/\" data-astro-cid-b2avyow5=\"\">\nForum&#160;of&#160;Bible&#160;Agencies\n</a>\nand is created and maintained by the\n<a target=\"_blank\" rel=\"noreferrer\" class=\"link-blue\" href=\"https://web.archive.org/web/20251008062229/https://dbs.org/\" data-astro-cid-b2avyow5=\"\">\nDigital&#160;Bible&#160;Society\n</a>\n.\n</footer> </div>  </body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "astro-view-transitions-enabled": "true",
+      "astro-view-transitions-fallback": "animate",
+      "description": "A collection of curated Bibles, Resources and Films",
+      "lang": "en",
+      "og:description": "A collection of curated Bibles, Resources and Films",
+      "og:title": "Home",
+      "og:type": "website",
+      "theme-color": "#059669",
+      "viewport": "width=device-width, initial-scale=1.0"
+    },
+    "title": "Home | find.bible",
+    "url": "https://web.archive.org/web/20251008062229/https:/dev.find.bible/",
+    "usage": {
+      "tokens": 13510
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 13510
+    }
+  },
+  "status": 20000
+}

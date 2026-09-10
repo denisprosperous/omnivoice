@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="/assets/manifest.json" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <title>Open Language Archive Search </title>
+    
+    <script type="module" crossorigin src="/assets/index-C7-yNMSf.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-vmnuO0u1.css">
+  <script>
+  (function() {
+    if (!window._paq) window._paq = [];
+    var href = "https://webstats.dh.uni-koeln.de";
+    var prev = window.location.href;
+
+    window._paq.push(["setTrackerUrl", href + "/matomo.php"]);
+    window._paq.push(["setSiteId", "53"]);
+    window._paq.push(["trackPageView"]);
+    window._paq.push(["enableLinkTracking"]);
+
+    window.addEventListener("click", function(event) {
+      setTimeout(function() {
+        if (event.defaultPrevented && (event = event.target.closest("a"))) {
+          window._paq.push(["setReferrerUrl", prev]);
+          window._paq.push(["setCustomUrl", prev = event.href]);
+          window._paq.push(["setDocumentTitle", document.title]);
+          window._paq.push(["trackPageView"]);
+        }
+      });
+    }, {
+      capture: true,
+      passive: true
+    });
+
+    document.head.append(Object.assign(document.createElement("script"), {
+      src: href + "/matomo.js",
+      async: true
+    }));
+  })();
+</script></head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    
+    <div id="root" class="app-container"></div>
+  <noscript style="display: none"><img
+  src="https://webstats.dh.uni-koeln.de/matomo.php?idsite=53&rec=1"
+  referrerpolicy="unsafe-url"
+/></noscript></body>
+</html>

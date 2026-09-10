@@ -1,0 +1,1112 @@
+Initial Vowel and Prefix Tone in Kom:
+Related to the Bantu Augment?
+Larry M. Hyman
+1. Introduction
+Over the course of our research in Cameroon in the 1970s and 1980s, various
+members of the Grassfields Bantu Working Group speculated that certain tonal
+alternations on noun prefixes constituted evidence for an earlier high (H) tone
+augment. Noun prefixes in both the Ring and Momo subbranches of Grassfields
+Bantu (GB) generally have underlying /H/ tone in citation forms and most
+grammatical contexts. At the same time, however, and without exception, nouns
+exhibit a low (L) tone prefix when occurring after an associative marker in an ‘N1
+of N2’ construction. It has thus been tempting to view the H tone as an additional
+morpheme, perhaps related to the Proto-Bantu H tone V-/CV- augment
+reconstructed by Meeussen (1967). Although best known from detailed
+descriptions of Eastern Bantu languages such as Luganda (J15) and Cibemba
+(M42), we know from studies such as Grégoire & Janssens (1999) that different
+but comparable phenomena are found in Northwest Bantu, if not elsewhere in
+Bantoid and Benue-Congo (Williamson 1993). In the GB cases, evidence has been
+primarily tonal. Since we are dealing only with the difference between an
+underlying /H/ vs. /L/ tone prefix, the position that /H/ relates to the Proto-Bantu
+augment would have to be carefully argued.
+In this paper I begin in §2 by examining the realization of noun prefixes in
+Kom, a GB language of the Ring subgroup (Hyman 1980a, Stallcup 1980,
+Watters & Leroy 1989, Watters 2003). In this language, CV- prefixes are
+sometimes preceded by an additional schwa (orthographic ‘e’), e.g., /té-bìí/,
+/é-té-bìí/, ‘kolanuts’ (class 13). In addition, whether the tone of a noun prefix
+will be /H/ vs. /L/ depends on a number of factors. In §3 I comment on the
+relation of the Kom initial vowel and tone facts to those found in other Ring
+languages. In §4 I present a set of hypotheses that would account for these facts. I
+conclude in §5 by considering an alternative proposal of Hombert (1976) and
+Williamson (1993).1
+1. The data presented here were collected on fields trips to Bamenda in 1974 and 1977
+and further investigated with additional speakers of Kom in Los Angeles during the
+late 1970s and early 1980s. I am especially grateful to those who have helped me with
+my studies on Kom, including Thomas Tingem, Jili Ngwainbi, Emmanuel Chia,
+Emmanuel Chiabi, Emmanuel Mbeng, and Patience Yuh, as well as to the members of
+the Grassfields Bantu Working Group who participated in our comparative project.
+After writing the first draft of this paper Roger Blench kindly brought two important
+references to my attention, Schulz (1997) and Jones (2001), which readers can also
+consult for further exemplification.
+314 LARRY M. HYMAN
+2. The Kom data
+Kom (GFW 822) is the major language of the centre branch of the Ring subgroup
+of Western Grassfields Bantu (WGB), with an estimated 127,000 speakers as of
+1982 (Grimes et al. 2000). Within the group its morphology is relatively
+conservative. As the following noun + adjective phrase illustrates, words in Kom
+can be highly agglutinative with both prefixal and suffixal noun class marking:
+(1) Noun + adjective:
+e-te-bí"K te-béé-lé-né-té ‘big kolanuts’
+(e-te-bí"K, ‘kolanuts’; e-, ‘initial vowel’; te-/-te, ‘class 13 agreement’;
+-béé- , ‘big’, -lé- §l& 2ç, ‘pluractional suffix’; -né- §n& 2ç, ‘deverbal
+adjectivizer’)
+As seen above, the noun e-te-bíi (underlyingly /é-té-bìí/) begins with an
+initial vowel /é-/ followed by the class 13 noun class prefix /té-/. The
+adjective is derived from the verb béé, ‘be big’, and begins with the same class 13
+prefix, followed by three suffixes: pluractional /-lé-/, the deverbal adjectivizer
+/-né-/, and a class 13 suffix /-té/. As background, the noun class and tone
+systems of Kom are briefly outlined in the following two subsections.
+2.1. Noun classes
+The noun classes and markers we will be concerned with are indicated in Table 1.
+class noun affix SP AM adjective example gloss
+1 Ø, w- wù è è- ... Ø wáyn ‘child’
+2 Ø, gh(e)- ghé é ghé- ... -é ghóyn ‘children’
+3 e- (]) wú é é- (]) ... -é e-lwé"N ‘bamboo’
+4 i- yí í í- ... -í i-lé"N ‘bamboos’
+5 i- yí í í ... -í i-só"N ‘tooth’
+6 a- ké á á ... -á a-só"N ‘teeth’
+7 a- ké á á ... -á a-tâQ ‘snail’
+8 e- (]) wú é é- (]) ... -é e-twâQ ‘snails’
+9 Ø yì è ì ... Ø b&· ‘dog’
+1 0 Ø ... -sé sé sé sé ... -sé b&·-se ‘dogs’
+1 3 te- té té té ... -té te-bí"K ‘kolanuts’
+1 9 fe- fé fé fé ... -fé fe-nyw&K"n ‘bird’
+6a me- mè mè èN ... -` me-nyw&K"n ‘birds’
+Table 1. Noun classes and representative agreements
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 315
+The seven columns in Table 1 provide the following information:
+(i) The number of the noun class. Kom has reflexes of Bantu classes 1-10, 13, 19,
+and 6a (the last of which being distinguished from class 6).
+(ii) The affix marking the class on the noun itself. There are three possibilities: no
+affix (classes, 1, 2, 9); a suffix (class 10); a prefix (classes 3-8, 10, 13, 19, 6a).2
+Class 1/2 is a relatively small and irregular gender; cf. lóm, ‘husband’, ghe-lóm,
+‘husbands’. In the case of the e-(w) prefix of classes 3 and 8, the w stands for the
+labializing or labiodentalizing effect on the first consonant of the stem. No tone is
+given on the noun class prefixes, since this is the subject of the present study (cf.
+§2.3). The class 10 suffix -sé, on the other hand, clearly carries an underlying H
+(high) tone, which, however, undergoes the regular tone rules of the language (cf.
+§2.2).
+(iii) Subject pronouns corresponding to each class. These are of the structure CV
+for each class. Classes 1, 9, and 6a differ from the others in having an L (low)
+tone as opposed to the others’ H tone subject pronoun.
+(iv) Associative marker (AM): This is the marker that appears between an N1 and
+N2 in an ‘N1 of N2’ associative (connective, genitive) construction. Again, classes
+1, 9, and 6a are L, while other classes are H.
+(v) Adjective agreement. As the example in (1) illustrates, adjectives take both a
+prefix and suffix concord. The exceptions are classes 1 and 9, which take no suffix
+concord. Class 6a is interesting in that it takes an eN- prefix (with a homorganic
+nasal), but only an L tone suffix: e-fe-tám fe-béé-né-fé, ‘big fruit’, or
+e-me-tám em-bee-lé-nê, ‘big fruits’ (< -né-` ).
+(vi) and (vii) An example with its gloss is given for each noun class. I follow
+Chia’s (1984) orthographic suggestions with some exceptions. The most
+important of these is that I use ‘e’ to stand for a rather close schwa in affixes.3 The
+nouns are presented without the initial vowel mentioned in §1. Forms with an
+initial vowel will be exemplified and discussed in §2.3.
+2.2. Tone
+Like other GB languages, Kom has two underlying tones, H and L. It also
+exhibits an M (mid) tone on the surface. HM and ML falling tones are also
+robustly attested, while LM and MH rising tones are marginal. There are two
+sources of M tone: (i) an H tone-bearing unit is pronounced M after an L; (ii) H
+prefixes are pronounced M in almost all contexts, e.g., /fé-tám/ ‘fruit’ is
+2. As in other WGB languages, slightly more than half of the 9/10 nouns in Kom begin
+with a NC cluster, e.g., NgvÚ, ‘hen’; ndoN, ‘horn’; and njàm0 , ‘axe’. Remaining nouns
+lack this nasal: lòm, ‘dry season’; ká"yn, ‘monkey’; and gwén, ‘farm’. Synchronically,
+the nasal can be considered part of the stem.
+3. In these examples, gh = [fi] and ny = [W]. Tones are marked as follows: High (´ ), Low
+(` ), pre-pausing non-falling Low (` 0 ), Mid (" ) when occurring in a contour, otherwise
+unmarked. Tonal contours are indicated by combinations of the above tone marks,
+although for orthographic reasons, the second tone may slightly follow a short vowel,
+e.g., s"e` , ‘to’.
+316 LARRY M. HYMAN
+pronounced §f"e-támç. By this criterion, the subject pronouns and AMs, which
+are pronounced H unless preceded by an L tone, are not prefixes: M tone is
+unmarked unless forming an HM or ML contour, in which case a macron is used,
+e.g., fe-nyú"yn fé f"en fé"e, ‘a bird is falling’ (where the fe- prefix on ‘bird’ is
+also M tone).
+Since most noun stems are monosyllabic, and most nouns have a prefix, most
+nouns will be bisyllabic. The four most common tone patterns on bisyllabic
+nouns are seen in (2).
+(2) The four most common tone patterns on bisyllabic nouns (prefix + stem):
+a. /fe-gham/ —› fe-ghâm ‘mat’ (M-HL)
+H L
+b. /fe-nywin/ —› fe-nywí"n ‘bird’ (M-HM)
+H LH
+c. /fe-buQ/ —› fe-búQ ‘gorilla’ (M-H)
+H HL
+d. /fe-tam/ —› fe-tám ‘fruit’ (M-H)
+H H
+The prefix /fé-/ is realized M in all four nouns. In addition, (2a) and (2b) show
+that the H of the prefix spreads to the following L or LH syllable to form an HL
+and HM contour, respectively.
+(3) H tone spreading (HTS):
+a. fe-ghâm b. fe-nywí"n
+g(g g* i3
+H L H L H
+In (3a) the H of the prefix /fé-/ spreads onto the L stem /-ghàm/, creating an
+HL falling tone. This is followed by initial lowering of the prefix to M. The same
+HTS rule applies in (3b). In this case, the L of the LH stem delinks. As a result,
+not only is the prefix realized M, but so is the second half of the stem,
+conditioned by the delinked, floating L tone, which must remain for this purpose.
+We have not yet seen the evidence that (2c) and (2d) need to be distinguished.
+Both are realized M-H in isolation, but when placed in context, differences are
+observed, as in (4).
+(4) Two kinds of M-H nouns:
+a. fe-búQ fe f"e`n fé"e ‘a gorilla is falling’
+H HL H
+b. fe-tám fé f"e`n fé"e ‘a fruit is falling’
+H H H
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 317
+In (4a), the class 19 H tone subject pronoun /fé/ is pronounced M because of the
+floating L of the HL stem -búQ` , ‘gorilla’. This lowering to M does not occur in
+(4b), because the stem -tám, ‘fruit’, does not have a floating L after it.
+A further difference between these two nouns in observed in (5). 4.
+(5) Derivations with HTS and LTS:
+a. ne fe-gham -fe —› nè fè-gh"am -fè0 ‘with a mat’
+g g g g g(b(g)b
+L H L H L H L H
+b. ne fe-nywin -fe —› nè fè-nywin -fé ‘with a bird’
+g g 38 g g(b)b3 g
+L H L H H L H L H H
+c. ne fe-buQ -fe —› nè fè-búQ -fe ‘with a gorilla’
+g g g g g(b g g
+L H HL H L H HL H
+d. ne fe-tam -fe —› nè fè-tám -fé ‘with a fruit’
+g g g g g(b g g
+L H H H L H H H
+These examples involve the preposition nè, ‘with’, which requires a suffix
+identical to that occurring on adjectives (see Table 1). Rather significant tonal
+alternations occur. Let us begin with (5d). Here we see that the L of /nè/ spreads
+onto the prefix /fé-/, thereby delinking its H. We refer to this rule as L tone
+spreading (LTS). The output is thus as expected: the first two syllables are L.
+Although the stem -tám directly follows a surface L tone, it is pronounced with H
+tone (rather than M), because of the delinked floating H. The same facts are
+observed in (5c), except that the suffix /-fé/ is pronounced with M tone. This is
+of course attributable to the L of /-búQ` /. What needs to be added, however, is
+that a floating L does not condition LTS.
+Turning now to (5a), whose input is /L-H-L-H/, we see that each of the first
+three tones spreads one syllable to the right. In both cases of LTS, the following
+H is delinked. The H of /fé-/ is preserved on the stem /-ghàm/, where it has
+spread. The resulting falling tone is pronounced ML rather than HL because of the
+preceding L. Where L spreads on to the suffix /-fé/, the delinked H floats. In
+this case we obtain a level L tone, indicated by ˚. Whereas a normal L downglides
+before the pause, this L remains level because of the H that floats after it. L˚ can
+therefore be viewed as an ‘unreleased’ L tone.
+Finally, (5b) shows LTS from /nè/ as well as HTS of the prefix /fé-/. With
+the proper delinking of the H and L, as shown, we obtain two H tones linked to
+4. I am side-stepping a number of issues here which are not relevant to the paper. For
+example, I start with the LH of the stem linked to -nywin in (5b), but only the H of the
+HL linked to the stem -buQ in (5c).
+318 LARRY M. HYMAN
+the stem -nywin. Since they are each preceded by an L, the two links are both
+pronounced M.
+As we have seen, the M tone rule operates late in Kom tonology following the
+application of HTS and LTS. Although the underlyingly /H/ prefixes in (1)-(5) are
+pronounced either M or L, we do not want to confuse these alternations with those
+that result from different underlying tones on noun prefixes. We turn to this issue
+in the next subsection.
+2.3. Prefix tone
+In all of the examples seen thus far, the underlying tone on the noun prefixes has
+been /H/. As was stated, prefixal /H/ is realized mid on the surface—but not
+before it has been able to spread an H feature on to a following L tone stem, e.g.,
+/fé-ghàm/ —› fé-ghâm —› fe-ghâm, ‘mat’ (M-HL). In fact, depending on
+lexical and grammatical factors, a noun prefix may be underlyingly /H/ or /L/. The
+grammatical factors are summarized in Table 2.
+classes general with IV associative as subject
+1, 9, 6a H H L L
+other H H L H
+Table 2. Underlying tones of noun prefixes
+As indicated, prefix tone may be grammatically assigned in one of three ways: /H/
+in all noun classes, /L/ in all noun classes, and /L/ vs. /H/ depending on noun
+class. Examples are seen in Table 3.
+class general with IV associative subject gloss
+1 wáyn e-wáyn wàyn0 wàyn0 ‘child’
+2 ghóyn e-ghóyn ghòyn0 ghóyn ‘children’
+3 e-lwé"N e-lwé"N è-lwèN0 e-lwé"N ‘bamboo’
+4 i-lé"N i-lé"N ì-lèN0 i-lé"N ‘bamboos’
+5 i-só"N i-só"N ì-sòN0 i-só"N ‘tooth’
+6 a-só"N a-só"N à-sòN0 a-só"N ‘teeth’
+7 a-tâQ a-tâQ à-tàQ a-tâQ ‘snail’
+8 e-twâQ e-twâQ è-twàQ e-twâQ ‘snails’
+9 bÚ e-b&· bÚ bÚ ‘dog’
+1 0 bÚ-se e-b&·-se bÚ-se bÚ-se ‘dogs’
+1 3 te-bí"K e-te-b&K"K tè-bìì0 te-bí"K ‘kolanuts’
+1 9 fe-nywí"n e-fe-nywí"n fè-nywìn0 fe-nywí"n ‘bird’
+6a me-nywí"n e-me-nywí"n mè-nywìn0 mè-nywìn0 ‘birds’
+Table 3. Illustrations of nouns in four contexts
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 319
+The general forms with /H/ prefixes are found in object position. We also saw in
+(5) that these forms occur after the preposition nè, ‘with’, although the /H/ is
+delinked by LTS. Speakers may also pronounce these forms in isolation, although
+they are much more likely to use the initial vowel shown in the second column in
+Table 3. Except when the noun phrase is the subject of a main clause, the initial
+vowel occurs only at the beginning of an intonational phrase: ‘This preprefix
+occurs only when the noun is in isolation (or in a list). It does not occur
+[internally] in sentences and should therefore not be written in sentences’ (Chia
+1984:32).
+As seen in Table 3, the initial vowel consists of a schwa prefix e-, which is
+directly observable before the above consonant-initial nouns in classes 1, 2, 9, and
+10, as well as before the CV- prefixes in classes 13, 19, 6a, and 2a, when the
+latter has a ghe- prefix, e.g., e-ghe-lóm, ‘husbands’. When a noun has an /H/
+vowel prefix, there is no difference between the general and IV forms. However,
+among a corpus of 247 bisyllabic nouns, 29 (or approximately 12%) have an /L/
+tone prefix. In this case, as indicated in Table 4, it is possible to distinguish
+general from IV forms.
+class general with IV associative subject gloss
+1 (Ø prefix)
+2 ghè-nà e-ghè-nà ghè-nà ghè-nà ‘mothers’
+3 è-Nkòyn0 e-è-Nkòyn0 è-Nkòyn0 è-Nkòyn0 ‘tail’
+4 (none)
+5 ì-ncÚa i-ì-ncÚa ì-ncÚa ì-ncÚa ‘sting’
+6 (none)
+7 à-ncès a-à-ncès à-ncès à-ncès ‘cricket’
+8 è-ncwès e-è-ncwès è-ncwès è-ncwès ‘crickets’
+9 (Ø prefix)
+1 0 (Ø prefix)
+1 3 tè-ncÚa e-tè-ncÚa tè-ncÚa tè-ncÚa ‘stings’
+1 9 fè-bòyn e-fè-bòyn fè-bòyn fè-bòyn ‘ground squirrel’
+6a mè-bòyn e-mè-bòyn mè-bòyn mè-bòyn ‘ground
+squirrels’
+Table 4. Illustrations of nouns with /L/ prefixes
+Although most nouns with an /L/ prefix begin with a NC cluster, there are
+exceptions, e.g., a-à-tàm, ‘elephant’.5. While I write a-à-ncès with an ML
+vowel sequence, the fall to L tone is heard on the nasal (when present), i.e.
+a-` ncès. Only a handful of NC-initial nouns take an /H/ prefix, e.g.,
+/é-fé-njèn/ —› e-fe-njên, ‘star’. Class 9/10 nouns which begin NC do not
+incur a fall to L when the initial vowel is added: e-ndo, ‘house’; e-mbam, ‘snake’.
+5. Curiously, the L conditioned by the NC initial does not always spread into a
+following H stem or condition H to M lowering, e.g., /á-à-Nkém/, ‘crab’ —›
+a-à-Nkém, not *a-à-Nkèm0 or *a-à-Nkem. For further examples, see Schulz (1997).
+320 LARRY M. HYMAN
+The nouns in Table 4 show that the initial vowel has /H/ tone, while their prefix
+has /L/. By extension, we can see that the initial vowel and prefix are H not only
+in e-Ce- sequences with M-M tone in Table 3, but also in V-V-, which
+simplifies to a single V- with M tone.
+I will defer further discussion of the initial vowel until §3.1. More important
+at this point is to consider the remaining columns of Tables 3 and 4. The
+associative column shows all noun prefixes to be /L/. This is common in WGB
+and has been described in a number of other languages of both the Ring and
+Momo subgroups. To show this, we shall use the possessor nouns in (6), which
+correspond tonally to the four nouns seen above in (2).
+(6) The four most common tone patterns on possessor nouns:
+a. /te-foyn/ —› te-fôyn ‘chiefs’ (M-HL)
+H L
+b. /te-dzÚ/ —› te-dz&·"· ‘termites’ (M-HM)
+H LH
+c. /te-bal/ —› te-bál ‘valleys’ (M-H)
+H HL
+d. /te-wu/ —› te-wú ‘rocks’ (M-H)
+H H
+The nouns in (6) all have an underlyingly /H/ prefix. As before, (6c) and (6d) are
+equivalent in isolation, but have different tonal properties in context.
+Now compare how these same prefixes are realized in (7), where they follow
+the class 6a L tone AM mè:
+(7) Class 6a mú"u mè, ‘water of’, followed by four possessor tone patterns:
+a. muu me te-foyn —› mú"u mè tè-fòyn ‘water of chiefs’ (L-L)
+H LH L L L
+b. muu me te-dzÚ —› mú"u mè tè-dz`·0 ‘water of termites’ (L-L˚)
+H LH L L LH
+c. muu me te-bal —› mú"u mè tè-bal ‘water of valleys’ (L-M)
+H LH L L HL
+d. muu me te-wu —› mú"u mè tè-wù0 ‘water of rocks’ (L-L˚)
+H LH L L H
+Whereas the tone of te-fôyn, ‘chiefs’, was M-HL in (6a), its tone is L-L in (7a).
+Similarly, te-dz&·"·, ‘termites’, has M-HM in (6b), but L-L˚ in (7b). Both of
+these realizations follow directly from an /L/ prefix on these nouns. The L-L˚
+tone of ‘termites’ is due to the floating H, as we have seen elsewhere. In (7c),
+‘valleys’ is pronounced L-M instead of the M-H seen in (6c). In contrast, LTS
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 321
+applies instead to ‘rocks’ in (7d). We thus obtain L-L˚ instead of the M-H
+observed in (6d). LTS fails to apply in (7c) because of the floating L of /-bál` /.
+Nouns of all classes have an /L/ prefix following AMs. While this is seen
+clearly in (7), where the class 6a AM is L tone, the underlying /L/ undergoes HTS
+when preceded by an H tone AM, such as class 10 sé in (8).
+(8) Class 10 soyn s&e ‘friends of’ followed by four possessor tone patterns:
+a. soyn se te-foyn —› só"yn sé tê-fòyn ‘friends of chiefs (HL-L)
+H LH H L L
+b. soyn se te-dzÚ —› só"yn sé tê-dz`·0 ‘friends of termites’ (HL-L˚)
+H LH H L LH
+c. soyn se te-bal —› só"yn sé tê-bal ‘friends of valleys’ (HL-M)
+H LH H L HL
+d. soyn se te-wu —› só"yn sé tê-wù0 ‘friends of rocks’ (HL-L˚)
+H LH H L H
+As indicated, the H of the class 10 AM sé spreads on to the L tè- prefix of the
+class 13 possessors to create a HL falling tone. The L of /tè-/ conditions LTS in
+(8d) but is blocked by the floating L of /-bál` /, ‘valleys’, in (8c). We thus
+obtain the observed contrast between HL-M vs. HL-L˚ in these last two forms.
+The L prefix tone pattern is used not only in associative constructions, but also
+following the locative prefix á- (cf. Chia 1983):
+(9) Locative á-:
+a. /a-te-we/ —› a-tê-wè0 ‘at the markets’ (M-HL-L˚)
+H L H (cf. e-te-wé ‘markets’)
+b. /a-e-we/ —› e-we ‘at the market’ (M-M)
+H L H (cf. e-wé ‘market’)
+c. /a-i-sas/ —› i-sas ‘underneath’ (M-M)
+H L HL (cf. i-sás` ‘buttock, bottom’)
+As indicated in (9b) and (9c), á- assimilates to an immediately following prefix
+vowel and in all cases is realized M by virtue of being a prefix itself. The
+observed vowel fusion bleeds LTS and we obtain e-we, ‘at the market’, rather
+than *e-wè0 .
+The final prefix tone property in the last column of Table 2 is the most
+interesting... and intriguing. As subject, there is no IV and prefix tone is H except
+classes 1, 9, and 6a, which take L tone. All noun classes are illustrated in the
+future tense in Table 5.
+322 LARRY M. HYMAN
+class underlying as subject gloss
+1 /` -wùl/ ka wùl è féé ‘a person will fall’
+2 /´ -ghèl/ ka ghél e féé ‘people will fall’
+3 /é]-lèN´ / k' e-lwéN é féé ‘bamboo will fall’
+4 /í-lèN´ / k' i-léN í féé ‘bamboos will fall’
+5 /í-sòN´ / k' i-sóN í féé ‘a tooth will fall’
+6 /á-sòN´ / k' a-sóN á féé ‘teeth will fall’
+7 /á-tàQ/ k' a-táQ a féé ‘a snail will fall’
+8 /e]-tàQ/ k' e-twáQ e féé ‘snails will fall’
+9 /` -b&· ka bÚ féé ‘a dog will fall’
+1 0 /´ -b&·` / ka b&· se féé ‘dogs will fall’
+1 3 /té-bìí/ ka te-bí"K té féé ‘kolanuts will fall’
+1 9 /fé-nyùyn´ / ka fe-nyú"yn fé féé ‘a bird will fall’
+6a /mè-nyùyn´ / ka mè-ny"u`yn féé ‘birds will fall’
+Table 5. Noun class realizations as subject in main clause
+As indicated, the tones of the singular vs. plural subject nouns are different in
+genders 1/2, 9/10, and 19/6a. This is due to the difference between the L prefix in
+classes 1, 9, and 6a vs. the H prefix in classes 2, 10, and 19.6
+The M tone on the future marker suggests either that it is a prefix, like locative
+/á-/, or that its underlying tone is /` ká/ or /` ká` /. The following examples show
+that a phrase-initial subject noun will also not take an initial vowel and will have
+an L prefix in classes 1, 9, and 6a.
+(10) Subject nouns in present tense:
+a. L prefixes in classes 1, 9, and 6a
+wùl w"e`n fé"e ‘a person is falling’
+bÚ y"e`n fé"e ‘a dog is falling’
+mè-nyù"yn m"e`n fé"e ‘birds are falling’
+b. H prefixes in classes 2, 10, and 19
+ghúl gh"e`n fé"e ‘people are falling’
+b&· s"e`n fé"e ‘dogs are falling’
+fe-nyú"yn f"e`n fé"e ‘a bird is falling’
+The subject L- vs. H- prefix pattern occurs also after oblique markers, specifically
+after comitative nè, ‘with’ and dative marker s"e` , ‘to’ (realized as §s2ç with ML
+tone). Because of the L part of the ML contour tone, LTS will apply to classes
+6. Besides the indicated coalescences of future ka with a following vowel, the data
+show some irrelevant tonal simplifications, e.g., HL and HM contours are simplified t o
+H when a CV(C) stem is followed by a prefix with the shape V- (Hyman 1988).
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 323
+other than 1, 9, and 6a. As seen in the following examples, these latter have an
+underlying L prefix.
+class underlying after nè, ‘with’ after s"e` ,‘to’ gloss
+1 /` -wùl/ nè wùl s"e` wùl ‘to/with a person’
+2 /´ -ghèl/ nè ghel-e7 s"e` ghel-e ‘to/with people’
+3 /é]-lèN´ / n'è-lweN-é s'"e` -lweN-é ‘to/with bamboo’
+4 /í-lèN´ / n''ì-leN-í s'"K` -leN-í ‘to/with bamboos’
+5 /í-sòN´ / n'ì-sóN-í s'"K` -sóN-í ‘to/with a tooth’
+6 /á-sòN´ / n'à-sóN-á s'"a` -sóN-á ‘to/with teeth’
+7 /á-tàQ/ n'à-táQ-a s'"a` -táQ-a ‘to/with a snail’
+8 /e]-tàQ/ n'è-twáQ-e s'"e` -twáQ-e ‘to/with snails’
+9 /` -b&·/ nè bÚ s"e` bÚ ‘to/with a dog’
+1 0 /´ -b&·` / nè bÚ-se s"e` bÚ-se ‘to/with dogs’
+1 3 /té-bìí/ nè tè-bii-té s"e` tè-bii-té ‘to/with kolanuts’
+1 9 /fé-tám/ nè fè-tám-fé s"e` fè-tám-fé ‘to/with a fruit’
+6a /mè-nywìn´ / nè mè-t"a`m s"e` mè-t"a`m ‘to/with fruits’
+Table 6. Noun class realizations after nè, ‘with’ and s"e` ,‘to’
+Both nè and s"e` (ML) require the same suffixes attested on adjectives and
+illustrated in (5) on class 19 nouns appearing after nè, ‘with’. Although a
+following noun prefix, when present, is always L, we see in the comparison of
+19/6a nouns that the effect on a following tone can be different. Thus, we obtain
+an H on fè-tám in the singular, but an M on mè-tam in the plural (which
+combines with the -L suffix to produce an ML falling tone). Compare also the
+following nouns which have an underlying L stem.
+(11) Class 19/6a /-ghàm/, ‘mat’, appearing after nè, ‘with’, and s"e` , ‘to’:
+a. ne fe-gham -fe —› nè fè-gh"a`m -fè0 ‘with a mat’
+L H L H
+se fe-gham -fe —› s"e` fè-gh"a`m -fè0 ‘to a mat’
+HL H L H
+b. ne me-gham —› nè mè-ghàm ‘with mats’
+L L L L
+se me-gham —› s"e` mè-ghàm ‘to mats’
+HL L L L
+As indicated, the tones are quite different on fè-gh"a`m in (11a) vs. mè-ghàm in
+(11b).
+7. For some reason, the floating /H/ prefixes of class 2 /´ -ghèl/, ‘people’, and class
+10 /´ -b&·` -sé/, ‘dogs’, have no effect here, presumably fusing with the L of nè and
+s"e`!. The tone on ghel and bÚ is therefore M.
+324 LARRY M. HYMAN
+The final use of the skewed L- vs. H- pattern is in vocatives. My notes are
+limited here, but I have documented the following.
+class underlying general vocative a + vocative gloss
+1 /-wáyn/ wáyn wàyn0 ‘child’
+2 /-ghóyn/ ghóyn ghóyn ‘children’
+7 /-kòs/ a-kôs a-kós-à8 ‘slave’
+9 /-b&·` / b&· bÚ a b"·`· ‘dog’
+9 /-nyàm/ a nyàm ‘animal’
+1 9 /-nyùyn´ / fe-nyú"yn fe-nyúyn fé a fe-nyúyn fé ‘bird’
+6a /-nywìn´ / a mè-ny"u"yn ‘birds’
+Table 7. Nouns compared with their vocatives
+Those forms I have labeled vocative occur before an imperative verb, while those
+that are preceded by M tone §aç occur after: bÚ, gwi á f"e`N, ‘dog, come here!’ vs.
+gwi á fén, a b"ÚÚ` , ‘come here, dog!’ I suspect that further research will confirm
+that vocatives fall into the same class as subjects and obliques, as far as prefix
+tone is concerned.
+3. Discussion
+The above concludes the brief survey of noun classes and prefix tone in Kom. The
+results of this survey are summarized in (12).
+(12) Grammatical tone is assigned to noun class prefixes as follows:
+a. all nouns receive /L/ tone following an associative marker (AM)
+b. class 1, 9, and 6a nouns receive /L/ tone as subject of a main clause, after
+the oblique markers nè and s"e` , and probably when used as vocatives
+c. approximately 12% of Kom nouns have a lexical /L/ prefix (over 70% of
+these have stem-initial NC)
+d. in all other situations, a noun prefix will be /H/.
+In addition, we have seen that there is an initial vowel (IV) that occurs only at the
+beginning of a sentence (or when nouns are given as a list). These data logically
+raise the following questions.
+8. I transcribed an L here, although it may have been L˚. The vocative tones elsewhere
+appear to be different from what we would expect. Thus, b"·Ú` , ‘dog’, is pronounced
+with a ML fall (rather than simple M), while fe-nyúyn-fé, ‘bird!’, is pronounced M-H-
+H rather than M-HM-H. Finally, my notes show the expected b`·Ú` yem, gwi, ‘my dog,
+come!’, with a ML fall before ‘my’, but I also have b"·Ú` s&e"m-s&e y`K gwi, ‘my dogs,
+come!’, where I would have expected the stem tone to be HL. This needs to be checked
+further.
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 325
+(13) Questions that naturally arise:
+a. Why do class 1, 9, and 6a receive /L/ in the above-indicated contexts (vs.
+other classes)?
+b.. Why do all nouns receive /L/ following an AM?
+c. Why are there exceptional nouns with lexical /L/ prefixes?
+d. Why is /H/ the default tone on noun prefixes?
+e. What is the initial vowel? Is it related to the augment in Narrow Bantu?
+In this section, I will first consider possible origins of the initial vowel, then turn
+to the phenomenon of prefix deletion in Ring Bantu.
+3.1. The initial vowel
+It is important to recognize the inherent difficulty involved in determining
+whether the e- augment in Kom has anything to do with the augments found
+throughout Narrow Bantu (de Blois 1970, Grégoire & Janssens 1999). Its
+distribution on nouns is very limited, appearing only in (some) initial
+environments, and it is not clear whether its presence vs. absence has any
+grammatical or semantic function at all. Its tone is clearly /H/ (phonetic M), as
+can be seen from nouns with a lexical /L/ prefix, e.g., e-fè-bòyn, ‘ground
+squirrel’; e-è-kì, ‘wife’; a-à-ntàs, ‘spoon’. While its absence has no tonal effect
+when the noun prefix is also /H/, the latter exceptional nouns appear with an L
+tone prefix in internal positions such as direct object, where the default prefix tone
+assignment is otherwise /H/. It may be important that the phonetic realization of
+the initial vowel is closer to [V] than the more closed ‘schwa’, which occurs in
+CV- prefixes, and there is evidence from closely related Bum that it should be
+reconstructed as *á-. Table 8 summarizes the distribution of the initial vowel as
+well as certain other properties in six Ring Bantu languages.9
+IV Su H/L Obl H/L Su PrefDel Obl PrefDel Mod PrefDel
+Kom + + + - - -
+Oku - + + - - -
+Bum + + (+) + + -
+Bafmeng + + (+) + + -
+Aghem - + + + + +
+Weh - + + + + +
+Table 8. Comparison of prefix properties in six Ring Bantu languages
+The first column indicates which languages have an overt segmental IV. The next
+two columns show that all languages distinguish H and L noun prefixes on
+subjects and obliques. (Pluses in parentheses are partially indicated in the data
+available, but require further documentation.) The last three columns refer to a yet
+9. Not shown in Table 8 is the fact that these languages, like all of WGB, have L noun
+prefixes after an AM.
+326 LARRY M. HYMAN
+to be illustrated process of prefix deletion, which is not found in Kom, but which
+has potential significance for the analysis (see §3.2). As seen, these three columns
+group the six languages into three pairs: (i) Kom and Oku lack prefix deletion; (ii)
+Bum and Bafmeng have prefix deletion in subject and oblique positions; and (iii)
+Aghem and Weh have prefix deletion in these two positions but also in other
+positions whenever occurring with a modifer.10
+In the two other languages that include an overt IV, its properties in Bafmeng
+appear to be similar to those in Kom: it was regularly elicited on nouns in citation
+and at the beginning of a phrase (when not the subject of a main clause). Its
+phonetic value varied between §Vç and §aç. Bum, on the other hand, differed in
+two ways. First, the initial vowel is phonetically §aç in all contexts. Second, it
+occured in my elicitations only on prefixless class 1 and 9 nouns—and not on all
+of these: a-nyâm, ‘animal’ (pl. se-nyâm); a-s&Un, ‘friend’ (pl. se-s&Un); a-f^E,
+‘hoe’ (pl. se-f^E) vs. kà, ‘basket’ (pl. sè-kà); fi, ‘caterpillar’ (pl. se-fi); mbòN,
+‘dwarf cow’ (pl. sè-mbòN).11 It is possible that there is variation here and that the
+speaker would have accepted these nouns with and without a-.12 Rather puzzling,
+however, is that the augment was consistently absent when the noun began with a
+Ce- prefix but uniformly present on both prefixless and Ce- nouns when
+modified, as illustrated in (14).
+(14) Absence vs. presence of IV a- on Bum nouns with CV- prefixes:
+a. se-nyám ‘animals’ b. a-se-nyám sám-so ‘my animals’
+te-bí"K ‘kolanuts’ a-te-bí"K tám-to ‘my kolanuts’
+fe-nyé"m ‘bird’ a-fe-nyé"m fám-fo ‘my bird’
+"
+m-nyé"m ‘birds’ a-"m-nyé"m mám-ò ‘my birds’
+As indicated, class 10 se- is a prefix in Bum (as well as in Bafmeng), whereas it
+is a suffix in Kom and Oku (as well as in languages to their east, e.g., Lamnso,
+Babanki). Class 6a has a syllabic nasal prefix (also in Bafmeng). The possessives
+in (14b) show the appearance of the initial vowel a- as soon as a possessive
+pronoun is added. The same is true of other modifiers, e.g., a-te-bí"K té-nà,
+‘these kolanuts’; a-te-bí tè-bà, ‘two kolanuts’.
+10. Aghem, Weh, Bafmeng, and Bum are spoken to the north of Kom, while Oku i s
+spoken to its east (and has no shared boundary with the other four). All but the Aghem
+data were collected in Cameroon in 1977. I am grateful to the following speakers for
+their help: Ndiba Noah Ndifon (Oku), Joseph Wango (Bum), Helen Kia (Bafmeng), and
+Dominic Cham (Weh). Research on Aghem reported by Hyman (1979a), Anderson
+(1979), and Watters (1979) was conducted in Los Angeles in 1978 with subsequent
+follow-ups with Timothy Inah Buo, Ivo Ngha, and Mih Wallang.
+11. As in the Kom examples, ‘e’ will be used to designate schwa in prefixes, suffixes,
+and other CV grammatical morphemes, e.g. ghè- [fi`2-], ‘class 2 prefix’, -s&e [-s&2],
+‘class 10 suffix’, nè [n`2], ‘with’. These are written with ‘Ú’ by Chia (1984), Schulz
+(1997), and Jones (2001).
+12. There are some inconsistencies where an a- appears on some class 1 or 9 in the
+Comparative Ring notebook that is absent in my personal notes. Perhaps I re-checked
+and made the appropriate changes.
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 327
+The significance of the a- form in Bum is that the initial vowel probably does not
+have an origin in a determiner concord prefix, as proposed for Narrow Bantu (de
+Blois 1970). Rather, it is necessary to look at morphemes of the shape §aç to find
+a likely source. It can be noted that Kom, Bum, and Bafmeng are the three
+languages in Table 8 which have a class 7 a- prefix, as seen in (15a). Oku,
+Aghem, and Weh all have a k2- or kÚ- prefix (cf. Proto-Bantu *ki-), as seen in
+(15b).
+(15) Class 7 prefix on the noun ‘head’ in the six Ring Bantu languages:
+a. Kom a-tú ` b. Oku ke-tô
+Bum a-tô Aghem k&·-tú
+Bafmeng a-tú ` Weh k&2-t&Vw
+Class 7 a-, which is also found in the Momo branch of Western Grassfields
+(Stallcup 1978), in Eastern Grassfields (Hyman 1980c), in Beboid (Hombert
+1980), and elsewhere, has long puzzled scholars working in the area (cf. the
+studies in Hyman 1980b). While one speculation is that it represents the merger of
+an earlier *ka- prefix (which is unattested in the area) with *ki-, it is also
+possible that the combination *á-ki- led to the present situation—which would,
+of course, mean that the above-mentioned groups would have all had to have had
+an á- IV.
+Where would this á- have come from, if not from *ka-? It is not likely that it
+would have derived from class 6 *á-,which marks a plural. There is a locative
+proclitic (or pre-prefix) á- in these languages, but as we saw in (9), locative á- is
+expected to be followed by an L tone prefix, rather than the H tone that is
+observed. In addition, it is hard to imagine the semantic link that might have
+caused this á- to be identified with class 7 or any other non-locative class.13
+I wish therefore to propose an alternative hypothesis. Up to now I have
+mentioned only that nouns can take an e- [V] or a- IV in Kom, Bafmeng, and
+Bum. In fact, all of these languages also use the initial vowel a- to mark a
+modifier in a headless noun phrase (NP). This is illustrated for the demonstrative
+‘this/these’ in both Kom and Bum in Table 9.
+13. There are other [a] morphemes in GB, e.g., the default subject marker a, ‘it’, that
+might be identified with class 7. It might also be noted that in some zone A Bantu
+languages, rather than class 7 *ki-, á- seems to have replaced class 5 *di-.
+328 LARRY M. HYMAN
+cl. Kom Bum gloss
+1 e-wáyn w"en e-wên0 a-wán wùn"a a-wùn"a` ‘this child’
+2 e-ghóyn gh"en0 e-ghên0 a-y&En ghénà14 a-ghèn"a` ‘these children’
+3 e-lwé"N w"e`n0 e-wên0 u-l&V@"N wúnà a-wùn"a` ‘this bamboo’
+4 i-lé"N yenì0 e-yén0 i-l&V@"N yínà a-yìn"a` ‘these bamboos’
+5 i-wó"m yenì0 e-yénì0 i-wú"m yínà a-yìn"a` ‘this egg’
+6 a-wó"m kenà0 a-kénà0 a-wú"m ghénà a-ghèn"a` ‘these eggs’
+7 a-à-Nkém kenà0 a-kénà0 a-k&Vm ghénà a-ghèn"a` ‘this crab’
+8 e-è-Nkfém w"en0 e-wên0 u-k&Vm wúnà a-wùn"a` ‘these crabs’
+9 e-nyám yèn e-yên a-nyám yìn"a a-yìn"a` ‘this animal’
+1 0 e-nyám sènsè0 e-sênsè0 a-sè-nyám sénà a-sèn"a` ‘these animals’
+1 3 e-te-bí"K tèntè0 e-têntè0 a-te-bí"K ténà a-tèn"a` ‘these kolanuts’
+1 9 e-fe-nyú"yn fe`nfè0 e-fênfè0 a-fe-ny´2"m fénà a-fèn"a` ‘this bird’
+6a e-me-nyú"yn e-mèn e-mên a-"m-ny&2"m mèn"a` a-mèn"a` ‘these birds’
+Table 9. The demonstratives ‘this/these’ in Kom and Bum
+When the demonstrative follows the noun, there is no IV. However, when the
+demonstrative occurs alone with the meaning ‘this one, these ones’, Bum shows
+the a- IV, while Kom uses a- in class 7 and e- in all other classes.15 It is not
+clear which situation is older, i.e. whether we can reconstruct only *á- or also
+need to reconstruct *é-. The more important issue is its functioning to mark the
+absence of a head noun. Besides demonstratives, the initial vowel appears on other
+modifiers in headless NPs. The possessive ‘mine’, associative ‘his/hers’ (= ‘of
+him/her’) and ‘which one(s)’ are illustrated from Kom in Table 10.
+14. I have given the form meaning ‘these women’, since ‘children’ is in class 6a i n
+Bum.
+15. I will not go into the tonal differences observed here, which are partly due to the
+difference between classes 1, 9, 6a and the others. As discussed in Hyman (1980a), it i s
+interesting how Kom merges classes 6 and 7 with the class 7 ke- concord, while Bum
+merges them with the class 6 concord ghe-.
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 329
+class ‘mine’ ‘of him/her’ ‘which one(s)’
+1 e-wôm e-wú ` Nwen " e` -kfà0
+2 e-ghém e-ghé Nwen e-ghè-kà0
+3 e-wóm e-wé Nwen " e` -kfà0
+4 i-yém-í i-yí Nwen-i " K` -kà0
+5 i-yém-í i-yí Nwen-i " K` -kà0
+6 a-kém-á a-ké Nwen-a " a` -kà0
+7 a-kém-á a-ké Nwen-a " a` -kà0
+8 e-wóm e-wú Nwen " e` -kfà0
+9 e-yêm i-yí ` Nwen " K` -kà0
+1 0 e-sé"m-sé e-sé Nwen-se e-sè-kà0
+1 3 e-té"m-té e-té Nwen-te e-tè-kà0
+1 9 e-fé"m-fé e-fé Nwen-fe e-fè-kà0
+6a e-mêm e-mé ` Nwen e-`N-kà0
+Table 10. Other modifiers with IV in Kom
+The purpose of the initial vowel is to mark the nominality and initiality of
+modifiers within their noun phrase. My claim is that in Kom, Bum, and Bafmeng
+this marking has been extended to nouns themselves, which explains why the
+initial vowel is so identified with initial position within the phrase.16
+The proposal is that the initial vowel was analogically extended from headless
+NPs to headed ones appearing in isolation or at the beginning of a phrase. This
+hypothesis is supported by the fact that Aghem and Weh, which lack the initial
+vowel, have developed different ways of marking headless NPs beginning with a
+modifier.17 As Table 11 shows, two strategies are adopted.
+16. Unfortunately I did not elicit forms like ‘this one fell’ or ‘mine fell’ to verify that
+the IV is missing in such cases, but I suspect it is. If, on the other hand, the IV were
+present in headless noun phrases used as subject, this would require some weakening
+of the hypothesis.
+17. The prediction is that three of four situations will be found: (i) no IV on nouns or
+headless modifiers; (ii) IV on both nouns and modifiers in headless NPs; (iii) IV o n
+modifiers in headless NPs only (i.e. without analogical extension to nouns). Predicted
+not to occur is (iv) IV on nouns, but not on modifiers in headless NPs.
+330 LARRY M. HYMAN
+class ‘my’ ‘mine’ ‘his/her’ ‘his/hers’ ‘this/these’
+1 waNa18 ò-wáNá à w`·n0 ò w`·n0 w&·n
+2 ghaNa á-ghá!Ná gh&O á !w&·n á !w&·n gh&O gh&·n
+3 waNa ó-wá!Ná w&O ó !w&·n ó !w&·n w&O w&·n
+4 zaNa é-zá!Ná z&O é !w&·n é !w&·n z&O z&·n
+5 zaNa é-zá!Ná-z&O é !w&·n é !w&·n z&O z&·n
+6 ghaNa á-ghá!Ná gh&O á !w&·n á !w&·n gh&O gh&·n
+7 kaNa k&K-ká!Ná gh&O k&·- !w&·n k&·!w&·n k&O k&·n
+8 waNa ó-wá!Ná w&O ó !w&·n ó !w&·n w&O w&·n
+9 yaNa è-záNá à wÚn0 è w`·n0 z&·n
+1 3 taNa t&·-tá!Ná t&O t&· !w&·n t !w&·n t&O t&·n
+1 9 faNa f&·-fá!Ná f$O f&· !w&·n f !w&·n f&O f&·n
+6a maNa m-máNá m`O m wÚn0 m w&·n m`O m&·n
+Table 11. Possessive, associative, and demonstrative without overt head in Aghem
+As indicated, in Aghem, the possessive ‘my’ has the shape CaNa and directly
+follows the noun, e.g., w&E wá!Ná, ‘my child’ (class 1); mb`ON záNá, ‘my cow’.
+When occurring within a headless NP, however, modifiers acquire a noun class
+prefix and are required to have an overt determiner. In columns 2 and 4 of Table
+11 we therefore see the ‘dummy determiner’ /-&O/, henceforth DD, discussed by
+Hyman (1979a, 1985). The forms for ‘his/her’ are built on the associative
+construction (‘of him/her’). When following a noun, the AM for classes 1 and 9 is
+/à/, hence wà à w`·n0 , ‘his child’; mb`ON à w`·n0 , ‘his cow’. When occurring in
+isolation, the AM is ò for class 1 and è for class 9: ò w`·n0 , ‘his/hers’ (e.g., child),
+è w`·n0 , ‘his/hers’ (e.g., cow). Again, the DD is observed in all classes except 1
+and 9.19 The last column shows the near speaker demonstrative, which remains the
+same whether modifying a noun or whether occurring in a headless NP. These
+forms therefore mean either ‘this/these’ or ‘this one/these ones’.
+By equating the initial vowel on Kom nouns with the initial vowel that
+modifiers receive in headless NPs, we correctly predict that languages lacking an
+initial vowel will use other strategies in such constructions. Thus, Aghem invokes
+prefixes, AMs, and the DD in the case of possessives, but allows demonstratives
+to stand unchanged, as was just shown. The third language that lacks an initial
+vowel is Oku. Table 12 shows that Oku uses suffixation to mark possessives and
+demonstratives in headless NPs.
+18. The possessive root ‘my’ is realized -áNá after an L tone, but -á!Ná after an H tone;
+cf. the second column where the L or H tone is provided by a prefix that resembles the
+AM.
+19. The prefix in column two may optionally undergo prefix deletion (see below),
+while the AM in column four may not (Hyman 1979a).
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 331
+class ‘my’ ‘mine’ ‘his/her’ ‘his/hers’ ‘this/these’ ‘this one’/
+‘these ones’
+1 wOm w&O`m-wè & 2 w"K`n w^E w"K`n v`Kn 2 v`Kn
+2 gh&Om gh&O"m-gh&e & 2 w"K`n gh&E w"Kn-è0 y`Kn y&Kn-è0
+3 w&Om w&O"m-w&e & 2 w"K`n w&E w"Kn-è0 v`Kn v&Kn-è0
+4 y&Om y&O"m-y&e & 2 w"K`n $ z&E w"Kn-è0 z`Kn $ z&Kn-è0
+5 y&Om y&O"m-y&e & 2 w"K`n $ z&E w"Kn-è0 $ z`Kn $ z&Kn-è0
+6 gh&Om gh&O"m-gh&e & 2 w"K`n $ z&E w"Kn-è0 y`Kn y&Kn-è0
+7 k&Om k&o"m-k&e & 2 w"K`n g&E w"Kn-è0 k`Kn k&Kn-è0
+8 w&Om w&O"m-wé & 2 w"K`n w&E w"Kn-è0 v`Kn v&Kn-è0
+9 yOm y&O`m-yè ` 2 w"K`n y^E w"K`n $ z`Kn e-$z`Kn
+10 s&Om s&O"m-s&e s&2 w"K`n $ s&E w"Kn-è0 $ s`Kn $ s&Kn-è0
+13 t&Om t&O"m-t&e & 2 w"K`n t&E w"Kn-è0 t`Kn t&Kn-è0
+19 f&Om f&O"m-f&e & 2 w"K`n f&E w"Kn-è0 f`Kn f&Kn-è0
+6a mOm m&O`m-mè m`2 w"K`n m^E w"K`n m`Kn 2m-m`Kn
+Table 12. Possessives and demonstratives in Oku
+It is significant that Oku occurs to the east of Kom and is quite isolated from
+Aghem and Weh. Kom, in fact, splits it off from contact with all four of the other
+languages. As seen, all but classes 1, 9, and 6a have an /-é/ suffix that is used
+on headless associatives (e.g., ‘of him/her’) and on demonstratives (e.g., ‘this
+one/these ones’). The ‘his/hers’ forms also show an apparent AM that has an
+agreement marker followed by /-E/. We will return to this below.
+Finally, before moving on to discuss tone, it may be significant to point out
+that the use of an initial vowel to mark possessives and demonstratives in
+headless NPs extends to much of Eastern Grassfields Bantu (EGB), e.g.,
+Bamileke-Dschang (Tadadjeu 1980). Both Bamileke-Dschang and Mankon (Leroy
+1977) show a more open /á/ object agreement before prefixless class 1 nouns vs.
+a more close /è/ object agreement before other classes. They also are among those
+languages which have a class 7 /à-/ prefix. The relation between *ki- and *a-
+remains mysterious, but is amply documented in the forms in classes 6 and 7 in
+several of the above tables.
+3.2. Prefix deletion
+The remaining issue to discuss is how to identify the different tone patterns on
+prefixes. Before I address this in §4, I want to introduce one last piece of relevant
+information: prefix deletion. As indicated in Table 8, the languages which are to
+the north of Kom undergo a process whereby their noun prefixes fail to appear in
+certain situations.20 In Aghem, a prefix will be deleted whenever the noun is
+20. Voorhoeve (1980) reports prefix deletion also in Adere, a quite distant EGB
+language.
+332 LARRY M. HYMAN
+followed by an agreeing element other than a numeral (cf. k&·-f&u k&·-m`OQ, ‘one
+rat’). The following examples are from Hyman (1979a).
+class noun ‘my’ ‘his/her’ ‘this/these’ gloss
+1 f&·n f&·n wá!Ná f`·l à w`·n0 f&·n w&·n ‘friend’
+2 á-f&·n f&·n ghá!Ná f&·n & a !w`·n f&·n gh&·n ‘friends’
+3 ó-k&ÇOQ kÇ&OQ !wáNá kÇ&OQ & o w&·n k&ÇOQ !w&·n ‘ladder’
+4 é-k&ÇOQ k&ÇOQ !záNá kÇ&OQ & e w&·n k&ÇOQ !z&·n ‘ladders’
+5 é-ghóm ghóm !záNá ghóm !é !w&·n gh&om !z&·n ‘egg’
+6 á-ghóm ghóm !gháNá ghóm !á !w&·n gh&om !gh&·n ‘eggs’
+7 k&·-f&u fú ká!Ná fú k&· w&·n fú k&·n ‘rat’
+8 ó-fú fú wá!Ná fú ú !w&·n fú w&·n ‘rats’
+9 nd&On nd&O@N zá!Ná nd`ON ` O w`·n0 nd&ON z&·n ‘horn’
+1 3 t`·-nd&On nd&ON tá!Ná Nd&ON !t&· !w&·n nd&ON !t&·n ‘horns’
+1 9 f&·-ghâm ghâm fáNá ghâm !f&· !w&·n ghâm f`·n0 ‘mat’
+6a & N-ghâm ghàm máNá ghàm ` n w`·n0 ghàm m`·n0 ‘mats’
+Table 13. Prefix deletion before possessive, associative, and demonstrative in Aghem
+As seen in the class 19 example /f&·-ghàm/, ‘mat’, in general, when the prefix is
+deleted, its H tone is still realized on a following L stem: ghâm fáNá, ‘my mat’;
+nw&·n !fáNá, ‘my bird’. However, this is not the case in corresponding class 6a
+plural: ghàm máNá, ‘my mats’; nw`·n máNá, ‘my birds’. For some reason, classes 1
+and 9 do not show these alternations in possessive and demonstrative contexts.
+However, in associative forms such as ‘his/her’ (= ‘of him/her’), we get tonal
+alternations in classes 1, 9, and 6a that are not found in the other classes. It is
+likely that we are dealing with the same tonal skewing seen on subjects in Kom:
+L for classes 1, 9, and 6a vs. H for the other classes.21
+As indicated in Table 8, there are differences in how prefix deletion works in
+different Ring languages. All four languages show prefix deletion in subject and
+oblique positions. As we have just seen, Aghem and Weh also show prefix
+deletion whenever an agreeing element follows.22 Table 14 shows that this is not
+automatic in Bafmeng and Bum.
+21. I have also occasionally considered the possibility that 1 and 9 might lack a tone
+altogether, while 6a has an L tone.
+22. The one exception is numerals, before which prefix deletion is possible, but not
+preferred: k&·-f&u k&·-mÇ`OQ, ‘one rat’; & n-nw&·n m-mb`·ghà , ‘two birds’, etc.
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 333
+class Bafmeng Bum gloss
+1 V-vá"KN v"2`m wâ mù ‘my child’
+2 V-w&OiN gh2mm&2 wan ám"a ‘my children’
+3 e-l^VN v&2m(vé) u-l&V"N úmu ‘my bamboo’
+4 --- i-l&V"N ími ‘my bamboos’
+5 i-ghú"m z&2m i-wú"m ími ‘my egg’
+6 V-ghú"m gh&2mm&2 a-wú"m áma ‘my eggs’
+7 a-k^Vm k2mk&e a-k&Vm áma ‘my crab’
+8 i-kw^Vm v2m(vé) u-k&Vm úmu ‘my crabs’
+9 V-nyám z"2`m a-nyám àmì ‘my animal’
+1 0 V-se-nyám s&2msé a-sè-nyám sámso ‘my animals’
+1 3 V-te-pí"K t&2mté a-te-pí"K támto ‘my kolanuts’
+1 9 a-fe-n&2"N f&2mf&e a-fe-ny&2m fámfo ‘my bird’
+6a " m-n&2"N m"2`m a-m-ny&2"m mámò ‘my birds’
+Table 14. Noun + possessive in Bafmeng and Bum
+On the other hand, prefix deletion occurs in both subject and oblique positions.
+This is illustrated from Bafmeng in Table 15.
+class subject gloss oblique gloss
+1 w`O v&2 pfÚ ‘a person has fallen’ sé" w`O ‘to a person’
+2 gh&·" gh&2 pfÚ ‘people have fallen’ sé" ghOn&2 ‘to children’
+3 l&u`O v&2 pfÚ ‘a bridge has fallen’ sé" l"u`O vè0 ‘to a bridge’
+5 gh&u"m z&2 pfÚ ‘an egg has fallen’ sé" ghum zé ‘to an egg’
+6 gh&u"m gh&2 pfÚ ‘eggs have fallen’ sé" ghum ghé ‘to eggs’
+7 k&Vm k&2 pfÚ ‘a crab has fallen’ sé" k"V&m k&e ‘to a crab’
+8 kw&Vm v&2 pfÚ ‘crabs have fallen’ sé" kw"V&m v&e ‘to crabs’
+9 nyàm & 2 pfÚ ‘an animal has fallen’ sé" nyàm ‘to an animal’
+1 0 ny&a"m s&2 pfÚ ‘animals have fallen’ sé" nyam se ‘to animals’
+1 3 p&K"· t&2 pfÚ ‘kolanuts have fallen’ sé" pii té ‘to kolanuts’
+1 9 n&·n f&2 pfÚ ‘a bird has fallen’ sé" nÚN fé ‘to a bird’
+6a n"·`N m&2 pfÚ ‘birds have fallen’ sé" nÚN ` 2m ‘to birds’
+Table 15. Subject and oblique prefix deletion in Bafmeng
+In Table 14 we observe both prefix deletion and the appearance of a postposed
+element that resembles the Aghem DD seen in Table 11. These forms further
+confirm that prefix deletion leaves behind a tonal distinction on classes 1, 9, and
+6a vs. the other classes (cf. the realizations of 9/10 ‘animal(s)’, for instance). The
+same oblique pattern is found even when the oblique is zero marked, e.g.,
+Bafmeng: m&2 p`EN k&Vm ké, ‘I have come with a crab’.
+The presence vs. absence of prefix deletion in Bafmeng and Bum might be
+explained on the basis of grammatical position—or it might have to do with the
+334 LARRY M. HYMAN
+presence of the initial vowel in Table 14. That this latter interpretation is probably
+correct is seen in the Bafmeng forms in Table 16.
+class object23 gloss relativized
+object
+gloss
+1 m&2 fe v"a&KN ‘I have seen a child’ w`O m&2 fe ‘the person I see’
+2 m&2 fe gh&On&2 ‘I have seen children’ gh&·“" m&2 fe ‘the people I see’
+3 m&2 fe w&u"s v&e ‘I have seen a fire’ w&u"s & O m&2 fe ‘the fire I see’
+5 m&2 fe gh&o"m z&e ‘I have seen an egg’ gh&u"m & K m&2 fe ‘the egg I see’
+6 m & 2 f e gh&o"m
+gh&e
+‘I have seen eggs’ gh&u"m & 2 m&2 fe ‘the eggs I see’
+7 m&2 fe k&Vm k&e ‘I have seen a crab’ k&Vm k&e m&2 fe ‘the crab I see’
+8 m&2 fe kw&Vm v&e ‘I have seen crabs’ kw&Vm v&e m&2 fe ‘the crabs I see’
+9 m&2 fe nyàm ‘I have seen an animal’ nyàm m&2 fe ‘the animal I see’
+1 0 m& 2 f e ny&a"m
+se
+‘I have seen animals’ ny&am se m&2 fe ‘the animals I see’
+1 3 m&2 fe p&K"K té ‘I have seen kolanuts’ p&K"K t&e m&2 fe ‘the kolanuts I see’
+1 9 m&2 fe n&·"N f&e ‘I have seen a bird’ n&·"N f&e m&2 fe ‘the bird I see’
+6a m&2 fe nÚN ` 2m ‘I have seen birds’ nÚn ` 2m m&2 fe ‘the birds I see’
+Table 16. Bafmeng nouns in object position
+The first column of forms shows both prefix deletion and a postposition after each
+object noun. Since this is the only tense in which I elicited object nouns, I cannot
+tell for sure whether prefix deletion occurs here because the nouns are in object
+position, or because there is something special about this tense. In Aghem, for
+example, nouns are required to occur with an agreeing determiner in so-called
+‘focused tenses’, thereby creating oppositions such as the sentences in (16).
+(16) Present perfect in Aghem (Anderson 1979):
+a. [-focus] b. [+focus]
+ò k`OQ fÚ-nw&·n ò & N k`OQ nw&·n !f&O ‘he has seen a bird’
+ò k`OQ ` n-nw&·n ò & N k`OQ nw`·n m`O ‘he has seen birds’
+The sentences in (16a) have ‘even focus’ (or possibly focus on the postverbal
+object), while the truth value is included within the scope of focus in
+(16b)—which might therefore also be translated as ‘he has seen a bird(s)’ (Watters
+1979, Hyman & Watters 1984). In any case, it is neither clear whether Bafmeng
+has such a distinction, nor, if so, whether the first column of forms in Table 16
+should be identified with the [-focus] or [+focus] variant in Aghem.
+The object relative forms in Table 16 strongly suggest that focus is not
+involved. In Table 14 the nouns occur both with a modifier and with an initial
+23. The following variants are attested on objects: w&u"s & 2, ‘fire’ (class 3); ghó"m & 2,
+‘eggs’ (class 6); and k&Vm á, ‘crab’ (class 7).
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 335
+vowel. In the relativized object forms there is no IV (whereas there would be in
+Kom!). As shown, there is prefix deletion, and the relativized noun is followed by
+a marker that agrees in noun class. This suggests that there is a complementarity
+between the presence of the initial vowel and prefix deletion in Bafmeng (and
+Bum). Unless ‘protected’ by an initial vowel, a prefix is free to fall in case there is
+an agreeing element.
+With this result, we can now entertain hypotheses concerning prefix tones.
+4. Conclusion
+We are now ready to address the questions that were raised in (13).
+Question (13a): Why do class 1, 9, and 6a receive /L/ in the above-indicated
+contexts (vs. other classes)? This includes subject and oblique positions in Kom
+and Oku, and all positions where there has been prefix deletion in the remaining
+languages. The answer is that these are the historical tones of prefixes, i.e. our
+starting point in WGB (and possibly other parts of Benue-Congo).
+Question (13b): Why do all nouns receive /L/ following an AM? The most
+likely answer to this is that there was a historical L tone that occurred between the
+AM and the following noun. In this context it may be relevant to cite the
+following forms from Oku in Table 17.
+class noun associative gloss
+1 wan w"a`n kè-kem ‘child of the crab’
+2 gh&On gh&On & 2 kè-kem ‘children of the crab’
+3 eb-l&EN eb-l&EN & 2 kè-kem ‘bamboo of the crab’
+5 i-$s&K`E i-$s&K&E 2 kè-kem ‘eye of the crab’
+6 a-$s&K`E a-$s&K&E 2 kè-kem ‘eyes of the crab’
+7 ke-bâm ke-bám 2 kè-kem ‘bag of the crab’
+8 e-bwâm e-bwám & 2 kè-kem ‘bags of the crab’
+9 nyàm nyàm ` 2 kè-kem ‘animal of the crab’
+1 0 nyám-se nyám se kè-kem ‘animals of the crab’
+1 3 te-bíí te-bíí kè-kem ‘kolanuts of the crab’
+1 9 fe-n&Un fe-n&Un & 2 kè-kem ‘bird of the crab’
+6a m-n&Un m-n&Un mè kè-kem ‘birds of the crab’
+Table 17. Associative construction in Oku
+As was also seen in the ‘his/her’ forms in Table 12, Oku has a consonantal
+concord in associatives only in classes 10 and 6a (sé and mè, respectively). More
+importantly, however, Oku is the only Ring language I have found where H tone
+AMs do not spread their tone onto the prefix of the following noun. What is
+keeping the H from spreading?
+Classes 1, 9, and 6a had an *L AM. What I would like to suggest is that the
+H AM was historically *HL. By a process that was old enough to affect all of
+WGB, a following H tone prefix assimilated to the *L or *HL AM. This could
+not have been done by normal L tone spreading, because we would therefore have
+336 LARRY M. HYMAN
+expected the H to go on to the following stem (cf. the derivations in (5)). The
+earlier process would have been a ‘vertical’ assimilation: prefixal *H > L after
+(H)L. Where would this L have come from? Meeussen (1967) reconstructs the
+Proto-Bantu AM as a concord prefix + *a, which seems to go well beyond Bantu
+(Welmers 1963). The associative construction in Modele, a Menchum language
+spoken south of Aghem, is like Oku in lacking a concord prefix (in any class), but
+having just a vocalic AM, which Boum (1981) analyses as /a/! One of the
+differences between GB and Narrow Bantu concerns the apparent absence of this
+*a in the former. Besides Modele, perhaps the Oku ‘his/hers’ forms in Table 12
+give us further evidence. Recall that these consist of a concord prefix followed by
+/-E/. The tone is HL in classes 1, 9, and 6a, suggesting that a H tone is coming
+from the left. The tone of the other classes is H, with a floating L after it. Now, it
+turns out that the class 6 suffix *a- is realized E- in Oku: i-s&K`E, ‘eye’, pl. E-$s&K`E
+(5/6); i-ghîn, ‘breast’, pl. E-ghîn M te-ghîn (5/6~13). Perhaps the stand-alone
+AMs w-^E, gh-&E, etc. should be reconstructed with an L tone *à, which is realized
+[E] in Oku.24
+The other situation where nouns all acquire an L prefix is after the locative
+marker /á-/, which may or may not be related to the Proto-Bantu AM *a. An
+alternative source from class 16 *pa is less likely, since we would expect this to
+come out as f2- in Kom; cf. a fêyn, ‘here’ (Chia 1983). I assume that the
+locative also reconstructs with *HL tone.
+Question (13c): Why are there exceptional nouns with lexical /L/ prefixes? As
+indicated, we believe this has to do with NC initials, and we cannot rule out
+borrowings from EGB which would have had L tone prefixes. More work is
+needed in this area.
+Question (13d): Why is /H/ the default tone on noun prefixes? The answer
+would be that other than classes 1, 9, and 6a, noun class prefixes reconstruct as
+*H. What this would mean is that we would have to find an explanation for any
+divergences from this situation. I have already suggested how post-AM noun
+prefixes may have become L in Western Grassfields. What is needed now is an
+explanation for why Narrow Bantu noun prefixes are L (cf. §5).
+Question (13e): What is the initial vowel? Is it related to the augment in
+Narrow Bantu? I have addressed this question in some detail in §3. The one
+remaining point concerns the tonal properties of the initial vowel. With few
+exceptions, nouns have /H/ prefixes in Kom when they are preceded by the
+augment /é-/ §"2ç. If classes 1, 9, and 6a reconstruct with *L tone, we cannot
+allow class 6a *&2-m`2- to become & 2-m&2- by H tone spreading (HTS). This is
+because the L of the prefix would be expected to lower a following H root, which
+never happens. The noun /mè-tám + ` /, ‘fruits’, surfaces as mè-t"am in subject and
+oblique positions. Here we see that the L of the prefix lowers /-tám/ to M.
+24. The Proto-Bantu AM *a is reconstructed without tone: the prefix + a sequence has
+L tone in classes 1 and 9, H tone in others. If I am correct in reconstructing *à, then i t
+would be understandable why this L has no tonal effect on what follows. Since Narrow
+Bantu noun prefixes are *L in all environments, the L of *à would therefore have
+simply been absorbed into the following L prefix.
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 337
+However, if we posit /é-mè-tám/ with the H IV, by normal HTS we would expect
+*é-mé-tàm0 , rather than the correct e-me-tám. What is needed is an analogue to
+prefix lowering after an AM: when the H IV is present, the following L prefix of
+classes 1, 9, and 6a undergo a vertical raising to H, with no trace of the L left
+behind.
+(17) Deriving H prefixes after the initial vowel:
+a. incorrect b. correct
+e- me- tam e- me- tam
+g(b g gg g g
+H L H H L H
+?
+H
+We have to make one additional observation: In Kom there are environments, such
+as object position, where the initial vowel cannot occur (because it must be
+phrase-initial), but where all prefixes are H tone. Either the initial vowel was once
+there and fell out or there was an H tone object marker—or both are the same
+thing. In any case, one can get the all-H prefix pattern without an overt e- on the
+surface. In fact, checking over elicitations with different speakers, I see cases where
+I got either e-fe-nyú"yn or fe-nyú"yn in response to ‘How do you say “bird”?’
+Question (13e), also present in my title, is probably not resolvable based
+solely on the formal properties of the initial vowel in Kom and related languages.
+The fact that the initial vowel occurs before the prefix and that it has H tone is
+certainly suggestive, but this only allows us to conclude that at some point in the
+history of Kom an H tone morpheme was placed before nouns. Segmentally, we
+have seen some evidence that the morpheme might have had the shape á-. The
+alternative would be to say that a full set of IVs merged into a- (ultimately 2-),
+as appears to have happened in Umbundu (R11), where the initial vowel is o- in
+most environments (Schadeberg 1986).
+Other than its vocalic and tonal shape, the only other criterion we can exercise
+concerns the function of the initial vowel. The Narrow Bantu augment was clearly
+a determiner. Its earlier uses seem to have had to do with marking referentiality or
+definiteness. As such, we clearly expect it to occur in subject position. Since both
+the augment and its H tone are prohibited in subject position, we might propose a
+historical scenario to get reduction of the initial vowel in subject position. The
+alternative, which I find more attractive, is to say that the initial vowel had a
+different, perhaps predicative function that would have kept it out of subject
+position.
+Besides the absence of Kom e-, there are also tonal reasons to suspect that the
+initial vowel never appeared in subject position. A number of Bantu languages
+from Gabon down to Angola have what Schadeberg (1986) has called ‘tone cases’.
+Blanchon (1998, 1999) has proposed a succession of tonal additions at the left
+edge of nouns to derive the observed behaviour. One property that these languages
+generally have in common is that subject position is tonally unmarked—i.e. it
+338 LARRY M. HYMAN
+provides the basic or historical tones of nouns without the addition of the extra
+tonal prefixes. The same seems to be true of Kom: in subject position you get the
+historical *L for classes 1, 9, and 6a vs. the *H prefix in other classes. What this
+suggests is that the subject escaped the innovative IV whose function I have
+hypothesized to have been to mark unheaded NPs. In this sense Ring a- M e- is
+much more like the tonal innovations in Western Bantu than the augment found
+throughout Narrow Bantu.
+5. An alternative proposal
+In the preceding section, I proposed that Proto-Ring noun prefixes were L in
+classes 1, 9, and 6a, and H in the remaining classes. Except for the anomalous
+tone of class 6a, this reconstruction is equivalent to de Wolf’s (1971)
+reconstruction for Proto-Benue-Congo (PBC). This latter position has, however,
+come under close scrutiny by Williamson (1993), who suggests that noun prefixes
+may have been *L in all classes in PBC. As part of her evidence—and more close
+to home—she cites Hombert (1976), who sees the L tone prefix that follows the
+AM to be a direct reflex of the historical *L tone prefix, based on Ngie, a WGB
+language of the Momo subgroup. In other positions Hombert proposes that there
+was an *H tone augment that fused with the following *L to create the observed
+M tone prefixes in present-day Ngie. Logically, this is quite opposite to what I
+have outlined in §4: according to Hombert’s analysis, the post-AM L- tone is
+proto and the H- vs. L- of other positions derived. My analysis is just the
+opposite. Stallcup (1978) critically evaluates alternative tonal reconstructions in
+terms of their relative merits. The advantage of Hombert’s proposal is that the
+post-AM prefixal L- can be related not only to Proto-Bantu, but also to Proto-
+EGB, where noun prefixes are L in all positions. Williamson (1993) takes this
+further, citing from various branches of BC, and advances an alternative
+hypothesis that L tone prefixes may be reconstructable as far back as Proto-BC
+itself.
+Concerning Kom, the Hombert/Williamson hypothesis is reduced to two
+questions: Are the L- vs. H- subject prefixes due to the addition of an H tone
+augment in the appropriate classes? Are the post-AM L prefixes a retention of *L
+prefixes in all positions in PGB?
+First, the argument that the M tone prefixes derive from a fusing of H+L is
+problematic. As we have seen in Kom, the M prefixes are clearly from an
+underlying /H/. This can be seen clearly from the fact that underlying /H-L/ and
+/H-LH/ are realized [M-HL] and [M-HM] by HTS, as was seen in (3). The M tone
+is in fact due to a very common process of prefix tone-lowering that can be
+documented from throughout Narrow and Grassfields Bantu and beyond. In
+Ngamambo, another Momo language, the tone is H on CV- prefixes, M on V-
+prefixes, and L on nasal prefixes (Asongwed & Hyman 1976). This shows that
+prefix tone lowering can take place in stages, ultimately arriving at L. This is the
+case in Babanki, a Ring language very closely related to Kom, in which all noun
+prefixes are L. Even though this is true phonetically, one not only can reconstruct
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 339
+*H prefixes, but even defend an analysis where the appropriate L tone prefixes are
+underlyingly /H/ (Hyman 1979c). While the *H-LH noun *fí-nùn´, ‘bird’, comes
+out as M-HM fe-ny&u"yn in Kom, it is pronounced as L-H f`·-nyín in Babanki.
+The H on the root -nyín clearly comes from the prefix, as can be ascertained from
+its realization as f`·-nyìn0 after an L AM. A *H-L noun is realized L-L in
+isolation, thereby merging with exceptional *L-L nouns. However, when an H
+tone syllable is added, only the *H-L nouns become L-M, while the *L-L nouns
+remain L. The process is the following (Hyman 1979c).
+(18) Derivation of /H-L/ —› L-L in Babanki:
+underlying HTS prefix-lowering HL simplification
+H-L + H —› H-HL + H —› L-HL + H —› L-M + H
+As indicated, first HTS applies, followed by prefix-lowering. At this point, the L-
+HL-H sequence becomes L-M-H by contour simplification. As a result we get
+surface oppositions such as the following.
+(19) Babanki /H-L/ vs. /L-L/ nouns (e = schwa):
+a. /ké-k`Os/ —› kè-k`Os ‘slave’
+/ké-k`Os ké` -nyàm/ —› kè-k"Os ké nyàm ‘slave of the animal’
+b. /kè-mbò/ —› kè-mbò ‘bag’
+/kè-mbò ké` -nyàm/ —› kè-mbò ké nyàm ‘bag of the animal’
+While kè-k`Os, ‘slave’, and kè-mbò, ‘bag’, are pronounced identically in isolation,
+we see that the L root -k`Os is realized M in (19a) vs. (19b), where the root -mbò
+stays L. Given what we have seen in closely related Kom, we know what the
+cause is: the normal situation in (19a) involves a /H/ prefix, whereas the
+exceptional situation in (19b) is an /L/ prefix, conditioned by the initial NC.
+The moral of this demonstration is that many languages that presently have L
+tone prefixes once had H tone prefixes. The lowering of tone on prefixes is such a
+widespread phenomenon that a language with only L tone prefixes has to be
+carefully scrutinized, as in the Babanki case. As evidence for her reconstruction,
+Williamson (1993) cites Anderson’s (1980) description of Amo, to represent the
+Plateau group. While the L tone prefixes in this language may or may not be
+proto, it is possible that Amo independently underwent a process of prefix tone
+lowering, as has also affected the *H of the augment in many Narrow Bantu
+languages. It seems that reconstructing a single tone, *H or *L, each has a pitfall
+to avoid: if all prefixes are L, we need to determine whether this is proto, the
+result of tone lowering (reduction), or the result of an L augment; if all prefixes
+are H, we need to determine whether this is proto or the result of an H augment.
+As Blanchon (1998, 1999) has shown, there may be cyclic additions of left-
+edge tones, one after the other, and the same reconstructed morphemes need not be
+340 LARRY M. HYMAN
+involved in every case. By contrast, if we can find correspondences of H and L
+prefixes by noun class, this is likely to be proto. 25
+The second question is whether the L found in post-AM contexts is proto. In
+§4 I took the position that it could be derived: if we reconstruct H prefixes in
+classes other than 1, 9, and 6a, then these could have assimilated to a preceding L,
+as was schematized in (17b). In the discussion I took some comfort in the fact that
+an analogous process would have to raise the L prefix of classes 1, 9, and 6a after
+an H augment.
+I recognize the appeal of the Hombert/Williamson position on these L tone
+prefixes. But why should a putative *L tone have been preserved after an AM or a
+locative prefix? From Narrow Bantu we know of two opposite things that an AM,
+locative, or other proclitic can do with respect to an augment:26
+- They can lock in the augment, preserving it when it is lost in the absence of a
+proclitic. As de Blois (1970) recognizes under the guise of a ‘latent augment’,
+there are many Bantu languages that have generally lost the augment but retain
+some or all of its properties when a noun is preceded by the AM or by *nà.
+OR
+- They can prohibit an augment, which locative classes regularly do, and in
+Bemba (M42) nouns generally have an augment, which is, however, absent after
+the AM.
+While the first represents a way of preserving an inherited property, the second
+has the opposite function of blocking an innovation from occurring in the post-
+AM context. In the case of Kom, the AM appears to lock in an L tone and lock
+out a H tone. The question to be resolved, of course, is what the functions were of
+these L and H tones? Is the L part of the AM or of the old prefix? Is the H part of
+the prefix or an augment? These and other questions will probably remain open for
+some time.
+25. I have long wondered why classes 1 and 9 should have L tone vs. the other classes.
+One reason could be simply phonological. If these classes reconstruct with *V-
+prefixes, while the others all had *CV-, then an original *H might have lowered only
+on the former. We know that initial vowels are even more prone to tone lowering than
+CV syllables (cf. the M of V- vs. H of CV- prefixes in Ngamambo).
+26. A third effect could be to block prefix deletion in Ring Bantu. There is in fact some
+resistance to deleting the prefix of a post-AM noun in Aghem. It could be interesting if
+we could show that an old process of prefix deletion failed to affect nouns in post-AM,
+post-locative, and post-IV positions. In that case the hypothesis would be that the L-
+vs. H- subject prefixes of Kom are replacement prefixes, an augment that directly
+precedes the stem. Unfortunately, prefix-deletion appears to be coming in, rather than
+going out. But I suppose we should keep every option open.
+INITIAL VOWEL AND PREFIX TONE IN KOM: RELATED TO THE BANTU AUGMENT? 341
+References
+Anderson 1979; Asongwed & Hyman 1976; Blanchon 1998, 1999; Boum 1981;
+Chia 1983, 1984; De Blois 1970; De Wolf 1971; Grégoire & Janssens 1999;
+Grimes 1996; Hombert 1976, 1980; Hyman 1979a, 1979b, 1979c, 1980a, 1980b,
+1980c, 1985, 1988; Hyman & Watters 1984; Jones 1997; Leroy 1977; Meeussen
+1967; Schadeberg 1986; Schultz 1997; Stallcup 1978, 1980; Tadadjeu 1980;
+Voorhoeve 1980; Watters 1979, 2003; Watters & Leroy 1989; Welmers 1963;
+Williamson 1993a.
+

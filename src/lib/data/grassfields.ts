@@ -64,7 +64,9 @@ export const GRASSFIELDS_LANGUAGES: GrassfieldsLanguage[] = [
     // CORRECTION 1 — Kom is tracked SEPARATELY from Lamnso' (ISO bkm vs lns,
     // Central Ring vs West Ring, distinct tone systems).
     code: "bkm", name: "Kom (Bikom)", nativeName: "Itaŋikom", iso: "bkm",
-    alternateNames: ["Bamekon", "Bekom", "Itangikom", "Nkom", "Kong"],
+    // OLAC-attested alternate names (language-archives.org/language/bkm, Wayback 2020-07-16):
+    // Bamekon, Bikom, Itangimbesa, Kong, Mbesa, Mbizenaku, Nkom
+    alternateNames: ["Bamekon", "Bekom", "Bikom", "Itangikom", "Itangimbesa", "Mbesa", "Mbizenaku", "Nkom", "Kong"],
     region: "North West Region", division: "Boyo Division",
     speakers: "~233,000 (2005)", tones: "3 tones — high (unmarked), falling (â), low (à)",
     toneNotation: { system: "Kom 3-tone", detail: "high: unmarked · falling: circumflex (â) · low: grave (à)" },
@@ -190,13 +192,27 @@ export { PENDING as PLACEHOLDER_PHRASE };
 
 // Classification notes (§2.3 / §2.4 / v3.0 Correction 2) — shown in the Library
 export const LANGUAGE_CLASSIFICATION: Record<string, string> = {
-  bkm: "Benue-Congo → Narrow Grassfields → Central Ring",
+  // Hyman: Kom (GFW 822) is the major language of the centre branch of the Ring
+  // subgroup of Western Grassfields Bantu (paper §2, UC Berkeley).
+  bkm: "Benue-Congo → Narrow Grassfields → Western Grassfields → Ring → Centre branch (GFW 822)",
   lns: "Benue-Congo → Narrow Grassfields → Ring group → West ring (no dialectal variations)",
   byv: "Benue-Congo → Narrow Grassfields → Momo",
 };
 
 export const LANGUAGE_RESOURCES: Record<string, string[]> = {
-  bkm: ["“Ghesìn̳à ye'i Itan̳ikom” (Let's learn Kom) — 1992", "Kom Dictionary App (Google Play)", "Kom Bible translation"],
+  // v4.1 — bkm list grounded in the attested SIL Cameroon archive harvest
+  // (see src/lib/data/kom-resources.ts for the full records + access points)
+  bkm: [
+    "Ghesɨ̀nà Yeʼi Itaŋikom 1 — “Let's Read and Write Kom” primer (Chia & Ngong Mbeh, 1996, SIL 90620)",
+    "Yêm Woyn Kom 1 — pre-primer “Awakening Kom Children” (Chuo, 2010, SIL 99662)",
+    "Ŋwàʼlɨ̀ Mɨ̀lòʼolòʼò mɨ̀ Kòm 1.2 — “Kom Sweet Nectar” MLE shell book (2007, SIL 99660)",
+    "Kɨtɨ̂ Woyn Kom 2.1 — “Enlightening Kom Children” (2009, SIL 99663; adapted into Bafut & Oku)",
+    "Ŋwàʼlɨ̀ àkòyn 1 — first arithmetic book in Kom (1993, SIL 33013)",
+    "Provisional Kom–English lexicon (Jones, 2001, SIL 1978 — 225 pp.)",
+    "Kom grammar sketch + phonology (Shultz 1997/1993) · Tone in the Kom noun phrase (Jones 1997)",
+    "The New Testament in Kom (2004) — dramatized audio at bible.is (BKMBSC)",
+    "Kom Dictionary App (Google Play)",
+  ],
   lns: ["“Binka wùn Wiyka 1” — 2003", "Nso Language Organisation (NLO) materials", "Lamnso' Bible translation"],
   byv: ["SIL Cameroon / Local Community (data collection, Q2 2025)", "Community recordings — traditional dances & masquerade traditions (planned)"],
   bfd: ["SIL Cameroon", "Local schools", "Primary textbooks"],
