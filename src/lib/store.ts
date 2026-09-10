@@ -1,0 +1,72 @@
+// Zustand app store — SPA view routing, learner state, settings
+"use client";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { Lang } from "@/lib/i18n";
+
+export type Role = "learner" | "teacher" | "parent" | "supervisor";
+export type View = "landing" | "learner" | "lesson" | "projects" | "profile" | "teacher" | "parent" | "supervisor" | "library";
+
+export interface LearnerState {
+  id: string;
+  name: string;
+  role: Role;
+  avatar: string;
+  stage: string;
+  iscedLevel: number;
+  language: Lang;
+  xp: number;
+  streak: number;
+  level?: number;
+  title?: string;
+}
+
+interface AppState {
+  view: View;
+  currentLessonId: string | null;
+  learner: LearnerState | null;
+  lang: Lang;
+  soundOn: boolean;
+  online: boolean;
+  setView: (v: View) => void;
+  openLesson: (id: string) => void;
+  setLearner: (l: LearnerState | null) => void;
+  setLang: (l: Lang) => void;
+  toggleSound: () => void;
+  setOnline: (o: boolean) => void;
+}
+
+export const useApp = create<AppState>()(
+  persist(
+    (set) => ({
+      view: "landing",
+      currentLessonId: null,
+      learner: null,
+      lang: "en",
+      soundOn: true,
+      online: true,
+      setView: (view) => set({ view }),
+      openLesson: (id) => set({ view: "lesson", currentLessonId: id }),
+      setLearner: (learner) => set({ learner, lang: (learner?.language as Lang) || "en" }),
+      setLang: (lang) => set((s) => {
+        if (s.learner) {
+          const updated = { ...s.learner, language: lang };
+          void fetch("/api/learner", {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: s.learner.id, language: lang }),
+          }).catch(() => {});
+          return { lang, learner: updated };
+        }
+        return { lang };
+      }),
+      toggleSound: () => set((s) => ({ soundOn: !s.soundOn })),
+      setOnline: (online) => set({ online }),
+    }),
+    {
+      name: "omnivoice-app",
+      partialize: (s) => ({ learner: s.learner, lang: s.lang, soundOn: s.soundOn }),
+    }
+  )
+);
+

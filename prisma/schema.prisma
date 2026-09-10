@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============ USERS / PROFILES ============
+
+model Learner {
+  id             String   @id @default(cuid())
+  name           String
+  role           String   @default("learner") // learner | teacher | parent | supervisor
+  avatar         String   @default("lion") // avatar code
+  stage          String   @default("class3") // kg | class1..class6 | form1..form7
+  iscedLevel     Int      @default(1) // 0-3
+  language       String   @default("en") // en | fr | ewo
+  xp             Int      @default(0)
+  streak         Int      @default(0)
+  lastActiveDate String   @default("") // yyyy-mm-dd
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// ============ CURRICULUM ============
+
+model ILT {
+  id       String @id // slug: the-home
+  nameEn   String
+  nameFr   String
+  nameEw   String
+  order    Int
+  months   String @default("[]") // JSON int array (academic month numbers 1-8)
+  mood     String // bg music mood key
+  storyEn  String
+  storyFr  String
+  stageScope String @default("primary") // primary | secondary | highschool
+}
+
+model Subject {
+  id        String @id
+  nameEn    String
+  nameFr    String
+  domain    String // Basic Knowledge | Communal Life | Vocational & Life Skills | Cultural Identity | Digital Literacy
+  weighting Int // percent
+  color     String
+  icon      String
+  order     Int
+}
+
+model SchemeWeek {
+  id        String @id
+  subjectId String
+  stage     String // class3 (MVP content scope: Class 3 Month 1 complete)
+  month     Int
+  week      Int
+  iltId     String
+  components String @default("[]") // JSON string[]
+  contents   String @default("[]") // JSON string[]
+  outcomes   String @default("[]") // JSON string[]
+  resources  String @default("[]") // JSON string[]
+}
+
+model Lesson {
+  id         String @id
+  subjectId  String
+  stage      String
+  iltId      String
+  subTheme   String
+  month      Int
+  week       Int
+  titleEn    String
+  titleFr    String
+  cefr       String @default("A1")
+  ibProfile  String @default("[]") // JSON string[]
+  elo        String @default("[]") // JSON string[]
+  strategies String @default("[]") // JSON string[]
+  plan       String // FULL JSON per Master Prompt 6.3 (voice_assets, gamification, activities, assessment, offline_capability)
+  xp         Int    @default(50)
+  badgeCode  String @default("")
+  order      Int    @default(0)
+}
+
+// ============ GAMIFICATION ============
+
+model Badge {
+  code     String @id
+  nameEn   String
+  nameFr   String
+  descEn   String
+  icon     String
+  category String // language | math | science | culture | project | streak | level
+  rarity   String @default("common") // common | rare | epic
+}
+
+model EarnedBadge {
+  id        String   @id @default(cuid())
+  learnerId String
+  badgeCode String
+  earnedAt  DateTime @default(now())
+}
+
+// ============ PBL ENGINE ============
+
+model Project {
+  id        String   @id @default(cuid())
+  learnerId String
+  iltId     String
+  title     String
+  role      String   @default("leader") // leader | recorder | timekeeper | presenter | materials
+  phase     Int      @default(0) // 0=not started, 1=beginning, 2=progression, 3=culminating
+  notes     ProjectNote[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProjectNote {
+  id        String   @id @default(cuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  phase     Int      @default(1)
+  kind      String   @default("voice") // voice | text
+  text      String   @default("") // transcription / typed
+  audio     String?  // base64 data URL
+  createdAt DateTime @default(now())
+}
+
+// ============ ASSESSMENT / PROGRESS ============
+
+model Assessment {
+  id        String   @id @default(cuid())
+  learnerId String
+  lessonId  String
+  type      String   @default("formative") // formative | summative | diagnostic | oral
+  score     Float    @default(0)
+  details   String   @default("{}") // JSON
+  createdAt DateTime @default(now())
+}
+
+model SkillProgress {
+  id        String @id @default(cuid())
+  learnerId String
+  skillCode String
+  mastery   Float  @default(0) // 0-100
+}
+
+model ActivityEvent {
+  id        String   @id @default(cuid())
+  learnerId String
+  type      String // lesson_complete | badge_earned | level_up | project_phase | voice_practice
+  payload   String   @default("{}")
+  createdAt DateTime @default(now())
+}

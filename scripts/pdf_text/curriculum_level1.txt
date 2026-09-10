@@ -1,0 +1,6967 @@
+
+===== PAGE 1 =====
+ Cameroon Primary School 
+Curriculum
+REPUBLIC OF CAMEROON
+Peace – Work – Fatherland
+------------------
+MINISTRY OF BASIC EDUCATION
+-------------------
+REPUBLIQUE DU CAMEROUN
+Paix – Travail – Patrie
+---------------
+MINISTERE DE L’EDUCATION DE BASE
+---------------
+English Subsystem
+Level I: Class 1 & Class 2
+2018
+We are building today what tomorrow will be.
+
+===== PAGE 2 =====
+
+===== PAGE 3 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+3
+FOREWORD
+Nursery and Primary Education is the foundation of sustainable learning. It is on this basis that 
+Cameroon has ratiﬁ ed several conventions related to compulsory education. These conventions 
+range from the Jomtien Education Framework of 1990, the Salamanca Statement of 1994, the 
+Dakar Framework of 2000 to the Incheon Declaration of 2015 precisely the fourth Sustainable 
+Development Goal (SDG4).
+Besides these international conventions, the Constitution of the Republic of Cameroon 
+guarantees the right of the child to education and further highlights it in the1998 Law to Lay 
+Down Guidelines for Education. In view of becoming an emergent nation by the year 2035, 
+the government developed the Growth and Employment Strategy Paper (GESP) in 2009 to 
+provide major orientations to all sectors of the society. The document tasked ministries in 
+charge of education to develop the human capital required to attain this vision. The 2013-2020 
+Education and Training Sector Strategy Paper (ETSSP) clearly deﬁ nes the missions of each 
+sub-sector in the educational system. 
+This curriculum is designed to guide the development of knowledge, skills and attitudes in 
+the learners and to set the foundation for learning with emphasis on Science, Technology, 
+Engineering and Mathematics (STEM). The curriculum therefore responds to one of the key 
+missions assigned to the Ministry of Basic Education (MINEDUB). 
+This new pedagogic tool replaces the one of 1987 for the nursery and that of 2000 for the primary. 
+My fervent wish is that the entire education community explores and makes maximum use of 
+this document in order to enable the nursery and primary school learners attain knowledge-
+based, skill-based and attitude-based proﬁ ciencies upon graduation. In this way, they will be 
+able to cope with the diﬀ erent educational and/or professional options  available to them at 
+the end of the primary school cycle and embrace lifelong learning, no matter the post-primary 
+path they choose.
+
+===== PAGE 4 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+4
+PREFACE
+This curriculum has taken into consideration the fact that learners have unique personalities, talents, 
+attitudes, and interests that they bring into the classroom. They also have a variety of experiences 
+which the teacher must build on, in order to eﬀ ect and aﬀ ect the teaching – learning process. The 
+learners’ uniqueness and variety of experiences are primordial in the development of any school 
+curriculum. Analyses of curricula that have been successful in many countries throughout the world 
+suggest that appropriate curriculum design should:
+• involve parents in their children’s education
+• develop an atmosphere based on sound human relationships
+• establish a balance between child-directed and teacher-directed activities
+• specify objectives and needs of individual learners
+• emphasise on pragmatic and play-based learning in pre-primary and primary education
+Basic Education moulds learners and encourages them to be dynamic and creative. Hence, the 1996 
+Constitution of the Republic of Cameroon clearly spells out the State’s engagement in guaranteeing 
+the child’s right to education. Cameroon also adheres to the Human Rights Declaration and related 
+legal instruments. Every child is endowed with learning potentials which need to be awakened and 
+guided by appropriate instruction and instructional materials. Consequently, the Ministry of Basic 
+Education (MINEDUB) has undertaken a massive reform of the Nursery and the Primary school 
+curricula, an activity that aims at ensuring quality basic education for all Cameroonian children. 
+This will therefore serve as an important reference and working document for teachers and the entire 
+education community. 
+In order to render the curriculum standard and to guarantee quality assurance, the following phases 
+and procedures were followed:
+• writing and validating the Cameroon National Core Skills Framework
+• carrying out needs analysis
+• writing and validating the Curriculum Framework
+• training of 105 writers by consultants
+• writing the ﬁ rst draft 
+• reading and evaluating the ﬁ rst draft by the scientiﬁ c committee
+• integrating the recommendations and suggestions of the scientiﬁ c committee
+• experimenting the curriculum in all the ten regions of Cameroon
+• integrating the recommendations and suggestions from the ﬁ eld 
+• re-evaluating the curriculum by the scientiﬁ c committee
+• integrating the recommendations and suggestions from the scientiﬁ c committee 
+• reviewing the curriculum by the consultants and the scientiﬁ c committee 
+• ﬁ nalising and validating the curriculum
+The inclusive nature of this document therefore makes it user-friendly, thus, the classroom teachers 
+should be able to claim ownership of it and be totally accountable for its implementation. 
+It is also worth noting that priority was given to national expertise by working with two renowned 
+consultants representing the language of instruction of the two subsystems.This was done in strict 
+respect of the speciﬁ cities of the two subsystems of education in conformity with the provisions of 
+the 1998 Law to Lay Down Guidelines for Education in Cameroon. Following the recommendations 
+of the Curriculum Framework, the two subsystems have the same domains, weighting, core skills 
+and broad-based competences, and activities for the nursery cycle and subjects for the primary cycle. 
+
+===== PAGE 5 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+5
+However, each subsystem has maintained its speciﬁ cities with regards to learning strategies/methods, 
+teaching-learning materials, and assessment strategies and tools. 
+As a matter of fact, this is a hands-on document aimed at rendering the job of the classroom practitioner 
+lighter and more enjoyable. The annual time allocation has been calculated and activities for the 
+Nursery school as well as subjects for the Primary school cycle identiﬁ ed and built under appropriate 
+domains. The competences from the National Core Skills Framework to be developed by each subject 
+area have also been clearly stated. Besides, the activities and/or subjects are technically distributed to 
+represent the weighting that was hitherto given to the various domains. The major teaching-learning 
+approach: the Project Based Learning which is supported by the Integrated-Theme Learning and the 
+Cooperative Learning strategies has been explained. Furthermore, the importance of assessment is 
+reiterated in order to encourage the classroom teacher to constantly exploit and maximise its use. A 
+glossary is provided to situate the user on the contextual use of some key concepts.
+Summarily, the ADDIE Model guided the entire process of the curriculum development as follows: 
+A for the Analysis phase, explains the situational analysis (teachers, learners, supervisors, education 
+community)
+D for the Design phase, focuses on the structure of teaching-learning and assessment of learning 
+outcomes 
+D for the Development phase, is where the writing and re-writing of all the planned activities in 
+the design phase are carried out
+I for the Implementation phase, covers the period of the experimentation. This period oﬀ ers 
+feedback for revision
+E for the Evaluation phase, is where plans for the evaluation of the entire curriculum are made as 
+it is progressively being used
+It is worthy to mention here that globalisation has severely impacted contemporary instructional 
+processes. Increasingly, our society is rocked by various challenges which include economic 
+recession, advancing technologies, changing family relationships, violence in communities, exclusion, 
+intolerance and identity crisis. These issues constitute a serious hurdle to pedagogues who must derive 
+appropriate strategies to handle them. Educators and parents are, therefore, called upon to embrace 
+this important change and to work in harmony. Learners are expected to acquire necessary life skills 
+such as autonomy, honesty, adaptability to technological changes, respect for self, respect for others 
+and respect for institutions, as well as the 21st century skills: collaboration, teamwork, creativity, 
+problem solving and critical thinking for eﬀ ective lifelong learning.   
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 6 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+6
+Table of Contents
+FOREWORD........................................................................................................................................3
+PREFACE.............................................................................................................................................4
+List of Tables.........................................................................................................................................8
+List of Figures.......................................................................................................................................9
+List of Abbreviations and Acronyms................................................................................................10
+GENERAL INTRODUCTION.........................................................................................................11
+PART ONE: OVERVIEW.................................................................................................................13
+The Learner’s Proﬁ le............................................................................................................................13
+Domains, Weighting, Competences and Subjects................................................................................14
+Integrated Learning Themes (ILTs)......................................................................................................15
+Pedagogic Approaches.........................................................................................................................16
+Project-Based Learning (PBL)........................................................................................................16
+Cooperative Learning (CL).............................................................................................................18
+Assessment...........................................................................................................................................19
+Weighting and Time Allocation...........................................................................................................19
+Link between Learning Domains and the National Core Skills/Broad-based Competences...............21
+Plan of action for the teaching-learning cycle......................................................................................23
+PART TWO:  DEFINITION OF DOMAINS AND THEIR RELATED CARRIER  
+ 
+                  SUBJECTS..................................................................................................................25
+Domain 1: Basic Knowledge............................................................................................................25
+ English Language.......................................................................................................................25
+ Mathematics...............................................................................................................................26
+ Science and Technology.............................................................................................................28
+ Français.....................................................................................................................................29
+Domain 2: Communal Life and National Integration.......................................................................30
+ Social Studies.............................................................................................................................30
+Domain 3: Vocational and Life Skills...............................................................................................32
+ Vocational Studies......................................................................................................................32
+ Arts.............................................................................................................................................33
+ Physical Education and Sports...................................................................................................35
+Domain 4: Cultural Identity..............................................................................................................36
+
+===== PAGE 7 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+7
+National Languages and Cultures.................................................................................................36
+Domain 5: Digital Literacy...............................................................................................................38
+Information and Communication Technologies (ICTs)................................................................38
+PART THREE: CONTENTS OF THE SYLLABUS......................................................................40
+Contents of English Language ............................................................................................................41
+Contents of Mathematics.....................................................................................................................48
+Contents of Science and Technology...................................................................................................51
+Les Contenus du Français....................................................................................................................56
+Contents of Social Studies...................................................................................................................63
+Contents of Vocational Studies............................................................................................................65
+Contents of Arts...................................................................................................................................69
+Contents of Physical Education and Sports.........................................................................................70
+Contents of National Languages and Cultures.....................................................................................72
+Contents of Information and Communication Technologies...............................................................76
+BIBLIOGRAPHY..............................................................................................................................81
+GLOSSARY.......................................................................................................................................83
+LIST OF CONTRIBUTORS............................................................................................................85
+
+===== PAGE 8 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+8
+List of Tables
+Table 1: Domains, Weighting, Competences to be Developed and Related Subjects........................................15
+Table 2: Integrated Learning Themes.………………………………………………..…………................…..16
+Table 3:  Annual Learning Time in Hours per Level and Subject Area for the Single Shift System…........….20
+Table 4: Weekly Learning Hours per Level and Subject Area for the Single Shift System...............................20
+Table 5: Annual Learning Time in Hours per Level and Subject Area for the Double Shift System.................21
+Table 6: Weekly Learning Hours per Level and Subject Area for the Double Shift System..............................21
+Table 7: Terminal Learning Outcomes and Evaluation Criteria (English Language)........................................26 
+Table 8: Terminal Learning Outcomes and Evaluation Criteria (Mathematics)………….....…..............…….27 
+Table 9: Terminal Learning Outcomes and Evaluation Criteria (Science and Technology)……….......……...29
+Tableau 10: Attentes de ﬁ n de niveau.………….............................................…………...................................30
+Tableau 11: Les  attentes à la ﬁ n de niveau et les critères d’évaluation…………………..….......……..…......30
+Table 12: Terminal Learning Outcomes and Evaluation Criteria (Citizenship)………………..............……...31
+Table 13: Terminal Learning Outcomes and Evaluation Criteria (Vocational Studies).......…...............….…..33
+Table 14 Terminal Learning Outcomes and Evaluation Criteria (Arts)……….………………..............……..34
+Table 15: Terminal Learning Outcomes and Evaluation Criteria (PES)…………………...............……….....36
+Table 16: Terminal Learning Outcomes and Evaluation Criteria (National Languages and Cultures).............37 
+Table 17: Terminal Learning Outcomes and Evaluation Criteria (ICTs)……………………...........................39
+Table 18: Integrated Learning Themes for Level I and Level II (classes 1/2/3/4)...............................................40
+Table 19: Integrated Learning Themes for Level III (classes 5/6).....................................................................40
+Table 20: English Language contents, expected learning outcomes and methodology......……………………41
+Table 21: Mathematics contents, expected learning outcomes and methodology.....………..………………...48
+Table 22: Science and Technology contents, expected learning outcomes and methodology.…….…..……....51
+Tableau 23: Les contenus du Français …...................……………………………………………..….……....56
+Table 24: Citizenship contents, expected learning outcomes and methodology……………….……………...63
+Table 25: Vocational Studies contents, expected learning outcomes and methodology...……………...….….65 
+Table 26: Arts contents, expected learning outcomes and methodology…………………..........……….........69
+Table 27: Physical Education and Sports  contents, expected learning outcomes and methodology.....….…...70
+Table 28: National Languages and Cultures contents, expected learning outcomes and methodology .………72
+Table 29: Information and Communication Technologies contents, expected learning outcomes and  
+ 
+ 
+   methodology.................……................................................................................……………..........75
+
+===== PAGE 9 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+9
+List of Figures
+Figure 1: Link between the Learning Domains and the National Core Skills/Broad-based   
+ 
+ 
+   Competences..................................…………………………………...…….…...... 
+22
+Figure 2: Cyclical Teaching and Learning Process...........…………………………………… 
+24
+Figure 3: Components of English Language ……………………………………...………... 
+25
+Figure 4: Components of Mathematics ……………………………………………...……... 
+27
+Figure 5: Components of Science and Technology………………………...……………….  
+28
+Figure 6: Les composants du français ………………………………...……………………. 
+29
+Figure 7: Components of Social Studies…………………………………………………… 
+31
+Figure 8: Components of Vocational Studies …………………………....…….…………… 
+32
+Figure 9: Components of Arts………………………………………...…………………….. 
+34
+Figure 10: Components of Physical Education and Sports….……………….....…………... 
+35
+Figure 11: Components of National Languages and Cultures……………...……………….. 
+37
+Figure 12 : Components of Information and Communication Technologies……....………... 
+38
+
+===== PAGE 10 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+10
+List of Abbreviations and Acronyms
+ADEA 
+Association for the Development of Education in Africa
+CESA 
+Continental Education Strategy for Africa
+EFA 
+Education For All
+ETSSP 
+Education and Training Sector Strategy Paper
+GACL 
+General Alphabet of Cameroonian Languages
+GESP 
+Growth and Employment Strategy Paper
+ICT 
+Information and Communication Technology
+IGE 
+Inspectorate General of Education
+ILT 
+Integrated Learning Theme
+MDGs 
+Millennium Development Goals
+MINEDUB Ministry of Basic Education
+PBL 
+Project Based Learning
+PES 
+Physical Education and Sports
+SDGs 
+Sustainable Development Goals
+UNESCO 
+United Nations Educational Scientiﬁ c and Cultural Organization
+UNICEF 
+United Nations International Children’s Emergency Fund
+
+===== PAGE 11 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+11
+GENERAL INTRODUCTION
+In 1990, the World Conference on Education For All (EFA) which held in Jomtien, Thailand, made 
+a clarion call for universal quality primary education. During this conference, emphasis was laid 
+on access, equity and quality primary education for all. Apart from declaring that “Education is 
+the fundamental right for all people, women and men of all ages throughout the world”, the EFA 
+conference also underscored that
+…active and participatory approaches are particularly valuable in assuring learning acquisition and 
+allowing learners to reach their fullest potentials. It is, therefore, necessary to deﬁ ne acceptable levels 
+of learning acquisition for educational programmes and to improve and apply systems of assessing 
+learning achievement. 
+A decade after Jomtien, in the year 2000, the World Education Forum held in Dakar, Senegal where 
+the Dakar Framework for Action focused, among others, on “HIV/AIDS, early childhood education, 
+school health, education of girls and women, adult literacy and education in situations of crisis and 
+emergency”. To further expand on the education agenda of Jomtien, the Dakar meeting, after careful 
+evaluation, extended the scope of educational imperatives to include: 
+• 
+Expanding and improving comprehensive early childhood care and education, especially for 
+the most vulnerable and disadvantaged children
+• 
+Ensuring that by 2015, all children, particularly girls, children in diﬃ  cult circumstances 
+and those belonging to ethnic minorities, have access to and complete free and compulsory 
+primary education of good quality 
+• 
+Ensuring that the learning needs of all young people and adults are met through equitable 
+access to appropriate learning and life-skills programmes 
+• 
+Achieving a 50 per cent improvement in levels of adult literacy by 2015, especially for women, 
+and equitable access to basic and continuing education for all adults 
+• 
+Eliminating gender disparities in primary and secondary education by 2005 and achieving 
+gender equality in education by 2015, with a focus on ensuring girls’ full and equal access to 
+and achievement in basic education of good quality 
+• 
+Improving all aspects of the quality of education and ensuring excellence of all so that 
+recognized and measurable learning outcomes are achieved by all, especially in literacy, 
+numeracy and essential life skills.
+There was renewed zeal to move the agenda of education forward as key stakeholders to the course of 
+education at the World Education Forum 2015 in Incheon, Korea declared that:
+building on the legacy of Jomtien and Dakar, this Incheon Declaration is a historic commitment 
+by all of us to transform lives through a new vision for education, with bold and innovative 
+actions, to reach our ambitious goal by 2030.  Our vision is to transform lives through 
+education, recognizing the important role of education as a main driver of development and in 
+achieving the other proposed SDGs. We commit with a sense of urgency to a single, renewed 
+education agenda that is holistic, ambitious and aspirational, leaving no one behind.
+In order to meet up with these education milestones, Cameroon had to carry out major actions which 
+included the writing of syllabuses on HIV/AIDS, on Human Rights and on ICTs. Furthermore, the 
+revision of curricula to align with the provisions of the Incheon World Education Forum became im-
+perative. 
+
+===== PAGE 12 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+12
+The vision of the new curriculum falls in line with the SDG4 which seeks to ensure inclusive and 
+equitable quality education and promote lifelong learning for all with focus on access, equity and 
+inclusion, quality and learning outcomes within a lifelong learning approach. This is in line with the 
+vision of  the Education Forum which states that by 2030, all girls and boys should be able to complete 
+free, equitable and quality primary and secondary education leading to relevant and eﬀ ective learning 
+outcomes. Access to quality early childhood development, care and pre-primary education should 
+be granted so that children are ready for primary education. By the same token, all men and women 
+should have aﬀ ordable and quality technical, vocational and tertiary education, including university; 
+and the number of youths and adults who have relevant skills, including technical and vocational 
+skills, for employment, decent jobs and entrepreneurship should be substantially increased.
+In addition, the vision of the Continental Education Strategy for Africa (CESA 2016-2025), reorienting 
+“Africa’s education and training systems to meet knowledge, competencies, skills, innovation 
+and creativity required to nurture African core values and promote sustainable development at the 
+national, sub-regional and continental levels” has carefully been addressed in this curriculum. The 
+present curricular reform, taking its cue from these instruments, is an attempt to respond to current 
+trends so as to provide an education, from early childhood, that would address the needs of each 
+child through the development of their mind-set. This is in corroboration with the law to Lay Down 
+Guidelines for Education (1998) which states in Article 4 that the general aim of education is to 
+ensure the intellectual, physical, civic and moral development of the child as well as its economic, 
+socio-cultural, political and moral integration in the society.
+Nonetheless, faced with the problem of quality and the phasing out of the Cameroon Primary School 
+Syllabuses for both subsystems, which date as far back as 2000, the building up of a new curriculum 
+became a necessity. 
+The concerns raised by the International, Continental and National instruments reviewed above, were 
+addressed in the National Core Skills Framework: communication in the two oﬃ  cial languages, (English 
+and French), and the use of at least one national language; use of basic notions in Mathematics, Science 
+and Technology; practice of social and citizenship values; demonstration of  the spirit of autonomy, 
+a sense of initiative, creativity and entrepreneurship; use of  basic Information and Communication 
+Technology concepts and tools; pratice of lifelong learning; and the practice of Physical, Sports and 
+Artistic activities. These National Core Skills are hinged on the Broad-Based Competences namely: 
+intellectual, methodological, personal and interpersonal, and communication competences. The 
+National Core Skills Framework constitutes the springboard of this curriculum.
+The curriculum is presented in three parts. Part One gives an overview of the document, Part Two 
+deﬁ nes the domains and the subjects, while  Part Three provides the contents of the syllabus.
+
+===== PAGE 13 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+13
+PART ONE
+ OVERVIEW
+This section presents the learner’s proﬁ le at the end of primary school in Cameroon, the domains and 
+subjects, the competences to be developed, the integrated learning themes, the pedagogical approaches, 
+assessment strategies, weighting and the time allocated to the diﬀ erent subjects. 
+The Learner’s Proﬁ le
+The Ministry of Basic Education intends to develop the knowledge, skills and attitudes of learners 
+under its authority. At the end of the primary school cycle, the learner is expected to have acquired 
+national core skills in view of stepping into secondary school or engaging in other learning contexts 
+or activities. Furthermore, the learner must equally have acquired key values in the ﬁ ve domains. On 
+a similar note, they should show interest in learning all the subjects. 
+The Cameroon Education System outlines seven National Core Skills which should be acquired by the 
+end of both nursery and primary cycles of education. They include:
+1. Communication in the two oﬃ  cial languages (English and French) and the use of at least 
+one national language
+Communication in English, in French and in at least one National Language implies the ability to 
+use the four language skills of these languages. The learner should be able to listen, communicate 
+orally, and be able to read and to write.  The language competence is a prerequisite for access to 
+other core skills.
+2. Use of basic notions in Mathematics, Science and Technology
+Introducing notions of Mathematics, Science, and Technology involves the acquisition of 
+knowledge, skills and attitudes in these subjet areas and the ability to use them to address 
+challenges in real life situations. 
+3. Practice of Social and Citizenship Values (morality, good governance and budgetary 
+transparency) 
+This involves inculcating patriotic, moral, citizenship and values of good governance in the 
+learners of both cycles so as to prepare them for a harmonious insertion into the society. 
+4. Demonstration of the Spirit of Autonomy, a Sense of Initiative, Creativity, and 
+Entrepreneurship
+Developing this competence in the learner calls for the assembling of multidisciplinary 
+knowledge and skills in view of developing the learners’ social integration skills, creativity as 
+well as managerial and entrepreneurial potentials. 
+5. Use of Basic Information and Communication Technology Concepts and Tools
+Generally, this core skill requires the use of information and communication technology tools 
+in school and in society. It is related to healthy, safe and responsible use of various ICT devices 
+for learning and for leisure activities. In addition to this, it develops logical and critical thinking, 
+automated management of information (analysing, summarizing, and assessing), and apt 
+communication skills.
+
+===== PAGE 14 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+14
+6. Practice of Lifelong Learning 
+This implies that the learner will demonstrate the desire and will to undertake and continue 
+education, organize self, especially through eﬃ  cient time and information management, 
+individually or in groups. 
+7. Practice of Physical, Sports and Artistic Activities
+This competence provides learners with a platform to develop their physical, psycho-motor, 
+artistic, personal and interpersonal skills as well as improve their well-being. It enables them 
+to acquire knowledge, skills and attitudes required for their participation in several physical, 
+psycho-motor, sports and leisure activities in order to strengthen social harmony and ensure a 
+healthy lifestyle. 
+Broad-based Competences
+The Cameroon National Core Skills Framework comprises four broad-based competences as follows:
+1. Intellectual competences 
+Intellectual Competences include:
+• exploiting information
+• solving problems
+• acquiring logical thinking and a  sense of observation 
+• exercising critical judgement
+• practising creative and innovative thinking 
+2. Methodological competence
+Methodological competences include: 
+• giving oneself eﬃ  cient working methods
+• exploiting information and communication technologies 
+• organizing one’s learning 
+• arousing the desire to learn each subject 
+3. Personal and interpersonal competences 
+Personal and interpersonal competences enable the learner to: 
+• develop his/her personality
+• acquire abilities in view of his/her socio-cultural integration and individual fulﬁ lment 
+• cooperate with others
+4. Communication competences 
+Communication competences enable the learner to: 
+• communicate in an appropriate manner in the two oﬃ  cial languages 
+• communicate in at least one national language 
+ 
+Domains, Weighting, Competences and Subjects 
+In Table 1 that follows, the domains and their weightings are provided. The competences from the 
+National Core Skills Document that each domain develops are indicated and the subjects that are 
+needed to develop these competences are equally listed. 
+
+===== PAGE 15 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+15
+Table 1: Domains, Weighting, Competences to be Developed and Related Subjects
+No
+Domain/Weighting
+Competences to be Developed
+ Subjects
+1
+Basic knowledge (60%)  
+- 
+Communication in the two oﬃ  cial 
+languages (English and French) and the 
+use of at least one national language
+- 
+Use of  basic notions in mathematics, 
+science and technology
+- 
+Practice of lifelong learning 
+- 
+The four broad-based competences
+- English Language
+- Mathematics 
+- Science and 
+Technology
+- French 
+2
+Communal life and national 
+integration (5%)  
+- 
+Practice of social and citizenship 
+values (Morality, good governance and 
+budgetary transparency) 
+- 
+Practice of lifelong learning 
+- 
+The four broad-based competences
+- Social Studies
+3
+Vocational and life skills 
+(20%) 
+- 
+Demonstration of the spirit of 
+autonomy, a sense of initiative, 
+creativity, and entrepreneurship
+- 
+Practice of  physical, sports and artistic 
+activities
+- 
+Practice of lifelong learning 
+- 
+The four broad-based competences
+- Vocational Studies
+- Arts 
+- Physical Education 
+and Sports
+4
+Cultural identity (5%)
+- 
+Practice of lifelong learning 
+- 
+The four broad-based competences
+- National Languages 
+and Cultures
+5
+Digital Literacy (10%)
+- 
+Use basic information and 
+communication technology concepts 
+and tools
+- 
+Practice of lifelong learning 
+- 
+The four broad-based competences
+-   Information and 
+Communication 
+Technologies (ICTs)
+The curriculum is learner - centred and is based on the development of skills needed to meet the 
+challenges of contemporary Cameroon in particular and the world at large. The syllabuses are presented 
+in three levels: Level 1 (class 1 and 2), Level 2 (class 3 and 4) and Level 3 (class 5 and 6).  In all, ten 
+subjects have been identiﬁ ed from the ﬁ ve domains namely: English Language, Mathematics, Science 
+and Technology, French, Social Studies, Vocational Studies, Arts, Physical Education and Sports, 
+National Languages and Cultures, and Information and Communication Technologies (ICTs). Details 
+about these subject areas (expected learning outcomes, content areas, suggested methods and didactic 
+materials) are laid out in Part Three.
+Integrated Learning Themes (ILTs) 
+In order to make learning relevant to daily life, eight integrated learning themes have been identiﬁ ed 
+to develop skills necessary in the harmonious integration of learners in their environment. The ILT for 
+the primary school cycle are presented in table 2.
+
+===== PAGE 16 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+16
+Table 2: Integrated Learning Themes
+Level   I 
+Level   II
+Level    III
+- 
+The home
+- 
+The village/town 
+- 
+The school
+- 
+Occupations 
+- 
+Travelling
+- 
+Health 
+- 
+Games  
+- 
+Communication
+- 
+The home 
+- 
+The village/town 
+- 
+The school 
+- 
+Occupations 
+- 
+Travelling 
+- 
+Health 
+- 
+Games 
+- 
+Communication
+- 
+Nature 
+- 
+The village/town 
+- 
+The school
+- 
+Occupations 
+- 
+Travelling
+- 
+Health 
+- 
+Sports and leisure
+- 
+The universe and space 
+The use of integrated learning themes represents the fundamentals of project-based learning. They 
+facilitate the learning-teaching process and make the essence of PBL come to light. The process 
+entails integrating themes that have been developed in order to facilitate teaching-learning in the 
+Primary School. These themes will constitute the basis of contextualizing the concepts of the subjects. 
+Integrated learning themes are the foundation on which all the activities for a deﬁ ned period of time 
+within the school year are expected to take place. This can be done for some weeks, months or beyond 
+and has a direct impact on project-based learning. An integrated approach unites all subjects and 
+gives opportunities to the learners to learn more through variant contents. Children will consequently 
+develop a deeper understanding of contents in their local contexts.
+The approach allows learners to explore, gather, process, reﬁ ne and present information. It also 
+allows learners to engage in purposeful and relevant learning. Learners are expected to see the 
+interconnectedness within curriculum areas. It is based on skill development around a particular theme 
+that is relevant to the pupils in the class. 
+Pedagogic approaches
+Teaching methods are special procedures through which educational goals are attained. The Cameroon 
+education system has experienced pedagogic evolutions from the Objective-based Approach (OBA) 
+through the Inferential Thinking Approach, that was referred to as “New Pedagogic Approach” to the 
+Competence-based Approach (CBA) or the Behavioural Objective-based Approach which is in use 
+today. The CBA facilitates the development of skills through the practice of Project Based Learning, 
+Cooperative Learning and Integrated Theme Learning. The underlying philosophy of the CBA requires 
+that learning should be based on the potentials of the learner. The learner should be responsible for 
+his/her own learning. Focus is on learning and not on teaching.  It is important for the classroom 
+teachers to diligently determine the characteristics of their learners. Lesson preparation should always 
+implicitly or overtly provide for gender equity, for inclusiveness and for multiple intelligences. 
+The pedagogic practices that make the learners more responsible for their own learning include:
+Project-Based Learning (PBL)
+Project-based learning is a pragmatic approach to learning in which learners create their own knowledge 
+through learning activities built around intellectual inquiry and a high degree of engagement with 
+meaningful tasks. Projects are designed to allow learners with a variety of diﬀ erent learning styles to 
+demonstrate their acquired knowledge, skills and attitudes. Therefore, a well-designed Project-Based 
+Learning activity is one which addresses diﬀ erent learning styles and does not assume that all learners 
+
+===== PAGE 17 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+17
+can demonstrate their knowledge, skills and attitudes in a single or standard way. It is an eﬀ ective way 
+of connecting classroom activities to the real world through a process of integrating the four broad-
+based competences in the learner’s life. PBL is an “investigative” or “discovery” type of learning. 
+It is a research-based method of learning, wherein, together with the learners, questions are asked, 
+investigated and solutions proposed and presented. 
+Commitment to project-based learning enables the learner to solve many problems and makes the 
+teaching-learning process more skill-based. In practical terms, PBL can be implemented in the 
+following ways:
+1. Identify a problem: This has to be done together with the learners in order to give them ownership 
+of their learning and of the ﬁ nal product which will be the project. Once a problem is identiﬁ ed, a 
+project is designed to bring about a solution to the said problem. 
+2. Identify all the parts of a project namely: Beginning, progression and a culminating event. That 
+is, you should master how to start oﬀ  with the project because as mentioned earlier, it should be a 
+process that involves learning across the curriculum or better still, across all subjects. There is a 
+progression part in a project in Project-Based Learning in order to show that the project is not an 
+end in itself but a means to an end. This implies that the subjects are taught in order to enable the 
+learner either solve a problem or produce something concrete. 
+3. Brainstorm with colleagues about the progression and set aside a “Project Book” where ideas 
+are jotted down. Points about the progress of the project should equally be jotted (monitoring 
+progress). This enables the actors in the project to see what is working and what is not working 
+and reformulate questions and bring out more concrete solutions. This will also lead or aid in the 
+culmination event where the entire process will be explained. 
+4. Discuss with learners. Learners are skilfully guided both in class and at the project site towards the 
+realisation of the project. The learner’s place should not be taken up by the teacher; they should be 
+guided to complete or carry out tasks as individuals and as groups as the case may be. The tasks 
+should not be carried out for them: leading questions and clues are vital in helping them carry out 
+their tasks.  
+5. Assign a role to every learner. No learner should feel isolated or abandoned nor left behind. 
+Assigning roles empowers them and builds the spirit of togetherness, initiative, creativity and 
+responsibility in the learner. 
+6. Discuss the progress of the project with individual learners, groups and with the whole class. 
+Discussing the progress of the project entails participation, improving on aspects that are lacking 
+and making the project participants (learners) feel anxious to complete the task/solve the problem.
+7. Respect all the three parts of the project, that is, introduction (identifying a problem and proposing 
+a solution that is a project), progression (carrying out the project) and the culmination event 
+(presenting and evaluating the project).
+NB: The culmination event is paramount and should not be left out. It must be a presentation by 
+the learners while the teacher evaluates the success of the project with the help of the points in the 
+“Project exercise/note book”. Project-based learning helps the teacher to assess learners as many 
+times as the need arises.
+
+===== PAGE 18 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+18
+Beneﬁ ts of Project-based Learning 
+Project-based learning:
+• promotes lifelong learning skills
+• enhances logical thinking
+• promotes team spirit and hard work
+• promotes entrepreneurial skills
+• promotes bonding and interaction
+• creates responsible attitudes in learners
+• helps learners to manage their resources
+• motivates learners
+• builds conﬁ dence in learners
+• renders learning practical
+• situates learning in a real life situation
+• makes learners inquisitive/curious
+• develops problem-solving skills in learners
+• improves on learners communication skills
+• makes the task of assessment and evaluation for the teacher easier and more enjoyable
+Cooperative Learning (CL)
+Cooperative learning is a speciﬁ c kind of collaborative learning. In cooperative learning, pupils work 
+together in small teams on a structured activity. They are individually accountable for their work, and 
+for the work of the group as a whole. The Integrated Theme Learning and Cooperative Learning are 
+supporting strategies of the PBL. 
+The strategy consists of putting learners into small, mixed-ability learning teams.  They are responsible 
+not only for learning the contents in question, but also for helping their teammates learn. The most 
+amazing thing here is that the learning process becomes a web, wherein you do not succeed alone. 
+The learners must be made to understand that if one person fails, the entire team/boat sinks, and if one 
+person succeeds, the success aﬀ ects everyone else. Within cooperative learning teams, pupils discuss 
+the material to be learned with one another, and support each other to understand it, and encourage 
+and help one another to have a clear understanding of their participation. Teams diﬀ er from groups 
+because cooperative learning is constituted of teams whereby:
+• goals are shared 
+• information is circulated
+• roles are assigned
+• materials are managed
+• teammates depend on one another to complete tasks successfully
+• pupils learn to respect each other’s contributions and opinions
+• pupils engage in “cognitive collaboration.” They must organize their thoughts to explain 
+ideas to teammates
+• pupils have fun while learning
+• pupils’ social nature is used to their advantage
+• social, leadership, communication, decision making, problem solving, and conﬂ ict resolution 
+skills are developed 
+
+===== PAGE 19 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+19
+Assessment
+Assessment is the process of passing judgements on learners’ knowledge, skills and attitudes with 
+the sole aim of making decisions about their education. It is an integral part of the teaching-learning 
+process in the Primary School and constitutes part of the curriculum. Assessment is a means of 
+objectively informing parents, guardians and policy makers on learners’ progress in school. 
+Diverse tools should be used to collect information about the learner in order to moderate and increase 
+learners’ chances of learning from one another. Nevertheless, learners must be assessed fairly and at 
+the same time taking into consideration that each learner has their learning styles. Consequently, all 
+the learners may not always be at the same level of attaining the expected learner outcome.
+Assessment in primary schools in Cameroon can take three forms (oral, written, practical). There are 
+many ways through which information can be gathered about learner’s progress. This can be done 
+through: observation checklists; learner’s self-assessment; daily practical assignments; samples of 
+learner’s work; learner’s willingness to participate and contribute in projects/conferencing; oral and 
+written quizzes; portfolios; willingness to be involved in class and school activities. 
+It is worth stating that formative and summative assessment should take into consideration knowledge, 
+skills and attitudes as indicated on the “Expected Learning Outcomes” column of each subject.  
+Types of Assessment
+Diagnostic Assessment: This type of assessment veriﬁ es what the learner already knows and it is 
+used to improve on the learner’s achievement. Hence, each time we have to embark on a learning and 
+teaching experience, we must always try to ﬁ nd out learners’ level of competence and/or knowledge, 
+skills and attitudes about the new material. This helps the teacher develop strategies and activities that 
+can be used to facilitate learning.
+Formative Assessment: This type of assessment keeps the learners in permanent interaction with 
+the curriculum during the teaching-learning process. It is designed to keep track of learners’ learning 
+achievements. Their response to this type of interaction equally helps the curriculum user (the teacher) 
+to provide feedback to both the learner and the parents. 
+Summative Assessment: It is carried out periodically to show the level of attainment of expected 
+learning outcomes at the end of the term, year, level or cycle. It is a more judgmental kind of assessment. 
+Whatever the case, summative assessment must not always be standardized tests. There is need for a 
+variation in the use of assessment instruments. 
+Weighting and Time Allocation
+Tables 3, 4, 5 and 6 present the weighting and time allocation for the single shift and the double shift 
+systems.
+
+===== PAGE 20 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+20
+Table 3: Annual Learning Time in Hours per Level and Subject Area for the Single Shift System
+Subject Area
+Level 1
+Level 2
+Level 3
+English Language and Literature
+172.5
+172.5
+138
+Mathematics 
+69
+69
+103.5
+Science and Technology
+69
+69
+103.5
+Français 
+103.5
+103.5
+69
+Social Studies
+34.5
+34.5
+34.5
+Vocational Studies
+69
+69
+69
+Arts 
+34.5
+34.5
+34.5
+Physical Education and Sports
+34.5
+34.5
+34.5
+National Languages and Cultures
+34.5
+34.5
+34.5
+Information and Communication Technologies (ICTs)
+69
+69
+69
+Two short breaks of 15 minutes each
+52.9
+52.9
+52.9
+Daily assembly 
+57.5
+57.5
+57.5
+Daily long break
+115
+115
+115
+Total 
+915.4
+915.4
+915.4
+Table 4: Weekly Learning Hours per Level and Subject Area for the Single Shift System
+Subject Area
+Level 1
+Level 2
+Level 3
+English  Language and Literature
+7.5
+7.5
+6
+Mathematics 
+3
+3
+4.5
+Science and Technology
+3
+3
+4.5
+Français 
+4.5
+4.5
+3
+Social Studies
+1.5
+1.5
+1.5
+Vocational Studies
+3
+3
+3
+Arts 
+1.5
+1.5
+1.5
+Physical Education and Sports
+1.5
+1.5
+1.5
+National Languages and Cultures
+1.5
+1.5
+1.5
+Information and Communication Technologies (ICTs)
+3
+3
+3
+Two short breaks of 15 minutes each
+2.3
+2.3
+2.3
+Daily assembly 
+2.5
+2.5
+2.5
+Daily long break
+5
+5
+5
+Total 
+39.8
+39.8
+39.8
+
+===== PAGE 21 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+21
+Table 5: Annual Learning Time in Hours per Level and Subject Area for the Double Shift System
+Subject Area
+Level 1
+Level 2
+Level 3
+English Language and Literature
+172.5
+172.5
+138
+Mathematics 
+69
+69
+103.5
+Science and Technology
+69
+69
+103.5
+Français 
+103.5
+103.5
+69
+Social Studies
+34.5
+34.5
+34.5
+Vocational Studies
+69
+69
+69
+Arts 
+34.5
+34.5
+34.5
+Physical Education and Sports
+34.5
+34.5
+34.5
+National Languages and Cultures
+34.5
+34.5
+34.5
+Information and Communication Technologies (ICTs)
+69
+69
+69
+One short break of 30 minutes per level
+11.5
+11.5
+11.5
+Daily assembly 
+0.5
+0.5
+0.5
+No daily assembly and long break
+0
+0
+0
+Total 
+702
+702
+702
+Table 6: Weekly Learning Hours per Level and Subject Area for the Double Shift System
+Subject Area
+Level 1
+Level 2
+Level 3
+English Language and Literature
+7.5
+7.5
+6
+Mathematics 
+3
+3
+4.5
+Science and Technology
+3
+3
+4.5
+Français
+4.5
+4.5
+3
+Social Studies
+1.5
+1.5
+1.5
+Vocational Studies
+3
+3
+3
+Arts 
+1.5
+1.5
+1.5
+Physical Education and Sports
+1.5
+1.5
+1.5
+National Languages and Cultures
+1.5
+1.5
+1.5
+Information and Communication Technologies (ICTs)
+3
+3
+3
+One short break of 30 minutes 
+3
+3
+3
+One weekly  assembly 
+0.5
+0.5
+0.5
+No daily long break
+0
+0
+0
+Total 
+33.5
+33.5
+33.5
+Link between the Learning Domains and the National Core Skills/Broad-
+based Competences
+Generally, the Cameroon education-vision that is expressed in the National Core Skills Framework is 
+realised through PBL and ILT carried out in the subject areas that are lodged in the ﬁ ve domains. This 
+is illustrated in ﬁ gure 1. 
+
+===== PAGE 22 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+22
+Figure 1: Link between the Learning Domains and the National Core Skills/Broad-Base Competences
+
+===== PAGE 23 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+23
+Plan of Action for the Teaching-Learning Cycle
+The following steps will enable the teacher to put his/her plan into action:
+1. Identify learning outcomes in function of the national core skills and as stated in the integrated 
+monthly schemes of work.
+2. Based on the integrated learning theme of the month, identify a project and plan the activities that 
+will lead to its realization.
+3. The diﬀ erent activities are planned chronologically (entry behaviour, simple to complex) in relation 
+to the contents and contextualized through the ILT.
+4. Monitor the realization of the project and ensure that all learners carry out their tasks.
+5. Organize culmination events, that is, presentation of projects and assessment every last Thursday 
+and Friday of the four weeks. Depending on the level, the presentations and assessment should 
+cover three forms: oral, written and practice. A checklist should be prepared depending on the 
+stated learning outcomes in order to record learners’ progress in the class broadsheet (this will 
+constitute a gradual building of the information for pupils’ report cards which are ﬁ lled every 
+term).
+6. Carry out remediation activities where necessary.
+7. Do an auto-evaluation of the process. Note should be taken that this is a cyclical process within 
+each teacher’s community of practice (the school).
+Figure 2 illustrates the cyclical teaching and learning process.
+
+===== PAGE 24 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+24
+Identify a project within 
+the context of the 
+integrated learning theme
+(ILT)
+Carry out teaching-learning 
+activities,  contextualizing 
+them within the ILT and 
+incorporating the project
+Project activities in 
+relation to the project 
+timeline
+Presentation of projects 
+and assessment (orally, 
+practically and written)
+Remediation 
+(where necessary)
+Auto-evaluation and 
+conﬁ rmation of acquired 
+KSAs of learners
+Figure 2: Cyclical Teaching and Learning Process
+Recognize that the 
+competences to be 
+developed in the learner 
+are drawn from the 
+National Core Skills 
+Framework
+
+===== PAGE 25 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+25
+PART TWO  
+DEFINITION OF DOMAINS AND THEIR
+RELATED CARRIER SUBJECTS
+Part two presents the ﬁ ve domains and their related carrier subjects. Each of these subjects is brieﬂ y 
+deﬁ ned while highlighting the national core skills that each develops, followed by a visual presentation 
+of the subject, its components, terminal learning outcomes, and suggested evaluation criteria.
+Domain 1: Basic Knowledge
+This domain is fundamental to the development of all other domains. It nurtures and advances literacy 
+and numeracy skills which are the pillars for a strong foundation in education and vital for living in the 
+21st century. As the name implies, basic knowledge is intended to create the base and a solid foundation 
+for all other learning. There is no gainsaying that the ability to read and to work with numbers are 
+prerequisites for the success of any educational system. Many studies carried out in Cameroon on 
+learning achievements in the past couple of years show that there is a dwindling eﬀ ect in literacy and 
+numeracy to the extent that children who leave primary schools in Cameroon today can barely read 
+and/or write, talk less of manipulating numbers and ﬁ gures conﬁ dently. It is in this light that, it became 
+necessary to give more learning-teaching time to a domain that will properly develop learners’ literacy 
+and numeracy skills and hence enhance their performance in other learning domains. Consequently, 
+a sixty percent learning-teaching time has been assigned to this domain. The domain is going to be 
+powered by English Language and Literature, Mathematics, Science and Technology and Français.  
+English Language
+English Language is one of the two oﬃ  cial languages in Cameroon. It is the language of instruction for 
+the English Subsystem of Education. A literature component has been added to this subject in level two 
+and level three. While English Language enables learners to express themselves orally and in writing, 
+Literature enhances the reading culture in them. The teaching of English will target the development 
+of  the listening, speaking, reading and writing skills with emphasis on grammar, vocabulary and 
+pronunciation. Like all languages, English is rule-governed, thus the systematic functional teaching 
+of grammar is strongly recommended. This will enable learners use the language eﬀ ectively.
+ This subject has been developed from domains that were derived from the following national core 
+skills:
+• Communication in the two oﬃ  cial languages (English and French) and the use of at least 
+one national language
+• Practice of lifelong learning and the four broad-based competences
+The components of the subjects are presented in ﬁ gure 3.
+Figure 3: Components of English Language
+
+===== PAGE 26 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+26
+Terminal Learning Outcomes
+At the end of this level, learners will be able to: 
+• listen attentively for information in a given context
+• interpret information and react appropriately
+• communicate to express feelings, ideas and thoughts
+• read texts ﬂ uently in a given context
+• write  texts legibly and coherently to express feelings, ideas and thoughts
+• show great interest in communicating in English
+Evaluation Criteria
+The terminal learning outcomes at the end of level 2 and the accompanying evaluation criteria are 
+illustrated in table 7.
+Table 7: Terminal Learning Outcomes and Evaluation Criteria
+Skill
+Terminal Learning Outcomes
+Evaluation Criteria
+Listening 
+and 
+Speaking
+• 
+Listen attentively for information in a given 
+context.  
+• 
+Interpret information and react 
+appropriately
+• 
+Communicate to express feelings, ideas and 
+thoughts 
+• 
+Fluency in speaking  
+• 
+Audibility in speech
+• 
+Sustainance of attention
+• 
+Willingness to take turns in speaking,
+• 
+ use of appropriate tones in speech  
+Reading
+• 
+Read texts ﬂ uently in a given context. 
+• 
+Fluency and audibility in reading,
+• 
+Respect of voice pitch 
+• 
+Correctness of answers to 
+comprehension questions
+• 
+Presentation of materials 
+• 
+Respect of instructions
+Writing
+• 
+Write  texts legibly and coherently to 
+express feelings, ideas and thoughts
+• 
+Legibility, meaning, coherence, 
+the right posture, right direction, 
+presentation of materials, respect of 
+instructions
+Mathematics
+Mathematics develops the learner’s creativity, initiative and problem-solving skills. It equally 
+develops logical and inferential thinking, the ability to deduce and visualize in space and time. 
+Through mathematics, the learner improves his/her knowledge of science, technology, agriculture 
+and engineering. It is also necessary for ﬁ nancial literacy and relevant to most forms of employment. 
+Mastering Mathematics entails the acquisition of knowledge, skills and attitudes as well as problem 
+solving skills related to the diﬀ erent integrated learning themes.  Primary School learners need these in 
+computation, logical thinking and problem solving to construct knowledge and understand the world 
+around them. The Mathematics syllabus also guides teachers, educators and examiners to prepare for 
+teaching and learning as well as for formative and summative assessment. In this curriculum, ﬁ ve 
+components of Mathematics have been developed, namely: Sets and Logic, Numbers and Operations, 
+Measurement and Size, Geometry and Space, and Statistics and Graphs. 
+This subject has been developed from domains that were derived from the following national core 
+skills.
+• Use of basic notions in Mathematics, Science and Technology
+• Practice of lifelong learning and the four broad-based competences
+
+===== PAGE 27 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+27
+The components of the subject are presented in ﬁ gure 4
+Figure 4: Components of Mathematics
+Terminal Learning Outcomes
+After the teaching-learning experiences in mathematics, learners will be able to:
+• solve problems involving sets and logic
+• solve problems involving number operations 
+• solve problems involving measurement units
+• construct diﬀ erent geometric shapes
+• categorize statistics on graphs
+• use mathematical skills in daily life
+• show interest in mathematics
+Evaluation Criteria
+The terminal learning outcomes and the evaluation criteria are illustrated in table 8.
+Table 8: Terminal learning outcomes and evaluation criteria 
+Terminal Learning Outcomes
+Evaluation Criteria
+- Solve problems involving sets and logic
+- Solve problems involving number operations 
+- Solve problems involving measurement units
+- Construct diﬀ erent geometric shapes
+- Categorize statistics on graphs
+- Use mathematical skills in daily life
+- Show interest in mathematics
+- Group, match and classify objects  and 
+numbers in sets using diﬀ erent attributes
+- Correct representation of sets, symbols and 
+ﬁ gures
+- Correct use of symbols, signs and diagrams
+-  Ordering and consistency
+- Appropriate use of operations and formulae
+- Associating quantities to  ﬁ gures and symbols
+- Proper use of mathematics tools
+- Solve  meaningful daily life problems
+
+===== PAGE 28 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+28
+Science and Technology
+Science and Technology is penetrating every aspect of societal life and therefore has become an 
+important component in the learning-teaching programmes at every level of education. It enables 
+learners to understand themselves and their environment as well as adapt to the ever changing world 
+in which they live. The teaching of Science and Technology develops the spirit of curiosity, creativity 
+and innovation. Through Science and Technology, learners will be able to predict and analyse causes 
+and eﬀ ects of phenomena and use scientiﬁ c approaches to solve emerging problems. These skills will 
+be developed in Health Education, Environmental Science as well as in Technology and Engineering. 
+This subject has been developed from domains that were derived from the following national core 
+skills:
+• Use  of basic notions in Mathematics, Science and Technology
+• Demonstration of the spirit of autonomy, a sense of initiative, creativity, and innovation
+• Practice of lifelong learning and the four broad-based competences 
+The components of the subject are illustrated in ﬁ gure 5.
+Figure 5: Components of Science and Technology
+Terminal Learning Outcomes
+At the end of this level, learners will be able to:
+• demonstrate knowledge of the human body, its functioning as well as care and hygiene
+• describe the environment including plants and animals
+• use scientiﬁ c instruments and technological tools
+• respect scientiﬁ c procedures and norms
+• construct miniatures and models 
+• reject superstitious beliefs and myths  
+Evaluation Criteria
+The terminal learning outcomes and evaluation criteria are illustrated in table 9.
+
+===== PAGE 29 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+29
+Table 9: Terminal Learning Outcomes and Evaluation Criteria
+Terminal Learning Outcomes
+Evaluation Criteria
+- Demonstrate knowledge of the human body, 
+its functioning as well as care and hygiene
+- Describe the environment including plants 
+and animals
+- Use scientiﬁ c instruments and technological 
+tools
+- Respect scientiﬁ c procedures and norms
+- Construct miniatures and models 
+- Reject  superstitious beliefs and myths  
+- Respect of procedures in experiments;
+- Exactitude of experiment results; 
+- Improvisation of materials in experiments;
+- Positive observable change in behaviour 
+- Dexterity (careful handling and manipulation 
+of objects)
+- Correct interpretation of phenomena/results.
+Français
+Le français est l’une des deux langues oﬃ  cielles du Cameroun. Il est la deuxième langue oﬃ  cielle 
+dans le sous-système anglophone. Il permet aux apprenants de communiquer oralement et par écrit 
+dans des situations de la vie quotidienne pour un vivre-ensemble harmonieux et de s’ouvrir au monde 
+francophone. L’acquisition du Français se fait à travers le développement des cinq (5) compétences 
+de base, à savoir la compréhension orale, l’expression orale en continu, l’expression orale en 
+interaction, la compréhension écrite (lecture) et la production écrite. Le développement de ces 
+compétences se fait à travers les sous-disciplines suivantes : Compréhension et expression orale (en 
+continu et en interaction), compréhension écrite (lecture), production d’écrits, grammaire, vocabulaire, 
+conjugaison et orthographe. Il s’agit d’acquérir une véritable compétence de communication 
+langagière qui englobe une composante pragmatique (acte de langage), linguistique (grammaire), 
+sociolinguistique et socio-culturel. 
+Il est à noter que l’enseignement de la grammaire, du vocabulaire, de la conjugaison et de l’orthographe 
+est fait en contexte et lors du développement des compétences de base. Ces compétences se développent 
+autour des centres d’intérêt suivants : la maison, la ville/village, l’école, les métiers, les voyages, les 
+jeux, les traditions et la communication. 
+Cette discipline a été développée à partir des domaines tirés des compétences clés suivantes.
+• Communiquer dans les deux langues oﬃ  cielles (français et anglais) et pratiquer au moins 
+une langue nationale
+• Apprendre à apprendre tout au long de la vie et les quatre compétences transversales. 
+Les composantes de cette discipline sont présentées dans la ﬁ gure 6. 
+Figure 6: Les composantes du français
+
+===== PAGE 30 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+30
+Tableau 10 : Attentes de ﬁ n de niveau
+Compétence
+Attentes à la ﬁ n du niveau
+Compréhension et 
+expression orales
+Écouter attentivement et s’exprimer de façon compréhensible avec le gestuel 
+approprié.
+Compréhension 
+écrite (lecture)
+Lire de courts textes simples en respectant la prononciation et l’intonation 
+puis relever des informations.
+Production d’écrits
+Ecrire des petits textes d’une (01) à trois (03) phrases en rapport avec des 
+situations de la vie quotidienne.
+Critères d’évaluation
+Les attentes du niveau et les critères d’évaluation du français au niveau 1 sont présenté dans le 
+tableau 11.
+Tableau 11 : Les attentes à la ﬁ n du niveau et les critères d’évaluation
+Attentes à la ﬁ n du niveau
+Critères d’évaluation
+Écouter attentivement et s’exprimer de 
+façon compréhensible avec le gestuel 
+approprié.
+- Production correcte et cohérente
+- Adéquation de la production à la situation                    
+- Respect des règles grammaticales.
+Lire de courts textes simples en respectant 
+la prononciation et l’intonation puis 
+relever des informations.
+- Déchiﬀ rage/décodage des sons, mots et phrases, 
+informations pertinentes                                                                           
+- Respect de la prononciation et de l’intonation 
+Ecrire des petits textes d’une (01) à trois 
+(03) phrases en rapport avec des situations 
+de la vie quotidienne.
+- Adéquation du texte à la situation  
+- Correction des énoncés
+- Cohérence de la production 
+Domain 2: Communal Life and National Integration
+Communal life and national integration refers to the notion of national unity, national integration and 
+living together. It transcends the peculiarity of all kinds of geographical, historical, linguistic, cultural, 
+religious and political entities. Communal life is the feeling of belonging to a particular community 
+and national integration brings people of various communities together. In essence, communal life 
+and national integration brings about self-love, love for others and respect for the common good. The 
+human person is a social being, hence must live with other human beings irrespective of race, religion, 
+socio-economic status etc. Children socialise more than adults and there is need to consolidate this 
+value in them. This domain is powered by Social Studies (history, geography and citizenship). Only 
+the citizenship component will be taught in Level One and all three components taught in Level Two 
+and Level Three.
+Social Studies
+Social studies is the study of political, economic, cultural and environmental aspects of society in the 
+past, present and future. It is intended to enable human beings to understand, preserve and transform 
+the environment for their wellbeing and for the welfare of the community. This involves inculcating 
+in learners patriotic, moral and citizenship values as well as good governance qualities in order to 
+prepare them for a harmonious insertion into the society.
+
+===== PAGE 31 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+31
+This subject has been developed from domains that were derived from the following national core 
+skills:
+• Practice of social and citizenship values (morality, good governance and budgetary 
+transparency)
+• Practice of lifelong learning and the four broad-based competences
+The components of the subject are presented in ﬁ gure 7.
+Figure 7: Component of Social Studies
+Terminal Learning Outcomes
+At the end of this level, learners will be able to:
+• identify the eﬀ ects of human activities
+• relate human activities to development
+• display a spirit of objectivity, tolerance, and patriotism
+• practise values of harmonious living
+• show love for nation and for the outside world
+• respect diﬀ erences in choices and personality
+• practise behaviour which will lead to the protection and security of people and national 
+property
+Evaluation Criteria
+The terminal learning outcomes and evaluation criteria for Social Studies are illustrated on table 12.
+Table 12: Terminal Learning Outcomes and Evaluation Criteria
+Terminal Learning Outcomes
+Evaluation Criteria
+- Identify the eﬀ ects of human activities
+- Relate human activities to development 
+- Practise values of harmonious living 
+- Show love for nation and for the outside world
+- Respect diﬀ erences in choices and personality 
+- Practice behaviour which will lead to the protection 
+and security of people and national property
+- Display a spirit of objectivity, 
+tolerance, and patriotism 
+- Respect of national emblems
+- Practise of social values
+- Involvement in awareness campaigns 
+- Logical explanations of events
+- Positive change of attitude
+
+===== PAGE 32 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+32
+Domain 3: Vocational and Life Skills
+This domain prepares the learner for the social and professional realities that they would face in 
+life. It provides them with opportunities to showcase talents and skills resulting in their integral 
+development. It equips them with the capacity to adapt to and transform their environments. This is 
+done by providing relevant and contextual technical and vocational training starters. In the context of 
+limited work opportunities, it is necessary to start orientating children to creative enterprise in early 
+education. In this way, a generation of people fully equipped to oﬀ er meaningful employment for 
+themselves and at the same time, possess skills required for full participation in everyday life will 
+be trained. Vocational studies and life skills is geared towards opening up learners’ minds, a ready 
+option for taking up technical education studies in secondary school. This domain equally encourages 
+children who, after primary education, might not be able to go to secondary school, to learn a trade 
+in order to earn a living. Either way, in order to survive in world economies today, every citizen from 
+all strata of life needs vocational and life skills. The domain will be developed through three main 
+subjects namely: Vocational Studies, Arts, and Physical Education and Sports (PES). 
+Vocational Studies
+Vocational Studies is a practical subject, which provides learners with the opportunity to develop talents, 
+initiative and creativity thereby enhancing their holistic development. It develops learners’ autonomy, 
+self-esteem and the spirit of entrepreneurship for subsequent self-reliance towards a responsible and 
+balanced life without any constraints on their ambitions for further education. Vocational Studies is 
+taught through Arts and Crafts, Agro Pastoral Farming and Home Economics. Only Arts and Crafts 
+and Agro-pastoral Farming will be taught in level one.
+Arts and Crafts: Activities in this component will enable learners to acquire techniques to fabricate 
+objects using natural and recycled materials from their environment.
+Agro Pastoral Farming: This activity will initiate learners into agricultural techniques and animal 
+farming. 
+Home Economics: This activity will help learners develop interest in house management such as 
+laundry, house craft, food and nutrition, needle work and mother craft. 
+This subject has been developed from domains that were derived from the following national core 
+skills:
+• Demonstration of the spirit of autonomy, sense of initiative, creativity and entrepreneurship
+• Practice of lifelong learning and the four broad-based competences
+The components of the subject are presented in ﬁ gure 8.
+Figure 8: Components of Vocational Studies
+
+===== PAGE 33 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+33
+Terminal Learning Outcomes
+At the end of this level, learners will be able to:
+- 
+use equipment to produce objects following a spelt out procedure
+- 
+acquire knowledge, skills and attitudes for productive work at home and effective 
+home management
+- 
+acquire knowledge, skills and attitudes to manipulate local materials through given 
+processes and procedures to produce objects
+- 
+produce arts objects using local materials
+- 
+demonstrate a spirit of collaboration
+- 
+manifest high self-esteem, interest, initiative, creativity, resourcefulness and good 
+value judgment
+Evaluation Criteria
+The Terminal Learning Outcomes and Evaluation criteria are presented on table 13.
+Table 13: Terminal Learning Outcomes and Evaluation Criteria 
+Terminal Learning Outcomes
+Evaluation Criteria
+- 
+Use equipment to produce objects following a spelt 
+out procedure
+- 
+Acquire knowledge, skills and attitudes for productive 
+work at home and effective home management
+- 
+Acquire knowledge, skills and attitudes to manipulate 
+local materials through given processes and 
+procedures to produce objects
+- 
+Produce arts objects using local materials
+- 
+Demonstrate a spirit of collaboration
+- 
+Manifest high self-esteem, interest, initiative, 
+creativity, resourcefulness and good value judgment
+- Quality of material used 
+- Respect of instructions 
+- Quality of final product 
+- Consistency in the 
+explanatory note 
+- Time used to carry out the 
+task 
+- Involvement in team work
+Arts
+Arts fosters the learner’s imagination, critical thinking skills, problem-solving, creativity and aesthetic 
+skills. Arts contents should engage, inspire and challenge learners, equipping them with knowledge 
+and skills that can enable them create their own artistic designs. Through this subject, the learner 
+acquires the spirit of open-mindedness and cultivates the attitude to appreciate beauty and develop his/
+her capacity for concentration, self-esteem, sense of sharing, assiduity, team spirit and patriotism. As 
+learners progress, they should be able to think critically and develop a more rigorous understanding 
+of arts. This subject aims at ensuring that all learners produce creative works, explore their ideas 
+and record their experiences, thus becoming eﬃ  cient in drawing, painting and other art and design 
+techniques. 
+This subject has been developed from domains that were derived from the following core skills:
+• Practice of physical, sports and artistic activities
+• Demonstration of the spirit of autonomy, a sense of initiative, creativity and entrepreneurship
+• Practice of lifelong learning and the four broad-based competences
+It is taught through the following components: visual arts and performing arts.              
+
+===== PAGE 34 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+34
+The components of the subject are presented in ﬁ gure 9.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 9: Components of Arts  
+ 
+ 
+ 
+ 
+ 
+ 
+Terminal Learning Outcomes
+At the end of this level, the learner will be able to:
+-  create artistic objects
+-  draw imaginative and creative literary images expressing feelings and emotions 
+-  use voice, body and/or inanimate objects to convey feelings and emotions 
+-  show interest in morality and appropriate life styles 
+Evaluation Criteria
+ The Terminal Learning Outcomes and evaluation criteria are presented in table 14.
+Table 14: Terminal Learning Outcomes and Evaluation Criteria
+Terminal Learning Outcomes
+Evaluation Criteria
+- Create artistic objects
+- Draw imaginative and creative literary 
+works expressing feelings and emotions 
+- Use voice, body and/or inanimate 
+objects conveying feelings and 
+emotions 
+- Show interest in morality and 
+appropriate life styles
+- Compliance with guidelines and techniques (correct 
+use of geometric shapes and colours
+- Ability to write imaginatively, creatively expressing 
+original thoughts
+- Ability to create and sing a song
+- Synchronization between voice variations and 
+percussion.
+- Ability to convey feelings and thoughts through 
+music
+- Mastery of the stage and respect for the text 
+- Ability to act a role freely 
+- Ability to recognize and use appropriate costumes, 
+make-up and hairstyles
+- Ability to create and execute dance techniques
+- Descent looks, behaviour, respect, punctuality, 
+cheerful nature, respond positively to corrections 
+etc.
+
+===== PAGE 35 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+35
+Physical Education and Sports
+Physical Education and Sports is a set of physical activities that contributes to the physical, moral 
+health and social development of the learner. It promotes a harmonious construction of the body and 
+makes the learner ﬁ t to perform individual and collective tasks. It is through physical and sporting 
+activities that the child’s brain internalizes the foundations of laterality (left/right), directionality (up, 
+down, in, out) and position in space (over, under, behind). These are concepts that are important to 
+the learner’s mathematical thinking, vocabulary development, reading and writing skills. Physical 
+Education and Sports remains an eﬀ ective educational tool as it develops learners’ mental capacities 
+through body ﬁ tness activities.
+This subject has been developed from a domain that was derived from the following core skills:
+• Practice of physical, sports and artistic activities
+• Practice of lifelong learning and the four broad-based competences
+The components of the subject are presented in ﬁ gure 10.
+Figure 10: Components of Physical Education and Sports (PES)
+Terminal Learning Outcomes 
+ 
+ 
+ 
+ 
+ 
+ Physical Education and Sports enables the learners to:
+- 
+discover his/her body
+- 
+practise social and interpersonal communication skills
+- 
+stimulate his/her physical, intellectual and emotional growth
+- 
+maintain a healthy body
+Evaluation criteria
+The terminal learning outcomes and evaluation criteria of Physical Education and Sports are presented 
+in table 15.
+
+===== PAGE 36 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+36
+Table 15: Terminal Learning Outcomes and Evaluation Criteria
+Terminal Learning Outcomes
+Evaluation Criteria
+- Discover his/her body
+- Practise social and interpersonal 
+communication skills
+- Stimulate their physical, aﬀ ective, 
+intellectual and emotional growth
+- Maintain a healthy body
+- Alertness, vigilance, posture
+- Accuracy, respect of rules, fanfare, collaboration
+- Respect of signals, endurance
+- Identify parts of the body and their roles
+- Ability to carry out routine activities eﬀ ectively
+Domain 4: Cultural Identity
+Cultural identity is a sense of belonging to a group or a nation with distinct ways of doing things. This 
+is characterised by language, tradition and religion. Cultural identity is, in summary, a set of traits 
+(customs) that characterises a people and diﬀ erentiates them from other people. The case of Cameroon 
+is visibly unique because of her multicultural nature. This domain is developed via National Languages 
+and Cultures.
+National Languages and Cultures
+National Languages and Cultures constitutes the acquisition of knowledge, skills and attitudes (values) 
+that enable learners to speak their national language and be rooted in their cultures, hence building 
+up self-esteem and conﬁ dence. National Languages and Cultures refers to all languages and cultures 
+in the four major linguistic and cultural zones of Cameroon. This subject includes social practices, 
+modes of life, arts and crafts as well as architectural designs and literary expressions that bring out a 
+people’s identity. It helps learners to open up to learning and to be better educated. 
+Learning National Languages is advantageous especially at this time when it is established worldwide 
+that learning should start in the mother tongue of the learner. 
+This subject has been developed from domains that were derived from the following national core 
+skills:
+• Communication in the two oﬃ  cial languages (English and French) and the use of at least 
+one national language
+• Practice of social and citizenship values (morality, good governance and budgetary 
+transparency) 
+• Practice of lifelong learning and the four broad-based competences
+         
+The components of the subject are presented in ﬁ gure 11.
+ 
+
+===== PAGE 37 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+37
+Figure 11: Components of National Languages and Cultures
+Terminal Learning Objectives
+After learning national languages and cultures the learners will be able to:
+• communicate appropriately using at least ﬁ ve sentences in any given context
+• sing traditional songs ﬂ uently 
+• perform cultural activities/scenes 
+• listen attentively without interrupting the speaker 
+• read at least ﬁ ve sentences and bring out the meaning in a related theme. 
+• write a correct and coherent sentence to pass across information
+Evaluation Criteria
+The terminal learning outcomes and evaluation criteria for National Languages and Cultures are 
+presented in table 16.
+Table 16: Terminal Learning Outcomes and Evaluation Criteria
+Terminal Learning Outcomes
+Evaluation Criteria
+- Communicate appropriately using at least ﬁ ve 
+sentences in any given context
+- Sing traditional songs ﬂ uently 
+- Perform cultural activities/scenes 
+- Listen attentively without interrupting the 
+speaker 
+- Read at least ﬁ ve sentences and bring out the 
+meaning in a related theme. 
+- Write a correct and coherent sentence to pass 
+across information in any given context
+- Respect of  rules related to the spoken 
+languages
+- Audibility, ﬂ uency, articulation, intonation in 
+speech
+-  Sustainance of dialogue and animation.
+- Correctness of responses /correctness of 
+gestures/actions 
+- Correctness of form, coherence and neatness 
+in writing.
+- Respect of rhythm and dance steps. 
+- Observance interactions with others and 
+participation in projects. 
+
+===== PAGE 38 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+38
+Domain 5: Digital Literacy
+Digital literacy underscores the cultural changes produced by the development and transmission 
+of Information and Communication Technologies (ICTs). The achievement of Cameroon’s 2035 
+Vision will also depend on the country’s potentials to be transformed into an information-based or 
+knowledge-based society in which information processing, knowledge management and creation are 
+essential features that guarantee success. The 21st century is considered as the information era and 
+learners are expected to use ICTs to access valuable and updated resources in order to break the digital 
+divide. Digital literacy does not only refer to computers but has evolved to include telephones, iPad, 
+the internet and all forms of social media. With rapid growth in the number of parents buying digital 
+devices for their children and not being able to control what the children do with these devices, it is 
+important that education takes over its responsibilities. This domain aims at empowering learners with 
+technological skills for present and future actions and it is developed through ICTs.
+Information and Communication Technologies (ICTs)
+The use of Information and Communication Technologies is an integral part of the modern society. 
+Information is regarded as a valuable asset for all individuals. The ability to construct knowledge from 
+the information gathered is by and large seen as a vital survival skill in today’s society.  ICTs will be 
+most relevant and meaningful for pupils if they are used in relation to their immediate environment. 
+Although ICT is universal, it is only by contextualization and application that pupils understand and 
+appreciate its use. Where learning materials can only give general examples, it is recommended that 
+the teacher uses local examples instead. ICT has the potential to stimulate pupils to engage in, enjoy 
+and love learning. Before teaching a speciﬁ c ICT skill, teachers are encouraged to introduce a speciﬁ c 
+task to be performed, applying the new skill learnt. Tasks chosen should relate to subjects in the 
+curriculum such as Mathematics, English, Science and Technology. 
+This subject has been developed from domains that were derived from the following national core 
+skills:
+• Use of basic information and communication technology concepts and tools 
+• Practice of lifelong learning  and the four broad-based competences
+             
+The components of the subject are illustrated in ﬁ gure 12.
+Figure 12: Components of Information and Communication Technology
+
+===== PAGE 39 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+39
+Terminal Learning Outcomes
+At the end of this level, the learners will be able to:
+• use computer equipment and ICT tools
+• apply basic health and safety measures when using computers and other ICT devices
+• practise basic computational thinking 
+• use ICTs responsibly
+Evaluation Criteria
+The terminal learning outcomes and evaluation criteria are illustrated in table 17.
+Table 17: Terminal Learning Outcomes and Evaluation Criteria
+Terminal  Learning Outcomes
+Evaluation Criteria
+-  Use computer equipment and ICT tools
+-  Apply basic health and safety measures when 
+using computers and other ICT devices 
+-  Practise basic computational thinking 
+-  Use ICTs responsibly
+-  Ability to identify ICT tools and their parts
+-  Correct use of ICT tools
+-  Ability to identify characters on the key board
+-  Respect of health, hygiene and safety rules  
+while manipulating ICT tools
+-  Ability to explain computational concepts 
+using real life situations
+
+===== PAGE 40 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+40
+PART THREE 
+CONTENTS OF THE SYLLABUS
+Details of the contents of the ten subjects, the expected learning outcomes, the suggested teaching/
+learning strategies and the didactic materials for each subject area are presented in the tables that 
+follow. Note should be taken that all the monthly teaching/learning activities are anchored on the 
+integrated learning theme of that month. As a reminder, the integrated learning themes of the primary 
+school cycle are laid out in table 18 and table 19.
+Table18: Integrated Learning Themes for Level I and Level II (Classes 1/2/3/4)
+No
+Integrated Learning Theme
+1
+The home
+2
+The village/town
+3
+The school
+4
+Occupations
+5
+Travelling
+6
+Health
+7
+Games
+8
+Communication
+Table 19: Integrated Learning Themes for Level III (Class 5 and Class 6)
+No
+Integrated Learning Theme
+1
+Nature
+2
+The village/town
+3
+The school
+4
+Occupations
+5
+Travelling
+6
+Health
+7
+Sports an leisure
+8
+The universe and space
+
+===== PAGE 41 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+41
+Contents of English Language 
+Table 20: English Language contents, expected learning outcomes, suggested methodology and didactic materials
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Listening and Speaking
+Units/Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+Phonemic 
+awareness
+- Letter  sounds 
+- Sounds of 
+diagraphs 
+- Monosyllabic 
+words
+- Say letter sounds
+- Combine letter sounds to 
+form monosyllabic words
+- Pronounce monosyllabic 
+words
+- Pronounce diagraphs and 
+words containing them
+- Show interest in pronouncing 
+correctly
+Phonemic 
+awareness
+- Sounds of the 
+alphabet 
+- Sounds of 
+diagraphs
+- Multisyllabic  
+words
+- Say letter sounds
+- Combine letter sounds to 
+form monosyllabic words
+- Pronounce monosyllabic 
+words
+- Read multisyllabic words
+- Pronounce diagraphs and 
+words containing them
+- Show interest in 
+pronouncing correctly
+- Demonstration
+- Phonic method
+- Jolly phonics  approach
+- Association of sounds 
+with similar sounds made 
+by objects and animals in 
+their environment
+- Role-play 
+- Teamwork
+- Questions and answers
+- Real objects, 
+charts, pictures  and 
+ﬂ ashcards
+- Language games 
+radio, tapes, CD-
+ROMs, rhymes, 
+songs, telephone
+Polite responses
+- Sir/Madam
+-  Sorry
+- You are 
+welcome
+- Thank you
+- Respond appropriately to 
+people
+- Cherish being pleasant and 
+welcoming to people
+Polite addresses
+Please sir/madam, 
+my dear friend, 
+could you
+- Address people 
+appropriately
+- Cherish being pleasant and 
+welcoming to people
+-  Role play, dialogue, 
+singing, illustrations, 
+teamwork, demonstrations, 
+- Questions and answers
+- Real objects, 
+charts, pictures  and 
+ﬂ ashcards
+- Language games 
+radio, tapes, CD-
+ROMs, telephone
+Greetings 
+- Morning
+- Afternoon
+- Night  
+- Greet appropriately in the dif-
+ferent periods of the day
+- Display enthusiasm to greet 
+people
+Greetings 
+- Morning
+- Afternoon
+- Night  
+- Greet appropriately in the 
+diﬀ erent periods of the day
+- Display enthusiasm to greet 
+people
+-  Role play, rhymes, songs 
+dialogue, illustrations, 
+teamwork demonstrations, 
+- Questions and answers
+- Real objects, charts, 
+pictures  and ﬂ ash-
+cards
+- Language games 
+radio, tapes, CD-
+ROMs, telephone
+
+===== PAGE 42 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+42
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Units/Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+Introduction of 
+self and others
+- Introducing self   
+- Introducing 
+others
+- Introduce self and others  
+appropriately
+- Treasure introducing self and 
+others
+Introduction of 
+self and others
+- Introducing self   
+- Introducing others
+- Introduce self and others  
+appropriately
+- Treasure introducing self 
+and others
+-  Role-play, dialogue, 
+illustrations, teamwork 
+- Demonstrations
+- Questions and answers
+- Real objects, charts, 
+pictures  and ﬂ ash-
+cards
+- Language games 
+radio, tapes, CD-
+ROMs, telephone
+Oral tradition
+- Stories
+- Songs
+- Folktales 
+- Rhymes
+- Retell stories and folktales
+- Recite rhymes 
+- Sing songs 
+- Display enthusiasm to enter-
+tain people
+Oral tradition
+- Stories
+- Songs
+- Folktales 
+- Rhymes
+- Retell stories and folktales
+- Recite rhymes 
+- Sing songs 
+- Display enthusiasm to en-
+tertain people
+- Miming, role-play 
+- Teamwork, explanations, 
+- Demonstrations, illustra-
+tion
+- Questions and answers.
+- Charts, pictures 
+- Language games, 
+radio, tapes, rhymes, 
+songs
+- Picture stories
+Dialogue 
+- Talk with peers, teacher and 
+others spontaneously  
+- Carry out a telephone conver-
+sation
+- Show respect for people 
+Dialogue
+- Talk with peers, teacher and 
+others spontaneously  
+- Carry out a telephone con-
+versation
+- Show respect for people 
+- Miming, role-play
+- Teamwork, drilling  
+- Illustrations, demonstra-
+tions
+- Questions and answers
+- Real objects
+- Charts 
+- Language games
+- Telephone
+Sketch
+- Acting
+- Plot
+- Play the role of a character in 
+a sketch 
+- Show love for entertainment 
+Sketch
+- Acting
+- Plot
+- Play the role of a character 
+in a sketch
+- Show love for entertain-
+ment 
+- Miming
+- Pair work, drilling  
+- Illustrations
+- Demonstrations
+- Role-play and dramati-
+zation
+- Stage props
+- Costumes
+Descriptions
+- People
+- Places
+- Objects
+- Describe people, places and 
+objects with precision 
+- Manifest the habit of listen-
+ing to an interlocutor  
+Descriptions
+- People
+- Places
+- Activities
+- Describe people, places and 
+activities with precision 
+- Manifest the habit of listen-
+ing to an interlocutor  
+- Miming
+- Teamwork, drilling  
+- Illustrations
+- Demonstrations
+- Role-play
+- Real objects, charts, 
+pictures  and ﬂ ash-
+cards
+- Radio, tapes, tele-
+phone
+English Language contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 43 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+43
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Units/Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+Numbers: 0 - 50
+- Listen and say numbers
+- Show willingness to count 
+Numbers: 51 - 100 - Listen and say numbers
+- Show willingness to count 
+- Miming
+- Teamwork, drilling  
+- Illustrations
+- Demonstrations
+- Counting
+- Counting materials
+- Number cards
+Descriptions
+- Describe ongoing activities
+- Show willingness to describe 
+activities accurately
+Description
+- Describe ongoing activities
+- Show willingness to de-
+scribe activities accurately
+- Miming
+- Teamwork, drilling  
+- Illustrations
+- Demonstrations
+- Listening and speaking
+- Descriptive charts
+- Relevant pictures 
+- Language games
+Reading
+Sound Recog-
+nition (reading 
+aloud)
+- Letter sounds
+- Monosyllabic 
+words
+- Multisyllabic 
+words
+- Read letter sounds correctly
+- Read monosyllabic words
+- Read multisyllabic words
+- Show interest in correct pro-
+nunciation
+Sound Recognition 
+(reading aloud)
+- Letter sounds
+- Monosyllabic 
+words
+- Multisyllabic 
+words
+- Read letter sounds correctly
+- Read monosyllabic words
+- Read multisyllabic words
+- Show interest in reading 
+- Illustrations and demon-
+strations 
+- Phonic method
+- Jolly phonics  approach
+- Association/ Cooperative 
+learning, picture reading, 
+reading aloud 
+- Questions and answers
+- Relevant charts, pic-
+tures and ﬂ ashcards
+- Language games 
+radio, tapes, CD-
+ROMs, rhymes, 
+songs, telephone
+-Story books
+Word Recog-
+nition (reading 
+aloud)
+- Simple words
+- Short sentences
+- Numbers (0 – 
+50)
+- Read simple words and short 
+sentences aloud
+- Read numbers from 0 – 50 
+- Read in the right order (left 
+to right)
+- Hold reading materials cor-
+rectly 
+Word Recognition 
+(reading aloud)
+- Simple words
+- Short sentences
+- Short texts
+- Numbers 51 – 
+100)
+- Read simple words and 
+short sentences 
+- Read numbers from 51 – 
+100
+- Read short texts
+- Show willingness to 
+pronounce words and read 
+correctly
+Explanations, questions 
+and answers, role play, 
+team work, illustrations, 
+demonstrations
+- Real objects, charts, 
+pictures  and ﬂ ash-
+cards
+- Letter cards
+- Radio, tapes, CD-
+ROMs, rhymes, 
+songs, telephone
+-Story books
+English Language contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 44 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+44
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Units/Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+Reading Com-
+prehension (silent 
+reading)
+- Pictures
+- Short texts
+- Interpret pictures
+- Read texts silently and an-
+swer questions
+- Demonstrate a reading 
+culture
+Reading Com-
+prehension (silent 
+reading)
+- Pictures
+- Short texts
+- Interpret pictures
+- Read texts silently and an-
+swer questions
+- Demonstrate a reading 
+culture
+- Explanations
+- Questions and answers
+- Teamwork
+- Relevant charts
+- Picture stories
+- Cartoon strips
+- Big books
+Writing
+Handwriting
+- Strokes, curves  
+zigzag and waves
+- Letters of the 
+alphabet- Names 
+- Digits from 0 to 
+50
+- Produce letters
+-  Copy names 
+- Write numbers from 0 to 50
+- Follow the correct writing 
+direction (left to right)
+Handwriting
+- Names
+- Sentences
+- Digits from 1-100
+- Copy their names and the 
+same sentences several times
+- Show the enthusiasm to 
+write
+- Explanations
+- Demonstration
+- Drilling
+- Copying
+- Teamwork
+- Pencils, chalk
+- Arm boards, ﬂ annel 
+board 
+- Pictures, charts
+- Sand trays, saw dust, 
+writing exercise books 
+Composition
+- Build words with jumbled 
+letters
+- Show willingness to build 
+words
+Composition
+- Build short sentences with 
+jumbled words
+- Show willingness to build 
+words
+- Drilling
+- Teamwork
+- Explanations
+- Questions and answers
+- Pencils, chalk
+- Armboards, ﬂ annel 
+board
+- Pictures, chart.
+Writing 
+- Names 
+- Sentences
+- Write their names correctly
+- Write short sentences (SVO)
+- Write following the correct 
+direction (left to right)
+Writing 
+- Names 
+- Sentences 
+- Write their names correctly 
+- Write short texts 
+- Write following the correct 
+direction (left to right)
+- Drilling
+- Teamwork
+- Illustrations 
+- Demonstrations
+- Pencils, chalk
+- Arm boards, ﬂ annel 
+board, 
+- Pictures, charts
+- Writing exercise 
+books
+English Language contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 45 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+45
+Grammar, vocabulary and pronunciation
+To build a language, you need building materials that are called “Parts of Speech”. They are eight in number, namely: verbs, nouns, adjectives, adverbs, 
+prepositions, pronouns, conjunctions and interjections. Every word in English ﬁ ts into at least one of these eight categories; 
+the key to understanding and using the English language.  As concerns vocabulary, learners will acquire new words and expressions naturally through listening, 
+speaking, reading and writing activities. However, teachers are required to plan and systematically teach vocabulary in context.
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Units/
+Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+Verbs  
+-Regular verbs 
+(conjugation)
+- Simple present
+- Simple past
+- Simple future
+- Use the simple present past 
+and future tenses
+-Appreciate present, past and 
+future events 
+Verbs (conjugation)-- - 
+Regular verbs
+- Introduction to 
+irregular verbs
+- Helping verbs
+ - Use regular verbs and 
+some irregular and helping 
+verbs 
+-Manipulate verbs and 
+appreciate present, past and 
+future events
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Verb list and puzzles 
+Nouns
+Kinds of nouns
+- Common and 
+proper
+- Plural 
+formation
+(s)
+-Identify and use common  
+and proper  nouns
+-Use the plurals of countable 
+nouns
+- Use nouns in simple 
+sentences 
+-Show interest in using nouns
+Nouns
+Kinds of nouns
+- Common and proper
+- Plural formation
+(s, es)
+-Identify and use common 
+and proper nouns
+-Use the plurals of countable 
+nouns
+- Use nouns in simple 
+sentences
+-Show interest in using 
+nouns
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Noun list and puzzles
+Adjectives
+- Common 
+adjectives
+-Use common  adjectives 
+-Show interest in using 
+common forms of adjectives
+Adjectives
+- Common adjectives
+-Use common  adjectives 
+following the teacher’s 
+directives 
+-Show interest in using 
+common forms adjectives
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Adjective list and 
+puzzles 
+Adverbs
+- Place
+- Time 
+- Identify and use adverbs of 
+place and of time 
+- Show interest in following 
+instructions
+Adverbs
+- Place
+- Time 
+- Identify and use adverbs of 
+place and of time 
+- Show interest in following 
+instructions
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Adverb list and 
+puzzles 
+English Language contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 46 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+46
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Units/
+Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+Prepositions
+- Location
+- Identify and use preposi-
+tions of location
+- Show interest in locating 
+the position of objects
+Prepositions
+- Location
+- Time
+- Identify and use preposi-
+tions of location
+- Show interest in locating 
+the position of objects 
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Preposition list and 
+puzzles 
+Pronouns
+ - Personal pro-
+nouns  
+- Use personal pronouns to 
+talk about self and others
+- Show interest in using 
+pronouns
+Pronouns
+- Personal pronouns
+- Possessive
+- Reﬂ exive  
+- Use personal pronouns to 
+talk about self and others
+- Show interest in using 
+pronouns
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Pronoun list and 
+puzzles 
+Conjunctions 
+(Coordinating)
+- Link words, phrases and 
+sentences with connecting 
+words
+- Express the desire to use 
+conjunctions
+Conjunctions (Coor-
+dinating)
+- Link words, phrases and 
+sentences with connecting 
+words
+- Express the desire to use 
+conjunctions
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Conjunction list and 
+puzzles 
+Interjections
+- Hi !
+- Hello !
+Use hi and hello in appropri-
+ate contexts
+Interjections
+- Hi !
+- Hello !
+Use hi and hello in appropri-
+ate contexts
+- Explanations
+- Teamwork
+- Demonstrations
+- Flashcards
+- Real objects
+- Drawings
+- Charts
+- Interjection list and 
+puzzles 
+Vocabulary
+- Opposites
+- Follow instructions
+- Show willingness to use 
+new words
+Vocabulary
+- Opposites
+- Follow instructions
+- Show willingness to use 
+new words
+- Explanations
+- Teamwork
+- Demonstrations
+- Flashcards
+- Real objects
+- Wordlist
+English Language contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 47 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+47
+CLASS 1
+CLASS 2
+Suggested
+Methodology and Didactic Materials
+Units/
+Contents
+Expected Learning  
+Outcomes
+Units/Contents
+Expected Learning  
+Outcomes
+Teaching/ Learning
+Strategies
+Didactic Materials
+The sentence
+Simple sentences
+- Construct simple sentences
+- Follow instructions
+The sentence
+Simple sentences
+- Construct simple sentences
+- Follow instructions
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts and puzzles 
+Spelling and 
+pronunciation
+Sound and word 
+building
+- Build one, two and three 
+syllable words
+- Manipulate letter-sounds to 
+build words
+- Show willingness to spell 
+and pronounce words cor-
+rectly
+Spelling and pronun-
+ciation
+Sound and word buil-
+ding
+- Build one, two and three 
+syllable words
+- Manipulate letter-sounds to 
+build words
+- Show willingness to spell 
+and pronounce words cor-
+rectly
+- Phonic method
+- Explanations
+- Teamwork
+- Demonstrations
+- Questions and answers
+- Flashcards
+- Real objects
+- Drawings
+- Charts and puzzles
+English Language contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 48 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+48
+Contents of Mathematics
+Table 21: Mathematics contents, expected learning outcomes, suggested methodology and didactic materials
+CLASS   1
+CLASS  2
+Suggested Methodology and Didactic 
+Materials 
+Sets and Logic
+Units / Contents
+Expected  Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching/ Learning 
+Strategies
+Didactic Materials
+- Objects
+- Sets
+- Identify sets
+-Diﬀ erentiate objects by 
+their attributes
+- Arrange things in an 
+attractive and neat manner
+-Objects
+-Sets
+- Venn diagrams
+-  Set symbols (ф, (), 
+Ɛ, n u )
+-Classify objects  using at 
+least three  attributes 
+- Represent sets using  venn 
+diagrams
+- Arrange belongings in an 
+attractive and neat manner
+- Cooperative learning
+- Role-play
+- Matching 
+- Demonstration 
+- Illustration 
+-Real objects pebbles, 
+number cards, legos 
+-Audio- visual aids 
+-Pictures and charts 
+-Instructional games
+-Abacus
+Numbers and Operations
+-Numbers: 0 - 100
+-Symbols  in 
+operations 
+-The four 
+mathematical 
+operations 
+-Place value (tens  
+and  units) 
+-Fractions 
+-Associate numbers and 
+symbols to quantities 
+-Build bonds 
+-Write numbers in  ﬁ gures 
+and words
+-Use mathematical 
+operations to solve 
+problems 
+-Build multiplication tables 
+-Place numbers under Tens 
+and Units 
+- Share items objectively
+-Numbers: 100 - 200 
+-Mathematical 
+operations (Addition 
+Subtraction,  
+Multiplication and 
+Division)
+-Place value 
+(Hundreds , tens  and 
+units)
+-Fractions
+-Count and read numbers 
+-Associate numbers, symbols 
+and quantities
+-Build bonds 
+-Write numbers in ﬁ gures 
+and words
+- Use  mathematical 
+operations to solve problems
+-Place numbers under H, T 
+and U
+- State the value of a number 
+in a ﬁ gure
+-Share items objectively
+-Cooperative learning
+- Role play
+- Matching 
+- Demonstration 
+- Illustration
+-Real objects pebbles, 
+number cards, legos 
+-Audio- visual aids 
+-Pictures and charts 
+-Instructional games
+-Abacus
+
+===== PAGE 49 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+49
+CLASS   1
+CLASS  2
+Suggested Methodology and 
+Didactic Materials 
+Measurement and Size
+Units / Contents
+Expected  Learning 
+Outcomes
+Units and  
+Contents
+Expected Learning 
+Outcomes
+Teaching/ Learning 
+Strategies
+Didactic 
+Materials
+-The calendar
+-Time 
+-Money
+-Identify the days of the week 
+and months of the year
+-Relate the diﬀ erent days of 
+the week to speciﬁ c events
+-Associate speciﬁ c activities 
+to diﬀ erent periods of the day
+-Manage money up to 100frs 
+-Respect schedules
+-Natural units and 
+indicators
+-Metric system
+-Calendar 
+-Time 
+-Money
+-Compare objects according 
+to size, length, width, height 
+and capacity
+-Estimate length, width, 
+height and capacity of 
+objects
+-Relate the various months 
+of the year to speciﬁ c events
+-Read the clock
+-Identify currency units up 
+to 200frs
+- Manage money up to 
+200frs
+-Problem solving 
+-Laboratory method
+-Cooperative learning
+-Individualized 
+instruction
+-Task oriented approach
+-Role-play
+-Instructional games
+- Clock faces 
+- Rulers
+- Tape
+- Plastic bottles
+- Money
+- Calendars
+- Watch
+Geometry and Space
+- Patterns with 2D 
+shapes (triangles, 
+rectangles, squares 
+and circles)
+- Curves and lines.
+- Complete patterns using 2D 
+shapes
+- Manipulate objects, shapes, 
+letters and ﬁ gures
+- Construct shapes, curves 
+and lines.
+- Locate points on a number 
+line up to 20
+- Patterns with 2D 
+shapes
+(triangles, rectangles, 
+squares)
+- Curves and lines
+- Manipulate patterns using 
+2D shapes 
+- Construct various shapes
+- Diﬀ erentiate between 
+diﬀ erent patterns of 
+curves and lines 
+- Locate points on a number 
+line up to 50
+-Problem solving 
+-Cooperative learning
+-Individualized 
+instruction
+-Task oriented approach
+- Role-play
+- Instructional games
+- Real objects
+- Geo-boards
+- Triangles
+- Cardboards
+- Cartons
+Mathematics contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 50 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+50
+CLASS  1
+CLASS  2
+Suggested Methodology and 
+Didactic Materials
+Graphs and Statistics
+Units / Contents
+Expected  Learning 
+Outcomes
+Units and  
+Contents
+Expected Learning 
+Outcomes
+Teaching/ Learning 
+Strategies
+Didactic 
+Materials
+- Data
+- Ranking 
+-Tallying
+- Graphs 
+- 
+Represent data using 
+graphs
+- 
+Arrange numbers in 
+ascending and descending  
+order of magnitude
+- 
+Tally in 2s    and   3s
+- 
+Present data orally 
+- 
+Show interest in keeping 
+belongings in an orderly 
+manner 
+- Data
+- Ranking 
+-Tallying 
+- Graphs 
+- 
+Represent data on 
+graphs
+- 
+Arrange numbers 
+in ascending and  
+descending order of 
+magnitude (100-200)
+- 
+Tally in  4s  and 5s 
+- 
+Represent data on 
+graphs
+- 
+Show interest in keeping 
+belongings  in an orderly 
+manner
+- Discovery method
+-Laboratory method
+-Cooperative learning
+-Individualized 
+instruction
+-Task oriented approach
+- Role-play
+- Instructional games
+-Real objects
+-Audio-visual 
+aids
+-Pictures
+-Charts
+-Counting 
+materials
+Mathematics contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 51 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+51
+Coontents of Science and Technology
+Table 22: Science and Technology contents, expected learning outcomes, suggested methodology and didactic materials
+Health Education
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching and 
+Learning strategies
+` Didactic 
+Materials
+Human body
+- Parts of the body
+- Personal hygiene
+-Diﬀ erentiate parts of 
+the body
+- Keep the body clean 
+on daily bases
+Human body
+-Parts of the body and 
+functions
+- Care for the parts of 
+the body
+- Associate body parts to 
+their functions
+- Clean the diﬀ erent parts 
+of the body with diﬀ erent 
+items on daily bases
+- Demonstration
+- Discussion
+- Role-play and 
+simulations
+- Teamwork
+-Charts, soap, sponge, 
+clean water, buckets, 
+towels, face towel 
+, body lotion, clean 
+clothes/under wears, 
+comb, shoes,  foot 
+brush
+The Senses
+- The ﬁ ve senses and  
+their organs
+- Relate sense organs to 
+their functions
+- Discriminate good 
+from bad 
+The Senses
+- The ﬁ ve senses and  
+their organs
+-  Care of sense organs
+-Relate the senses to their 
+organs
+- Care for the sense organs
+- Discriminate good from 
+bad 
+- Demonstration.
+- Discussion
+- Outdoor lessons 
+- Role-play and 
+simulation
+- Teamwork.
+- Charts, pictures, 
+colours,  masks, 
+headscarf, sweets, 
+various fruits, bitter-
+leaf, VCDs/DVDs
+TV, telephone 
+- Posters, medicines
+Reproductive Health, 
+STIs  and HIV/AIDS
+- Human reproductive 
+organs 
+- HIV/AIDS (causes 
+and prevention)
+-Diﬀ erentiate a  male 
+from a  female
+- Demonstrate 
+awareness of the 
+existence of HIV/
+AIDS and preventive 
+measures
+- Show love for living a 
+healthy life 
+Reproductive health, 
+STIs  and HIV/AIDS
+- HIV/AIDS (causes, 
+symptoms, prevention, 
+mode of transmission 
+-Human reproductive 
+organs
+-Diﬀ erentiate a male from 
+a female 
+-Demonstrate the 
+awareness that HIV/AIDS 
+is transmitted through 
+blood
+- Stay away from soiled 
+objects
+- Show love for living a 
+healthy life
+- Demonstration
+- Discussion
+- Flipped classrooms 
+- Guided tours 
+- Role-play  and 
+simulation
+- Educative talks
+- Teamwork
+- Charts, pictures, 
+knives, nails, blade, 
+needles, pins
+syringes, medicines, 
+sketches, gloves, 
+masks, lab coat
+
+===== PAGE 52 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+52
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching and Learning 
+strategies ` 
+Didactic 
+Materials
+Diseases
+- Common diseases 
+of the area 
+- Symptoms 
+- Prevention
+-  Identify common diseases 
+of the locality
+- Discuss about causes and 
+symptoms of some diseases 
+- Stay away from dirty 
+environments 
+- Accept sleeping under a 
+mosquito nets
+Diseases
+-Common diseases 
+of the area (malaria, 
+cholera, common 
+cold, chicken pox)
+-Symptoms 
+-Prevention
+- Relate diseases to symptoms
+- Explain some preventive 
+measures 
+- Stay away from dirty 
+environments
+- Accept sleeping under a 
+mosquito nets
+- Demonstration/ discussion
+- Visits/ Teamwork
+- Role-play and simulation
+- Educative talks
+- Relevant charts 
+and pictures,  nails
+-Syringes, lab coats, 
+, audio-visual aids, 
+posters, empty 
+medicine packs
+- Mosquito nets
+Toilets
+- Types of Toilets
+- Locate the school toilet
+-Identify diﬀ erent types of 
+toilets
+-Use toilets responsibly 
+- Wash hands at all times 
+after using the toilet
+Toilets  
+-Types of toilets
+-Use of the toilets
+- Identify types of toilets
+- Use toilets properly
+- Wash hands at all times after 
+using the toilet
+- Demonstration/ discussion
+- Outdoor lessons 
+- Role-play and simulation
+- Health talks
+- Teamwork
+-Tissue paper, 
+disinfectants, 
+water, soaps
+- Illustrative charts
+Health habits
+Good health habits 
+- Identify healthy habits
+- Wash hands at all times 
+before eating
+Health habits
+- Good health habits 
+- Distinguish good health 
+habits from bad  ones
+ - Wash hands at all times 
+before eating 
+- Demonstration/ discussion
+- Outdoor lessons 
+- Role-play/simulation
+- Teamwork
+-Pictures, posters, 
+fruits, drinking 
+water, clean water, 
+bowl, clean plastic 
+bottles 
+Minor accidents 
+and ﬁ rst aid
+-Types of minor 
+accidents 
+-First aid box and 
+contents
+-First aid 
+administration
+-Associate  items in a  ﬁ rst 
+aid box to  the treatment of 
+speciﬁ c minor accidents
+- Demonstrate ways of 
+preventing minor accidents
+- Stay away from harmful 
+objects and places
+Minor accidents 
+and ﬁ rst aid
+- Types of minor 
+accidents 
+- First aid box 
+contents
+- First aid 
+administration
+-Use the items in a ﬁ rst aid 
+box to treat victims of speciﬁ c 
+minor accidents
+-Demonstrate ways of 
+preventing minor accidents
+-Show a positive attitude 
+towards victims of minor 
+accidents
+- Demonstration/ discussion
+-  Outdoor lessons 
+- Role-play and simulation
+- Educative talks
+- Teamwork
+-Sketches, cotton,  
+spirit, scissors, 
+bandages, betadine, 
+plaster, iodine, 
+exercise book
+Public health
+- Vaccinations 
+- Health hazards
+- Epidemics and 
+pandemics
+-Explain some common 
+health hazards and vaccines
+- Show love for taking 
+required vaccines 
+Public health
+- Health hazards
+-Vaccination
+-Some common 
+vaccines 
+- Explain common health 
+hazards and their eﬀ ects
+-Discuss the importance of 
+vaccines
+- Show love for taking 
+required vaccines
+- Demonstration/discussion.
+- Flipped classroom
+- Health talks
+- Role-play/simulation
+- Teamwork
+- Vaccination cards
+- Syringes
+- Cotton
+Science and Technology contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 53 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+53
+Environmental Science
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching / Learning 
+Strategies  
+Didactic 
+Materials
+Immediate 
+environments
+- Home 
+environment
+- School 
+environment
+- Care of home 
+and school 
+environments
+-  Identify the components 
+of the home and the school 
+environments 
+ - Care for the home and 
+school environments 
+- Care for plants 
+Immediate 
+environments
+- Home 
+environment
+- School 
+environment
+- Care of home and 
+school environment
+- Describe the components 
+of the home and the school 
+environments 
+ - Care for the home and the 
+school environments
+- Appreciate their immediate 
+environment
+- Care  for plants 
+- Project method e.g. tree 
+planting
+- Demonstration
+- Cooperative learning
+Real objects, 
+pictures, drawings, 
+videos, cuttings, 
+seeds,  hoes, diggers, 
+cutlasses, seedlings, 
+posters 
+Animals
+- Domestic and 
+wild animals. 
+- Habitat and care
+- Identify domestic animals
+- Recognise the diﬀ erent 
+habitats of domestic animals
+- Stay away from danger
+Animals
+- Domestic animals
+- Wild animals
+- Habitat and care
+- Describe the diﬀ erent 
+habitats of animals
+- Care for animals
+- Stay away from danger
+- Demonstration/ Discussion
+- Flipped classroom
+- Role-play/simulation
+- Teamwork
+- Talk from a veterinary 
+nurse 
+Cage, water, soap, 
+gloves, pictures, 
+drawings, videos, 
+posters
+Birds
+- Domestic and 
+wild  birds
+- Habitats and care
+ - Recognize domestic and   
+wild birds in their locality
+Birds
+- Domestic birds
+- Wild birds
+- Habitats of birds 
+and care
+-Describe the diﬀ erent 
+habitats of birds 
+- Demonstration/ Discussion
+- Flipped classroom
+- Outdoor visits
+- Role-play/simulation
+Cage, water, soap, 
+gloves, pictures, 
+drawings, videos, 
+posters, nest
+Insects
+- Types of insects
+-Useful and harmful 
+insects
+- Describe the various types 
+of insects in the locality
+- Protect insects
+Insects
+-Types of  insects 
+- Useful and 
+harmful insects
+- Classify insects
+-  Protect insects
+- Demonstration/ Excursions 
+- Discussions
+- Flipped classroom
+Pictures, drawings, 
+videos, insect box
+Science and Technology contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 54 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+54
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching / Learning 
+Strategies  
+Didactic Materials
+Plants
+-Types of plants 
+-Types of ﬂ owers
+- Care for plants 
+-Identify diﬀ erent types 
+of plants and ﬂ owers 
+- Plant trees and ﬂ owers
+- Care for plants and 
+ﬂ owers
+Plants
+- Types of plants
+- Flowers
+- Uses of ﬂ owers
+- Describe  plants and 
+ﬂ owers according to their 
+characteristic
+- Plant  trees and ﬂ owers
+- Care for plants and 
+ﬂ owers 
+- Demonstration
+ -Excursions 
+- Discussion
+- Flipped classroom
+Seeds, seedlings, 
+cuttings, hoes, diggers, 
+machetes, manure, 
+used tyres, bags, 
+plastics, buckets
+Matter
+- Water
+- Sources of water
+- Care of water sources
+-Identify the diﬀ erent 
+sources of water
+-Protect sources of water
+Matter
+- Water
+-Good sources and 
+bad sources
+- Care of the sources 
+of water
+- Describe  the diﬀ erent 
+states of matter 
+-Distinguish the sources 
+of water
+Protect the sources of 
+water
+- Demonstration
+. Excursion
+- Discussion
+- Cooperative learning
+Real Objects, pictures, 
+drawings, videos, 
+models, posters
+Pollution and  waste 
+management
+- Pollution 
+-Waste management
+ - Identify types of 
+pollution
+Demonstrate ways of 
+preventing pollution
+- Use dustbins correctly
+Pollution and  waste 
+management
+-  Types of pollution
+-  Prevention
+- Waste management
+-Diﬀ erentiate types of 
+pollution
+-Describe ways of 
+preventing pollution
+- Use dustbins correctly
+- Demonstration
+-  Excursion
+- Discussion
+- Outdoor lessons to 
+enable learners observe 
+Real Objects, pictures, 
+drawings, videos, 
+models, posters
+Environmental hazards
+- Environmental hazards 
+- Environmental care 
+- Identify environmental 
+hazards 
+- Identify strategies to 
+protect the environment 
+- Use clean water to 
+wash hands
+- Drink only clean water
+Environmental 
+hazards
+- Hazards in the 
+locality
+- Describe  how 
+environmental hazards 
+can be prevented
+- Protect the environment
+- Use clean water to wash 
+hands
+- Question sources of 
+water
+- Role-play/simulation
+- Educative talks
+- Teamwork
+Pictures, drawings, 
+videos, cuttings, 
+seeds, seedlings, hoes, 
+machetes, watering 
+cans, water, bottles, 
+masks, gloves
+Science and Technology contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 55 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+55
+Technology and Engineering
+CLASS 1
+CLASS 2
+Methodology and Didactic Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching/learning 
+strategies 
+Didactic materials
+Mechanisms and  
+machines
+- Types of machines 
+- Identify  diﬀ erent  
+types of tools and  
+machines in the locality 
+- Carry out tasks 
+willingly
+Mechanisms and  
+machines
+- Types of machines 
+in the locality
+- Describe various  types of 
+tools and  machines in the 
+locality
+- Explain uses of diﬀ erent 
+machines in their locality
+- Carry out tasks willingly
+- Demonstration
+- Excursion/ discussion
+- Role-play/simulation
+- Exploit resource 
+persons 
+- Teamwork
+Charts, pictures, videos, 
+models, posters
+Materials
+- Types of materials
+- Choice and 
+handling of materials
+- Identify common 
+materials in the 
+environment
+- Show great interest in 
+recycling materials 
+Materials
+- Types of materials 
+- Choice and 
+handling of materials
+- Recognize common 
+materials in the environment
+- Use materials to construct 
+desired shapes/objects
+- Projects 
+- Demonstration
+- Excursion/ discussion
+- Role-play/simulation
+- Teamwork
+Real objects pictures, 
+drawings, videos, 
+sketches, models, posters, 
+recycable materials
+Construction
+- Building 
+construction
+- Manufacturing 
+- Classify materials 
+used for building 
+houses
+- Use materials to 
+construct miniature 
+houses and other objects
+- Show love for manual 
+work
+Construction
+- Building 
+construction
+- Manufacturing 
+- Classify materials used for 
+construction 
+- Construct a miniature bridge 
+- Use materials to construct 
+miniature houses and other 
+objects
+- Show love for manual work
+- Trial and error
+- Demonstration
+- Imitation
+- Teamwork
+- Practice sessions
+Building blocks/ Legos
+sand, soil, clay, mud, 
+sticks, stones, cartons, 
+plantain leaves, bamboo, 
+palm fronds, old plastic 
+shoes, containers, 
+rounded scissors, tyres,
+illustrative charts
+Electricity
+-Electrical devices
+-Dangers  of 
+electricity
+- Identify some 
+electrical devices
+- Recognise the dangers 
+of wrong use of 
+electrical devices
+- Ask for help from 
+adults to use any 
+electrical device 
+Electricity
+-Electrical devices
+- Dangers  of 
+electricity
+- Describe electrical devices
+- Discuss  the dangers  of 
+electricity
+- Ask for help from adults to 
+use any electrical device 
+- Project/demonstration
+- Excursion/ discussion
+- Role-play, and 
+simulation
+- Teamwork
+Real objects, gloves, 
+boots, masks, glasses, 
+overalls, helmets, 
+bulbs, cables, pictures, 
+drawings, videos, 
+models, posters, sketches 
+Science and Technology contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 56 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+56
+Les contenus du Français
+Tableau 23: les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+Compréhension et expression orales
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats 
+attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Les sons du français:                
+Sons du français (36),                 
+bruits, onomatopées 
+ Ecouter et 
+distinguer les sons 
+du français.
+Les sons du français:           
+Sons du français (36), 
+bruits, onomatopées
+Ecouter et distinguer 
+les sons du français.
+Jeu de rôles, illustration ;                  
+démonstrations ; comptines 
+marionnettes approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-
+visuels, realia, 
+enregistrements,
+Salutations: 
+Bonjour, bonsoir, Salut, au 
+revoir, à demain, à bientôt, 
+merci
+-Saluer poliment et 
+prendre congé;   
+-Manifester le 
+désir de suivre une 
+conversation.
+Salutations:
+Bonjour, bonsoir, salut, 
+au revoir, à demain, à 
+bientôt, merci
+Saluer en utilisant des   
+formules de politesse.
+Jeu de rôles, illustration ;                  
+démonstrations ; comptines 
+marionnettes approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-
+visuels, realia, 
+enregistrements,
+Présentations:
+Voici/voilà, noms propres, 
+s’appeler, …
+Se présenter (dire 
+son nom, son âge).
+Présentations:
+Il/elle s’appelle, il/elle a 
+.., il habite à.., il aime/
+n’aime pas 
+Présenter quelqu’un 
+(nom, âge, lieu 
+d’habitation, goûts).
+Jeu de rôles, illustration ;                  
+démonstrations ; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-
+visuels, realia, 
+enregistrements,
+Demande polie 
+d’informations:
+ Est-ce que je peux… ? Je 
+voudrais s’il vous plait, 
+merci, excuse-moi, …
+Demander et 
+donner des 
+informations 
+personnelles.
+Demande polie 
+d’informations:
+Qu’est-ce que c’est? 
+Est-ce que … ; je 
+voudrais savoir, …
+- Demander et donner 
+des informations 
+générales;                    - 
+- Répondre gentiment à 
+une demande
+Jeu de rôles, illustration ;                  
+démonstrations ; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-
+visuels, realia, 
+enregistrements,
+Les instructions de base:
+Lève-toi, assieds-toi, 
+réveille-toi, Brosse-toi les 
+dents, bois ton lait
+Ecouter 
+attentivement et 
+Répondre à des 
+instructions.
+Les instructions de base: 
+lève-toi, assieds-toi, 
+réveilles-toi,  brosse-toi 
+les dents, bois ton lait.
+Ecouter attentivement 
+et Répondre à des 
+instructions.
+Jeu de rôles, illustration ;                  
+démonstrations; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-visuels, 
+realia, enregistrements
+
+===== PAGE 57 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+57
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Poèmes, comptines, 
+chants en français
+ Dire de mémoire des 
+comptines et chanter 
+en français.
+Poèmes, comptines, 
+chants en français
+Dire de mémoire des 
+comptines et chanter 
+en français.
+Jeu de rôles, illustration;                       
+démonstrations; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-visuels, 
+realia, enregistrements, 
+…
+Expression des 
+sentiments:
+ J’aime, je n’aime pas, 
+ça me plaît!
+Exprimer ses 
+sentiments.
+Expression des 
+sensations:
+ J’ai faim, j’ai soif, j’ai 
+froid, j’ai peur, je suis 
+triste, je suis content
+Exprimer ses 
+sensations.
+Jeu de rôles, illustration;                       
+démonstrations; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-visuels, 
+realia, enregistrements, 
+…
+Localisation dans le 
+temps:
+Indications de temps: 
+Aujourd’hui/ demain/ 
+hier, c’est… (jours de la 
+semaine)
+Se situer dans le 
+temps.
+Localisation dans le 
+temps: 
+Indications de temps: 
+Aujourd’hui/ demain/ 
+hier, c’est… (mois, 
+année)
+Se situer dans le temps. Jeu de rôles, illustration;                       
+démonstrations; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-visuels, 
+realia, enregistrements, 
+…
+Localisation dans 
+l’espace: 
+ devant, derrière, sur, 
+sous, …
+Se situer dans 
+l’espace.
+Localisation dans 
+l’espace:
+A côté de, à gauche, à 
+droite, …
+Se situer dans l’espace.
+Jeu de rôles, illustration;                       
+démonstrations; comptines, 
+marionnettes, approche 
+communicative, actionnelle 
+Images, posters, 
+supports audio-visuels, 
+realia, enregistrements, 
+…
+Nombres: 
+Nombres: de 1 à 20   
+Objets: Combien y a-t-il 
+de … ? 
+Compter de 1 à 20.
+Nombres:
+Nombres: de 1 à 50   
+Objets: Combien y a-t-
+il de … ? 
+Quel est le prix ? 
+Compter de 20 à 50.
+Jeu de rôles, illustration;                       
+démonstrations; comptines, 
+marionnettes approche 
+communicative, actionnelle
+Images, posters, 
+supports audio-visuels, 
+realia, enregistrements,
+Activités quotidiennes: 
+Qu’est-ce que tu fais?  
+je dors, je me lève, …
+Dire sans hésitation 
+ce qu’on fait.
+Indications de 
+fréquence: 
+Chaque jour/tous les 
+samedis, je…
+Dire ce qu’on fait 
+régulièrement.
+Les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+
+===== PAGE 58 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+58
+Compréhension écrite (lecture)
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Supports de lecture:            
+Divers types de supports 
+écrits: livres, album jeune, 
+étiquettes,…
+-Identiﬁ er les 
+diﬀ érents supports 
+écrits;
+-Lire des images
+Divers types de supports 
+écrits:
+ livres, album jeune, 
+étiquettes, mode d’emploi, 
+programmes, radio/TV, 
+aﬃ  ches, panneaux, …
+Identiﬁ er des 
+informations dans 
+diﬀ érents supports.
+-Illustrations
+-Démonstrations
+-Illustrations;                                       
+-Lecture phonique                                             
+-Jeux de lecture;
+-Identiﬁ cation des sons 
+dans les mots (initial, ﬁ nal);      
+-Remise en ordre des lettres/
+sons des mots.
+Albums, livres, 
+étiquettes, aﬃ  ches, 
+…
+Les voyelles: Aa, Oo, Ii,   
+Uu, Ee.
+- Lire les lettres et 
+mots en français 
+contenant les sons.
+Les voyelles du français: 
+Les voyelles  Èè, Éé, Êê.
+Lire les lettres et mots 
+en français contenant 
+des sons.
+-Illustrations
+-Démonstrations
+-Illustrations;                                       
+-Lecture phonique                                             
+-Jeux de lecture;
+-Identiﬁ cation des sons 
+dans les mots (initial, ﬁ nal);      
+-Remise en ordre des lettres/
+sons des mots.
+Albums, livres, 
+étiquettes, aﬃ  ches, 
+…
+Les consonnes: l, m, n, p, 
+t, r, v, d, b, s, k, ç, j, f
+ Lire les mots 
+contenant les 
+consonnes du 
+français.
+Diagrammes et 
+graphèmes complexes: 
+Ou – oi – ai – ei  – in – im 
+– ain – ein – en – an – am 
+– em – on – om – un – um 
+– oin – ion
+Lire les mots 
+contenant les 
+consonnes du 
+français.
+-Illustrations
+-Démonstrations
+-Illustrations;                                       
+-Lecture phonique                                             
+-Jeux de lecture;
+-Identiﬁ cation des sons 
+dans les mots (initial, ﬁ nal);      
+-Remise en ordre des lettres/
+sons des mots.
+Alphabet, posters, 
+images…
+Les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+
+===== PAGE 59 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+59
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Mots usuels: 
+ il, nous, et, le, la, ….
+Lire sans diﬃ  culté 
+des mots  usuels.
+Mots usuels: il, nous, et, 
+très, trop, ….
+Lire sans diﬃ  culté 
+des mots usuels.
+-Illustrations;                                          
+-Jeux de lecture;
+-Procédés mnémotechniques    
+Posters, images,
+Formation des syllabes
+ Former des syllabes 
+et lire des mots avec 
+des voyelles simples.
+Diagrammes: 
+ on –en – am – em –– ou
+ Former des syllabes 
+et lire des mots avec 
+des diagrammes.
+-Illustrations;                                           
+-Jeux de lecture. 
+Posters, images, 
+albums, 
+Lecture des instructions 
+simples: exercices, jeux,
+Lire de simples 
+instructions et y 
+réagir.
+Lecture des instructions 
+simples: jeux, mode 
+d’emploi, …
+Lire de simples 
+instructions et y 
+réagir.
+-Illustrations;                                           
+-Jeux de lecture. 
+Posters, images, 
+albums
+Noms et mots: 
+Lettres de l’alphabet 
+français
+Epeler des noms et 
+prénoms.
+Lettres de l’alphabet 
+français
+Epeler des noms et 
+des noms de lieux.
+Jeux d’épellation 
+Cartes, images, 
+alphabet.
+Lecture de phrases
+-Lire à haute voix
+-Répondre aux 
+questions textuelles; 
+-Développer le goût 
+de la lecture.
+Lecture de courts textes (2 
+à 3 phases)
+- Lire à haute voix;
+-Répondre aux 
+questions; textuelles;
+-Développer le goût 
+de la lecture.
+Activités de pré-lecture, 
+lecture globale, lecture 
+sélective, activités de post-
+lecture
+Textes: textes 
+illustrés, albums 
+enfant, page internet
+Les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+
+===== PAGE 60 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+60
+Production d’écrits (écrire)
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Ecriture des lettres
+- Tenir le crayon, 
+le stylo de façon 
+appropriée;
+- Tracer des lettres.
+Mots et illustrations
+- Recopier des mots 
+sous des images;
+-Compléter des lettres 
+manquantes dans des 
+mots.
+Illustrations,
+démonstrations,  exercices à 
+trous, dictée à l’adulte
+L’alphabet, jeux 
+de lettres, crayon, 
+ardoise
+Ecriture des mots et des 
+phrases (lisibilité)
+Reconstituer des 
+phrases à partir des 
+mots.
+Ecriture des mots et 
+phrases
+Ecrire des mots et 
+phrases simples.
+Illustrations,
+démonstrations,  exercices à 
+trous, dictée à l’adulte
+Images, posters, 
+albums, divers 
+supports visuels
+Ecriture de courts textes:
+Majuscule, point
+ Identiﬁ er les signes 
+de ponctuation de 
+base.
+Signes de ponctuation: 
+Point, virgule, majuscule
+Utiliser les signes de 
+ponctuation de base.
+Illustrations, exercices à 
+trous
+Images, posters, 
+albums, divers 
+supports visuels
+Textes narratifs, 
+descriptifs relatifs aux 
+centres d’intérêt
+ Produire de courts 
+textes de 1 à 2 
+phrases à partir d’un 
+support.
+Textes narratifs, 
+descriptifs, informatifs 
+relatifs aux centres 
+d’intérêt
+Produire de courts 
+textes de 2 à 3 phrases 
+à partir d’un support.
+-Production du premier jet 
+-production du deuxième 
+jet – correction – auto-
+évaluation à partir des 
+critères
+Images, posters, 
+albums, divers 
+supports visuels 
+Grammaire , conjugaison et vocabulaire
+Noms: noms communs        Identiﬁ er les noms 
+communs.
+Noms: -noms communs   
+            -noms propres              
+ Identiﬁ er les noms 
+communs et les noms 
+propres.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels 
+Noms: genre et nombre
+Identiﬁ er le genre et 
+le nombre des noms.
+Noms: genre et nombre
+Identiﬁ er le genre et 
+le nombre des noms.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Pronoms personnels (je, 
+tu, il, elle)
+Identiﬁ er les 
+pronoms usuels.
+Pronoms personnels: (je, 
+tu, il, elle, nous, vous, ils/
+elles)
+Utiliser les pronoms 
+personnels.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+
+===== PAGE 61 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+61
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Déterminants: articles et 
+adjectifs possessifs
+Identiﬁ er et utiliser 
+les articles et les 
+adjectifs possessifs.
+Déterminants: articles et 
+adjectifs démonstratives
+Identiﬁ er et utiliser 
+les adjectifs 
+démonstratifs.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Prépositions de lieu:                 
+Sous/sur ; dans/à gauche/ à 
+droite, …
+Identiﬁ er et utiliser 
+les indicateurs 
+spatiaux de base.
+Prépositions de lieu                  
+-sous/sur ; dans/à gauche/ 
+à droite, …
+Identiﬁ er et utiliser les 
+indicateurs spatiaux 
+de base.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Temps simples: 
+ Présent, futur.
+Utiliser les 
+verbes usuels aux 
+temps simples de 
+l’indicatif: présent, 
+futur simple.
+Temps simples:
+Présent, futur simple, 
+passé composé 
+Utiliser les verbes 
+usuels aux temps de 
+l’indicatif: présent, 
+futur simple et passé 
+composé.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Accords simples 
+- Nom +adjectif; 
+- Nom +verbe
+Faire des accords 
+simples.
+Accords simples: 
+-Nom +adjectif;
+- Nom +verbe
+Faire des accords 
+simples.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Phrases simples: 
+Phrases aﬃ  rmatives, 
+négatives, déclaratives, et 
+interrogatives
+Distinguer les types 
+de phrases.
+ Phrases simples: 
+-Phrases, aﬃ  rmatives, 
+négatives,
+déclaratives, et 
+interrogatives. 
+-Le présent des verbes 
+usuels.  
+- Distinguer les types 
+de phrases; 
+- Utiliser correctement 
+les verbes conjugués 
+au présent.
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Vocabulaire usuel relatif 
+aux centres d’intérêt
+Utiliser le 
+vocabulaire usuel:
+les contraires 
+(chaud-froid, sur-
+sous, content-fâché, 
+long-court, …).
+Vocabulaire usuel relatif 
+aux centres d’intérêt
+Utiliser le 
+vocabulaire usuel:
+Les bases 
+morphologiques 
+(école-écolier, 
+prendre-reprendre,...).
+Observation, découverte, 
+classement, exercices de 
+closure, devinette, mots 
+croisés, jeux
+Cartes, images, 
+posters, albums 
+Les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+
+===== PAGE 62 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+62
+CLASS 1
+CLASS 2
+Méthodologie
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Unités et contenus 
+d’apprentissage
+Résultats attendus
+Suggestions de stratégies 
+d’enseignement/ 
+apprentissage
+Suggestions 
+de matériels 
+didactiques
+Orthographe
+Homophones usuels: 
+leur/leurs; son/sont ; et/
+est ; la/là/; a/as/à ; ce/se ; 
+ou/où.
+Reconnaître des 
+homophones usuels.
+Homophones usuels: 
+leur/leurs; son/sont; la/
+là/l’a/l’as; ou/où; peu/peut/
+peux; a/à/as; sa/ça, ce/se; 
+ces/c’est ; et/est ; …
+Reconnaître des 
+homophones usuels.
+- Observation
+- Découverte
+- Systématisation
+- Classement 
+- Procédés mnémotechniques.
+Images, posters, 
+albums, divers 
+supports visuels
+Les graphies des 
+phonèmes français
+Identiﬁ er quelques 
+graphies des 
+phonèmes du 
+français.
+Les graphies des 
+phonèmes français
+Identiﬁ er les 
+diﬀ érentes graphies 
+des phonèmes du 
+français.
+Illustrations,
+Observation, découverte, 
+systématisation, classement, 
+test de closure
+Images, posters, 
+albums, divers 
+supports visuels
+Les contenus du Français, les résultats attendus, la méthodologie et le matériel didactique
+
+===== PAGE 63 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+63
+Contents of Citizenship
+Table 24: Citizenship contents, expected learning outcomes, suggested methodology and didactic materials
+Civics
+CLASS   1
+CLASS  2
+Suggested Methodology and Didactic 
+Materials
+Units/ Contents 
+Expected  Learning 
+Outcomes
+Units/ Contents 
+Expected  Learning 
+Outcomes
+Learning/Teaching 
+Strategies
+Didactic Materials
+National  Emblems
+-Flag
+-National Anthem
+-Motto
+-Identify national emblems
+-Sing the National Anthem
+- Display respect when 
+singing the National 
+Anthem or during the  
+hoisting of the ﬂ ag 
+National  Emblems
+-Flag
+-National Anthem
+-Motto
+-Describe national emblems
+-Sing the National Anthem
+-Display respect when 
+singing theNnational 
+Anthem or during the 
+hoisting of the ﬂ ag 
+-Awareness campaigns
+-Field activity 
+-Role-play/simulations
+- Singing 
+Cameroon ﬂ ag,  colour 
+pencils, audio- visual 
+aids, pictures, 
+charts
+Personalities
+- School authorities
+- Local authorities 
+- Political ﬁ gures
+- Religious 
+authorities
+-Identify various 
+personalities in their 
+communities 
+-   Respect authorities and 
+others 
+State Personalities
+- School authorities
+-Authorities in their 
+localities
+-Political ﬁ gures
+-Identify the minister in 
+charge of Basic Education
+-Recognize the President of 
+the Republic
+- Respect  authority and 
+others 
+- Discussions
+- Role-play/simulations
+- Cooperative learning 
+- Pictures/Charts
+- Relevant newspapers 
+and textbooks
+- Audio-visual aids
+Rules and 
+Regulations
+-Home
+-School
+- Community 
+ - Discuss school rules and 
+home regulations 
+- Apply rules and 
+regulations in daily life
+Rules and 
+Regulation
+-Home
+-School
+-Community
+-Explain school and 
+community rules and home 
+regulations 
+-Respect rules and 
+regulations at all times 
+- Experimental learning
+- Case study
+- Role-play/simulations
+- Cooperative learning
+ - Pictures/Charts
+- Relevant textbooks
+- Audio-visual aids
+Universal values
+- Respect 
+- Obedience
+- Love
+- Tolerance
+- Honesty/sharing
+- Comply with universal 
+values 
+- Display love and respect 
+for others
+Universal values
+- Respect 
+- Obedience
+- Love/ Peace
+- Tolerance
+- Honesty/sharing
+- Explain ethical values
+- Comply with universal 
+values
+- Display love and respect 
+for others
+- Case studies
+- Awareness campaign
+- Role-play
+- Simulations
+- Food items and fruits
+- Audio-visual aids
+- Relevant pictures
+- Illustrative charts
+
+===== PAGE 64 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+64
+Moral  Education
+CLASS   1
+CLASS  2
+Suggested Methodology and Didactic 
+Materials
+Units/ Contents 
+Expected  Learning 
+Outcomes
+Units/ Contents 
+Expected  Learning 
+Outcomes
+Learning/Teaching 
+Strategies
+Didactic Materials
+Commandments 
+of God 
+- Identify the 
+commandments of God
+- Follow God’s 
+commandments 
+Commandments of 
+God 
+- Explain the 
+commandments of God
+- Follow the commandments 
+of God 
+- Case study
+- Interviews
+- Role-play/simulations  
+- Teamwork 
+- Print documents
+- Audio video tapes
+- Pictures
+- Charts
+- Bible
+- Koran
+Human Rights  Education
+Rights of the child
+-Education
+-Identity
+-Health
+- Identify their rights and 
+their duties 
+- Cooperate with others 
+Rights of the child
+- Education
+- Identity
+- Health
+- Explain the rights and 
+responsibilities of the child
+- Cooperate with others
+- Case study 
+- Awareness campaign 
+- Interviews
+- Role-play/simulations  
+- Teamwork 
+- Audio-visual aids
+- Pictures
+- Charts
+Peace and Security Education
+Practice of peace
+- Security measures
+ - Notions of  peace 
+and security
+- People and 
+institutions that 
+promote peace and 
+security
+- Safety/security 
+measures
+-Explain notions of peace 
+and security
+-Identify people and 
+institutions that promote 
+peace and security
+- Report all suspected acts 
+and objects
+-Stay away from strange 
+people and suspected 
+objects
+Peace and security
+- Security measures 
+-Notions of peace 
+and security
+-People and 
+institutions that 
+promote peace and 
+security
+ - Safety/security 
+measures
+-Explain notions of peace 
+and security
+-Identify people and 
+institutions that promote 
+peace and security.
+- Report all suspected acts 
+and objects
+-Stay away from strange 
+people and suspected 
+objects
+- Interactive teaching 
+- Experimental learning
+- Case study
+- Awareness campaigns
+- Role-play/simulations
+- Real objects
+- Audio-visual aids
+- Pictures/Charts
+- Slogans
+- Relevant emoticons 
+Citizenship contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 65 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+65
+Contents of Vocational Studies 
+Table 25: Vocational Studies contents, expected learning outcomes, suggested methodology and didactic materials
+Arts and Crafts
+CLASS  1
+CLASS  2
+Suggested Methodology and Didactic 
+Material And Didactic Materials
+Units/Contents
+Expected Learning 
+Outcomes
+Units/Contents
+Expected Learning 
+Outcomes
+Teaching Learning 
+Strategies
+  Didactic Materials
+Materials used for 
+arts/crafts
+- 
+Natural materials
+- 
+Found materials
+- 
+Recyclable 
+materials
+- Identify the  diﬀ erent 
+types of materials used 
+for arts /crafts
+- Follow good 
+environmental rules
+Materials used for 
+arts/crafts
+- 
+Natural materials
+- 
+Found materials
+- 
+Recyclable 
+materials
+- 
+Use diﬀ erent materials 
+for given activities
+- 
+Produce articles 
+- 
+Follow environmental 
+rules
+- 
+Teamwork
+- 
+Projects
+- 
+Outdoor lessons
+- 
+Use of resource 
+persons
+- 
+Visits to exhibition 
+centres and 
+workshops
+Stones, sticks, leaves, 
+paper, pith, grass, 
+feathers, shells, 
+scales, grains, beads, 
+strings, thread, cloth, 
+newspapers;  clay, 
+dough, rounded 
+needles, corks, rounded 
+-head scissors
+A craftsman’s
+tools
+- Workshop tools
+-Identify a craftsman’s 
+tools
+- Demonstrate the use of 
+the tools
+ - Show interest in 
+craftsmanship
+A tool box
+- Hammer, nails, 
+pincers
+Tools
+-Occupations and 
+tools used
+- Demonstrate the use of  a 
+craftsman’s tools
+- Produce articles using 
+craftsman’s tools
+ - Show interest in 
+craftsmanship
+- Teamwork, projects, 
+outdoor lessons
+- Use of resource 
+persons
+- Visits to exhibition 
+centres and workshops
+- Hammer, nails, 
+pincers
+- Ropes, mould, 
+rounded-head scissors 
+- Leather bags or small 
+box
+Folding 
+- Objects, fan, kite, 
+plane,  caps, canoes, 
+envelopes
+- Identify plane shapes
+- Produce envelopes 
+using plane shapes
+- Fold paper and leaves 
+to produce various items
+- Show interest in arts 
+and crafts
+Folding 
+- Objects,  fan, kite, 
+plane, canoe, envelopes 
+- Fold paper and leaves to 
+produce various items 
+- Cut diﬀ erent plane shapes
+- Produce objects using 
+plane shapes
+- Show interest in arts and 
+crafts
+- Teamwork, projects - 
+Outdoor lessons 
+- Use of resource 
+persons 
+- Visits to exhibition 
+centres and workshops
+- Assorted papers, 
+rounded-head scissors, 
+glue, thread, rounded-
+head needle, ropes, 
+twine, rubber rope, 
+leaves
+
+===== PAGE 66 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+66
+CLASS  1
+CLASS  2
+Suggested Methodology and Didactic 
+Material And Didactic Materials
+Units/Contents
+Expected Learning 
+Outcomes
+Units/Contents
+Expected Learning 
+Outcomes
+Teaching Learning 
+Strategies
+  Didactic Materials
+Some practice sessions
+- Ropes
+- Balls
+- Brooms
+- Blinds
+- Show interest in arts 
+and crafts
+Practice sessions
+- Ropes 
+- Balls
+- Brooms
+- Blinds
+- Produce various objects
+- Show interest in arts and 
+crafts
+- Teamwork, projects 
+- Outdoor lessons 
+- Use of resource 
+persons
+- Visits to exhibition 
+centres and workshops.
+Assorted papers, 
+rounded-head scissors, 
+gum, thread, rounded-
+head needle, ropes, 
+twine, rubber rope
+Threading 
+Beads, chain
+- Thread with pith, paper, 
+beads to produce various 
+designs
+Threading
+- Threaded designs
+- Thread with pith, paper, 
+beads to produce various 
+designs
+- Teamwork, projects
+- Outdoor lessons
+- Use of resource 
+persons
+- Visits to exhibition 
+centres and workshops
+Real objects, thread, 
+beats, pith, needles, 
+paper, scissors, soles of 
+plastic slippers
+Moulding 
+Models, pots, cups, 
+bowls
+- Mix diﬀ erent dough
+- Use dough to produce 
+diﬀ erent objects and 
+shapes
+Moulding
+Models, pots, cups, 
+bowls
+- Mix diﬀ erent dough
+- Use dough to produce 
+diﬀ erent objects and  
+shapes
+- Teamwork, projects
+- Outdoor lessons 
+- Use of resource 
+persons
+- Visits to exhibition 
+centres and workshops
+Clay, paper marche, 
+plasticine,  dough
+Structures 
+- Shapes, pavements, 
+houses
+ - Construct various 
+structures 
+- Show interest in 
+architecture
+Structures
+- Shapes, pavements, 
+houses
+- Construct diﬀ erent 
+structures
+- Show interest in 
+architecture
+- Teamwork, projects
+- Outdoor lessons 
+- Use of resource 
+persons
+- Visits to exhibition 
+centres and workshops
+Buckets, ﬂ owers, 
+containers, brushes, 
+water, gloves, mouth 
+and nose masks
+Vocational Studies contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 67 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+67
+CLASS  1
+CLASS  2
+Suggested Methodology and Didactic 
+Materials
+Units/Contents
+Expected Learning 
+Outcomes
+Units/Contents
+Expected Learning 
+Outcomes
+Teaching Learning 
+Strategies
+  Didactic 
+Materials
+Colours
+- Primary colours
+- Secondary colours
+- Produce colours
+- Combine colours to obtain 
+other colours
+- Colour objects
+- Show love for aesthetics
+Colours
+- Primary colours
+- Secondary 
+colours
+- Produce colours
+- Combine colours to obtain 
+other colours
+- Colour objects
+- Show love for aesthetics
+- Teamwork, PBL 
+- Outdoor lessons
+- Use of resource persons 
+Real objects, audio 
+video tape, pictures, 
+charts, ﬂ owers, 
+avocado seeds 
+Decoration 
+Papers, ﬂ owers, ropes
+- Produce decoration items 
+using material from the 
+environment
+- Decorate the classroom
+Decoration
+- Tables, chairs, 
+walls, bottles
+- Produce decoration items 
+using material from the 
+environment
+- Decorate the classroom
+- Teamwork, PBL 
+- Outdoor lessons
+- Use of resource persons
+Ropes, straw, cane, 
+palms fronts, leaves, 
+papers, thread, 
+cardboards, ribbons, 
+scraps from tailor’s 
+shop
+Weaving 
+- Mat, ropes, caps
+- Weave diﬀ erent objects
+Weaving
+- Mat, ropes, caps
+- Weave diﬀ erent objects
+- Teamwork, PBL 
+- Outdoor lessons
+- Use of resource persons
+- Visits to exhibition 
+centres and workshops
+Seeds, saw dust, 
+textile, cardboard, 
+plywood, glue, water, 
+ropes, ﬁ bre, raﬃ  a
+Pasting 
+- Designs: curves, 
+circles, triangles, tables
+- Paste diﬀ erent designs 
+using a variety of materials 
+Pasting 
+- Car, house, 
+tables, pots, balls
+- Paste and produce  
+diﬀ erent designs using a 
+variety of materials
+- Teamwork
+- Visits to exhibition 
+centres and workshops
+- Pasting
+Buckets, ﬂ owers, 
+containers, brushes, 
+water, gloves, glue, 
+paper marche, mouth 
+and nose masks
+Vocational Studies contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 68 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+68
+Agro Pastoral Farming
+CLASS  1
+CLASS  2
+Suggested Methodology and Didactic 
+Materials
+Units/Contents
+Expected Learning 
+Outcomes
+Units/Contents
+Expected Learning 
+Outcomes
+Teaching Learning 
+Strategies
+  Didactic Materials
+Agricultural  tools 
+- Use appropriate tools 
+to do gardening
+- Protect self from 
+injury at all times 
+Agricultural  tools 
+- Use appropriate tools to 
+do gardening 
+- Protect self from injury 
+at all times 
+- Teamwork, PBL 
+- Outdoor lessons
+- Role-play/simulation
+Cutlass, hoe, spade, 
+digger, rake, watering 
+can, pictures, 
+illustrative charts
+Gardening/farming
+- Good practices 
+(watering, weeding)
+- Select seeds that are 
+good for planting 
+- Care for plants in the 
+garden
+Gardening/farming
+- Procedures
+- Planting distances
+- Good practices  
+(mulching, thinning) 
+- Plant seeds 
+- Care for plants in the 
+garden
+- Teamwork, PBL 
+- Outdoor lessons
+- Manual work
+Corn, groundnuts, 
+beans, melons, pictures, 
+charts, water, watering 
+cans, sticks, ropes, jars, 
+plastic bottles, gloves
+Soil 
+enrichment 
+-Manures 
+- Identify diﬀ erent 
+types of manures
+-Use manure to 
+improve the soil
+- Show love for 
+agriculture
+Soil enrichment 
+- Manures
+- Identify diﬀ erent types 
+of manures
+-Use manure to improve 
+the soil
+- Show love for 
+agriculture
+- Teamwork, PBL 
+- Outdoor lessons
+- Practical work
+Food waste, dung, 
+gloves
+Livestock farming 
+- Animal care
+-  Feeding and 
+protection of animals
+- Poultry/Piggery
+-Sheep, goat  & cattle 
+rearing
+-Snails, rabbit, ﬁ sh 
+farming
+- Feed domestic 
+animals
+- Produce animal feed 
+- Care for animals
+- Show love for 
+animals
+Livestock farming 
+Animal care
+- Animal feed: fowls, 
+pigs, dogs, cats
+-Sheep, goat  
+-Snails, rabbit, cows
+- Feed domestic animals
+- Produce animal feed
+- Care for animals
+- Show love for animals
+- Teamwork, PBL 
+- Outdoor lessons
+- Use of resource persons
+- Visits to animal farms
+Corn, soy beans, 
+crayﬁ sh, dried ﬁ sh 
+remains, vegetable 
+stems, bags, cage, 
+mortar and pestle
+Vocational Studies contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 69 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+69
+Contents of Arts
+Table 26: Arts contents, expected learning outcomes, suggested methodology and didactic materials
+Visual Arts
+CLASS 1
+CLASS 2
+Suggested Methodology And Didactic Materials
+Units /Contents
+Expected Learning 
+Outcomes
+Units /Contents
+Expected Learning 
+Outcomes
+Teaching / Learning 
+Strategies
+Didactic Materials
+Drawing and 
+colouring 
+Drawing
+Colouring 
+- Draw plain shapes and 
+other objects
+- Colour objects using 
+appropriate colours
+- Develop their ﬁ ne/small 
+motor skills
+Drawing and 
+colouring 
+Drawing
+Colouring 
+- Draw plain shapes and 
+other objects
+- Colour objects using 
+appropriate colours
+- Show dexterity in handling 
+drawing materials 
+- Demonstration
+- Trial and error
+- Teamwork
+- Outdoor work
+Pencils, rulers, felt pens, 
+paper, cardboard, slates, 
+coloured pencils, charts/
+pictures, stencils
+Painting 
+- Materials 
+- Free and 
+coordinated 
+painting 
+- Identify painting materials
+- Produce paint from local 
+materials
+- Use painting materials to 
+paint objects\surfaces
+- Show love for beauty and 
+colour coordination 
+Painting 
+- Coordinated 
+painting 
+- Produce paint from local 
+materials
+- Use more than one colour 
+to paint an object
+- Interpret their work of art
+- Show love for beauty and 
+colour coordination 
+- Demonstration
+- Trial and error
+- Teamwork
+- outdoor work
+- Flipped classroom
+Avocado seeds, cola nuts, 
+ﬂ owers, coloured pencils, 
+chalk, felt pens, cardboard 
+paper, school ﬁ eld, bucket, 
+brush, water, apron, gloves, 
+mouth mask
+Performing Arts
+Music
+- Sol-fa notations 
+- Songs
+- Musical 
+instruments 
+- Identify diﬀ erent 
+traditional musical 
+instruments 
+- Sing respecting musical 
+notes
+- Play musical instruments
+- Treasure workiing with joy 
+Music
+- Sol-fa notations 
+- Songs
+- Identify musical notes
+- Sing respecting musical 
+notes
+- Play musical instruments 
+- Treasure workiing with joy
+- Use of sol-fa notations
+- Singing 
+- Conducting
+- Humming
+Songs, sol-fa notations, CD, 
+drums, ﬂ utes xylophone, 
+saxophone, gong, rattles, 
+mouth organs, audio-visual 
+aids
+Rhythm/beats
+- Identify diﬀ erent beats 
+- Respect rhythm
+Rhythm/beats
+- Identify diﬀ erent beats 
+- Produce beats of their 
+choice
+- Respect rhythm
+- Syllabiﬁ cation  
+(pronounce words in the 
+song clearly in syllables)
+- Demonstrations
+Songs, sol-fa notations, CD 
+drums, ﬂ utes xylophone
+Dance 
+-Dance steps
+- Identify various dance 
+steps
+- Practise diﬀ erent dance 
+steps
+- Dance gracefully
+Dance 
+-Dance steps
+- Practise diﬀ erent dance 
+steps
+- Dance gracefully
+- Demonstrations
+-Cooperative learning
+- Guided tour
+- Use of resource persons
+- Chanting and dancing 
+- Pairing
+Appropriate costumes and 
+props
+
+===== PAGE 70 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+70
+Contents of Physical Education and Sports 
+Table 27:  Physical Education and Sports contents, expected learning outcomes, suggested methodology and didactic materials
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Unit/ Contents
+Expected Learning 
+Outcomes
+Unit/ Contents
+Expected Learning 
+Outcomes
+Teaching and 
+Learning Strategies
+Didactic Materials
+Movement (Rhythmic 
+Activities)
+- Walking, balancing
+- Skipping 
+- Matching
+- Galloping
+- Hop scotch
+- Dodging
+- Display diﬀ erent 
+rhythmic movements 
+- Perform keep-ﬁ t 
+exercises 
+Movement (Rhythmic 
+Activities)
+- Walking, balancing
+- Skippin, 
+- Matching
+- Galloping
+-Hop scotch
+- Dodging
+- Display diﬀ erent 
+rhythmic movements 
+- Perform keep-ﬁ t 
+exercises 
+- Demonstrations 
+- Illustrations.
+- Explanation 
+Whistles, ropes, chalk, 
+clay soil, wood ash, 
+balls, sportswear, 
+clappers, towel, bucket, 
+water
+Relays
+- Touch and run
+- Line picking
+- Tunnel
+- Zigzag
+- Shuttle
+- Demonstrate the 
+sense of staying 
+attentive
+- Treasure helping 
+others
+Touch and run
+- Line picking
+- Tunnel
+- Zigzag
+- Shuttle
+- Demonstrate the 
+sense of staying 
+attentive
+- Treasure helping 
+others
+- Demonstrations 
+- Illustrations
+- Explanation
+- Listening, observation  
+and imitation
+Balls, cylinders, sticks, 
+ropes wood ash, towel 
+bucket, water
+Sprints 
+- 20 meters
+- 50 meters
+- Run fast over a 
+given distance
+- 50 meters
+-  60 meters
+- Run fast over a given 
+distance
+- Demonstrations 
+- Illustrations
+- Explanation
+Clappers, whistles, 
+wood ash, water, towel, 
+bucket
+Jumps
+- Rope jump
+- High jump
+- Long Jump
+- Run and cross over 
+an obstacle
+- Push oﬀ  the legs with 
+hands
+Jumps
+- Rope jump
+- High jump
+- Long Jump
+- Run and cross over an 
+obstacle
+- Push oﬀ  the legs with 
+hands
+- Demonstrations
+- Illustrations.
+- Explanation
+Clappers, whistles, 
+wood ash, water, towel, 
+bucket
+
+===== PAGE 71 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+71
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Unit/ Contents
+Expected Learning Out-
+comes
+Unit/ Contents
+Expected Learning 
+Outcomes
+Teaching and 
+Learning Strategies
+Didactic Materials
+Throws
+- Shot put
+- Javelin
+- Combine actions to 
+manipulate and project 
+objects
+- Handle familiar objects of 
+diﬀ erent weights
+- Throw  objects using good 
+posture
+Throws
+- Shot put
+- Javelin
+- Combine actions to 
+manipulate and proj-
+ect objects
+- Handle familiar 
+objects of diﬀ erent 
+weights
+- Throw  objects using 
+good  posture
+- Demonstrations 
+- Illustrations.
+- Explanation
+Clappers, whistles, 
+wood ash, water, 
+towel, bucket                            
+Team Sports
+- Football/Handball
+- Volleyball
+- Basketball
+- Table tennis
+- Lawn tennis
+- Identify the basic rules of 
+at least one team sport
+- Play with mates
+Team Sports
+- Football/Handball
+- Volleyball
+- Basketball
+- Table tennis
+- Lawn tennis
+- Identify the basic 
+rules of at least one 
+team sport
+- Identify the roles of 
+each player on the 
+ﬁ eld
+- Play with others
+- Demonstrations 
+- Illustrations.
+- Explanation
+Balls, whistles, 
+basket, nets, bats, 
+tables, cuts, taps, 
+pecks, paint, water, 
+buckets, towel
+Gymnastics
+- Cart wheel
+- Forward roll
+- Backward roll
+- Head balance
+- Use diﬀ erent postures to 
+keep stability
+- Move in diﬀ erent ways 
+using hands and feet
+Gymnastics
+- Cart wheel
+- Forward roll
+- Backward roll
+- Head balance
+- Use diﬀ erent postures 
+to keep stability
+- Move in diﬀ erent 
+ways using hands and 
+feet
+- Demonstrations 
+- Illustrations
+- Explanation
+Whistles, sports-
+wear, taps, pecks, 
+paint, water, 
+buckets, towel
+Physical Education and Sports contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 72 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+72
+Contents of National Languages and Cultures
+Table 28: National Language and Cultures contents, expected learning outcomes, suggested methodology and didactic materials
+Listening  and  Speaking
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching/Learning 
+Strategies
+Didactic Materials
+Generalities on NLC
+- My language 
+- Other languages in 
+the community
+- Cultural aspects
+- Name their languages
+- Identify other 
+languages in the 
+community
+- Name elements of their 
+culture
+Generalities on 
+NLC
+- My language 
+- Other languages in 
+the community
+- Cultural aspects
+- Name their languages
+- Identify other languages in 
+the community
+- Name elements of their 
+culture
+- Discussion
+- Demonstration 
+- Illustration 
+- Conservation and dialogue
+- Research and assignments
+- Real objects
+- Charts/pictures 
+- Video and audio 
+clips
+Greetings 
+- Morning
+- Afternoon
+- Evening Night 
+- Greet people and 
+respond to greetings at 
+the diﬀ erent periods of 
+the day appropriately
+- Develop enthusiasm to 
+greet people
+Greetings 
+- Morning
+- Afternoon
+- Evening Night 
+- Greet people and respond 
+to greetings appropriately 
+y at the diﬀ erent periods of 
+the day 
+- Develop enthusiasm to 
+greet people
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustrations 
+- Dialogue 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Video and audio 
+clips
+Polite  forms
+- Responses 
+Use appropriate polite 
+responses
+Polite  forms
+- Responses
+Use appropriate polite 
+responses
+- Cooperative learning 
+- Demonstrations 
+- Illustrations 
+- Dialogue 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Video and audio 
+clips
+Introduction 
+- Introducing self and 
+others
+Introduce self  and others 
+appropriately
+Introduction 
+- Introducing self 
+and others
+Introduce self  and others 
+appropriately
+- Cooperative learning 
+- Flipped classroom 
+- Demonstrations 
+- Dialogue 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Video and audio 
+clips
+
+===== PAGE 73 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+73
+CLASS 1
+CLASS 2
+Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching/Learning 
+Strategies
+Didactic 
+Materials
+Descriptions 
+- Traditional Games 
+- Traditional 
+occupations  
+- Traditional meals/ 
+drinks in the locality 
+- Use appropriate words to 
+describe traditional games, 
+occupations and meals
+- Play some collective
+traditional games 
+- Draw lessons from the games
+- Show love for culture
+Descriptions 
+- Traditional Games 
+- Traditional 
+occupations  
+- Traditional meals/ 
+drinks in the locality 
+- Use appropriate words to 
+describe traditional games, 
+occupations and meals
+- Play some collective
+traditional games 
+- Draw lessons from the games
+- Show love for culture
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustrations 
+- Dialogue 
+- Excursions 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Video and audio 
+clips
+Sketches 
+- Sounds of animals 
+and insects and birds
+- Children lullabies 
+- Perform the role of lulling a 
+baby 
+- Act sketches  on various 
+themes
+- Show love for acting
+Sketches 
+-Sounds of animals 
+and insects and birds
+-Techniques to carry 
+a baby  
+- Perform the role of lulling a 
+baby 
+- Act sketches  on various 
+themes
+- Show love for acting 
+- Flipped classroom 
+-Discussions 
+-Demonstrations 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Video and audio 
+clips
+The family
+- Nuclear family
+- Identify and name members 
+of a nuclear family
+The family
+- Extended family
+ - Identify and name members 
+of an extended family
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustrations 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Video and audio 
+clips
+Oral traditions
+- Stories
+- Folktales
+- Songs 
+- Recitations
+- Recount short stories
+- Sing songs 
+- Narrate tales
+- Develop the art of oration 
+Oral tradition
+- Stories
+- Folktales
+- Songs 
+- Sketches
+- Recount short stories
+- Sing songs
+- Narrate tales
+- Entertain people using oral 
+traditions 
+- Develop the art of eloquence
+- Cooperative learning 
+- Flipped classroom 
+- Demonstrations 
+- Illustrations 
+- Dialogue 
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Video and audio 
+clips
+National Languages and Cultures contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 74 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+74
+Reading
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching/Learning 
+Strategies
+Didactic Materials
+Reading aloud
+- Vowels sounds 
+(a.e.i.o.u)
+- Consonants (p, b, t, 
+d, k, g, n )
+- Picture reading
+- Read vowels
+- Read consonants
+- Use appropriate 
+words to describe  
+pictures
+- The General  
+Alphabet for 
+Cameroonian 
+Languages(GAC L) 
+- Picture reading 
+- Read vowels and consonants 
+of the GACL
+- Use appropriate words to 
+describe  pictures
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustrations 
+- Simulation/role-play
+- Real objects
+- Video and audio clips
+- The GACL ﬂ ip chart 
+- Letter and word cards
+Puzzles
+Simple words with 
+one syllable
+Read simple, one-
+syllable words 
+correctly
+Simple words with 
+one syllable
+Read simple, one-syllable 
+words correctly
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustration
+- Real objects
+- Charts/pictures 
+- Print documents 
+- The GACL ﬂ ip chart 
+- Letter and word cards 
+Numbers from 1-10
+Read numbers 1-10
+Numbers from 1-10
+Read numbers 1-10
+- Cooperative learning 
+- Flipped classroom 
+- Illustration
+- Simulation/role-play
+- Real objects
+- Charts/pictures
+- number cards  and 
+Puzzles 
+Writing
+- Vowels sounds 
+(a.e.i.o.u)
+- Consonants (p, b, t, 
+d, k, g, n )
+- Picture reading
+- Write  vowels
+- Read consonants
+- Use appropriate 
+words to describe  
+pictures
+- The General  
+Alphabet for 
+Cameroonian 
+Languages (GACL) 
+- Picture reading 
+- Write  vowels and 
+consonants of the GACL
+- Use appropriate words to 
+describe  pictures
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustration
+- Simulation/role-play
+- Real objects
+- Charts/pictures 
+- Video and audio clips
+- The GACL ﬂ ip chart 
+- Letter and word cards 
+Simple words with 
+one syllable
+Write simple, one-
+syllable words 
+correctly
+Simple words with 
+one syllable
+Write  simple , one –syllable 
+words correctly
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustration
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Word cards 
+- Puzzles
+National Languages and Cultures contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 75 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+75
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials
+Units / Contents
+Expected Learning 
+Outcomes
+Units / Contents
+Expected Learning 
+Outcomes
+Teaching/Learning 
+Strategies
+Didactic Materials
+Numbers 1-10
+Write  numbers from 1 
+to 10
+Numbers 1-10
+Write  numbers from 1 to 10
+- Cooperative learning 
+- Flipped classroom 
+- Demonstrations 
+- Illustration
+- Simulation/role-play
+- Real objects
+- Charts/pictures
+- Number cards
+- Puzzles 
+Grammar
+Double vowels/ 
+consonants  (depth…) 
+gb – nt – ts – nd – kp
+- Read letter sounds  
+correctly
+- Show interest in 
+reading
+Double vowels/ 
+consonants  
+(depth…) gb – nt – 
+ts – nd – kp
+- Read letter sounds  correctly
+- Show interest in reading
+- Cooperative learning 
+- Discussions 
+- Demonstrations 
+- Illustration
+- Real objects
+- Charts 
+- Print documents 
+- GACL ﬂ ip chart 
+- Letter and word cards 
+Nouns
+Countable   and 
+uncountable nouns 
+- Identify and name 
+objects, places and 
+persons
+Nouns
+Singular  and plural 
+of  countable nouns 
+- Associate nouns to their 
+plurals
+- Cooperative learning 
+- Discussions 
+- Demonstrations 
+- Illustration
+- Real objects
+- Charts/pictures
+- Number cards  
+- Puzzles 
+Tenses
+- Present tense
+- Present continuous 
+tense
+- Describe habitual 
+activities
+- Describe ongoing 
+actions
+Simple sentences 
+( subject/ verb, 
+object)
+Construct simple SVO 
+sentences
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Real objects
+- Charts/pictures 
+- GACL ﬂ ip chart 
+- Letter and word cards
+Sound recognition
+Double vowels/ 
+consonants  ( gb – nt 
+– ts – nd – kp - th –)
+- Read letter sounds  
+correctly
+- Show interest in 
+reading
+Simple sounds
+- th – tm – tb 
+-Symbols of 
+phonems (GACL)
+- Read letter sounds  correctly
+- Show interest in reading
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustration
+- Real objects
+- Charts/pictures
+- and Puzzles 
+- GACL ﬂ ip chart 
+Vocabulary
+Simple words 
+drawn from the 
+various ILT
+- Use new words in a 
+conversation 
+- Show love for 
+learning new words 
+and languages
+Vocabulary
+- Days of the week 
+Simple words 
+drawn from the 
+various ILT
+- List the days of the week
+- Use new words in a 
+conversation 
+- Show love for learning new 
+words and languages
+- Cooperative learning 
+- Flipped classroom 
+- Discussions 
+- Demonstrations 
+- Illustrations
+- Real objects
+- Charts/pictures 
+- Print documents 
+- Letter and word cards
+National Languages and Cultures contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 76 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+76
+Contents of Information and Communication Technologies
+Table 29: ICT contents, expected learning outcomes, suggested methodology and didactic materials
+Basic Knowledge of the Computer System and ICT Tools
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials 
+Unit/Contents
+Expected Learning 
+Outcomes
+Unit/Contents
+Expected Learning 
+Outcomes
+Teaching and Learning 
+Strategies
+Didactic Materials     
+The computer system 
+- System unit 
+- Key board
+- Mouse
+- Monitor  
+- Printer 
+- Scanner
+- Identify the main com-
+ponents of a computer 
+system
+- Describe the main 
+components a computer 
+Components of a 
+computer system
+- Input devices
+- Output devices
+- Storage devices
+- Describe the diﬀ erent 
+components of the 
+computer.
+- Explain the uses of 
+the components of the 
+computer
+- Demonstration (may be  
+through the presentation of 
+the physical or pictures of 
+the diﬀ erent components  of 
+a computer to pupils)
+- Discussions may focus on 
+hands – on activities 
+- Questions and answers
+Computer equipment: 
+Monitor; Keyboard; 
+Mouse; System unit; 
+Printer; Connections
+Charts 
+Locally fabricated mate-
+rials (models)
+Reletated textbooks
+ICT devices
+- The computer
+Radio/Television sets 
+- Identify common ICT 
+devices in school and 
+beyond
+- Describe how  these 
+devices transmit infor-
+mation
+- Respect other people’s 
+privacy
+The use of common 
+ICT devices 
+- Computer system
+- Radio/Television 
+sets
+- Mobile/ﬁ x phones
+- Photo camera etc.
+- Use  common ICT de-
+vices in school 
+- Explain how ICT devic-
+es boost production
+- Respect other people’s 
+privacy
+- Demonstration 
+- Discussions 
+ICT devices in the Con-
+tents 
+Camera 
+Charts 
+Locally fabricated mate-
+rials
+Related textbooks
+Traditional and 
+modern tools for 
+communication
+- Traditional  tools  
+- Modern tools
+- Identify traditional 
+and modern tools for 
+communication
+- Describe how they are 
+used to ease communi-
+cation                                 
+The use of  tradi-
+tional and modern 
+communication 
+tools 
+- Traditional tools 
+-Modern ICT  tools 
+- Use traditional and mod-
+ern  communication tools 
+for speciﬁ c purposes 
+- Demonstration 
+- Discussions 
+Traditional and modern 
+tools (in the contents)
+Camera 
+Charts/pictures
+Related textbooks
+
+===== PAGE 77 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+77
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials 
+Unit/Contents
+Expected Learning 
+Outcomes
+Unit/Contents
+Expected Learning 
+Outcomes
+Teaching and Learning 
+Strategies
+Suggested Didactic 
+Materials     
+The keypad of a 
+communication 
+device
+- Mobile phones
+- Communication with 
+the devices
+- Simulate the use 
+of the keypad of a 
+communication device
+- Use devices to make 
+distance communication
+ -Handle a mobile/ﬁ xed 
+phone or walkie-talkie  
+device
+The keypad of 
+communication 
+devices
+-Telephones
+-Remote controls
+-Use the keypad of a 
+communication device to 
+dial and answer a call
+- Handle a telephone 
+conversation
+- Communicate respectfully
+Demonstration (pupils 
+may play with mobile 
+devices to see how they 
+handle the tools, pupils 
+simulate a communication 
+scene)
+Mobile/ﬁ x telephones/ 
+walkie-talkie
+Charts
+Locally fabricated 
+materials
+Related textbooks
+Remote control of 
+devices
+- Remote control of 
+ICT devices (radio, 
+television,  audio/
+video player,)
+-Describe the use of a 
+remote control device.
+Remote control  
+- Remote control of 
+ICT devices (radio, 
+television , audio/
+video player)
+- Use a remote control 
+device
+- Watch appropriate 
+channels 
+- Demonstration 
+- Discussions (may focus 
+on hands-on activities)
+Remote control, 
+television, DVD, radio 
+set, charts containing 
+pictures of the diﬀ erent 
+ICT devices
+Locally fabricated 
+materials
+Related textbooks
+Keyboard and mouse 
+of a computer
+-The keyboard of a 
+computer
+-The mouse of a 
+computer
+- Play with the  
+keyboard and the mouse 
+of a computer
+-Diﬀ erentiate a 
+keyboard from a mouse
+- Use ICT devices 
+responsibly
+Keyboard and 
+mouse of a 
+computer
+-The keyboard of a 
+computer
+-The mouse of a 
+computer
+- Identify the diﬀ erent parts 
+of a keyboard and a mouse
+- Use a mouse to navigate 
+information on a computer
+- Use a keyboard to type 
+texts
+- Describe a  keyboard and 
+the mouse of a computer
+- Use ICT devices 
+responsibly
+- Demonstration 
+- Discussions 
+- Simulations
+- Guided visits 
+- Questions and answers
+Computer mouse and 
+keyboard
+Charts containing 
+pictures of the keyboards 
+and mouse
+Locally fabricated 
+materials
+Related textbooks
+ICT contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 78 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+78
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials 
+Unit/Contents
+Expected Learning 
+Outcomes
+Unit/Contents
+Expected Learning 
+Outcomes
+Teaching and Learning 
+Strategies
+Didactic Materials     
+Power buttons of  
+ICT devices
+-The power buttons of 
+a computer 
+-Other ICT devices
+- Identify the Power 
+buttons of common ICT 
+devices 
+- Booth a computer 
+- Turn oﬀ   a computer
+- Use ICT devices with 
+caution
+Power buttons of  
+ICT devices
+- The power buttons 
+of computers , radio, 
+DVD
+- Describe the Power 
+buttons of common ICT 
+devices 
+- Explain  the importance  
+of ICT power buttons 
+- Use ICT devices with 
+caution
+- Demonstration (pupils 
+practise to power “on” 
+and “oﬀ ” available ICT 
+devices)
+- Discussions 
+- Questions and answers
+Mobile  phones, TVs, 
+DVD player 
+Charts containing 
+pictures of the diﬀ erent 
+devices
+Related textbooks
+Internet and Communication
+Sources of 
+information
+- Information from 
+letters, ﬁ lms, teaching, 
+announcements
+- Identify sources of 
+information
+- Explain the 
+importance of sources 
+of information
+- Recognize 
+the importance 
+of appropriate 
+communication
+Sources of 
+information
+- Tools for sending 
+and receiving 
+information
+- Describe tools for sending 
+and receiving information
+- Explain the use of speciﬁ c 
+tools 
+- Use tools to send and 
+receive  information
+- Recognize the 
+importance of appropriate 
+communication
+- Demonstration (display 
+real or pictures of various 
+sources of information for 
+pupils to identify)
+- Discussions (may focus 
+on letting pupils share 
+their ideas about sources 
+of information) 
+- Observation (pupils 
+may watch a news item 
+on TV, a ﬁ lm and try to 
+distinguish them)
+TV set, DVD player, 
+Radio 
+Charts containing 
+pictures of the diﬀ erent 
+sources of information
+Locally fabricated 
+materials
+Related textbooks
+ICT contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 79 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+79
+Health, Safety and Ethics
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials 
+Unit/Contents
+Expected Learning 
+Outcomes
+Unit/Contents
+Expected Learning 
+Outcomes
+Teaching and 
+Learning Strategies
+Didactic Materials   
+ICT devices and safety 
+measures 
+- Cables connected to 
+electricity
+- Sitting distance 
+- A telephone 
+- Identify basic 
+safety measures to be 
+observed while using 
+a computer and other 
+ICT devices
+- Respect  safety 
+measures 
+ICT devices and 
+safety measures
+- Cables connected 
+to electricity
+- Sitting distance 
+- A telephone  
+- Describe the appropriate 
+sitting position in front a 
+computer
+- Identify basic safety 
+measures to be observed 
+while using a computer and 
+other ICT devices
+- Respect safety measures and 
+sitting positions 
+- Demonstration (pupils 
+practise how to handle 
+electricity cables 
+appropriately)
+- Discussions on safety 
+measures 
+- Observation of sitting 
+positions
+- Questions and answers
+Telephones, TV, DVD 
+player 
+Charts containing 
+pictures related to the 
+contents
+Related textbooks 
+Safety gloves
+Environmental conditions 
+and security
+- Rules  in a computer 
+room
+- Ventilation
+- Security measures 
+- Discuss the basic 
+environmental 
+conditions and 
+security  measures in a 
+computer room
+- Respect the rules of 
+the computer room 
+Environmental 
+conditions and 
+security
+- Rules  in a 
+computer room
+- Ventilation
+- Security 
+measures 
+- Explain the basic 
+environmental conditions 
+and security  measures in a 
+computer room
+- Apply the security measures 
+and rules in a computer room
+- Respect ICT rules
+- Discussions (may 
+focus on the importance 
+of environmental 
+conditions and security 
+in a computer room, 
+letting pupil share their 
+views about the hazards 
+they have observed in 
+people using computers)
+- Questions and answers
+Charts containing 
+pictures related to the 
+contents
+Related textbooks 
+Computer laboratory 
+rules
+ICT devices and hygienic 
+measures
+- Describe hygienic 
+conditions to be 
+respected while using 
+a computer and other 
+ICT devices
+- Respect hygienic 
+rules while using ICT 
+devices
+ICT devices 
+and hygienic 
+measures
+- Discuss basic hygiene rules 
+while using ICT tools
+- Apply hygienic rules to 
+prolong the life span of  ICT 
+tools and other objects
+- Discussions (may 
+focus on the dangers 
+of eating food around 
+a computer; drinking 
+liquid or touching ICT 
+devices with wet hands)
+- Questions and answers
+- Charts containing 
+pictures related to the 
+Contents
+- Related textbooks 
+- ICT hygienic rules
+ICT contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 80 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+80
+Basic Notions of Computational Thinking
+CLASS 1
+CLASS 2
+Suggested Methodology and Didactic 
+Materials 
+Unit/Contents
+Expected Learning 
+Outcomes
+Unit/Contents
+Expected Learning 
+Outcomes
+Teaching and Learning 
+Strategies
+Didactic Materials     
+Basic notions of 
+Abstraction
+- Identify  common 
+objects found around their 
+environment 
+- Recognise that 
+computers can sort out 
+objects (cars, bicycles ) or 
+items without details
+The diﬀ erences 
+in objects (cars, 
+trucks, bicycle, 
+house) around 
+the environment/
+community
+- Recognise that objects are 
+made for a purpose
+- Recognise that the 
+function of each object 
+is needed to make use of 
+it and so computers need 
+information to perform a 
+task
+- Discussions 
+- Observation 
+Charts containing 
+pictures of the diﬀ erent 
+objects around the school 
+and beyond
+Related text-books
+Basic concepts 
+of Algorithm
+- Identify steps required 
+to carry out a task as an 
+algorithm 
+- Recognise that 
+computers go through a 
+step by step process to 
+resolve a problem
+Processes:
+- Preparing tea for 
+breakfast
+- Preparing for 
+classes
+- Washing cloths
+- Create a simple 
+algorithm, individually 
+and collaboratively, 
+without using computers to 
+complete a task 
+- Recognise that to resolve 
+a problem, we need to know 
+what to do and so too, are 
+computers
+- Discussions 
+- Observation 
+Charts containing the 
+pictures of diﬀ erent 
+activities and the steps 
+to be covered to execute 
+them 
+Related text-books
+Basic notions of 
+Programming
+- Recognise that 
+computers require 
+instructions to execute a 
+programme
+- Recognise that 
+computers require a series 
+of instructions to execute 
+a task
+The computer 
+programme
+- Basic task and 
+instructions
+- Recognise that  computers 
+have programmes created 
+by people  to perform a task
+- Recognise that computers 
+function based on sets of 
+sequential instructions
+- Discussions 
+- Observation 
+Charts containing the 
+pictures of diﬀ erent 
+activities and the steps 
+to be covered to execute 
+them 
+Related textbooks
+ICT contents, expected learning outcomes, suggested methodology and didactic materials
+
+===== PAGE 81 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+81
+Bibliography
+Amin,  M. E. (2005)  Social Science Research :  Conception, Methodology and  Analysis.
+             Makere University: Uganda.
+Amstrong, Th. (1994). Multiple Intelligences in the Classroom. Alexandria: Virginia: 
+             Association  for Supervision and Curriculum Development (ASCD).
+Berk, L. E. (2008) Infants and Children. 6th Edition. Pearson Education Inc. Boston, USA.
+Brierley, J. (1994). Give me a child until he is seven: Brain studies and early childhood
+ education. London: The Falmer Press.
+Brown, J., Collins, A., &Duguid, P. (1989). Situated cognition and the culture of learning.
+Educational Researcher, 18(1), 32–42.
+Bruner, J. (1996). The culture of education. Cambridge, MA: Harvard University Press
+Case, R. (1992). The mind’s staircase: Exploring the underpinnings of children’s thought 
+           and  knowledge. Hillsdale,NJ: Erlbaum.
+Colwill, I. &Galagher, C. (2007). Developing a curriculum for the twenty-ﬁ rst century: the
+experiences of England and Northern Ireland. In Prospects 144, vol. XXXVIII, no. 4 
+(Open ﬁ le: Curriculum Developers facing Education Reform Challenges). pp. 411- 426.
+Council of Europe. (2004). All European Study on Education for Democratic   Citizenship   
+Activities E D C Policies. 2001-1004. Strasbourg
+Dunn, R., &Dunn, K. (1992). Teaching elementary students through their individual
+learning  styles: Practical approaches for grades 3–6. Boston, MA: Allyn &Bacon.
+Dyson, A. H. (1986). The imaginary worlds of childhood: A multimedia presentation.
+Language Arts, 63(8), 799–808.
+Eagle, E. (1989). Socioeconomic status, family structure, and parental involvement: The
+correlates of achievement (Paper presented at the annual meeting of the American 
+Educational Research Association). San Francisco, CA.
+EACEA/Eurydice, (2012a). Entrepreneurship Education at School in Europe: National
+ Strategies, Curricula and Learning Outcomes.Brussels: Eurydice.
+Flinders, D. J. &Thornton, S. J. (Eds.). (2004). The Curriculum Studies Reader. (2nd edition). 
+  New York: Routledge.
+Flavell, J., &Wellman, H. (1977). Metamemory. In R. Kail&J. Hagen (Eds.), Perspectives
+ On the development of memory and cognition. Hillsdale, NJ:Erlbaum.
+Gardner, H. (1983). Frames of mind: The theory of multiple intelligences. New York: Basic Books.
+Gardner, H. (1993). Multiple intelligences: The theory in practice. New York:HarperCollins.
+Guthrie, J. (1997). The director’s corner. NRRC News: A Newsletter of the National Reading 
+ 
+Research Center, 3.
+Lindfors, J.W. (1999). Children’s inquiry: Using language to make sense of the world. New
+ York: Teachers College Press; Urbana, IL: National Council of Teachers of English.
+McCarthy, B. (1997). A tale of four learners: 4MAT’s learning styles. Educational
+Leadership,54(6), 46–51.
+MacLeod, B. L (Ed) (2004). Advanced Early Years Care and Educationfor Levels 4 and 5.
+Heinemann Educational Publishers. Oxford.
+Phasha, N, Mahlo D &Deis, J.G. (Eds). (2017) Inclusive Education in African Contexts.
+                    A Critical Reader. Sense Publishers, Rotterdam, Netherlands.
+
+===== PAGE 82 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+82
+Piaget, J. (1983). Piaget’s theory. In P. H. Mussen (Ed.), Handbook of child psychology (Vol. 1). 
+            NewYork:Wiley.
+Tambo L.I (2012); Principles and Methods of Teaching, Second Edition    
+                  Global Tech Limbe; Design House.               
+Tambo L.I and Ndongko M.T. (Editors): (2000) Educational Development in
+Cameroon 1961-1999; Issues and Perspectives.  Nkemnji, USA.  
+Vygotsky, L. S. (1976). Play and its role in the mental development of the child. In J. Bruner, 
+            A. Jolly, &K. Sylva (Eds.), Play: Its role in development and evolution. 
+Harmondsworth, England: Penguin.
+Vygotsky, L. (1978). Mind in society: The development of higher psychological processes.
+Cambridge, MA: Harvard University Press.
+Wasserman, S. (1990). Serious players in the primary classroom: Empowering children 
+through active learning experiences. New York: Teachers College Press.
+National Research Council. (1999). How people learn: Brain, mind, experience, and school. 
+ 
+Washington, D.C.: National Academy Press.
+The Sustainable Development Goals for Education 2030 (2016). Retrieved on 15 September 
+ 
+2016 from https://sustainabledevelopment.un.org/topics/sustainabledevelopmentgoals.
+The Continental Education Strategy for Africa (CESA 16-25) (2016). Retrieved on15 
+September 2016 fromhttp://www.adeanet.org/en/knowledge-and-resources/the-african-
+union-continental-education-strategy-for-africa-cesa-16-25.
+Sternberg, R. (1996). Myths, counter myths, and truths about intelligence. Educational
+ 
+Researcher, 25(2), 11–16.
+Republic of Cameroon: Law N°98/004 of 14 April 1998; To Lay Down Guidelines 
+for Education in Cameroon.
+Republic of Cameroon, Decree No 2012/268 of 11 June 2012 on the Organisation of the Ministry 
+of Basic Education(2012).
+Republic of Cameroon (2013), Education and Training Sector Strategy Paper (2013-2020).
+Republic of Cameroon, Ministry of Economy and Planning (2009). Growth and Employment
+Strategy Paper: Reference Framework for Government Action over the Period 2010 – 2020.
+Republic of Cameroon, Ministry of National Education: National Syllabuses for English
+Speaking Primary Schools (2000),Cameroon.
+The 1996 Constitution of the Republic of Cameroon.  
+Water Supply and Sanitation Collaborative Council, (WSSCC) Training of Trainers Manual on 
+Menstrual Hygiene Management, February 2013, Mumbai India.
+National Core Competencies for Cameroon Primary Schools.
+The Seychelles Early Learning Framework. Being, Belonging, Becoming. (2015) Ministry of          
+             Education.
+The Ontario Curriculum Grades 1-8 on Science and Technology: (2007).
+
+===== PAGE 83 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+83
+Glossary
+Assessment: It is the process of objectively understanding learners’ conditions through observations 
+and measurements in order to provide feedback to parents, learners and to some extent, pedagogic 
+supervisors. The measurement process is meant to improve on learning outcomes. Assessment focuses 
+more on the entire learning process rather than on the ﬁ nal package.
+Broad-based competences: As the name implies, these are a series of competences that cut across all 
+learning areas.
+Competence: A competence is the combination of Knowledge, Skills and Attitudes (KSA) that enable 
+learners not only to perform tasks but to behave suitably in society. These include basic KSAs needed 
+by all primary school leavers for personal fulﬁ lment and development, active citizenship for social 
+inclusion and employment.
+Contents: These are learning materials that make up the unit as expressed in column one of the tables 
+that show the structure of the subjects.
+Core competences to be developed: These competences are drawn from the seven core competences 
+identiﬁ ed in the National Core Skills Document built by ministries in charge of education in Cameroon 
+in 2012 following instructions from the Prime Minister.
+Domain: The ﬁ ve major teaching-learning areas in the primary school. Subjects have been carved out 
+to constitute domains. The role of the ﬁ ve domains is to help in the development of the seven national 
+core skills and the four broad based competences outlined by the State in the Cameroon National Core 
+Skills Framework. 
+Evaluation Criteria. These are veriﬁ able elements in quantity and quality that make up awaited 
+evidence or behavioural/attitudinal change to show proof of the possession of the competences 
+developed.
+Expected Learning Outcomes: (ELOs) These are behavioural and attitudinal changes to be 
+manifested by learners in the teaching/learning process. These changes culminate in the development 
+of competences and the learning contents are built on them.  
+Integrated Learning Themes: Integrated Learning Themes refer to familiar themes that   guide 
+learning. They are used to make learning real as they connect learning to real world experiences 
+and make pupils to examine issues through diﬀ erent lenses. They are carefully selected from the 
+child’s physical, economic and socio cultural milieu These themes bring about logical thinking and 
+collaboration in the teaching-learning process wherein, all the activities are seen as a whole rather than 
+as separate chunks.
+Knowledge, Skills and Attitudes (KSAs): This is a concept where learning is viewed as the 
+acquisition of knowledge, the application of the acquired knowledge into skills and the integration of 
+knowledge and skills to build attitudes. These three, when built within a particular time frame, develop 
+competences in the learners. 
+Knowledge: Discipline speciﬁ c contents. This elicits lower level thinking skills like recall and 
+understanding.
+
+===== PAGE 84 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+84
+Skills: This entails the application of knowledge. They involve hands-on/practical tasks. When 
+these are done over and over, they create connections in the brain and allow for things to be done 
+automatically. They involve higher level skills like application, analysis and synthesis.
+Attitudes: Attitudes refer to good behaviour and “common sense” and involve acceptable 
+behaviour in the society. In more concrete terms, attitudes have to do with proper interactions 
+with the outer world. They also bring about personal judgment of what is common good following 
+societal norms. Attitude culminates in character. 
+Proﬁ le of the learner. The proﬁ le of the learner includes all end- of-course outcomes expressed 
+as a description of the kind of learner envisaged at the end of the primary cycle in terms of their 
+moral, physical, social, cultural and intellectual development. It has been expressed through the seven 
+national core skills and the four broad-based competences.  
+Project-based learning (PBL): This is investigative and research-based learning. Learners gain 
+knowledge, skills and attitudes by working for an extended period of time. It is a hands-on approach 
+to the teaching-learning process where learners are put at the centre of their own learning. They 
+investigate and respond to authentic, engaging and complex questions, problems or challenges 
+around them. PBL promotes critical thinking, problem-solving, communication, collaboration, self-
+management/self-esteem, curiosity, creativity, accountability and a sense of responsible behaviour. 
+Teaching learning strategies: These include the various forms of content organisation, classroom 
+management, settings and opportunities that will be oﬀ ered pupils whether as individuals or in groups 
+to enhance learning.
+Terminal learning outcomes: These are statements that describe signiﬁ cant and essential KSAs that 
+learners will acquire and can be reliably demonstrated at the end of the level.
+Unit:  This is a major content area in a given subject. It is deﬁ ned either by natural bonding or 
+closeness of related elements. In the case of National Languages and Cultures, the units are deﬁ ned 
+following the integrated learning themes. 
+Weighting:  This is the allocation of teaching-learning time in percentages to the diﬀ erent domains 
+following their vastness and coverage in terms of needed subjects and contents.
+
+===== PAGE 85 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+85
+LIST OF CONTRIBUTORS
+GENERAL SUPERVISION COMMITEE 
+President: Mrs Youssouf née Hadidja Alim, Minister of Basic Education
+Vice-President:  Prof Nalova Lyonga, Minister of Secondary Education
+Assisted by: Mr Ndong Soumhet Benoît, Secretary of State in the Ministry of Basic Education
+Members
+Prof Atemajong Justina epse Njika, IGE-MINEDUB 
+Prof Catherine Awoundja Nsata, IGE-MINESEC 
+Prof Fouda Ndjodo Marcel, Representative/MINESUP
+Mr Oyono Mbarga Hervé  
+Mrs Tchato épse Loa Hebga Léa, Representive/MINEFOP
+Mr Eric Wiydorla Binfon, Representative/MINSEP
+Prof Andjiga Nicholas, Representive/ENS-Yaounde
+Prof  Tita Margaret, Representative/HTTC Bamenda
+Mr Ousmanou Oumara, Coordinator PASZEP
+CONSULTANTS
+Prof Therese Mungah Shalo Tchombe
+Prof Pierre Fonkoua 
+SCIENTIFIC COMMITTEE 
+President:   
+ 
+Prof Mbala Ze Barnabé
+Vice president:  
+Dr  Martha Zama 
+Rapporteurs: 
+ 
+Prof  Daniel Nkemleke 
+ 
+ 
+ 
+ 
+Prof  Ngbwa Vandelin 
+Members 
+Prof  Patrick Kongnyuy 
+Dr  Richard Akoulouze 
+Dr Egbe Martha 
+Dr Djeumeni Marcelline 
+Mr Etoua Azo’o Dieudonné 
+Mrs Noubila Kaba 
+Mr. Yakouba Yaya 
+Mrs Ngon ā Mounang 
+Mr Tatang Joseph 
+Mr  Ndebi Ntamack Donatien 
+TECHNICAL COORDINATION 
+Mrs Mamat Daiferle (IP/Nursery Education)
+Mr Zame Hans (IP/ Primary Education)
+Mrs Ndayi Claudette (IP/LNFBEPNL)
+Dr Michael Nkwenti (IP/Educational Technologies)
+Mr Mih Julius (IP/Bilingualism)
+
+===== PAGE 86 =====
+Cameroon Primary School Curriculum
+English Subsystem  -  Level I: Class 1 & Class 2
+86
+WRITERS
+Supervision: Prof Atemajong Justina epse Njika
+Coordination: Dr. Tabe John Tambe
+Dr. Michael Nkwenti 
+Ule Helen Ngoe
+Morh Florence Bessem 
+Mundi Hortensia
+Nusi Jean
+Abongwo David
+Ntwoku Jacqueline
+Agbaw-Ebai Roseline
+Ewunkem Rita
+Mbah nee Mary Atam
+Ningo Doris
+Nchang Mary
+Agien Mercy
+Bame Mary
+Dzou Vivian
+Sallah Thomas
+Njuh Godlove
+Niba Annunciata 
+Fru Martin Che
+Ngeh Bertha Labu
+Ashu Mbi Samuel
+Bissohong Merlin
+Enow Ebai Andrew
+Gwanyama Irene
+Kamga Raymond
+Kome George
+Mbina Njang
+Moto Grace 
+Ndakor Rose
+Noubissi Madeleine
+Nﬁ  Joachim
+Ntabe Irene
+Tomoh Joseph
+Celine Asonganyi
+Daniel Wango 
+Mumah Francis
