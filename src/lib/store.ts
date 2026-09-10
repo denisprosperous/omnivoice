@@ -15,6 +15,7 @@ export interface LearnerState {
   stage: string;
   iscedLevel: number;
   language: Lang;
+  voiceLang: string; // voice/lesson language: en | fr | bkm | lns | bfd | oku | bbk | mgo | ngi
   xp: number;
   streak: number;
   level?: number;
@@ -26,12 +27,14 @@ interface AppState {
   currentLessonId: string | null;
   learner: LearnerState | null;
   lang: Lang;
+  voiceLang: string;
   soundOn: boolean;
   online: boolean;
   setView: (v: View) => void;
   openLesson: (id: string) => void;
   setLearner: (l: LearnerState | null) => void;
   setLang: (l: Lang) => void;
+  setVoiceLang: (l: string) => void;
   toggleSound: () => void;
   setOnline: (o: boolean) => void;
 }
@@ -43,11 +46,12 @@ export const useApp = create<AppState>()(
       currentLessonId: null,
       learner: null,
       lang: "en",
+      voiceLang: "en",
       soundOn: true,
       online: true,
       setView: (view) => set({ view }),
       openLesson: (id) => set({ view: "lesson", currentLessonId: id }),
-      setLearner: (learner) => set({ learner, lang: (learner?.language as Lang) || "en" }),
+      setLearner: (learner) => set({ learner, lang: (learner?.language as Lang) || "en", voiceLang: learner?.voiceLang || "en" }),
       setLang: (lang) => set((s) => {
         if (s.learner) {
           const updated = { ...s.learner, language: lang };
@@ -60,12 +64,24 @@ export const useApp = create<AppState>()(
         }
         return { lang };
       }),
+      setVoiceLang: (voiceLang) => set((s) => {
+        if (s.learner) {
+          const updated = { ...s.learner, voiceLang };
+          void fetch("/api/learner", {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: s.learner.id, voiceLang }),
+          }).catch(() => {});
+          return { voiceLang, learner: updated };
+        }
+        return { voiceLang };
+      }),
       toggleSound: () => set((s) => ({ soundOn: !s.soundOn })),
       setOnline: (online) => set({ online }),
     }),
     {
       name: "omnivoice-app",
-      partialize: (s) => ({ learner: s.learner, lang: s.lang, soundOn: s.soundOn }),
+      partialize: (s) => ({ learner: s.learner, lang: s.lang, voiceLang: s.voiceLang, soundOn: s.soundOn }),
     }
   )
 );

@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
       stage: body.stage || "class3",
       iscedLevel: body.iscedLevel ?? 1,
       language: body.language || "en",
+      voiceLang: body.voiceLang || "en",
     },
   });
   // Copy template skill tree to the learner
@@ -50,6 +51,7 @@ export async function PATCH(req: NextRequest) {
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });
   const allowed: Record<string, unknown> = {};
   if (data.language) allowed.language = data.language;
+  if (data.voiceLang) allowed.voiceLang = data.voiceLang;
   if (data.avatar) allowed.avatar = data.avatar;
   if (data.stage) allowed.stage = data.stage;
   if (data.name) allowed.name = data.name;

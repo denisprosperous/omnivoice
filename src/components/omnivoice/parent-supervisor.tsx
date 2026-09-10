@@ -184,9 +184,128 @@ export function SupervisorView() {
                 ).map((m, i) => <li key={i}>✓ {m}</li>)}
               </ul>
             </div>
+
+            <BuildAuditReport lang={lang} />
           </>
         )}
       </div>
     </main>
+  );
+}
+
+// ============================================================================
+// v2.0 BUILD AUDIT REPORT + ROADMAP + SUCCESS METRICS (Master Prompt v2.0:
+// Critical Build Audit, §VIII Roadmap, §IX Success Metrics incl. Grassfields)
+// ============================================================================
+function BuildAuditReport({ lang }: { lang: string }) {
+  const fr = lang === "fr";
+  const audit: Array<{ phase: string; task: string; status: "done" | "partial" | "todo" }> = [
+    { phase: "Phase 1: Foundation", task: "Development environment (Next.js + Tailwind, DB)", status: "done" },
+    { phase: "Phase 1: Foundation", task: "ASR integration (base ASR; Simba registry + fine-tune hooks for Grassfields)", status: "partial" },
+    { phase: "Phase 1: Foundation", task: "TTS integration (neural + GACL tone-rules; F5-TTS clone pending native reference)", status: "partial" },
+    { phase: "Phase 1: Foundation", task: "Frontend — Curriculum Navigator (map-based quest board)", status: "done" },
+    { phase: "Phase 1: Foundation", task: "Database schema (learner, curriculum, lessons, gamification, PBL, assessments)", status: "done" },
+    { phase: "Phase 1: Foundation", task: "Kom ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
+    { phase: "Phase 1: Foundation", task: "Lamnso' ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
+    { phase: "Phase 2: Core Features", task: "Lesson Plan Generator (§7.3 v2.0 format, KG→High School)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Voice Pipeline STS (ASR → LLM → TTS, multilingual + code-switching)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Content Library — Class 3, Month 1 complete (all subjects, voice-enabled)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Gamification Engine (XP, badges, streaks, levels)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Assessment Engine (formative/summative/diagnostic + ASR oral scoring + tone accuracy)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Grassfields Content Generation (Kom/Lamnso' — spec-attested phrases, native validation pending)", status: "partial" },
+    { phase: "Phase 2: Core Features", task: "Voice Cloning for Grassfields (F5-TTS adapter ready — reference audio needed)", status: "todo" },
+    { phase: "Phase 3: Integration", task: "Module integration (unified SPA: navigator, player, projects, library, profiles)", status: "done" },
+    { phase: "Phase 3: Integration", task: "Closed pilot (5 schools Littoral + 5 North West)", status: "todo" },
+    { phase: "Phase 3: Integration", task: "Grassfields Language Validation (native speakers, 90% approval target)", status: "todo" },
+    { phase: "Phase 4: Launch", task: "Production deployment", status: "partial" },
+    { phase: "Phase 4: Launch", task: "Content expansion (Classes 1-2, Forms 1-5, High School modules)", status: "todo" },
+    { phase: "Phase 4: Launch", task: "International framework mapping (IB/Cambridge/CEFR across levels)", status: "done" },
+    { phase: "Phase 4: Launch", task: "Additional Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie)", status: "todo" },
+  ];
+  const roadmap: Array<{ phase: string; weeks: string; focus: string }> = [
+    { phase: "Phase 1 — Foundation", weeks: "Weeks 1-2", focus: "Environment, ASR/TTS, Kom + Lamnso' voice, frontend, database" },
+    { phase: "Phase 2 — Core Features", weeks: "Weeks 3-6", focus: "Lesson generator, voice pipeline, content, gamification, assessment, Grassfields content + cloning" },
+    { phase: "Phase 3 — Integration & Testing", weeks: "Weeks 7-8", focus: "Unified platform, closed pilots (Littoral + North West), native-speaker validation" },
+    { phase: "Phase 4 — Launch & Expansion", weeks: "Weeks 9+", focus: "Launch, content expansion, IB/Cambridge mapping, remaining 5 Grassfields languages" },
+  ];
+  const metrics: Array<{ m: string; target: string }> = [
+    { m: "Learner engagement", target: "80% daily active use" },
+    { m: "Learning outcomes", target: "90% ELO achievement" },
+    { m: "Voice interaction", target: "70% of activities voice-enabled" },
+    { m: "Cultural relevance", target: "95% culturally appropriate" },
+    { m: "Offline functionality", target: "100% core features offline" },
+    { m: "Teacher adoption", target: "85% find platform useful" },
+    { m: "Deployment time", target: "< 12 weeks to MVP" },
+    { m: "Grassfields language accuracy", target: "90% native speaker approval" },
+    { m: "Tone accuracy (TTS)", target: "85% correct tone production" },
+  ];
+  const statusBadge = (s: string) =>
+    s === "done"
+      ? { cls: "bg-lime-100 text-lime-800", label: fr ? "TERMINÉ" : "DONE" }
+      : s === "partial"
+      ? { cls: "bg-amber-100 text-amber-800", label: fr ? "PARTIEL" : "PARTIAL" }
+      : { cls: "bg-stone-100 text-stone-600", label: fr ? "À FAIRE" : "TODO" };
+
+  return (
+    <>
+      <section className="rounded-2xl border-2 border-amber-300 bg-white p-4 shadow-sm">
+        <h3 className="mb-2 text-sm font-extrabold text-amber-900">🧾 {t("buildAudit", lang)}</h3>
+        <p className="mb-2 text-[11px] text-amber-700">
+          {fr
+            ? "Audit de construction v2.0 — statut de chaque tâche stipulée, incluant le Pack d'extension Grassfields."
+            : "v2.0 build audit — status of every stipulated task, including the Grassfields Expansion Pack."}
+        </p>
+        <div className="max-h-80 overflow-y-auto rounded-xl border border-amber-100">
+          <table className="w-full min-w-[520px] text-left text-xs">
+            <thead className="sticky top-0 bg-amber-50">
+              <tr className="text-[10px] uppercase text-amber-600">
+                <th className="px-2 py-1.5">{fr ? "Phase" : "Phase"}</th>
+                <th className="px-2 py-1.5">{fr ? "Tâche" : "Task"}</th>
+                <th className="px-2 py-1.5">Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              {audit.map((a, i) => {
+                const b = statusBadge(a.status);
+                return (
+                  <tr key={i} className="border-t border-amber-50">
+                    <td className="px-2 py-1.5 font-bold text-amber-800">{a.phase}</td>
+                    <td className="px-2 py-1.5 text-amber-900">{a.task}</td>
+                    <td className="px-2 py-1.5"><span className={cn("rounded-full px-2 py-0.5 text-[9px] font-extrabold", b.cls)}>{b.label}</span></td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="rounded-2xl border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-white p-4 shadow-sm">
+        <h3 className="mb-2 text-sm font-extrabold text-orange-900">🗺️ {t("roadmap", lang)}</h3>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {roadmap.map((r) => (
+            <div key={r.phase} className="rounded-xl border border-orange-100 bg-white p-2.5 text-xs">
+              <b className="text-orange-900">{r.phase}</b> <span className="text-[10px] font-bold uppercase text-orange-500">({r.weeks})</span>
+              <p className="mt-0.5 text-amber-800">{r.focus}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+        <h3 className="mb-2 text-sm font-extrabold text-lime-900">🎯 {fr ? "Indicateurs de réussite (cibles)" : "Success metrics (targets)"}</h3>
+        <div className="grid gap-2 sm:grid-cols-3">
+          {metrics.map((x) => (
+            <div key={x.m} className="rounded-xl bg-lime-50 p-2.5 text-xs">
+              <b className="text-lime-900">{x.m}</b>
+              <p className="text-amber-800">{x.target}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-2 text-[11px] font-semibold text-lime-800">
+          🪶 {fr ? "Précision tonale cible (TTS) : 85% · Précision des langues Grassfields : 90% d'approbation des locuteurs natifs." : "Tone accuracy target (TTS): 85% · Grassfields language accuracy: 90% native-speaker approval."}
+        </p>
+      </section>
+    </>
   );
 }

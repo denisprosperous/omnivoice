@@ -124,14 +124,15 @@ export function speakFallback(text: string, lang = "en-US", pitch = 1, rate = 1,
   }
 }
 
-/** Fetch TTS audio from server; fall back to Web Speech when unavailable (offline) */
+/** Fetch TTS audio from server; fall back to Web Speech when unavailable (offline).
+ * lang routes Grassfields languages through the tone-aware synthesis path (§6.5). */
 export async function speak(text: string, character: string, lang = "en"): Promise<{ played: "server" | "fallback" | "none" }> {
   const personaPitch: Record<string, number> = { kwe: 0.8, mbi: 1.3, ngo: 1.05, kong: 0.9 };
   try {
     const res = await fetch("/api/tts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, character }),
+      body: JSON.stringify({ text, character, lang }),
     });
     if (!res.ok) throw new Error("tts unavailable");
     const data = await res.json();
@@ -140,6 +141,7 @@ export async function speak(text: string, character: string, lang = "en"): Promi
     return { played: "server" };
   } catch {
     const pitchMap: Record<string, number> = { kwe: 0.6, mbi: 1.5, ngo: 1.2, kong: 0.9 };
+    // Web Speech fallback has no Grassfields voices — speak the text as-is
     speakFallback(text, lang.startsWith("fr") ? "fr-FR" : "en-US", pitchMap[character] || 1, 0.95);
     return { played: "fallback" };
   }

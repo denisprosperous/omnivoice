@@ -1,0 +1,1274 @@
+     1→# MASTER NEGENTROPIC PROMPT FOR MVP: CAMEROON PRIMARY EDUCATION AI PLATFORM (OMNIVOICE EDITION v2.0)
+     2→
+     3→## UNIVERSAL MULTIMODAL LEARNING ECOSYSTEM: KG TO HIGH SCHOOL
+     4→
+     5→### GRASSFIELDS LANGUAGES EXPANSION PACK
+     6→
+     7→---
+     8→
+     9→## ⚠️ CRITICAL BUILD AUDIT REPORT
+    10→
+    11→### Agent Interruption Analysis
+    12→
+    13→The previous build agent was interrupted mid-execution. This audit identifies what was completed, what remains, and provides a comprehensive restart protocol.
+    14→
+    15→| Build Phase | Task | Status | Verification Required |
+    16→|-------------|------|--------|----------------------|
+    17→| **Phase 1: Foundation** | Development environment setup | ⚠️ PARTIAL | Verify Vercel/Railway/Supabase connections |
+    18→| | ASR Integration (Simba-S) | ⚠️ PARTIAL | Test Hugging Face API endpoints |
+    19→| | TTS Integration (Edge-TTS) | ⚠️ PARTIAL | Confirm audio synthesis pipeline |
+    20→| | Frontend (Curriculum Navigator) | ❌ INCOMPLETE | UI components missing |
+    21→| | Database Schema | ⚠️ PARTIAL | Validate table structures |
+    22→| **Phase 2: Core Features** | Lesson Plan Generator | ❌ INCOMPLETE | AI prompts not tested |
+    23→| | Voice Pipeline (STS) | ❌ INCOMPLETE | No end-to-end voice flow |
+    24→| | Content Library | ❌ INCOMPLETE | No content ingested |
+    25→| | Gamification Engine | ❌ INCOMPLETE | No XP/badge system |
+    26→| | Assessment Engine | ❌ INCOMPLETE | No scoring mechanism |
+    27→| **Phase 3: Integration** | Module Integration | ❌ NOT STARTED | — |
+    28→| | Closed Pilot | ❌ NOT STARTED | — |
+    29→| **Phase 4: Launch** | Production Deployment | ❌ NOT STARTED | — |
+    30→
+    31→### Immediate Restart Protocol
+    32→
+    33→**Step 1: State Recovery**
+    34→```bash
+    35→# Reinitialize development environment
+    36→git clone [repository-url] cameroon-education-mvp
+    37→cd cameroon-education-mvp
+    38→npm install  # Frontend dependencies
+    39→pip install -r requirements.txt  # Backend dependencies
+    40→```
+    41→
+    42→**Step 2: Service Verification**
+    43→```python
+    44→# Verify all external services are operational
+    45→async def verify_services():
+    46→    services = {
+    47→        "huggingface_asr": await test_asr_endpoint(),
+    48→        "edge_tts": await test_tts_endpoint(),
+    49→        "supabase_db": await test_database_connection(),
+    50→        "llm_api": await test_llm_endpoint()
+    51→    }
+    52→    return services
+    53→```
+    54→
+    55→**Step 3: Resume from Last Checkpoint**
+    56→The agent should resume from the most recent completed task and proceed sequentially through the roadmap.
+    57→
+    58→---
+    59→
+    60→## I. SYSTEM CONTEXT & OVERARCHING OBJECTIVE
+    61→
+    62→### 1.1 Core Mission
+    63→
+    64→You are to build a **Minimum Viable Product (MVP)** for an AI-powered educational platform that delivers a **complete, multimodal learning experience** across all educational levels from **Kindergarten through High School** (ISCED Levels 0-3). The platform must be **fully functional for the Cameroonian context** while maintaining **international relevance and standards**, exceeding the requirements set by the Ministry of Basic Education (MINEDUB) and aligning with globally recognized frameworks including **IB (PYP/MYP/DP)**, **Cambridge International (IGCSE/A-Levels)**, and the **Common European Framework of Reference for Languages (CEFR)**.
+    65→
+    66→**Omnivoice Mandate:** The platform must deliver **complete voice functionality** including:
+    67→- **Speech-to-Text (STT):** Real-time transcription of learner speech in English, French, and **seven (7) Cameroonian Grassfields languages** (detailed below)
+    68→- **Text-to-Speech (TTS):** Natural, culturally appropriate voice synthesis for all content
+    69→- **Speech-to-Speech (STS):** Real-time conversational AI that listens, understands, and responds verbally
+    70→- **Sound Design:** Immersive audio environments with authentic African musical elements
+    71→
+    72→Every interaction must feel like a **conversation with a wise, playful elder** – warm, responsive, and deeply rooted in Cameroonian culture while preparing learners for global citizenship.
+    73→
+    74→### 1.2 Foundational Documents & Standards
+    75→
+    76→**Cameroonian National Documents:**
+    77→1. The Cameroon Primary School Curriculum (Level I: Class 1 & Class 2) – 2018
+    78→2. The Regional Monthly Integrated Learning Plan for Primary Schools Level II (Class 3) – Littoral Region
+    79→3. The National Core Skills Framework
+    80→4. The 1998 Law to Lay Down Guidelines for Education
+    81→5. **The General Alphabet of Cameroonian Languages (GACL/AGLC) – 1979**
+    82→
+    83→**International Frameworks (for KG-High School coverage):**
+    84→- **ISCED Levels 0-3:** Pre-primary (KG), Primary, Lower Secondary, Upper Secondary
+    85→- **IB Programmes:** PYP (Primary Years), MYP (Middle Years), DP (Diploma Programme)
+    86→- **Cambridge International:** Primary, Lower Secondary, IGCSE, AS & A Levels
+    87→- **CEFR Language Levels:** A1-C2 for language proficiency progression
+    88→
+    89→### 1.3 Educational Philosophy
+    90→
+    91→The platform must embody the **Competence-Based Approach (CBA)** with a focus on **Project-Based Learning (PBL)** , supported by **Integrated Theme Learning** and **Cooperative Learning** strategies. The core philosophy is that **"the learner should be responsible for his/her own learning"** and that **"focus is on learning and not on teaching."**
+    92→
+    93→**Gamification Philosophy:** Learning is inherently playful. The platform will leverage intrinsic motivation through **curiosity, challenge, and mastery**, augmented by extrinsic rewards (points, badges, levels) that celebrate effort and progress. Every lesson is a **quest**; every correct answer is a **victory**.
+    94→
+    95→**Voice-First Philosophy:** Language is the foundation of all learning. The platform treats voice as a **primary interface** – not an add-on. Learners speak, listen, and converse with AI characters who respond naturally, creating an immersive language environment from day one.
+    96→
+    97→### 1.4 Target Profile
+    98→
+    99→The MVP must serve the following primary users across all educational levels:
+   100→
+   101→| User Type | Age Range | ISCED Level | Primary Needs |
+   102→|-----------|-----------|-------------|---------------|
+   103→| **Kindergarten Learners** | 3-5 years | Level 0 | Play-based learning, oral language, motor skills |
+   104→| **Primary Learners (Class 1-6)** | 5-11 years | Level 1 | Foundational literacy, numeracy, curiosity |
+   105→| **Lower Secondary (Form 1-5)** | 11-15 years | Level 2 | Subject specialization, critical thinking |
+   106→| **Upper Secondary (High School)** | 15-18 years | Level 3 | Advanced subjects, exam preparation, career readiness |
+   107→| **Teachers** | Adult | N/A | Lesson planning, delivery, assessment tools |
+   108→| **Parents/Guardians** | Adult | N/A | Progress tracking, engagement |
+   109→| **Pedagogic Supervisors** | Adult | N/A | Monitoring, evaluation, quality assurance |
+   110→
+   111→### 1.5 Cultural & Audio-Visual Imperative
+   112→
+   113→**Soundscape Requirements:**
+   114→- All audio elements must draw from **authentic Cameroonian and wider African musical traditions** including *bikutsi*, *makossa*, *bend-skin*, *ndombolo*, traditional *mvet*, *balafon*, and *talking drum* patterns
+   115→- Language coverage must include **English, French, and seven (7) Cameroonian Grassfields languages** with support for tonal languages using the **General Alphabet of Cameroonian Languages (GACL)** 
+   116→- Voice synthesis must respect **tonal contrasts** for Bantu languages where tone is phonemically contrastive
+   117→
+   118→**Visual Aesthetic:**
+   119→- Incorporate vibrant, colourful African art styles including *Ndebele* patterns, *Bamileke* motifs, and *Bassa* symbolism
+   120→- Characters must reflect Cameroonian diversity – different regions, ethnicities, and abilities
+   121→- UI design must be accessible to young learners and those with limited digital experience
+   122→
+   123→**Narrative Framework:**
+   124→- Frame every Integrated Learning Theme with a story rooted in Cameroonian life
+   125→- Characters guide learners through adventures that connect curriculum content to daily experiences
+   126→
+   127→---
+   128→
+   129→## II. GRASSFIELDS LANGUAGES EXPANSION PACK
+   130→
+   131→### 2.1 Overview of Grassfields Languages
+   132→
+   133→The Grassfields languages are a branch of the Southern Bantoid languages spoken in the Western High Plateau of Cameroon and parts of Taraba state, Nigeria. This expansion pack focuses on **seven (7) key Grassfields languages** from the region, enabling the platform to serve learners in their native tongues.
+   134→
+   135→### 2.2 Target Languages for MVP
+   136→
+   137→| # | Language | ISO Code | Alternate Names | Region | Speakers | Tones |
+   138→|---|----------|----------|-----------------|--------|----------|-------|
+   139→| 1 | **Kom (Bikom)** | bkm | Bamekon, Bekom, Itangikom, Nkom, Kong | Boyo Division, North West | ~233,000 (2005) | 3 tones |
+   140→| 2 | **Lamnso' (Lamso)** | lns | Banso, Nso, Nsaw, Panso, Nsho' | Nso Division, North West | ~125,000 (1987) | Multiple tones |
+   141→| 3 | **Bafut** | bfd | Befe, Bafut | Mezam Division, North West | ~105,000 | Tonal |
+   142→| 4 | **Oku** | oku | Oku, Ebkuo | Bui Division, North West | ~40,000 | Tonal |
+   143→| 5 | **Babanki** | bbk | Kejom, Kidzom | Mezam Division, North West | ~25,000 | Tonal |
+   144→| 6 | **Mankon** | mgo | Mankon, Moghamo | Mezam Division, North West | ~80,000 | Tonal |
+   145→| 7 | **Ngie** | ngi | Ngie, Ngoshie | Momo Division, North West | ~40,000 | Tonal |
+   146→
+   147→### 2.3 Kom Language (Bikom) Specifications
+   148→
+   149→**Language Details:**
+   150→- **Classification:** Benue-Congo → Narrow Grassfields → Central Ring
+   151→- **Location:** Boyo Division of the North West Region of Cameroon
+   152→- **Speakers:** Approximately 233,000 (2005 census)
+   153→- **Writing System:** Latin script with GACL modifications
+   154→- **Tones:** Three tones:
+   155→  - **High tone [˥]:** Not marked (unmarked)
+   156→  - **Falling tone [˥˩]:** Marked with circumflex (â)
+   157→  - **Low tone [˩]:** Marked with grave (à)
+   158→
+   159→**Orthography (GACL-Compliant):**
+   160→- Uses the General Alphabet of Cameroonian Languages
+   161→- Special characters: ɛ, ɔ, ŋ, ɨ, ʉ
+   162→- Digraphs for complex sounds: ny, gh, sh, ch, j
+   163→
+   164→**Sample Vocabulary for Voice Model Training:**
+   165→| English | Kom (Itaŋikom) | Notes |
+   166→|---------|----------------|-------|
+   167→| Good morning | À bwɛ̀ | Tone-marked |
+   168→| Thank you | Bɛ̀ŋ | Tone-marked |
+   169→| How are you? | Nà wù dà? | Question form |
+   170→| I am fine | M̀ bɛ̀ | Response |
+   171→| What is your name? | Nà wù yì ə? | Question form |
+   172→| My name is... | Yì əm... | Response |
+   173→
+   174→**Learning Resources:**
+   175→- "Ghesìn̳à ye'i Itan̳ikom" (Let's learn Kom) – 1992
+   176→- Kom Dictionary App (Google Play)
+   177→- Kom Bible translation available
+   178→
+   179→### 2.4 Lamnso' (Lamso) Language Specifications
+   180→
+   181→**Language Details:**
+   182→- **Classification:** Benue-Congo → Narrow Grassfields → Ring group → West ring
+   183→- **Location:** Nso Division of the Bamenda Province, North West Region
+   184→- **Speakers:** Approximately 125,000 (1987 census)
+   185→- **Dialects:** Unlike most African languages, Lamnso' has **no dialectal variations**
+   186→- **Writing System:** Latin script with GACL modifications
+   187→
+   188→**Phonological Features:**
+   189→- **Vowels:** Six short vowel sounds: /i/, /e/, /a/, /o/, /ə/, /u/
+   190→- **Vowel Length:** Distinctive (e.g., *sú* "to wash" vs. *súü* "to harvest completely")
+   191→- **Consonants:** 53 consonants at phonetic level (including prenasalized and labialized)
+   192→- **Special Graphemes:**
+   193→  - [ɲ] = "ny"
+   194→  - [ʃ] = "sh"
+   195→  - [ɣ] = "gh"
+   196→  - [tʃ] = "c"
+   197→  - [dʒ] = "j"
+   198→  - [ʔ] = "?" or "♀"
+   199→
+   200→**Sample Vocabulary for Voice Model Training:**
+   201→| English | Lamnso' | Notes |
+   202→|---------|---------|-------|
+   203→| Good morning | Mbi̶ vǝ̀? | Tone-marked |
+   204→| Thank you | Bíŋ | Tone-marked |
+   205→| How are you? | Wù yé dì? | Question form |
+   206→| I am fine | Mǝ̀ yé | Response |
+   207→| What is your name? | Wù yé wǝ́? | Question form |
+   208→| My name is... | Yé mǝ... | Response |
+   209→
+   210→**Learning Resources:**
+   211→- "Binka wùn Wiyka 1" – 2003
+   212→- Nso Language Organisation (NLO) materials
+   213→- Lamnso' Bible translation available
+   214→
+   215→### 2.5 Additional Grassfields Languages (Summary)
+   216→
+   217→| Language | Key Resources | Dialects | Learning Materials |
+   218→|----------|---------------|----------|-------------------|
+   219→| **Bafut** | SIL Cameroon, local schools | Multiple | Primary textbooks |
+   220→| **Oku** | Oku Language Committee | Multiple | Community materials |
+   221→| **Babanki** | Kejom Language Committee | Multiple | Community materials |
+   222→| **Mankon** | Mankon Language Committee | Multiple | Community materials |
+   223→| **Ngie** | Ngie Language Committee | Multiple | Community materials |
+   224→
+   225→### 2.6 GACL Orthography Standards
+   226→
+   227→All Grassfields language content must adhere to the **General Alphabet of Cameroonian Languages (GACL/AGLC)** established in 1979:
+   228→
+   229→**Core Principles:**
+   230→1. **Tone Marking:** Tones must be written on syllable centers
+   231→   - If language has 2 lexical tones: mark 1
+   232→   - If language has 3 lexical tones: mark 2
+   233→   - Modulated tones: double vowels when possible
+   234→
+   235→2. **Consonant Representation:**
+   236→   - Same sounds represented by same symbols across languages
+   237→   - Digraphs preferred over rare phonetic symbols
+   238→   - Examples: "ch" for [tʃ], "ng" for [ŋg]
+   239→
+   240→3. **Special Characters:**
+   241→   - ɛ, ɔ, ŋ, ɨ, ʉ, ə
+   242→   - Prenasalized: mb, nd, ŋg, nj
+   243→   - Labialized: pʷ, fʷ, sʷ, kʷ
+   244→   - Palatalized: bʲ, dʲ, kʲ, sʲ
+   245→
+   246→4. **Vowel Length:** Written as vowel geminate (doubled)
+   247→
+   248→### 2.7 Voice Model Integration for Grassfields Languages
+   249→
+   250→**ASR (Speech-to-Text) Strategy:**
+   251→
+   252→| Model | Coverage | Grassfields Support | Action Required |
+   253→|-------|----------|---------------------|-----------------|
+   254→| **Simba-S** | 43 African languages | Limited | Fine-tune with Kom/Lamnso' data |
+   255→| **Simba-W** | 43 African languages | Limited | Fine-tune with Kom/Lamnso' data |
+   256→| **Simba-H** | 43 African languages | Limited | On-device fine-tuning |
+   257→
+   258→**Fine-Tuning Data Requirements:**
+   259→- **Minimum:** 500 hours of transcribed speech per language
+   260→- **Optimal:** 1,000+ hours per language
+   261→- **Sources:** SIL Cameroon, local radio, community recordings, Bible translations
+   262→
+   263→**TTS (Text-to-Speech) Strategy:**
+   264→
+   265→| Model | Coverage | Grassfields Support | Action Required |
+   266→|-------|----------|---------------------|-----------------|
+   267→| **Simba-TTS-afr** | 7 African languages | None | Custom training required |
+   268→| **Edge-TTS** | 50+ languages | None | Custom voice cloning |
+   269→| **F5-TTS** | Zero-shot | Potential | 5-10 second reference audio |
+   270→
+   271→**Voice Cloning Approach for Kom/Lamnso':**
+   272→```python
+   273→# Voice cloning pipeline for Grassfields languages
+   274→async def clone_grassfields_voice(
+   275→    reference_audio: bytes,  # 5-10 seconds of native speaker
+   276→    language: str,  # "bkm" or "lns"
+   277→    text_to_speak: str
+   278→) -> bytes:
+   279→    # Step 1: Extract voice characteristics
+   280→    voice_embedding = extract_voice_embedding(reference_audio)
+   281→    
+   282→    # Step 2: Apply tone rules for language
+   283→    tone_marked_text = apply_tone_rules(text_to_speak, language)
+   284→    
+   285→    # Step 3: Synthesize with cloned voice
+   286→    audio_output = synthesize_with_voice(
+   287→        text=tone_marked_text,
+   288→        voice_embedding=voice_embedding,
+   289→        language=language
+   290→    )
+   291→    
+   292→    return audio_output
+   293→```
+   294→
+   295→### 2.8 Grassfields Language Content Library
+   296→
+   297→**Required Content Types:**
+   298→
+   299→| Content Type | Quantity | Purpose |
+   300→|--------------|----------|---------|
+   301→| **Phoneme Audio** | All GACL phonemes | Pronunciation practice |
+   302→| **Vocabulary** | 500+ words per language | Foundation |
+   303→| **Greetings/Dialogues** | 50+ scenarios | Oral language |
+   304→| **Songs/Rhymes** | 20+ per language | Cultural immersion |
+   305→| **Stories/Folktales** | 30+ per language | Reading practice |
+   306→| **Cultural Narratives** | 10+ per language | Cultural identity |
+   307→| **Curriculum Terminology** | All subject terms | Academic language |
+   308→
+   309→**Content Sources:**
+   310→- SIL Cameroon language archives
+   311→- Local community recordings
+   312→- Existing textbooks (digitized)
+   313→- Radio broadcasts (with permission)
+   314→- Church/Bible recordings
+   315→
+   316→### 2.9 Language Learning Progression (CEFR-Aligned)
+   317→
+   318→| Level | Grassfields Language Competency | CEFR Equivalent |
+   319→|-------|--------------------------------|-----------------|
+   320→| **KG** | Listening, basic oral responses | Pre-A1 |
+   321→| **Class 1-2** | Simple greetings, naming objects | A1 |
+   322→| **Class 3-4** | Basic conversations, reading simple texts | A1/A2 |
+   323→| **Class 5-6** | Extended conversations, writing | A2 |
+   324→| **Form 1-5** | Fluent communication, literacy | B1/B2 |
+   325→| **High School** | Academic proficiency | B2/C1 |
+   326→
+   327→---
+   328→
+   329→## III. UNIVERSAL CURRICULUM STRUCTURE (KG TO HIGH SCHOOL)
+   330→
+   331→### 3.1 ISCED Level Alignment
+   332→
+   333→| ISCED Level | Description | Platform Age Range | Pedagogical Focus |
+   334→|-------------|-------------|-------------------|-------------------|
+   335→| **Level 0** | Pre-primary education | KG (3-5 years) | Play-based, sensory exploration, oral language |
+   336→| **Level 1** | Primary education | Class 1-6 (5-11 years) | Foundational literacy, numeracy, inquiry |
+   337→| **Level 2** | Lower secondary education | Form 1-5 (11-15 years) | Subject specialization, critical thinking |
+   338→| **Level 3** | Upper secondary education | High School (15-18 years) | Advanced subjects, exam prep, career readiness |
+   339→
+   340→### 3.2 Cameroonian Domains and Weighting (Primary Level)
+   341→
+   342→| Domain | Weighting | Subjects |
+   343→|--------|-----------|----------|
+   344→| **1. Basic Knowledge** | 60% | English Language, Mathematics, Science and Technology, Français |
+   345→| **2. Communal Life and National Integration** | 5% | Social Studies |
+   346→| **3. Vocational and Life Skills** | 20% | Vocational Studies, Arts, Physical Education and Sports |
+   347→| **4. Cultural Identity** | 5% | National Languages and Cultures |
+   348→| **5. Digital Literacy** | 10% | Information and Communication Technologies (ICTs) |
+   349→
+   350→### 3.3 International Framework Alignment
+   351→
+   352→**IB Learner Profile Attributes:**
+   353→- Inquirers, Knowledgeable, Thinkers, Communicators, Principled, Open-minded, Caring, Risk-takers, Balanced, Reflective
+   354→
+   355→**Cambridge International Skills:**
+   356→- Subject content knowledge, Application of knowledge, Intellectual inquiry, Flexibility and responsiveness to change, Cultural awareness
+   357→
+   358→**CEFR Language Progression:**
+   359→
+   360→| CEFR Level | User Type | Can-Do Statement |
+   361→|------------|-----------|------------------|
+   362→| **A1** | Basic User | Can understand familiar everyday expressions and basic phrases |
+   363→| **A2** | Basic User | Can communicate in simple, routine tasks |
+   364→| **B1** | Independent User | Can deal with most situations while traveling |
+   365→| **B2** | Independent User | Can interact with fluency and spontaneity |
+   366→| **C1** | Proficient User | Can express ideas fluently and spontaneously |
+   367→| **C2** | Proficient User | Can understand virtually everything heard or read |
+   368→
+   369→### 3.4 Integrated Learning Themes (ILTs)
+   370→
+   371→**Primary Level (Classes 1-6):**
+   372→
+   373→| Level I & II (Classes 1-4) | Level III (Classes 5-6) |
+   374→|---------------------------|------------------------|
+   375→| 1. The Home | 1. Nature |
+   376→| 2. The Village/Town | 2. The Village/Town |
+   377→| 3. The School | 3. The School |
+   378→| 4. Occupations | 4. Occupations |
+   379→| 5. Travelling | 5. Travelling |
+   380→| 6. Health | 6. Health |
+   381→| 7. Games | 7. Sports and Leisure |
+   382→| 8. Communication | 8. The Universe and Space |
+   383→
+   384→**Secondary Level ILTs (Forms 1-5):**
+   385→- Thematic units aligned to subject specializations (e.g., "Scientific Inquiry," "Global Citizenship," "Economic Systems")
+   386→
+   387→**High School ILTs (Forms 6-7):**
+   388→- Exam-focused themes with real-world applications (e.g., "Research Methods," "Career Pathways," "Civic Responsibility")
+   389→
+   390→### 3.5 National Core Skills (Cameroon)
+   391→
+   392→1. Communication in English, French, and at least one National Language
+   393→2. Use of basic notions in Mathematics, Science, and Technology
+   394→3. Practice of Social and Citizenship Values
+   395→4. Demonstration of the Spirit of Autonomy, Initiative, Creativity, and Entrepreneurship
+   396→5. Use of Basic ICT Concepts and Tools
+   397→6. Practice of Lifelong Learning
+   398→7. Practice of Physical, Sports, and Artistic Activities
+   399→
+   400→### 3.6 Broad-Based Competences
+   401→
+   402→1. **Intellectual Competences:** Problem-solving, critical thinking, creativity
+   403→2. **Methodological Competences:** Efficient working methods, self-organization
+   404→3. **Personal and Interpersonal Competences:** Personality development, cooperation, socio-cultural integration
+   405→4. **Communication Competences:** Appropriate communication in official and national languages
+   406→
+   407→---
+   408→
+   409→## IV. OMNIVOICE: COMPLETE VOICE & AUDIO FRAMEWORK
+   410→
+   411→### 4.1 Speech Technology Stack
+   412→
+   413→The platform must integrate a **complete speech technology pipeline** supporting all modes of voice interaction:
+   414→
+   415→#### 4.1.1 Speech-to-Text (STT) / Automatic Speech Recognition (ASR)
+   416→
+   417→**Core Requirements:**
+   418→- Real-time transcription of learner speech in **English, French, and 7 Grassfields languages**
+   419→- Support for **code-switching** (natural mixing of languages, common in Cameroon)
+   420→- Tone-aware recognition for Bantu languages
+   421→
+   422→**African Language Models to Integrate:**
+   423→
+   424→| Model | Architecture | Languages | Grassfields Support | Use Case |
+   425→|-------|--------------|-----------|---------------------|----------|
+   426→| **Simba-S** | SeamlessM4T-v2 | 43 African languages | Limited | Best overall ASR performance |
+   427→| **Simba-W** | Whisper-v3-large | 43 African languages | Limited | High accuracy transcription |
+   428→| **Simba-X** | Wav2Vec2-XLS-R-2b | 43 African languages | Limited | Self-supervised learning |
+   429→| **Simba-H** | Small model | 43 African languages | Limited | On-device inference |
+   430→
+   431→**Grassfields Language Fine-Tuning Plan:**
+   432→
+   433→| Language | Base Model | Training Data Needed | Priority |
+   434→|----------|------------|---------------------|----------|
+   435→| **Kom (bkm)** | Simba-S | 500+ hours | HIGH |
+   436→| **Lamnso' (lns)** | Simba-S | 500+ hours | HIGH |
+   437→| **Bafut (bfd)** | Simba-S | 300+ hours | MEDIUM |
+   438→| **Oku (oku)** | Simba-S | 300+ hours | MEDIUM |
+   439→| **Babanki (bbk)** | Simba-S | 200+ hours | LOW |
+   440→| **Mankon (mgo)** | Simba-S | 300+ hours | MEDIUM |
+   441→| **Ngie (ngi)** | Simba-S | 200+ hours | LOW |
+   442→
+   443→**Implementation Approach:**
+   444→```python
+   445→from transformers import pipeline
+   446→
+   447→# Load Simba-S for multilingual African ASR
+   448→asr_pipeline = pipeline(
+   449→    "automatic-speech-recognition",
+   450→    model="UBC-NLP/Simba-S"
+   451→)
+   452→
+   453→# For Grassfields languages, fine-tune with local datasets
+   454→# Kom example with tone-aware transcription
+   455→result = asr_pipeline("learner_audio.wav", language="bkm")
+   456→# Output respects GACL orthography with tone diacritics
+   457→```
+   458→
+   459→**Real-World Performance Considerations:**
+   460→- Current ASR performance for African languages ranges from 30-50% Word Error Rate (WER) for best-in-class models
+   461→- Africa-targeted models significantly outperform general-purpose models
+   462→- Plan for **human-in-the-loop verification** for critical assessments
+   463→- Grassfields languages will require **custom fine-tuning** due to limited existing data
+   464→
+   465→#### 4.1.2 Text-to-Speech (TTS)
+   466→
+   467→**Core Requirements:**
+   468→- Natural voice synthesis for **English, French, and 7 Grassfields languages**
+   469→- Multiple voice personas (child-friendly for KG-Primary, mature for Secondary)
+   470→- Emotional expression (celebratory, encouraging, questioning)
+   471→- Respect for **tonal patterns** in Bantu languages
+   472→
+   473→**TTS Solutions to Integrate:**
+   474→
+   475→| Solution | Type | Languages | Grassfields Support | Features |
+   476→|----------|------|-----------|---------------------|----------|
+   477→| **Edge-TTS** | Neural TTS | 50+ languages | None | Free, no API keys needed |
+   478→| **Simba-TTS-afr** | MMS-TTS | 7 African languages | None | State-of-the-art for African languages |
+   479→| **F5-TTS** | Zero-shot voice cloning | Multilingual | Potential | 5-10 second reference audio |
+   480→| **Lelapa AI Vulavula** | Commercial API | African languages | Limited | Enterprise-grade |
+   481→
+   482→**Simba-TTS Available Languages (as of 2025):**
+   483→- Afrikaans (afr)
+   484→- Asante Twi (asanti)
+   485→- Akuapem Twi (akuapem)
+   486→- Lingala (lin)
+   487→- Southern Sotho (sot)
+   488→- Tswana (tsn)
+   489→- Xhosa (xho)
+   490→
+   491→**Note:** Simba-TTS does **not** currently support Grassfields languages. Custom voice cloning required.
+   492→
+   493→**Implementation Approach:**
+   494→```python
+   495→# Self-hosted TTS with voice cloning for Grassfields languages
+   496→# Using F5-TTS with reference audio from native speakers
+   497→
+   498→from f5_tts import F5TTS
+   499→
+   500→# Initialize with reference audio (5-10 seconds of native speaker)
+   501→tts = F5TTS(
+   502→    reference_audio="kom_native_speaker.wav",
+   503→    language="bkm"  # Kom
+   504→)
+   505→
+   506→# Generate speech with tone marking
+   507→audio = tts.synthesize(
+   508→    text="À bwɛ̀! Nà wù dà?",  # "Good morning! How are you?"
+   509→    tone_marks=True  # Respect GACL tone notation
+   510→)
+   511→```
+   512→
+   513→#### 4.1.3 Speech-to-Speech (STS) / Conversational AI
+   514→
+   515→**Core Requirements:**
+   516→- Real-time conversational interaction
+   517→- Contextual understanding and appropriate responses
+   518→- Turn-taking with natural pauses
+   519→- Interruption handling
+   520→- **Multilingual support** including code-switching between English, French, and Grassfields languages
+   521→
+   522→**Architecture:**
+   523→```
+   524→Learner Speech → ASR (Simba-S + Fine-tuned) → NLP Understanding → Response Generation → TTS (Edge-TTS/F5-TTS) → Audio Output
+   525→```
+   526→
+   527→**Use Cases:**
+   528→1. **Oral Language Practice:** Learner speaks, AI responds conversationally
+   529→2. **Pronunciation Coaching:** AI identifies errors and provides corrective feedback
+   530→3. **Reading Aloud:** AI listens to learner read and provides encouragement
+   531→4. **Assessment:** Oral quizzes with speech recognition and scoring
+   532→5. **Cultural Storytelling:** AI narrates traditional stories in Grassfields languages
+   533→
+   534→### 4.2 Sound Design Framework
+   535→
+   536→#### 4.2.1 Audio Library Requirements
+   537→
+   538→| Category | Description | Cultural Elements |
+   539→|----------|-------------|-------------------|
+   540→| **Feedback Sounds** | Success, try again, level up | Balafon, djembe, talking drums |
+   541→| **Background Music** | Ambient loops per ILT | Regional melodies, nature sounds |
+   542→| **Celebration Jingles** | Achievement, streak, badge | Makossa/bikutsi beats |
+   543→| **Character Voices** | Dialogue, narration | Cameroonian accents, multilingual |
+   544→| **Cultural Sounds** | Traditional instruments, nature | Grassfields-specific sounds |
+   545→
+   546→#### 4.2.2 Sound Design Specifications
+   547→
+   548→**Feedback Sounds:**
+   549→- **Correct Answer:** Cheerful *balafon* riff (2-3 notes ascending)
+   550→- **Incorrect Answer:** Gentle *talking drum* pattern (supportive, not punitive)
+   551→- **Level Up:** Triumphant *makossa* beat (5 seconds)
+   552→- **Project Completion:** Ensemble of local instruments (flutes, drums, rattles)
+   553→
+   554→**Background Music (per ILT):**
+   555→| ILT | Mood | Suggested Elements |
+   556→|-----|------|-------------------|
+   557→| The Home | Warm, cosy | Soft *kalimba*, family sounds |
+   558→| The Village/Town | Vibrant, busy | Market sounds, *balafon* |
+   559→| The School | Cheerful, structured | Children's voices, light percussion |
+   560→| Occupations | Rhythmic, purposeful | Work songs, rhythmic tools |
+   561→| Travelling | Adventurous, moving | Travel rhythms, vehicle sounds |
+   562→| Health | Calm, caring | Gentle melodies, water sounds |
+   563→| Games | Playful, energetic | Upbeat *bikutsi*, clapping |
+   564→
+   565→### 4.3 Voice Persona Design
+   566→
+   567→The platform must feature **culturally authentic AI characters** with distinct voice personas:
+   568→
+   569→| Character | Role | Voice Characteristics | Cultural Background | Languages |
+   570→|-----------|------|----------------------|---------------------|-----------|
+   571→| **Kwe** | Wise owl guide | Warm, patient, elder-like | Pan-Cameroonian wisdom keeper | EN, FR, Kom, Lamnso' |
+   572→| **Mbi** | Curious monkey | Playful, energetic, child-like | Forest region (South/Centre) | EN, FR, Ewondo |
+   573→| **Ngo** | Brave girl | Confident, encouraging, clear | Grassfields (West/Northwest) | EN, FR, Kom, Lamnso' |
+   574→| **Kong** | Resourceful boy | Adventurous, questioning, friendly | Coastal region (Littoral/Southwest) | EN, FR, Duala |
+   575→
+   576→**Voice Requirements:**
+   577→- Each character must have **English, French, and Grassfields language** versions
+   578→- Voices must be **age-appropriate** for the target audience
+   579→- Characters must express **emotions** (happy, encouraging, curious, celebratory)
+   580→- **Tone accuracy** is critical for Grassfields language versions
+   581→
+   582→### 4.4 Offline Voice Capabilities
+   583→
+   584→For low-connectivity areas, the platform must support:
+   585→
+   586→| Feature | Offline Solution |
+   587→|---------|------------------|
+   588→| **ASR** | On-device small models (Simba-H, 94M params) |
+   589→| **TTS** | Pre-downloaded voice packs (per language) |
+   590→| **Content** | Cached lessons and audio |
+   591→| **Sync** | Background sync when connectivity available |
+   592→| **Grassfields Languages** | Compressed language packs (~50MB per language) |
+   593→
+   594→---
+   595→
+   596→## V. FUNCTIONAL REQUIREMENTS FOR MVP
+   597→
+   598→### 5.1 Core Pedagogical Features
+   599→
+   600→#### 5.1.1 Project-Based Learning (PBL) Engine
+   601→
+   602→**Features:**
+   603→- Generate **gamified projects** based on the monthly ILT
+   604→- Guide users through three phases: **Beginning (problem identification), Progression (execution), and Culminating Event (presentation & evaluation)**
+   605→- Assign **roles** to learners to foster teamwork
+   606→- Include a **"Project Book"** feature with voice notes capability
+   607→- **Gamification:** Each project phase gives XP; completing unlocks "Project Master" badge
+   608→
+   609→**Voice Integration:**
+   610→- Learners can **record voice notes** in their Project Book (in any supported language)
+   611→- AI can **transcribe and summarize** project discussions
+   612→- **Oral presentations** can be recorded and assessed using ASR
+   613→
+   614→#### 5.1.2 Integrated Theme Learning (ILT) Generator
+   615→
+   616→**Features:**
+   617→- AI breaks down each monthly ILT into **sub-themes**
+   618→- Contextualizes all subjects within the current ILT
+   619→- **Gamification:** ILT story unfolds week by week as a serial adventure
+   620→- **Grassfields Integration:** ILT content available in all 7 target languages
+   621→
+   622→**Voice Integration:**
+   623→- Each sub-theme introduced by a **character voice narration** (multilingual)
+   624→- Audio cues for transitions between activities
+   625→
+   626→#### 5.1.3 Cyclical Teaching and Learning Process
+   627→
+   628→**Features:**
+   629→- Guide users through: *Identify project → Teach-learn → Present & assess → Remediate → Auto-evaluate*
+   630→- Built-in scheduler for "culmination events" (last Thursday/Friday of each month)
+   631→
+   632→**Voice Integration:**
+   633→- **Voice reminders** for project milestones (in learner's preferred language)
+   634→- **Audio celebration** at cycle completion
+   635→
+   636→### 5.2 Subject-Specific Content Generation (Omnivoice Edition)
+   637→
+   638→Each subject must include **voice-enabled, bite-sized lessons (5-10 minutes)** with:
+   639→
+   640→| Element | Description |
+   641→|---------|-------------|
+   642→| **Voice Hook** | Character speaks to introduce the mission |
+   643→| **Voice Instruction** | Spoken directions alongside visual content |
+   644→| **Voice Practice** | Learner speaks answers; ASR evaluates |
+   645→| **Voice Feedback** | Audio response (correct/incorrect/encouraging) |
+   646→| **Voice Celebration** | Character congratulates verbally |
+   647→
+   648→#### 5.2.1 English Language
+   649→
+   650→**Voice-Enabled Activities:**
+   651→- **Speaking Quests:** Role-play dialogues with AI characters using STS
+   652→- **Pronunciation Practice:** AI listens, identifies errors, provides corrective audio feedback
+   653→- **Reading Aloud:** AI listens to learner read, tracks fluency, offers encouragement
+   654→- **Listening Comprehension:** Audio passages with comprehension questions
+   655→- **Dictation:** AI speaks words/sentences; learner types or writes
+   656→
+   657→#### 5.2.2 Français
+   658→
+   659→**Voice-Enabled Activities:**
+   660→- **Oral Comprehension:** Listen to French audio, answer questions
+   661→- **Pronunciation:** AI models French sounds; learner repeats; AI evaluates
+   662→- **Conversation Practice:** STS dialogues with francophone AI characters
+   663→- **Dictée:** AI dictates; learner writes
+   664→
+   665→#### 5.2.3 Mathematics
+   666→
+   667→**Voice-Enabled Activities:**
+   668→- **Oral Counting:** Learner counts aloud; ASR verifies
+   669→- **Problem Explanation:** Learner explains solution verbally; AI assesses understanding
+   670→- **Mental Math:** AI speaks problem; learner answers verbally
+   671→- **Mathematical Vocabulary:** AI pronounces terms; learner repeats
+   672→
+   673→#### 5.2.4 Science and Technology
+   674→
+   675→**Voice-Enabled Activities:**
+   676→- **Observation Narration:** Learner describes what they observe
+   677→- **Scientific Vocabulary:** Audio glossary with pronunciation practice
+   678→- **Experiment Instructions:** Step-by-step audio guides
+   679→
+   680→#### 5.2.5 Social Studies
+   681→
+   682→**Voice-Enabled Activities:**
+   683→- **Historical Narration:** Audio stories of historical figures
+   684→- **Map Reading:** AI describes locations; learner identifies
+   685→- **Civic Recitation:** National anthem, motto practice
+   686→
+   687→#### 5.2.6 National Languages and Cultures (Grassfields Focus)
+   688→
+   689→**Voice-Enabled Activities:**
+   690→- **Native Speaker Models:** Authentic pronunciation from native Kom, Lamnso', etc. speakers
+   691→- **Tone Practice:** For tonal languages, AI models correct tones
+   692→- **Cultural Stories:** Oral traditions narrated in Grassfields languages
+   693→- **Conversation Practice:** STS in all 7 target languages
+   694→- **Proverb Learning:** Traditional wisdom in local languages
+   695→
+   696→#### 5.2.7 ICTs
+   697→
+   698→**Voice-Enabled Activities:**
+   699→- **Voice Commands:** Learn to use voice interfaces responsibly
+   700→- **Accessibility Features:** Explore how ICTs support diverse needs
+   701→
+   702→### 5.3 Bite-Sized Lesson Structure (Voice-First)
+   703→
+   704→| Phase | Duration | Description | Voice Elements |
+   705→|-------|----------|-------------|----------------|
+   706→| **Voice Hook** | 1 min | Character speaks to introduce mission | Character voice, background music |
+   707→| **Listen & Learn** | 2-3 min | Audio-visual content delivery | Narration, sound effects |
+   708→| **Speak & Practice** | 2-3 min | Interactive activity with voice | ASR evaluation, audio feedback |
+   709→| **Apply & Create** | 2-3 min | Mini-challenge using new knowledge | Voice recording, AI response |
+   710→| **Celebrate** | 1 min | Recap and reward | Celebration jingle, character praise |
+   711→
+   712→### 5.4 High School & Secondary Extensions
+   713→
+   714→For ISCED Levels 2-3, the platform must include:
+   715→
+   716→**Advanced Features:**
+   717→- **Subject Specialization:** Deeper content in Sciences, Arts, Commerce
+   718→- **Exam Preparation:** IGCSE, A-Level, Baccalauréat practice with voice-enabled quizzes
+   719→- **Research Skills:** Voice-guided research projects
+   720→- **Career Guidance:** AI career counselor with voice interaction
+   721→- **Debate Practice:** STS debate simulations with AI opponents
+   722→
+   723→**Voice-Enabled Assessment:**
+   724→- **Oral Examinations:** Recorded and AI-assessed
+   725→- **Presentations:** Practice with AI feedback on delivery
+   726→- **Language Proficiency:** CEFR-aligned assessments with ASR scoring
+   727→
+   728→---
+   729→
+   730→## VI. MVP TECHNICAL SPECIFICATIONS
+   731→
+   732→### 6.1 Platform Architecture
+   733→
+   734→```
+   735→┌─────────────────────────────────────────────────────────────────┐
+   736→│                     FRONTEND LAYER                               │
+   737→│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
+   738→│  │   Web App   │  │ Mobile App  │  │   PWA       │              │
+   739→│  │  (React)    │  │(React Native)│  │ (Offline)   │              │
+   740→│  └─────────────┘  └─────────────┘  └─────────────┘              │
+   741→└─────────────────────────────────────────────────────────────────┘
+   742→                              │
+   743→                              ▼
+   744→┌─────────────────────────────────────────────────────────────────┐
+   745→│                     API GATEWAY                                  │
+   746→│  (Authentication, Rate Limiting, Request Routing)               │
+   747→└─────────────────────────────────────────────────────────────────┘
+   748→                              │
+   749→                              ▼
+   750→┌─────────────────────────────────────────────────────────────────┐
+   751→│                    CORE SERVICES LAYER                           │
+   752→│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+   753→│  │Curriculum │ │  Content  │ │Assessment │ │  Progress │       │
+   754→│  │  Service  │ │ Generator │ │  Engine   │ │  Tracker  │       │
+   755→│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+   756→│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+   757→│  │  Project  │ │Gamification│ │  User     │ │  Analytics│       │
+   758→│  │  Builder  │ │  Engine   │ │Management │ │  Service  │       │
+   759→│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+   760→└─────────────────────────────────────────────────────────────────┘
+   761→                              │
+   762→                              ▼
+   763→┌─────────────────────────────────────────────────────────────────┐
+   764→│                    AI/ML SERVICES LAYER                          │
+   765→│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+   766→│  │    LLM    │ │    ASR    │ │    TTS    │ │    STS    │       │
+   767→│  │  (Content │ │ (Simba-S, │ │(Edge-TTS, │ │(Voice     │       │
+   768→│  │ Generation)│ │  Simba-W) │ │  F5-TTS)  │ │ Pipeline) │       │
+   769→│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+   770→│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+   771→│  │Translation│ │  Voice    │ │  Audio    │ │Grassfields│       │
+   772→│  │  Service  │ │  Cloning  │ │  Library  │ │ Language  │       │
+   773→│  │           │ │           │ │           │ │  Models   │       │
+   774→│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+   775→└─────────────────────────────────────────────────────────────────┘
+   776→                              │
+   777→                              ▼
+   778→┌─────────────────────────────────────────────────────────────────┐
+   779→│                    DATA LAYER                                    │
+   780→│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+   781→│  │PostgreSQL │ │   Redis   │ │   S3/     │ │  Vector   │       │
+   782→│  │(Structured│ │  (Cache)  │ │  MinIO    │ │  Database │       │
+   783→│  │   Data)   │ │           │ │ (Media)   │ │ (Embeddings)│      │
+   784→│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+   785→└─────────────────────────────────────────────────────────────────┘
+   786→```
+   787→
+   788→### 6.2 Rapid Deployment Stack
+   789→
+   790→To **minimize time to deployment**, leverage the following ready-to-use tools and services:
+   791→
+   792→| Component | Recommended Tool | Rationale |
+   793→|-----------|-----------------|-----------|
+   794→| **AI/LLM** | OpenAI API / Anthropic Claude / Google Gemini | Instant access, no training required |
+   795→| **ASR** | Hugging Face Inference API (Simba models) | Pre-trained African language models |
+   796→| **TTS** | Edge-TTS (self-hosted) | Free, 50+ languages, no API keys |
+   797→| **Voice Pipeline** | nouverse/voice-compute | OpenAI-compatible, self-hosted |
+   798→| **Frontend** | Next.js + Tailwind CSS | Fast development, SSR support |
+   799→| **Backend** | FastAPI (Python) | Rapid API development, async support |
+   800→| **Database** | Supabase / PlanetScale | Managed, scalable |
+   801→| **Media Storage** | Cloudflare R2 / AWS S3 | Cost-effective, CDN included |
+   802→| **Deployment** | Vercel (Frontend) + Railway/Render (Backend) | One-click deploys |
+   803→| **Voice Agents** | xAI Grok Voice Agent Builder | No-code voice agent creation |
+   804→
+   805→### 6.3 Core MVP Features
+   806→
+   807→| Feature | Description | Voice Integration |
+   808→|---------|-------------|-------------------|
+   809→| **Curriculum Navigator** | Map-based dashboard; tap to explore quests | Voice-guided navigation |
+   810→| **Lesson Plan Generator** | Teacher tool for complete lesson plans | Audio lesson previews |
+   811→| **Project Builder** | Co-create projects with gamified roles | Voice notes for planning |
+   812→| **Content Library** | Texts, visuals, audio, video, assessments | All content voice-enabled |
+   813→| **Learner Profile** | Avatar, skill tree, progress tracking | Voice greetings by name |
+   814→| **Assessment Engine** | Formative, summative, diagnostic | Oral assessments with ASR |
+   815→| **Language Support** | English, French, 7 Grassfields languages | Full STS in all languages |
+   816→
+   817→### 6.4 Voice Data Model
+   818→
+   819→Each learning object must store:
+   820→
+   821→```json
+   822→{
+   823→  "lesson_id": "eng_class3_home_w1",
+   824→  "supported_languages": ["en", "fr", "bkm", "lns"],
+   825→  "voice_assets": {
+   826→    "hook_audio": {
+   827→      "en": "s3://bucket/audio/hooks/eng_home_w1_hook_en.mp3",
+   828→      "fr": "s3://bucket/audio/hooks/eng_home_w1_hook_fr.mp3",
+   829→      "bkm": "s3://bucket/audio/hooks/eng_home_w1_hook_bkm.mp3",
+   830→      "lns": "s3://bucket/audio/hooks/eng_home_w1_hook_lns.mp3"
+   831→    },
+   832→    "feedback_correct": "s3://bucket/audio/feedback/balafon_positive.mp3",
+   833→    "feedback_incorrect": "s3://bucket/audio/feedback/djembe_try_again.mp3",
+   834→    "celebration": "s3://bucket/audio/celebrations/makossa_celebration.mp3",
+   835→    "background_music": "s3://bucket/audio/bg/village_morning_loop.mp3",
+   836→    "character_dialogue": {
+   837→      "character": "kwe",
+   838→      "text": {
+   839→        "en": "Good morning! Can you greet me?",
+   840→        "fr": "Bonjour! Peux-tu me saluer?",
+   841→        "bkm": "À bwɛ̀! Nà wù dà?",
+   842→        "lns": "Mbi̶ vǝ̀! Wù yé dì?"
+   843→      }
+   844→    }
+   845→  },
+   846→  "voice_interactions": [
+   847→    {
+   848→      "type": "speaking_practice",
+   849→      "prompts": {
+   850→        "en": {"prompt": "Say: Good morning!", "target": "good morning"},
+   851→        "bkm": {"prompt": "Bì: À bwɛ̀!", "target": "à bwɛ̀"},
+   852→        "lns": {"prompt": "Bì: Mbi̶ vǝ̀!", "target": "mbi̶ vǝ̀"}
+   853→      },
+   854→      "evaluation_criteria": ["pronunciation", "tone_accuracy", "fluency"]
+   855→    }
+   856→  ]
+   857→}
+   858→```
+   859→
+   860→### 6.5 Voice Pipeline Implementation
+   861→
+   862→```python
+   863→# Complete voice pipeline for STS with Grassfields language support
+   864→class VoicePipeline:
+   865→    def __init__(self):
+   866→        # Core models
+   867→        self.asr = load_model("UBC-NLP/Simba-S")  # African ASR
+   868→        self.tts = EdgeTTS()  # Free TTS
+   869→        self.llm = OpenAIClient()  # Content generation
+   870→        
+   871→        # Grassfields language models (fine-tuned)
+   872→        self.grassfields_models = {
+   873→            "bkm": load_model("custom/kom-asr-model"),  # Kom
+   874→            "lns": load_model("custom/lamnso-asr-model"),  # Lamnso'
+   875→            "bfd": load_model("custom/bafut-asr-model"),  # Bafut
+   876→            "oku": load_model("custom/oku-asr-model"),  # Oku
+   877→            "bbk": load_model("custom/babanki-asr-model"),  # Babanki
+   878→            "mgo": load_model("custom/mankon-asr-model"),  # Mankon
+   879→            "ngi": load_model("custom/ngie-asr-model"),  # Ngie
+   880→        }
+   881→    
+   882→    async def speech_to_speech(
+   883→        self, 
+   884→        audio_input: bytes,
+   885→        source_language: str = "auto",
+   886→        target_language: str = "en"
+   887→    ) -> bytes:
+   888→        # Step 1: Speech to Text
+   889→        if source_language in self.grassfields_models:
+   890→            text = await self.grassfields_models[source_language].transcribe(audio_input)
+   891→        else:
+   892→            text = await self.asr.transcribe(audio_input, language=source_language)
+   893→        
+   894→        # Step 2: Generate Response
+   895→        response_text = await self.llm.generate(
+   896→            prompt=text,
+   897→            context=self.get_lesson_context(),
+   898→            target_language=target_language
+   899→        )
+   900→        
+   901→        # Step 3: Text to Speech
+   902→        if target_language in self.grassfields_models:
+   903→            audio_output = await self.synthesize_grassfields(
+   904→                text=response_text,
+   905→                language=target_language
+   906→            )
+   907→        else:
+   908→            audio_output = await self.tts.synthesize(
+   909→                text=response_text,
+   910→                voice="cameroonian_child_friendly",
+   911→                language=target_language
+   912→            )
+   913→        
+   914→        return audio_output
+   915→    
+   916→    async def evaluate_pronunciation(
+   917→        self, 
+   918→        learner_audio: bytes, 
+   919→        target_text: str,
+   920→        language: str = "en"
+   921→    ) -> dict:
+   922→        # Transcribe learner speech
+   923→        if language in self.grassfields_models:
+   924→            transcription = await self.grassfields_models[language].transcribe(learner_audio)
+   925→        else:
+   926→            transcription = await self.asr.transcribe(learner_audio)
+   927→        
+   928→        # Compare with target (tone-aware for Grassfields)
+   929→        if language in ["bkm", "lns"]:  # Tonal languages
+   930→            similarity = calculate_tone_aware_similarity(transcription, target_text)
+   931→        else:
+   932→            similarity = calculate_similarity(transcription, target_text)
+   933→        
+   934→        return {
+   935→            "transcription": transcription,
+   936→            "target": target_text,
+   937→            "language": language,
+   938→            "accuracy": similarity,
+   939→            "tone_accuracy": calculate_tone_accuracy(transcription, target_text) if language in ["bkm", "lns"] else None,
+   940→            "feedback": generate_feedback(similarity, language)
+   941→        }
+   942→```
+   943→
+   944→---
+   945→
+   946→## VII. NEGENTROPIC PROMPT INSTRUCTIONS FOR AI
+   947→
+   948→### 7.1 AI Persona & Role
+   949→
+   950→You are an **Expert Educational Technologist, Curriculum Developer, Gamification Designer, Voice Experience Architect, and Grassfields Language Specialist** specializing in the Cameroon Primary Education System and international educational frameworks. You have deep expertise in **child psychology, African cultural expressions, game-based learning, speech technologies, multilingual education, and Cameroonian Grassfields languages (Kom, Lamnso', Bafut, Oku, Babanki, Mankon, Ngie)** . Your task is to generate **highly specific, pedagogically sound, contextually relevant, and incredibly engaging** educational content that leverages **full voice capabilities** based on the provided curriculum and monthly scheme of work.
+   951→
+   952→### 7.2 Core Directives for Content Generation
+   953→
+   954→#### Directive 1: Complete Curriculum Adherence
+   955→Every piece of content must directly implement the "Units/Contents," "Expected Learning Outcomes," and "Teaching/Learning Strategies" specified in the curriculum.
+   956→
+   957→#### Directive 2: Cultural Contextualization
+   958→All content must be rooted in the ILT **and** the Cameroonian context. Use local examples, names, foods, and settings. Infuse African proverbs, songs, and rhythms. For Grassfields language content, use culturally appropriate examples from the North West Region.
+   959→
+   960→#### Directive 3: Voice-First Design
+   961→For every lesson, specify:
+   962→- **Hook Audio:** Character voice introduction (with text and audio file reference in all supported languages)
+   963→- **Instruction Audio:** Spoken directions (multilingual)
+   964→- **Practice Audio:** Prompts for learner speech (with tone markings for Grassfields languages)
+   965→- **Feedback Audio:** Correct/incorrect sounds
+   966→- **Celebration Audio:** Achievement sounds
+   967→- **Background Music:** Mood-appropriate loop
+   968→
+   969→#### Directive 4: Gamification Integration
+   970→Embed at least **two gamification mechanics** per lesson (points, badges, challenges, choice). Ensure activities are enjoyable for the target age group.
+   971→
+   972→#### Directive 5: Project-Based Learning
+   973→Every monthly cycle must culminate in a creative, collaborative, culturally relevant project with voice components.
+   974→
+   975→#### Directive 6: Accessibility & Inclusivity
+   976→Provide differentiation suggestions. Ensure activities are inclusive of all genders, abilities, and backgrounds. Support learners with limited connectivity through offline capabilities. Provide content in all 7 Grassfields languages.
+   977→
+   978→#### Directive 7: International Relevance
+   979→While rooted in Cameroon, content must prepare learners for global citizenship. Align language content to CEFR levels, skills to IB Learner Profile, and assessment to international standards.
+   980→
+   981→#### Directive 8: Rapid Deployment Focus
+   982→Generate content in formats that can be immediately deployed using the recommended rapid deployment stack. Avoid custom development requirements where existing tools can be leveraged.
+   983→
+   984→#### Directive 9: Grassfields Language Accuracy
+   985→For all Grassfields language content:
+   986→- Use **GACL-compliant orthography**
+   987→- Include **tone markings** for tonal languages (Kom: 3 tones; Lamnso': multiple tones)
+   988→- Respect **vowel length distinctions**
+   989→- Use correct **noun class prefixes** (Eastern Grassfields languages share nasal noun-class prefixes with Bantu)
+   990→- Verify translations with native speakers
+   991→
+   992→### 7.3 Output Format for AI-Generated Content
+   993→
+   994→For a **Voice-Enabled Gamified Lesson Plan (Multilingual)**, the output JSON must include:
+   995→
+   996→```json
+   997→{
+   998→  "lesson_plan": {
+   999→    "subject": "English Language",
+  1000→    "level": "Class 3",
+  1001→    "isced_level": 1,
+  1002→    "integrated_learning_theme": "The Home",
+  1003→    "sub_theme": "The Kitchen",
+  1004→    "week": 1,
+  1005→    "cefr_alignment": "A1",
+  1006→    "ib_learner_profile": ["Communicators", "Inquirers"],
+  1007→    "supported_languages": ["en", "fr", "bkm", "lns"],
+  1008→    "expected_learning_outcomes": [
+  1009→      "Greet people and respond to greetings appropriately at different periods of the day"
+  1010→    ],
+  1011→    "teaching_strategies": ["Role-play", "Demonstration", "Questions and answers"],
+  1012→    "didactic_materials": {
+  1013→      "physical": ["Flashcards", "Real objects (clock, pictures)"],
+  1014→      "digital": ["Audio player", "Recording device"]
+  1015→    },
+  1016→    "voice_assets": {
+  1017→      "hook": {
+  1018→        "character": "kwe",
+  1019→        "text": {
+  1020→          "en": "Good morning, young one! Can you help me greet my friends?",
+  1021→          "fr": "Bonjour, petit! Peux-tu m'aider à saluer mes amis?",
+  1022→          "bkm": "À bwɛ̀, mwɛ̀n! Nà wù dà?",
+  1023→          "lns": "Mbi̶ vǝ̀, wòn! Wù yé dì?"
+  1024→        },
+  1025→        "audio_files": {
+  1026→          "en": "eng_class3_home_w1_hook_kwe_en.mp3",
+  1027→          "fr": "eng_class3_home_w1_hook_kwe_fr.mp3",
+  1028→          "bkm": "eng_class3_home_w1_hook_kwe_bkm.mp3",
+  1029→          "lns": "eng_class3_home_w1_hook_kwe_lns.mp3"
+  1030→        }
+  1031→      },
+  1032→      "instruction": {
+  1033→        "text": {
+  1034→          "en": "Listen carefully and repeat after me.",
+  1035→          "bkm": "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.",
+  1036→          "lns": "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀."
+  1037→        }
+  1038→      },
+  1039→      "practice_prompts": [
+  1040→        {
+  1041→          "prompt": {
+  1042→            "en": "Say: Good morning!",
+  1043→            "bkm": "Bì: À bwɛ̀!",
+  1044→            "lns": "Bì: Mbi̶ vǝ̀!"
+  1045→          },
+  1046→          "target": {
+  1047→            "en": "good morning",
+  1048→            "bkm": "à bwɛ̀",
+  1049→            "lns": "mbi̶ vǝ̀"
+  1050→          },
+  1051→          "evaluation": ["pronunciation_accuracy", "tone_accuracy"]
+  1052→        }
+  1053→      ],
+  1054→      "feedback": {
+  1055→        "correct": "balafon_positive.mp3",
+  1056→        "incorrect": "djembe_try_again.mp3",
+  1057→        "encouragement": "kwe_encouraging.mp3"
+  1058→      },
+  1059→      "celebration": "makossa_short_celebration.mp3",
+  1060→      "background_music": "village_morning_loop.mp3"
+  1061→    },
+  1062→    "gamification": {
+  1063→      "mechanics": ["Points", "Badge", "Voice Challenge"],
+  1064→      "xp_points": 50,
+  1065→      "badge_name": "Polite Speaker",
+  1066→      "voice_challenge": {
+  1067→        "description": {
+  1068→          "en": "Record yourself greeting 3 different people",
+  1069→          "bkm": "Tɔ̀ŋtɛ̀ nà wù bì ɔ̀ bɔ̀ŋɔ̀ 3",
+  1070→          "lns": "Tɔ̀ŋtɛ̀ nǝ̀ wù bì ǝ̀ bɔ̀ŋɔ̀ 3"
+  1071→        },
+  1072→        "evaluation": "asr_completion"
+  1073→      }
+  1074→    },
+  1075→    "activities": [
+  1076→      {
+  1077→        "phase": "Voice Hook",
+  1078→        "duration": "1 min",
+  1079→        "description": "Kwe appears and asks for help greeting friends",
+  1080→        "audio": "eng_class3_home_w1_hook_kwe.mp3"
+  1081→      },
+  1082→      {
+  1083→        "phase": "Listen & Learn",
+  1084→        "duration": "2-3 min",
+  1085→        "description": "Slide shows morning, afternoon, night scenes with greetings",
+  1086→        "narration": "eng_class3_home_w1_learn.mp3"
+  1087→      },
+  1088→      {
+  1089→        "phase": "Speak & Practice",
+  1090→        "duration": "2-3 min",
+  1091→        "description": "Learner records greetings; ASR evaluates",
+  1092→        "interactions": [
+  1093→          {"prompt": "Say: Good morning!", "asr_target": "good morning"}
+  1094→        ]
+  1095→      },
+  1096→      {
+  1097→        "phase": "Apply & Create",
+  1098→        "duration": "2-3 min",
+  1099→        "description": "Role-play with AI character using STS",
+  1100→        "sts_scenario": "Greet Kwe at different times of day"
+  1101→      },
+  1102→      {
+  1103→        "phase": "Celebrate",
+  1104→        "duration": "1 min",
+  1105→        "description": "Kwe congratulates; badge awarded",
+  1106→        "audio": "makossa_short_celebration.mp3"
+  1107→      }
+  1108→    ],
+  1109→    "assessment": {
+  1110→      "criteria": ["Fluency in speaking", "Audibility", "Willingness to take turns", "Tone accuracy (Grassfields)"],
+  1111→      "methods": ["Observation checklist", "ASR accuracy score", "Voice recording portfolio"]
+  1112→    },
+  1113→    "offline_capability": {
+  1114→      "downloadable": true,
+  1115→      "size_mb": 15,
+  1116→      "components": ["audio_files", "visual_slides", "asr_small_model"],
+  1117→      "grassfields_language_packs": {
+  1118→        "bkm": "kom_language_pack_50mb.zip",
+  1119→        "lns": "lamnso_language_pack_50mb.zip"
+  1120→      }
+  1121→    }
+  1122→  }
+  1123→}
+  1124→```
+  1125→
+  1126→### 7.4 Example Negentropic Prompt for the AI
+  1127→
+  1128→> "Based on the curriculum for **Class 3, Month 1** (ILT: **The Home**), generate a complete **Voice-Enabled Gamified Lesson Plan for English Language, Week 1** focusing on **'Greetings'**.
+  1129→>
+  1130→> **Requirements:**
+  1131→> - Include a **voice hook** with character Kwe speaking in English, French, Kom (bkm), and Lamnso' (lns)
+  1132→> - Provide **GACL-compliant tone markings** for all Grassfields language content
+  1133→> - Specify **ASR evaluation prompts** for pronunciation practice with tone accuracy scoring
+  1134→> - Design a **speech-to-speech role-play** scenario in all supported languages
+  1135→> - Embed **gamification mechanics** (points, badge, voice challenge)
+  1136→> - Specify **culturally appropriate audio feedback** (balafon for correct, djembe for try-again)
+  1137→> - Suggest **offline capability** with downloadable language packs for Grassfields languages
+  1138→> - Align to **CEFR A1** and **IB Learner Profile** attributes
+  1139→> - Structure according to the specified JSON format"
+  1140→
+  1141→---
+  1142→
+  1143→## VIII. RAPID DEPLOYMENT ROADMAP
+  1144→
+  1145→### Phase 1: Foundation (Weeks 1-2)
+  1146→
+  1147→| Task | Tools | Deliverable | Status |
+  1148→|------|-------|-------------|--------|
+  1149→| Set up development environment | Vercel, Railway, Supabase | Working dev environment | ⚠️ VERIFY |
+  1150→| Integrate ASR (Simba-S) | Hugging Face Inference API | Working speech-to-text | ⚠️ VERIFY |
+  1151→| Integrate TTS (Edge-TTS) | nouverse/voice-compute | Working text-to-speech | ⚠️ VERIFY |
+  1152→| **Integrate Kom ASR/TTS** | Fine-tuned models | Working Kom voice | ❌ TODO |
+  1153→| **Integrate Lamnso' ASR/TTS** | Fine-tuned models | Working Lamnso' voice | ❌ TODO |
+  1154→| Build basic frontend | Next.js, Tailwind | Curriculum Navigator UI | ❌ TODO |
+  1155→| Set up database | Supabase PostgreSQL | Data schema deployed | ⚠️ VERIFY |
+  1156→
+  1157→### Phase 2: Core Features (Weeks 3-6)
+  1158→
+  1159→| Task | Tools | Deliverable | Status |
+  1160→|------|-------|-------------|--------|
+  1161→| Build Lesson Plan Generator | OpenAI API, FastAPI | AI lesson generation | ❌ TODO |
+  1162→| Build Voice Pipeline | FastAPI, Simba-S, Edge-TTS | Complete STS functionality | ❌ TODO |
+  1163→| Populate Content Library | AI-generated content | Class 3, Month 1 complete | ❌ TODO |
+  1164→| Build Gamification Engine | Custom + Redis | XP, badges, streaks | ❌ TODO |
+  1165→| Build Assessment Engine | Custom + ASR | Voice-enabled assessments | ❌ TODO |
+  1166→| **Grassfields Content Generation** | AI + Native Speaker Review | Kom/Lamnso' content | ❌ TODO |
+  1167→| **Voice Cloning for Grassfields** | F5-TTS | Custom voice models | ❌ TODO |
+  1168→
+  1169→### Phase 3: Integration & Testing (Weeks 7-8)
+  1170→
+  1171→| Task | Tools | Deliverable | Status |
+  1172→|------|-------|-------------|--------|
+  1173→| Integrate all modules | Microservices | Unified platform | ❌ TODO |
+  1174→| Closed pilot | 5 schools in Littoral + 5 in North West | Feedback report | ❌ TODO |
+  1175→| Bug fixes & refinements | Iterative development | Stable MVP | ❌ TODO |
+  1176→| **Grassfields Language Validation** | Native speakers | Accuracy verification | ❌ TODO |
+  1177→
+  1178→### Phase 4: Launch & Expansion (Weeks 9+)
+  1179→
+  1180→| Task | Tools | Deliverable | Status |
+  1181→|------|-------|-------------|--------|
+  1182→| Official MVP launch | Production deployment | Live platform | ❌ TODO |
+  1183→| Content expansion | AI generation | Classes 1-2, Forms 1-5 | ❌ TODO |
+  1184→| High School modules | AI generation | Forms 6-7 | ❌ TODO |
+  1185→| International framework mapping | Manual + AI | IB/Cambridge alignment | ❌ TODO |
+  1186→| **Additional Grassfields Languages** | Fine-tuning | Bafut, Oku, Babanki, Mankon, Ngie | ❌ TODO |
+  1187→
+  1188→---
+  1189→
+  1190→## IX. SUCCESS METRICS
+  1191→
+  1192→| Metric | Target | Measurement | Status |
+  1193→|--------|--------|-------------|--------|
+  1194→| **Learner Engagement** | 80% daily active use | Analytics | ❌ NOT STARTED |
+  1195→| **Learning Outcomes** | 90% ELO achievement | Assessment data | ❌ NOT STARTED |
+  1196→| **Voice Interaction** | 70% of activities voice-enabled | Feature audit | ❌ NOT STARTED |
+  1197→| **Cultural Relevance** | 95% culturally appropriate | User feedback | ❌ NOT STARTED |
+  1198→| **Offline Functionality** | 100% core features offline | Testing | ❌ NOT STARTED |
+  1199→| **Teacher Adoption** | 85% find platform useful | Survey | ❌ NOT STARTED |
+  1200→| **Deployment Time** | < 12 weeks to MVP | Project tracking | ⚠️ AT RISK |
+  1201→| **Grassfields Language Accuracy** | 90% native speaker approval | Validation | ❌ NOT STARTED |
+  1202→| **Tone Accuracy (TTS)** | 85% correct tone production | Native speaker evaluation | ❌ NOT STARTED |
+  1203→
+  1204→---
+  1205→
+  1206→## X. BUILD RESUMPTION INSTRUCTIONS
+  1207→
+  1208→### 10.1 Immediate Actions (Priority Order)
+  1209→
+  1210→1. **Verify Service Connections:**
+  1211→   - Test Hugging Face API for Simba-S ASR
+  1212→   - Test Edge-TTS endpoint
+  1213→   - Verify Supabase database connection
+  1214→   - Test LLM API (OpenAI/Anthropic/Gemini)
+  1215→
+  1216→2. **Complete Frontend Foundation:**
+  1217→   - Build Curriculum Navigator component
+  1218→   - Implement basic routing
+  1219→   - Create responsive layout
+  1220→
+  1221→3. **Implement Voice Pipeline:**
+  1222→   - Connect ASR → LLM → TTS flow
+  1223→   - Test with English audio first
+  1224→   - Add French support
+  1225→   - Add Kom support (basic)
+  1226→
+  1227→4. **Generate Initial Content:**
+  1228→   - Class 3, Month 1, ILT: The Home
+  1229→   - All subjects, Week 1
+  1230→   - In English and French first
+  1231→
+  1232→5. **Grassfields Language Integration:**
+  1233→   - Collect training data for Kom
+  1234→   - Fine-tune ASR model
+  1235→   - Create TTS voice model
+  1236→   - Test with native speakers
+  1237→
+  1238→### 10.2 Critical Dependencies
+  1239→
+  1240→| Dependency | Status | Action Required |
+  1241→|------------|--------|-----------------|
+  1242→| Hugging Face API Access | ⚠️ VERIFY | Check API key validity |
+  1243→| Edge-TTS Installation | ⚠️ VERIFY | Confirm self-hosted endpoint |
+  1244→| Supabase Project | ⚠️ VERIFY | Check database schema |
+  1245→| LLM API Key | ⚠️ VERIFY | Confirm quota and access |
+  1246→| Kom Training Data | ❌ MISSING | Source from SIL Cameroon |
+  1247→| Lamnso' Training Data | ❌ MISSING | Source from SIL Cameroon |
+  1248→| Native Speaker Validators | ❌ MISSING | Recruit from North West Region |
+  1249→
+  1250→### 10.3 Resource Requirements
+  1251→
+  1252→| Resource | Purpose | Estimated Cost |
+  1253→|----------|---------|----------------|
+  1254→| Hugging Face Pro | Simba model access | $9/month |
+  1255→| Supabase Pro | Database + Auth | $25/month |
+  1256→| Vercel Pro | Frontend hosting | $20/month |
+  1257→| Railway/Render | Backend hosting | $20/month |
+  1258→| OpenAI API | Content generation | $50-100/month |
+  1259→| **Grassfields Language Data** | Fine-tuning | **$500-1000 (one-time)** |
+  1260→| Native Speaker Validation | Quality assurance | **$300-500 (one-time)** |
+  1261→
+  1262→---
+  1263→
+  1264→This **OMNIVOICE EDITION v2.0** Master Negentropic Prompt ensures that your MVP is:
+  1265→
+  1266→- **Complete:** Covering KG through High School
+  1267→- **Voice-First:** Full STT, TTS, and STS capabilities
+  1268→- **Culturally Authentic:** African sounds, languages, and narratives including **7 Grassfields languages (Kom, Lamnso', Bafut, Oku, Babanki, Mankon, Ngie)**
+  1269→- **Internationally Relevant:** Aligned to IB, Cambridge, and CEFR
+  1270→- **Rapidly Deployable:** Leveraging existing tools to minimize time-to-market
+  1271→- **Pedagogically Sound:** Rooted in Cameroon's Competence-Based Approach
+  1272→- **GACL-Compliant:** All Grassfields language content follows the General Alphabet of Cameroonian Languages
+  1273→
+  1274→Every learner interaction will feel like **a conversation with a wise, playful elder** – warm, responsive, and deeply rooted in Cameroonian culture while preparing learners for global citizenship.

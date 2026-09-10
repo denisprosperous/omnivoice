@@ -3,6 +3,7 @@
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
+import { VOICE_LANGUAGES } from "@/lib/data/grassfields";
 import { XpBar } from "./shared";
 import { setMuted } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,7 @@ const NAV: Array<{ view: Parameters<ReturnType<typeof useApp.getState>["setView"
 ];
 
 export function Hud() {
-  const { learner, lang, setLang, view, setView, soundOn, toggleSound, online } = useApp();
+  const { learner, lang, setLang, voiceLang, setVoiceLang, view, setView, soundOn, toggleSound, online } = useApp();
   if (!learner) return null;
   const isAdult = learner.role !== "learner";
   const nav = isAdult
@@ -25,6 +26,7 @@ export function Hud() {
         { view: "library" as const, key: "library", icon: "📚" },
       ]
     : NAV;
+  const voiceLangLabel = VOICE_LANGUAGES.find((v) => v.id === voiceLang);
 
   return (
     <header className="sticky top-0 z-40 shadow-md" style={{ background: "#7C2D12" }}>
@@ -72,6 +74,39 @@ export function Hud() {
             </button>
           ))}
         </div>
+
+        {/* Voice language — Grassfields Expansion Pack selector (v2.0 §2) */}
+        <details className="relative" title={t("voiceLanguage", lang)}>
+          <summary
+            className={cn(
+              "flex h-8 cursor-pointer list-none items-center gap-1 rounded-full px-2 text-xs font-bold transition-colors",
+              voiceLang && voiceLang !== "en" && voiceLang !== "fr" ? "bg-lime-400 text-lime-950" : "bg-white/10 text-amber-100 hover:bg-white/20"
+            )}
+            aria-label={`${t("voiceLanguage", lang)}: ${voiceLangLabel?.label || voiceLang}`}
+          >
+            <span aria-hidden>🪶</span>
+            <span className="hidden sm:inline">{(voiceLangLabel?.label || voiceLang).split(" ")[0]}</span>
+            <span aria-hidden className="text-[8px]">▼</span>
+          </summary>
+          <div className="absolute right-0 z-50 mt-1 max-h-72 w-56 overflow-y-auto rounded-xl border-2 border-lime-700 bg-white p-1.5 shadow-xl">
+            <p className="px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lime-700">{t("voiceLanguage", lang)}</p>
+            {VOICE_LANGUAGES.map((v) => (
+              <button
+                key={v.id}
+                onClick={(e) => { setVoiceLang(v.id); e.currentTarget.closest("details")?.removeAttribute("open"); }}
+                aria-pressed={voiceLang === v.id}
+                className={cn(
+                  "flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-xs font-bold transition-colors",
+                  voiceLang === v.id ? "bg-lime-100 text-lime-900" : "text-amber-900 hover:bg-amber-50"
+                )}
+              >
+                <span aria-hidden>{v.flag}</span>
+                {v.label}
+                {voiceLang === v.id && <span className="ml-auto" aria-hidden>✓</span>}
+              </button>
+            ))}
+          </div>
+        </details>
 
         <Button
           variant="ghost"

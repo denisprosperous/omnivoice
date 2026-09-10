@@ -58,6 +58,26 @@ export const STRINGS: Record<string, { en: string; fr: string; ewo: string }> = 
   learners: { en: "Learners", fr: "Apprenants", ewo: "Bemon Dutu" },
   assessments: { en: "Assessments", fr: "Évaluations", ewo: "Beweng" },
   voiceShare: { en: "Voice Interaction Share", fr: "Part Vocale", ewo: "Atsi" },
+  // ---- Grassfields Languages Expansion Pack (v2.0) ----
+  voiceLanguage: { en: "Voice Language", fr: "Langue Vocale", ewo: "Atsi" },
+  voiceLanguageHint: { en: "Language for lessons, practice and AI conversations", fr: "Langue des leçons, de la pratique et des conversations IA", ewo: "Atsi" },
+  expansionPack: { en: "Grassfields Languages Expansion Pack", fr: "Pack d'Extension Langues des Grassfields", ewo: "Atsi" },
+  expansionIntro: { en: "Seven languages of the North West Region — Kom, Lamnso', Bafut, Oku, Babanki, Mankon and Ngie — with GACL orthography and tone-aware voice.", fr: "Sept langues de la région du Nord-Ouest — kom, lamnso', bafut, oku, babanki, mankon et ngie — avec l'orthographe GACL et la voix sensible aux tons.", ewo: "Atsi" },
+  toneAccuracy: { en: "Tone accuracy", fr: "Précision tonale", ewo: "Atsi" },
+  sampleVocabulary: { en: "Sample Vocabulary (tone-marked, GACL)", fr: "Vocabulaire d'exemple (tons marqués, GACL)", ewo: "Atsi" },
+  languageProfile: { en: "Language Profiles", fr: "Profils des Langues", ewo: "Atsi" },
+  orthography: { en: "GACL Orthography", fr: "Orthographe GACL", ewo: "Atsi" },
+  cefrPath: { en: "Language Learning Progression (CEFR-aligned)", fr: "Progression d'Apprentissage (CECRL)", ewo: "Atsi" },
+  fineTuning: { en: "ASR Fine-Tuning Plan", fr: "Plan d'Ajustement ASR", ewo: "Atsi" },
+  languagePacks: { en: "Offline Language Packs (~50 MB each)", fr: "Packs de Langue Hors Ligne (~50 Mo)", ewo: "Atsi" },
+  downloadPack: { en: "Download pack", fr: "Télécharger le pack", ewo: "Atsi" },
+  nativeReview: { en: "Native-speaker reviewed", fr: "Validé par un locuteur natif", ewo: "Atsi" },
+  pendingReview: { en: "Awaiting native-speaker validation", fr: "Validation par locuteur natif en cours", ewo: "Atsi" },
+  codeSwitch: { en: "Code-switching welcome", fr: "L'alternance de langues est bienvenue", ewo: "Atsi" },
+  buildAudit: { en: "Build Audit Report (v2.0)", fr: "Rapport d'Audit de Construction (v2.0)", ewo: "Atsi" },
+  roadmap: { en: "Rapid Deployment Roadmap", fr: "Feuille de Route de Déploiement", ewo: "Atsi" },
+  hookLanguage: { en: "Listen in", fr: "Écouter en", ewo: "Atsi" },
+  toneGame: { en: "Tone game: does the voice rise or fall?", fr: "Jeu de tons : la voix monte ou descend ?", ewo: "Atsi" },
 };
 
 export function t(key: string, lang: Lang): string {

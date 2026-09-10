@@ -1,10 +1,12 @@
 "use client";
-// Landing — role gate, name entry, ISCED 0-3 level ladder, language, characters
+// Landing — role gate, name entry, ISCED 0-3 level ladder, UI + voice languages,
+// Grassfields Expansion Pack selector, characters
 import React from "react";
 import { useApp, type Role } from "@/lib/store";
 import { t, type Lang } from "@/lib/i18n";
 import { CHARACTERS } from "@/lib/characters";
 import { LEVELS } from "@/lib/data/curriculum";
+import { VOICE_LANGUAGES } from "@/lib/data/grassfields";
 import { PatternBand, Spinner } from "./shared";
 import { playBadge } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
@@ -14,7 +16,7 @@ import { cn } from "@/lib/utils";
 const AVATARS = ["🦁", "🐘", "🦅", "🐆", "🦒", "🦏", "🐒", "🦉", "🐊", "🦋"];
 
 export function Landing() {
-  const { setView, setLearner, lang, setLang } = useApp();
+  const { setView, setLearner, lang, setLang, voiceLang, setVoiceLang } = useApp();
   const [role, setRole] = React.useState<Role>("learner");
   const [name, setName] = React.useState("");
   const [stage, setStage] = React.useState("class3");
@@ -37,6 +39,7 @@ export function Landing() {
           stage,
           iscedLevel: level?.isced ?? 1,
           language: lang === "ewo" ? "en" : lang, // UI language; ewo used for phrases
+          voiceLang,
         }),
       });
       if (!res.ok) throw new Error("Could not create profile");
@@ -164,8 +167,8 @@ export function Landing() {
             </div>
           )}
 
-          {/* Language */}
-          <div className="mb-6">
+          {/* Language (UI) */}
+          <div className="mb-5">
             <h3 className="mb-2 text-sm font-bold text-amber-900">{t("chooseLanguage", lang)}</h3>
             <div className="flex gap-2" role="radiogroup" aria-label={t("chooseLanguage", lang)}>
               {([
@@ -188,6 +191,32 @@ export function Landing() {
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Voice Language — Grassfields Languages Expansion Pack (v2.0 §2) */}
+          <div className="mb-6">
+            <h3 className="mb-1 text-sm font-bold text-amber-900">🪶 {t("voiceLanguage", lang)}</h3>
+            <p className="mb-2 text-xs text-amber-700">{t("voiceLanguageHint", lang)}</p>
+            <div className="mb-2 flex flex-wrap gap-1.5" role="radiogroup" aria-label={t("voiceLanguage", lang)}>
+              {VOICE_LANGUAGES.map((l) => (
+                <button
+                  key={l.id}
+                  onClick={() => setVoiceLang(l.id)}
+                  role="radio"
+                  aria-checked={voiceLang === l.id}
+                  className={cn(
+                    "min-h-[40px] rounded-xl border-2 px-3 py-1.5 text-xs font-bold transition-all",
+                    voiceLang === l.id ? "border-lime-700 bg-lime-50 text-lime-900 shadow-sm" : "border-lime-200 bg-white text-lime-800 hover:border-lime-500"
+                  )}
+                >
+                  <span className="mr-1" aria-hidden>{l.flag}</span>
+                  {l.label}
+                </button>
+              ))}
+            </div>
+            <p className="rounded-xl bg-lime-50 p-2.5 text-[11px] leading-relaxed text-lime-900">
+              <b>{t("expansionPack", lang)}:</b> {t("expansionIntro", lang)}
+            </p>
           </div>
 
           {error && <p className="mb-3 rounded-lg bg-red-50 p-2 text-sm font-semibold text-red-700" role="alert">{error}</p>}

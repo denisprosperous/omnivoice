@@ -24,6 +24,7 @@ export function CharacterBubble({
   text,
   textFr,
   lang,
+  speakLang,
   onSpeakDone,
   autoSpeak = true,
   compact = false,
@@ -32,6 +33,7 @@ export function CharacterBubble({
   text: string;
   textFr?: string;
   lang: string;
+  speakLang?: string; // voice language for TTS (en/fr/bkm/lns/... — §7.3 multilingual hook)
   onSpeakDone?: () => void;
   autoSpeak?: boolean;
   compact?: boolean;
@@ -43,12 +45,12 @@ export function CharacterBubble({
     if (!autoSpeak) return;
     if (spoken.current === shown) return;
     spoken.current = shown;
-    void speak(shown, char.id, lang).then((r) => {
+    void speak(shown, char.id, speakLang || lang).then((r) => {
       // duration estimate — resolve after speaking
       const ms = Math.min(20000, Math.max(2200, shown.length * 75));
       setTimeout(() => onSpeakDone?.(), r.played === "server" ? ms : ms);
     });
-  }, [shown, autoSpeak]);
+  }, [shown, autoSpeak, speakLang]);
 
   return (
     <div className={cn("flex items-start gap-3", compact && "gap-2")}>

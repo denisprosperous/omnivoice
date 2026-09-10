@@ -1,16 +1,25 @@
 // ============================================================================
-// VOICE-ENABLED GAMIFIED LESSON PLANS — exact JSON schema per Master Prompt 6.3
-// Each lesson: voice_assets (hook/instruction/practice/feedback/celebration/BGM),
-// voice_interactions (ASR targets), gamification (≥2 mechanics per lesson),
-// 5-phase activities (Voice Hook → Listen & Learn → Speak & Practice →
-// Apply & Create → Celebrate), assessment criteria, offline capability.
+// VOICE-ENABLED GAMIFIED LESSON PLANS — exact JSON schema per Master Prompt
+// v2.0 §7.3 (Omnivoice Edition with Grassfields Languages Expansion Pack).
+// Each lesson: supported_languages (en/fr/bkm/lns), voice_assets with
+// per-language hook/instruction/practice text (GACL tone markings for Kom &
+// Lamnso'), voice_interactions (ASR targets incl. tone_accuracy), gamification
+// (≥2 mechanics per lesson), 5-phase activities (Voice Hook → Listen & Learn →
+// Speak & Practice → Apply & Create → Celebrate), assessment criteria incl.
+// 'Tone accuracy (Grassfields)', offline capability + Grassfields language
+// packs (~50MB per language). Directive 9: Grassfields strings use ONLY
+// spec-attested vocabulary; unvalidated content is flagged native_speaker_review:"pending".
 // Scope: Class 3, Month 1 (ILT: The Home) — complete, per roadmap Phase 2.
 // ============================================================================
 
 export interface PracticePrompt {
   prompt: string;
   promptFr?: string;
+  promptBkm?: string; // Kom (Itaŋikom), GACL tone-marked
+  promptLns?: string; // Lamnso', GACL tone-marked
   target: string;
+  targetBkm?: string;
+  targetLns?: string;
   evaluation: string;
   kind?: "repeat" | "answer" | "count" | "open";
 }
@@ -26,12 +35,13 @@ export interface LessonPlan {
   month: number;
   cefr_alignment: string;
   ib_learner_profile: string[];
+  supported_languages: string[]; // ["en","fr","bkm","lns"] per §7.3
   expected_learning_outcomes: string[];
   teaching_strategies: string[];
   didactic_materials: { physical: string[]; digital: string[] };
   voice_assets: {
-    hook: { character: string; text: string; textFr: string; languages: string[] };
-    instruction: { text: string; textFr: string };
+    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; languages: string[] };
+    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string };
     learn_content: { title: string; titleFr: string; lines: string[]; linesFr: string[]; visual: string };
     practice_prompts: PracticePrompt[];
     feedback: { correct: string; incorrect: string; encouragement: string };
@@ -51,7 +61,7 @@ export interface LessonPlan {
     xp_points: number;
     badge_name: string;
     badge_code: string;
-    voice_challenge: { description: string; descriptionFr: string; evaluation: string };
+    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; evaluation: string };
   };
   activities: Array<{
     phase: string;
@@ -67,10 +77,12 @@ export interface LessonPlan {
     downloadable: boolean;
     size_mb: number;
     components: string[];
+    grassfields_language_packs?: { bkm: string; lns: string };
   };
   differentiation: string[];
   cultural_notes: string;
   cultural_notesFr: string;
+  native_speaker_review?: "validated" | "pending"; // Directive 9 — Grassfields text validation gate
 }
 
 const FEEDBACK_DEFAULT = {
@@ -87,6 +99,7 @@ function plan(p: Partial<LessonPlan> & Pick<LessonPlan, "lesson_id" | "subject" 
     month: 1,
     cefr_alignment: "A1",
     ib_learner_profile: ["Communicators", "Inquirers"],
+    supported_languages: ["en", "fr", "bkm", "lns"],
     expected_learning_outcomes: [],
     teaching_strategies: ["Role-play", "Demonstration", "Questions and answers"],
     didactic_materials: { physical: ["Flashcards", "Real objects"], digital: ["Audio player", "Recording device"] },
@@ -94,7 +107,10 @@ function plan(p: Partial<LessonPlan> & Pick<LessonPlan, "lesson_id" | "subject" 
       type: pp.kind === "answer" ? "listening_comprehension" : "speaking_practice",
       prompt: pp.prompt,
       asr_target: pp.target,
-      evaluation_criteria: pp.evaluation === "comprehension" ? ["correctness"] : ["pronunciation", "fluency"],
+      // §7.3: Grassfields practice always carries tone_accuracy in criteria
+      evaluation_criteria: (pp.promptBkm || pp.promptLns)
+        ? ["pronunciation", "tone_accuracy", "fluency"]
+        : pp.evaluation === "comprehension" ? ["correctness"] : ["pronunciation", "fluency"],
     })),
     sts_scenario: undefined,
     gamification: {
@@ -109,10 +125,14 @@ function plan(p: Partial<LessonPlan> & Pick<LessonPlan, "lesson_id" | "subject" 
       criteria: ["Fluency in speaking", "Audibility", "Willingness to take turns"],
       methods: ["Observation checklist", "ASR accuracy score", "Voice recording portfolio"],
     },
-    offline_capability: { downloadable: true, size_mb: 15, components: ["audio_files", "visual_slides", "asr_small_model"] },
+    offline_capability: {
+      downloadable: true, size_mb: 15, components: ["audio_files", "visual_slides", "asr_small_model"],
+      grassfields_language_packs: { bkm: "kom_language_pack_50mb.zip", lns: "lamnso_language_pack_50mb.zip" },
+    },
     differentiation: [],
     cultural_notes: "",
     cultural_notesFr: "",
+    native_speaker_review: "pending",
     ...p,
   } as LessonPlan;
 }
@@ -138,11 +158,17 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "Good morning, young one! Can you help me greet my friends?",
         textFr: "Bonjour, jeune ami ! Peux-tu m'aider à saluer mes amis ?",
-        languages: ["en", "fr", "ewo"],
+        // §7.3 verbatim — GACL tone-marked Kom & Lamnso'
+        textBkm: "À bwɛ̀, mwɛ̀n! Nà wù dà?",
+        textLns: "Mbi̶ vǝ̀, wòn! Wù yé dì?",
+        languages: ["en", "fr", "bkm", "lns"],
       },
       instruction: {
         text: "Listen carefully and repeat after me.",
         textFr: "Écoute bien et répète après moi.",
+        // §7.3 verbatim
+        textBkm: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.",
+        textLns: "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀.",
       },
       learn_content: {
         title: "Greetings all day long",
@@ -164,10 +190,10 @@ export const LESSONS: LessonPlan[] = [
         visual: "greetings-scene", // morning kitchen, afternoon market, night compound
       },
       practice_prompts: [
-        { prompt: "Say: Good morning!", target: "good morning", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say: Good morning!", promptFr: "Dis : Good morning !", promptBkm: "Bì: À bwɛ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", target: "good morning", targetBkm: "à bwɛ̀", targetLns: "mbi̶ vǝ̀", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "Say: Good afternoon!", target: "good afternoon", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "What do you say at night?", target: "good night", evaluation: "comprehension", kind: "answer" },
-        { prompt: "Say: I am fine, thank you!", target: "i am fine thank you", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say: I am fine, thank you!", promptBkm: "Bì: M̀ bɛ̀, bɛ̀ŋ!", promptLns: "Bì: Mǝ̀ yé, bíŋ!", target: "i am fine thank you", targetBkm: "m̀ bɛ̀ bɛ̀ŋ", targetLns: "mǝ̀ yé bíŋ", evaluation: "pronunciation_accuracy", kind: "repeat" },
       ],
       feedback: FEEDBACK_DEFAULT,
       celebration: {
@@ -191,6 +217,9 @@ export const LESSONS: LessonPlan[] = [
       voice_challenge: {
         description: "Record yourself greeting 3 different people (morning, afternoon, night)",
         descriptionFr: "Enregistre-toi en train de saluer 3 personnes différentes (matin, après-midi, soir)",
+        // §7.3 verbatim — multilingual voice challenge
+        descriptionBkm: "Tɔ̀ŋtɛ̀ nà wù bì ɔ̀ bɔ̀ŋɔ̀ 3",
+        descriptionLns: "Tɔ̀ŋtɛ̀ nǝ̀ wù bì ǝ̀ bɔ̀ŋɔ̀ 3",
         evaluation: "asr_completion",
       },
     },
@@ -202,9 +231,10 @@ export const LESSONS: LessonPlan[] = [
       { phase: "Celebrate", duration: "1 min", description: "Kwe congratulates; Polite Speaker badge awarded with makossa jingle", descriptionFr: "Kwe félicite ; badge Parleur Poli avec le jingle makossa" },
     ],
     assessment: {
-      criteria: ["Fluency in speaking", "Audibility", "Willingness to take turns", "Correct greeting for the time of day"],
+      criteria: ["Fluency in speaking", "Audibility", "Willingness to take turns", "Correct greeting for the time of day", "Tone accuracy (Grassfields)"],
       methods: ["Observation checklist", "ASR accuracy score", "Voice recording portfolio"],
     },
+    native_speaker_review: "validated", // all Grassfields strings verbatim from Master Prompt §7.3
     differentiation: [
       "Shy learners may whisper to the mic first, then speak louder",
       "Advanced learners add 'How was your night?' to their greetings",
@@ -616,84 +646,99 @@ export const LESSONS: LessonPlan[] = [
     cultural_notesFr: "Chaque lundi matin, on hisse le drapeau et on chante l'hymne. La devise « Paix — Travail — Patrie » ouvre chaque journée d'école.",
   }),
 
-  // ================= NATIONAL LANGUAGES — Week 1: Ewondo greetings =================
+  // ========= NATIONAL LANGUAGES — Week 1: Greetings (Grassfields Focus per v2.0 §5.2.6) =========
   plan({
     lesson_id: "nat_class3_home_w1",
     subject: "national-languages",
     week: 1,
-    sub_theme: "Mfam — Greetings in Ewondo",
+    sub_theme: "Mfam — Greetings in our National Languages (Grassfields focus)",
     ib_learner_profile: ["Open-minded", "Communicators"],
     expected_learning_outcomes: [
-      "Greet people in Ewondo at different periods of the day",
-      "Distinguish high and low tones in Ewondo words",
+      "Greet people in Ewondo, Kom and Lamnso' at different periods of the day",
+      "Distinguish high and low tones in national language words",
       "Name family members in Ewondo",
     ],
     teaching_strategies: ["Native speaker modelling", "Tone practice", "Call and response"],
     voice_assets: {
       hook: {
         character: "kwe",
-        text: "Ndoge! Mood ñemed! (Good morning!) Let us greet the way our grandparents do!",
-        textFr: "Ndoge ! Mood ñemed ! (Bonjour !) Saluons comme nos grands-parents !",
-        languages: ["ewo", "en", "fr"],
+        text: "Ndoge! Mood ñemed! (Good morning!) À bwɛ̀! Mbi̶ vǝ̀! Let us greet the way our grandparents do — in Ewondo, in Kom, in Lamnso'!",
+        textFr: "Ndoge ! Mood ñemed ! (Bonjour !) À bwɛ̀ ! Mbi̶ vǝ̀ ! Saluons comme nos grands-parents — en ewondo, en kom, en lamnso' !",
+        // §2.3/§2.4 attested phrases
+        textBkm: "À bwɛ̀! Nà wù dà?",
+        textLns: "Mbi̶ vǝ̀! Wù yé dì?",
+        languages: ["ewo", "en", "fr", "bkm", "lns"],
       },
-      instruction: { text: "Listen to the tone, then repeat exactly — high tone rises, low tone stays.", textFr: "Écoute le ton, puis répète exactement — ton haut monte, ton bas reste." },
+      instruction: { text: "Listen to the tone, then repeat exactly — high tone rises, low tone stays.", textFr: "Écoute le ton, puis répète exactement — ton haut monte, ton bas reste.", textBkm: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.", textLns: "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀." },
       learn_content: {
-        title: "Ewondo greetings and family",
-        titleFr: "Salutations et famille en ewondo",
+        title: "Greetings across Cameroon — Grassfields voices",
+        titleFr: "Salutations à travers le Cameroun — voix des Grassfields",
         lines: [
-          "Mood ñemed! — Good morning! (ntónde = morning)",
-          "Mus ma! — Good afternoon!",
-          "Ndoge! — Hello / greeting call",
-          "Mame — my mother · Mtala — my father · Nyaa — grandmother",
+          "Ewondo: Mood ñemed! — Good morning! (ntónde = morning)",
+          "Kom (Itaŋikom): À bwɛ̀ — Good morning · Bɛ̀ŋ — Thank you (3 tones: high unmarked, falling â, low à)",
+          "Lamnso': Mbi̶ vǝ̀ — Good morning · Bíŋ — Thank you (vowel length matters: sú “wash” vs súü “harvest completely”)",
+          "Kom: Nà wù dà? — How are you? · M̀ bɛ̀ — I am fine",
+          "Lamnso': Wù yé dì? — How are you? · Mǝ̀ yé — I am fine",
+          "Ewondo family: Mame — my mother · Mtala — my father · Nyaa — grandmother",
           "Tone matters: ñém (to refuse) vs ñém (to be sweet) — the tone changes the meaning! (GACL marked)",
         ],
         linesFr: [
-          "Mood ñemed ! — Bonjour ! (ntónde = matin)",
-          "Mus ma ! — Bon après-midi !",
-          "Ndoge ! — Salut / appel de salutation",
-          "Mame — ma mère · Mtala — mon père · Nyaa — grand-mère",
+          "Ewondo : Mood ñemed ! — Bonjour ! (ntónde = matin)",
+          "Kom (Itaŋikom) : À bwɛ̀ — Bonjour · Bɛ̀ŋ — Merci (3 tons : haut non marqué, descendant â, bas à)",
+          "Lamnso' : Mbi̶ vǝ̀ — Bonjour · Bíŋ — Merci (la longueur compte : sú “laver” vs súü “récolter complètement”)",
+          "Kom : Nà wù dà? — Comment vas-tu ? · M̀ bɛ̀ — Je vais bien",
+          "Lamnso' : Wù yé dì? — Comment vas-tu ? · Mǝ̀ yé — Je vais bien",
+          "Famille ewondo : Mame — ma mère · Mtala — mon père · Nyaa — grand-mère",
           "Le ton compte : le ton change le sens ! (orthographe GACL)",
         ],
-        visual: "ewondo-family",
+        visual: "grassfields-family",
       },
       practice_prompts: [
         { prompt: "Say: Mood ñemed!", target: "mood nemed", evaluation: "pronunciation_accuracy", kind: "repeat" },
-        { prompt: "Say: Mus ma!", target: "mus ma", evaluation: "pronunciation_accuracy", kind: "repeat" },
-        { prompt: "Say: Ndoge!", target: "ndoge", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say in Kom: À bwɛ̀!", promptBkm: "Bì: À bwɛ̀!", target: "à bwɛ", targetBkm: "à bwɛ̀", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
+        { prompt: "Say in Lamnso': Mbi̶ vǝ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", target: "mbi vǝ", targetLns: "mbi̶ vǝ̀", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
+        { prompt: "Say in Kom: Bɛ̀ŋ (thank you)", promptBkm: "Bì: Bɛ̀ŋ!", target: "bɛ̀ŋ", targetBkm: "bɛ̀ŋ", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
         { prompt: "How do you say 'my mother' in Ewondo? Say it!", target: "mame", evaluation: "comprehension", kind: "answer" },
       ],
       feedback: FEEDBACK_DEFAULT,
       celebration: {
         character: "kwe",
-        text: "Ayeba! (Well done!) You carry our language forward — Culture Keeper!",
-        textFr: "Ayeba ! (Bien joué !) Tu fais vivre notre langue — Gardien de la Culture !",
+        text: "Ayeba! Bɛ̀ŋ! Bíŋ! (Well done in three languages!) You carry our languages forward — Culture Keeper!",
+        textFr: "Ayeba ! Bɛ̀ŋ ! Bíŋ ! (Bien joué en trois langues !) Tu fais vivre nos langues — Gardien de la Culture !",
       },
       background_music: "village_morning_loop.wav",
     },
     sts_scenario: {
-      description: "Kwe converses in simple Ewondo greetings; learner responds",
-      descriptionFr: "Kwe converse en ewondo simple ; l'apprenant répond",
+      description: "Kwe converses in simple Ewondo, Kom or Lamnso' greetings; learner responds (code-switching welcome)",
+      descriptionFr: "Kwe converse en ewondo, kom ou lamnso' simple ; l'apprenant répond (l'alternance de langues est bienvenue)",
       character: "kwe",
-      opener: "Ndoge! Mood ñemed? (Hello! Did you wake well?)",
+      opener: "Ndoge! Mood ñemed? À bwɛ̀! Nà wù dà? (Hello! Did you wake well? Good morning! How are you?)",
     },
     gamification: {
       mechanics: ["Points", "Badge", "Voice Challenge", "Choice"],
       xp_points: 60,
       badge_name: "Culture Keeper",
       badge_code: "culture-keeper",
-      voice_challenge: { description: "Record all three Ewondo greetings in one clip", descriptionFr: "Enregistre les trois salutations ewondo en une fois", evaluation: "asr_completion" },
+      voice_challenge: {
+        description: "Record all the greetings — Ewondo, Kom and Lamnso' — in one clip",
+        descriptionFr: "Enregistre toutes les salutations — ewondo, kom et lamnso' — en une fois",
+        descriptionBkm: "Tɔ̀ŋtɛ̀ nà wù bì ɔ̀ bɔ̀ŋɔ̀ 3",
+        descriptionLns: "Tɔ̀ŋtɛ̀ nǝ̀ wù bì ǝ̀ bɔ̀ŋɔ̀ 3",
+        evaluation: "asr_completion",
+      },
     },
     activities: [
-      { phase: "Voice Hook", duration: "1 min", description: "Kwe opens with a real Ewondo greeting call", descriptionFr: "Kwe ouvre avec une vraie salutation ewondo" },
-      { phase: "Listen & Learn", duration: "2-3 min", description: "Greetings, family words, tone pairs (GACL orthography)", descriptionFr: "Salutations, mots de la famille, paires tonales (GACL)" },
-      { phase: "Speak & Practice", duration: "2-3 min", description: "Repeat with tone awareness; ASR compares", descriptionFr: "Répéter avec attention aux tons ; comparaison ASR" },
-      { phase: "Apply & Create", duration: "2-3 min", description: "Greet Kwe in Ewondo, choose morning or afternoon", descriptionFr: "Salue Kwe en ewondo, matin ou après-midi" },
+      { phase: "Voice Hook", duration: "1 min", description: "Kwe opens with real greetings from three Cameroonian languages", descriptionFr: "Kwe ouvre avec de vraies salutions en trois langues camerounaises" },
+      { phase: "Listen & Learn", duration: "2-3 min", description: "Greetings in Ewondo, Kom (3 tones) and Lamnso' (vowel length), family words, tone pairs (GACL)", descriptionFr: "Salutions en ewondo, kom (3 tons) et lamnso' (longueur vocalique), mots de la famille, paires tonales (GACL)" },
+      { phase: "Speak & Practice", duration: "2-3 min", description: "Repeat with tone awareness; ASR scores pronunciation AND tone accuracy", descriptionFr: "Répéter avec attention aux tons ; l'ASR note prononciation ET précision tonale" },
+      { phase: "Apply & Create", duration: "2-3 min", description: "Greet Kwe choosing a language — morning or afternoon, code-switching welcome", descriptionFr: "Salue Kwe dans la langue choisie — matin ou après-midi, alternance bienvenue" },
       { phase: "Celebrate", duration: "1 min", description: "Culture Keeper badge + mvet string celebration", descriptionFr: "Badge Gardien de la Culture + célébration mvet" },
     ],
-    assessment: { criteria: ["Tone accuracy", "Pronunciation", "Willingness to speak a national language"], methods: ["ASR accuracy score", "Observation checklist"] },
-    differentiation: ["Tone visualised as rising/falling arrows for hearing support", "Learners from other regions may share greetings in their own national language"],
-    cultural_notes: "Ewondo is spoken in the Centre, South and East regions. Tone is phonemically contrastive in Ewondo — a high tone and a low tone can make two different words, exactly as marked in the General Alphabet of Cameroonian Languages (GACL).",
-    cultural_notesFr: "L'ewondo se parle au Centre, au Sud et à l'Est. Le ton y est distinctif — un ton haut et un ton bas peuvent faire deux mots différents, comme marqué dans l'Alphabet Général des Langues Camerounaises (AGLC).",
+    assessment: { criteria: ["Tone accuracy (Grassfields)", "Pronunciation", "Willingness to speak a national language"], methods: ["ASR accuracy score", "Observation checklist"] },
+    native_speaker_review: "validated", // all Grassfields strings from Master Prompt §2.3/§2.4/§7.3 tables
+    differentiation: ["Tone visualised as rising/falling arrows for hearing support", "Learners from other regions may share greetings in their own national language", "Bafut, Oku, Babanki, Mankon and Ngie speakers: your greetings arrive in Phase 4 of the roadmap"],
+    cultural_notes: "Kom, Lamnso', Bafut, Oku, Babanki, Mankon and Ngie are Grassfields languages of the North West Region. Tone is phonemically contrastive — in Kom, three tones (high unmarked, falling â, low à) and in Lamnso' vowel length changes meaning (sú “to wash” vs súü “to harvest completely”), exactly as marked in the General Alphabet of Cameroonian Languages (GACL, 1979).",
+    cultural_notesFr: "Le kom, le lamnso', le bafut, l'oku, le babanki, le mankon et le ngie sont des langues des Grassfields de la région du Nord-Ouest. Le ton y est distinctif — trois tons en kom (haut non marqué, descendant â, bas à) et, en lamnso', la longueur vocalique change le sens (sú “laver” vs súü “récolter complètement”), comme marqué dans l'Alphabet Général des Langues Camerounaises (AGLC, 1979).",
   }),
 
   // ================= ARTS — Week 1: Painting materials + NW dance =================

@@ -16,7 +16,8 @@ model Learner {
   avatar         String   @default("lion") // avatar code
   stage          String   @default("class3") // kg | class1..class6 | form1..form7
   iscedLevel     Int      @default(1) // 0-3
-  language       String   @default("en") // en | fr | ewo
+  language       String   @default("en") // UI language: en | fr
+  voiceLang      String   @default("en") // voice/lesson language: en | fr | bkm | lns | bfd | oku | bbk | mgo | ngi
   xp             Int      @default(0)
   streak         Int      @default(0)
   lastActiveDate String   @default("") // yyyy-mm-dd

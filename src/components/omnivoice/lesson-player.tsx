@@ -1,29 +1,32 @@
 "use client";
 // ============================================================================
-// LESSON PLAYER — 5-phase bite-sized voice-first lesson (Master Prompt 4.3)
-// Voice Hook → Listen & Learn → Speak & Practice (ASR eval) → Apply & Create
-// (STS role-play) → Celebrate (badge + makossa). Gamification per phase.
+// LESSON PLAYER — 5-phase bite-sized voice-first lesson (Master Prompt v2.0 §5.3)
+// Voice Hook (multilingual: en/fr/bkm/lns) → Listen & Learn → Speak & Practice
+// (tone-aware ASR eval for Grassfields languages) → Apply & Create (STS
+// role-play, code-switching welcome) → Celebrate (badge + makossa).
+// Gamification per phase. Grassfields language packs surfaced offline.
 // ============================================================================
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { PatternBand, CharacterBubble, MicButton, Spinner, StatPill } from "./shared";
 import { getCharacter } from "@/lib/characters";
+import { VOICE_LANGUAGES, isGrassfields } from "@/lib/data/grassfields";
 import { WavRecorder, speak, playWavBase64, transcribe, speakFallback } from "@/lib/voice-client";
 import { playCorrect, playIncorrect, playBadge, playCelebration, playLevelUp, playXp, startAmbient, stopAmbient } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface PracticePrompt { prompt: string; promptFr?: string; target: string; evaluation: string; kind?: string }
+interface PracticePrompt { prompt: string; promptFr?: string; promptBkm?: string; promptLns?: string; target: string; targetBkm?: string; targetLns?: string; evaluation: string; kind?: string }
 interface LessonPlanData {
   lesson_id: string; subject: string; level: string; isced_level: number;
   integrated_learning_theme: string; sub_theme: string; week: number; month: number;
-  cefr_alignment: string; ib_learner_profile: string[];
+  cefr_alignment: string; ib_learner_profile: string[]; supported_languages?: string[];
   expected_learning_outcomes: string[]; teaching_strategies: string[];
   didactic_materials: { physical: string[]; digital: string[] };
   voice_assets: {
-    hook: { character: string; text: string; textFr: string; languages: string[] };
-    instruction: { text: string; textFr: string };
+    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; languages: string[] };
+    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string };
     learn_content: { title: string; titleFr: string; lines: string[]; linesFr: string[]; visual: string };
     practice_prompts: PracticePrompt[];
     feedback: { correct: string; incorrect: string; encouragement: string };
@@ -34,29 +37,32 @@ interface LessonPlanData {
   sts_scenario?: { description: string; descriptionFr: string; character: string; opener: string };
   gamification: {
     mechanics: string[]; xp_points: number; badge_name: string; badge_code: string;
-    voice_challenge: { description: string; descriptionFr: string; evaluation: string };
+    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; evaluation: string };
   };
   activities: Array<{ phase: string; duration: string; description: string; descriptionFr: string }>;
   assessment: { criteria: string[]; methods: string[] };
-  offline_capability: { downloadable: boolean; size_mb: number; components: string[] };
+  offline_capability: { downloadable: boolean; size_mb: number; components: string[]; grassfields_language_packs?: { bkm: string; lns: string } };
   differentiation: string[];
   cultural_notes: string; cultural_notesFr: string;
+  native_speaker_review?: string;
 }
 const PHASES = ["hook", "listen", "speak", "apply", "celebrate"] as const;
 type Phase = (typeof PHASES)[number];
 
 export function LessonPlayer() {
-  const { learner, lang, currentLessonId, setView } = useApp();
+  const { learner, lang, voiceLang, currentLessonId, setView } = useApp();
   const [plan, setPlan] = React.useState<LessonPlanData | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [phase, setPhase] = React.useState<Phase>("hook");
   const [hookDone, setHookDone] = React.useState(false);
+  // Hook listening language (§7.3: learner may hear the hook in en/fr/bkm/lns)
+  const [hookLang, setHookLang] = React.useState<string>("en");
 
   // Practice state
   const [promptIdx, setPromptIdx] = React.useState(0);
   const [recording, setRecording] = React.useState(false);
   const [evaluating, setEvaluating] = React.useState(false);
-  const [result, setResult] = React.useState<{ verdict: string; accuracy: number; message: string; transcription: string } | null>(null);
+  const [result, setResult] = React.useState<{ verdict: string; accuracy: number; message: string; transcription: string; toneAccuracy?: number | null; toneAware?: boolean } | null>(null);
   const [stars, setStars] = React.useState(0);
   const [scores, setScores] = React.useState<number[]>([]);
   const recorderRef = React.useRef<WavRecorder | null>(null);
@@ -77,6 +83,16 @@ export function LessonPlayer() {
       .then((d) => { setPlan(d.lesson?.plan || null); })
       .finally(() => setLoading(false));
   }, [currentLessonId]);
+
+  // Default the hook language to the learner's chosen voice language when available (§7.3)
+  React.useEffect(() => {
+    if (!plan) return;
+    const h = plan.voice_assets.hook;
+    const available = (h.languages || ["en", "fr"]).filter((l) =>
+      l === "bkm" ? !!h.textBkm : l === "lns" ? !!h.textLns : true
+    );
+    setHookLang(available.includes(voiceLang) ? voiceLang : "en");
+  }, [plan, voiceLang]);
 
   // Ambient background music per ILT mood (stipulated per-ILT BGM)
   React.useEffect(() => {
@@ -129,8 +145,24 @@ export function LessonPlayer() {
   const va = plan.voice_assets;
   const shown = (en: string, fr: string) => (lang === "fr" ? fr : en);
   const prompts = va.practice_prompts;
+  // §7.3 — resolve the practice prompt in the learner's voice language
+  const promptForVoice = (pp: PracticePrompt): { prompt: string; target: string; isGf: boolean } => {
+    if (voiceLang === "bkm" && pp.promptBkm) return { prompt: pp.promptBkm, target: pp.targetBkm || pp.target, isGf: true };
+    if (voiceLang === "lns" && pp.promptLns) return { prompt: pp.promptLns, target: pp.targetLns || pp.target, isGf: true };
+    return { prompt: lang === "fr" ? pp.promptFr || pp.prompt : pp.prompt, target: pp.target, isGf: false };
+  };
   const currentPrompt = prompts[promptIdx];
+  const activePrompt = currentPrompt ? promptForVoice(currentPrompt) : null;
   const char = getCharacter(va.hook.character);
+  // §7.3 multilingual hook — hook text in the selected listening language
+  const hookText =
+    hookLang === "fr" ? va.hook.textFr
+    : hookLang === "bkm" ? (va.hook.textBkm || va.hook.text)
+    : hookLang === "lns" ? (va.hook.textLns || va.hook.text)
+    : va.hook.text;
+  const hookLanguages = (va.hook.languages || ["en", "fr"]).filter((l) =>
+    l === "bkm" ? !!va.hook.textBkm : l === "lns" ? !!va.hook.textLns : l === "ewo" ? true : true
+  );
 
   // ---------- Practice handlers ----------
   async function startRecording() {
@@ -152,7 +184,7 @@ export function LessonPlayer() {
   }
 
   async function stopRecording() {
-    if (!recorderRef.current) return;
+    if (!recorderRef.current || !activePrompt) return;
     setRecording(false);
     setEvaluating(true);
     const { wavBase64 } = recorderRef.current.stop();
@@ -160,7 +192,7 @@ export function LessonPlayer() {
       const res = await fetch("/api/pronunciation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ audioBase64: wavBase64, target: currentPrompt.target }),
+        body: JSON.stringify({ audioBase64: wavBase64, target: activePrompt.target, lang: activePrompt.isGf ? voiceLang : lang === "fr" ? "fr" : "en" }),
       });
       const data = await res.json();
       const r = {
@@ -168,6 +200,8 @@ export function LessonPlayer() {
         accuracy: data.accuracy as number,
         message: lang === "fr" ? data.messageFr : data.message,
         transcription: data.transcription || "",
+        toneAccuracy: (data.tone_accuracy ?? null) as number | null,
+        toneAware: !!data.tone_aware,
       };
       setResult(r);
       setScores((s) => [...s, r.accuracy]);
@@ -235,7 +269,7 @@ export function LessonPlayer() {
           history: stsHistory,
           learnerName: learner?.name || "my friend",
           learnerLevel: plan.level,
-          lang: lang === "fr" ? "fr" : "en",
+          lang: isGrassfields(voiceLang) ? voiceLang : lang === "fr" ? "fr" : "en",
         }),
       });
       const data = await res.json();
@@ -305,19 +339,48 @@ export function LessonPlayer() {
           ))}
         </div>
 
-        {/* PHASE 1 — Voice Hook */}
+        {/* PHASE 1 — Voice Hook (multilingual per §7.3) */}
         {phase === "hook" && (
           <section aria-label={phaseMeta.hook.label} className="space-y-4">
             <h1 className="text-xl font-extrabold text-amber-900 sm:text-2xl">
               {shown(va.learn_content.title, va.learn_content.titleFr)}
             </h1>
+            {/* Hook language switcher — listen in en/fr/bkm/lns (§7.3 voice hook) */}
+            {hookLanguages.length > 1 && (
+              <div className="flex flex-wrap items-center gap-1.5 rounded-xl border-2 border-lime-200 bg-lime-50/60 p-2">
+                <span className="px-1 text-[11px] font-bold uppercase tracking-wide text-lime-800">🪶 {t("hookLanguage", lang)}:</span>
+                {hookLanguages.map((l) => {
+                  const vl = VOICE_LANGUAGES.find((v) => v.id === l);
+                  return (
+                    <button
+                      key={l}
+                      onClick={() => setHookLang(l)}
+                      aria-pressed={hookLang === l}
+                      className={cn(
+                        "min-h-[32px] rounded-full border-2 px-2.5 text-[11px] font-bold transition-all",
+                        hookLang === l ? "border-lime-700 bg-lime-700 text-white" : "border-lime-300 bg-white text-lime-800 hover:border-lime-500"
+                      )}
+                    >
+                      {vl ? vl.label : l}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
             <CharacterBubble
               characterId={va.hook.character}
-              text={va.hook.text}
-              textFr={va.hook.textFr}
-              lang={lang === "ewo" ? "en" : lang}
+              text={hookText}
+              textFr={hookText}
+              lang={hookLang === "fr" ? "fr" : "en"}
+              speakLang={hookLang}
               onSpeakDone={() => setHookDone(true)}
             />
+            {isGrassfields(hookLang) && (
+              <p className="rounded-xl bg-lime-50 px-3 py-2 text-[11px] font-semibold text-lime-900">
+                🪶 GACL tone-marked {VOICE_LANGUAGES.find((v) => v.id === hookLang)?.label || hookLang} · {t("codeSwitch", lang)}
+                {plan.native_speaker_review === "validated" && <span className="ml-1">· ✅ {t("nativeReview", lang)}</span>}
+              </p>
+            )}
             <div className="rounded-2xl border-2 border-amber-200 bg-white p-4">
               <h3 className="mb-1 text-sm font-bold text-amber-900">📖 {lang === "fr" ? "Histoire du thème" : "Theme story"}</h3>
               <p className="text-sm leading-relaxed text-amber-800">
@@ -375,18 +438,19 @@ export function LessonPlayer() {
           </section>
         )}
 
-        {/* PHASE 3 — Speak & Practice (ASR) */}
-        {phase === "speak" && currentPrompt && (
+        {/* PHASE 3 — Speak & Practice (tone-aware ASR per §6.5) */}
+        {phase === "speak" && activePrompt && (
           <section aria-label={phaseMeta.speak.label} className="space-y-4">
             <div className="rounded-2xl border-2 border-rose-200 bg-gradient-to-br from-rose-50 to-white p-5 text-center shadow-sm">
               <div className="mb-1 text-xs font-bold uppercase tracking-wide text-rose-500">
                 {lang === "fr" ? `Invite ${promptIdx + 1} / ${prompts.length}` : `Prompt ${promptIdx + 1} / ${prompts.length}`}
+                {activePrompt.isGf && <span className="ml-1 rounded-full bg-lime-100 px-2 py-0.5 text-[10px] text-lime-800">🪶 {VOICE_LANGUAGES.find((v) => v.id === voiceLang)?.label || voiceLang}</span>}
               </div>
               <p className="mb-1 text-xl font-extrabold text-rose-900">
-                {shown(currentPrompt.prompt, currentPrompt.promptFr || currentPrompt.prompt)}
+                {activePrompt.prompt}
               </p>
               <p className="text-sm font-semibold text-rose-600/80">
-                {lang === "fr" ? "Objectif" : "Target"}: “{currentPrompt.target}”
+                {lang === "fr" ? "Objectif" : "Target"}: “{activePrompt.target}”
               </p>
 
               <div className="my-5 flex flex-col items-center gap-2">
@@ -415,8 +479,13 @@ export function LessonPlayer() {
                     <span className="rounded-full bg-white px-2 py-0.5 text-xs font-bold">{result.accuracy}%</span>
                   </div>
                   <p>{result.message}</p>
+                  {result.toneAware && typeof result.toneAccuracy === "number" && (
+                    <p className="mt-1 text-xs font-bold text-lime-800">
+                      🪶 {t("toneAccuracy", lang)}: {result.toneAccuracy}%
+                    </p>
+                  )}
                   <p className="mt-1 text-xs opacity-70">
-                    ASR: “{result.transcription || "—"}” → {lang === "fr" ? "cible" : "target"}: “{currentPrompt.target}”
+                    ASR: “{result.transcription || "—"}” → {lang === "fr" ? "cible" : "target"}: “{activePrompt.target}”
                   </p>
                   <div className="mt-2 flex gap-2">
                     <Button size="sm" variant="outline" className="h-9 border-rose-300 text-rose-700" onClick={() => setResult(null)}>
@@ -544,6 +613,11 @@ export function LessonPlayer() {
               <p className="mt-2 text-[11px] text-amber-600">
                 💾 {lang === "fr" ? "Téléchargeable hors ligne" : "Offline downloadable"} · ~{plan.offline_capability.size_mb} MB · {plan.offline_capability.components.join(", ")}
               </p>
+              {plan.offline_capability.grassfields_language_packs && (
+                <p className="mt-1 text-[11px] font-semibold text-lime-800">
+                  🪶 {t("languagePacks", lang)}: {plan.offline_capability.grassfields_language_packs.bkm} · {plan.offline_capability.grassfields_language_packs.lns}
+                </p>
+              )}
             </div>
             <div className="flex gap-2">
               <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); }}>
