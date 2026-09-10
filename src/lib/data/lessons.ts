@@ -17,9 +17,11 @@ export interface PracticePrompt {
   promptFr?: string;
   promptBkm?: string; // Kom (Itaŋikom), GACL tone-marked
   promptLns?: string; // Lamnso', GACL tone-marked
+  promptByv?: string; // Bayangi — v3.0 placeholder until documented (Directive 9 gate)
   target: string;
   targetBkm?: string;
   targetLns?: string;
+  targetByv?: string;
   evaluation: string;
   kind?: "repeat" | "answer" | "count" | "open";
 }
@@ -35,13 +37,13 @@ export interface LessonPlan {
   month: number;
   cefr_alignment: string;
   ib_learner_profile: string[];
-  supported_languages: string[]; // ["en","fr","bkm","lns"] per §7.3
+  supported_languages: string[]; // ["en","fr","bkm","lns","byv"] per §7.3 + v3.0 8-language pack
   expected_learning_outcomes: string[];
   teaching_strategies: string[];
   didactic_materials: { physical: string[]; digital: string[] };
   voice_assets: {
-    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; languages: string[] };
-    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string };
+    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; textByv?: string; languages: string[] };
+    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string; textByv?: string };
     learn_content: { title: string; titleFr: string; lines: string[]; linesFr: string[]; visual: string };
     practice_prompts: PracticePrompt[];
     feedback: { correct: string; incorrect: string; encouragement: string };
@@ -61,7 +63,7 @@ export interface LessonPlan {
     xp_points: number;
     badge_name: string;
     badge_code: string;
-    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; evaluation: string };
+    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; descriptionByv?: string; evaluation: string };
   };
   activities: Array<{
     phase: string;
@@ -77,7 +79,7 @@ export interface LessonPlan {
     downloadable: boolean;
     size_mb: number;
     components: string[];
-    grassfields_language_packs?: { bkm: string; lns: string };
+    grassfields_language_packs?: { bkm: string; lns: string; byv?: string };
   };
   differentiation: string[];
   cultural_notes: string;
@@ -99,7 +101,7 @@ function plan(p: Partial<LessonPlan> & Pick<LessonPlan, "lesson_id" | "subject" 
     month: 1,
     cefr_alignment: "A1",
     ib_learner_profile: ["Communicators", "Inquirers"],
-    supported_languages: ["en", "fr", "bkm", "lns"],
+    supported_languages: ["en", "fr", "bkm", "lns", "byv"],
     expected_learning_outcomes: [],
     teaching_strategies: ["Role-play", "Demonstration", "Questions and answers"],
     didactic_materials: { physical: ["Flashcards", "Real objects"], digital: ["Audio player", "Recording device"] },
@@ -108,7 +110,7 @@ function plan(p: Partial<LessonPlan> & Pick<LessonPlan, "lesson_id" | "subject" 
       prompt: pp.prompt,
       asr_target: pp.target,
       // §7.3: Grassfields practice always carries tone_accuracy in criteria
-      evaluation_criteria: (pp.promptBkm || pp.promptLns)
+      evaluation_criteria: (pp.promptBkm || pp.promptLns || pp.promptByv)
         ? ["pronunciation", "tone_accuracy", "fluency"]
         : pp.evaluation === "comprehension" ? ["correctness"] : ["pronunciation", "fluency"],
     })),
@@ -127,7 +129,7 @@ function plan(p: Partial<LessonPlan> & Pick<LessonPlan, "lesson_id" | "subject" 
     },
     offline_capability: {
       downloadable: true, size_mb: 15, components: ["audio_files", "visual_slides", "asr_small_model"],
-      grassfields_language_packs: { bkm: "kom_language_pack_50mb.zip", lns: "lamnso_language_pack_50mb.zip" },
+      grassfields_language_packs: { bkm: "kom_language_pack_50mb.zip", lns: "lamnso_language_pack_50mb.zip", byv: "bayangi_language_pack_50mb.zip (pending data collection)" },
     },
     differentiation: [],
     cultural_notes: "",
@@ -158,10 +160,11 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "Good morning, young one! Can you help me greet my friends?",
         textFr: "Bonjour, jeune ami ! Peux-tu m'aider à saluer mes amis ?",
-        // §7.3 verbatim — GACL tone-marked Kom & Lamnso'
+        // §7.3 verbatim — GACL tone-marked Kom & Lamnso' + v3.0 Bayangi placeholder
         textBkm: "À bwɛ̀, mwɛ̀n! Nà wù dà?",
         textLns: "Mbi̶ vǝ̀, wòn! Wù yé dì?",
-        languages: ["en", "fr", "bkm", "lns"],
+        textByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
+        languages: ["en", "fr", "bkm", "lns", "byv"],
       },
       instruction: {
         text: "Listen carefully and repeat after me.",
@@ -169,6 +172,7 @@ export const LESSONS: LessonPlan[] = [
         // §7.3 verbatim
         textBkm: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.",
         textLns: "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀.",
+        textByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
       },
       learn_content: {
         title: "Greetings all day long",
@@ -190,7 +194,7 @@ export const LESSONS: LessonPlan[] = [
         visual: "greetings-scene", // morning kitchen, afternoon market, night compound
       },
       practice_prompts: [
-        { prompt: "Say: Good morning!", promptFr: "Dis : Good morning !", promptBkm: "Bì: À bwɛ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", target: "good morning", targetBkm: "à bwɛ̀", targetLns: "mbi̶ vǝ̀", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say: Good morning!", promptFr: "Dis : Good morning !", promptBkm: "Bì: À bwɛ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", promptByv: "[To be documented] — listen to Kom instead: Bì: À bwɛ̀!", target: "good morning", targetBkm: "à bwɛ̀", targetLns: "mbi̶ vǝ̀", targetByv: "[to be documented]", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "Say: Good afternoon!", target: "good afternoon", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "What do you say at night?", target: "good night", evaluation: "comprehension", kind: "answer" },
         { prompt: "Say: I am fine, thank you!", promptBkm: "Bì: M̀ bɛ̀, bɛ̀ŋ!", promptLns: "Bì: Mǝ̀ yé, bíŋ!", target: "i am fine thank you", targetBkm: "m̀ bɛ̀ bɛ̀ŋ", targetLns: "mǝ̀ yé bíŋ", evaluation: "pronunciation_accuracy", kind: "repeat" },
@@ -217,9 +221,10 @@ export const LESSONS: LessonPlan[] = [
       voice_challenge: {
         description: "Record yourself greeting 3 different people (morning, afternoon, night)",
         descriptionFr: "Enregistre-toi en train de saluer 3 personnes différentes (matin, après-midi, soir)",
-        // §7.3 verbatim — multilingual voice challenge
+        // §7.3 verbatim — multilingual voice challenge + v3.0 Bayangi placeholder
         descriptionBkm: "Tɔ̀ŋtɛ̀ nà wù bì ɔ̀ bɔ̀ŋɔ̀ 3",
         descriptionLns: "Tɔ̀ŋtɛ̀ nǝ̀ wù bì ǝ̀ bɔ̀ŋɔ̀ 3",
+        descriptionByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
         evaluation: "asr_completion",
       },
     },
@@ -664,10 +669,11 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "Ndoge! Mood ñemed! (Good morning!) À bwɛ̀! Mbi̶ vǝ̀! Let us greet the way our grandparents do — in Ewondo, in Kom, in Lamnso'!",
         textFr: "Ndoge ! Mood ñemed ! (Bonjour !) À bwɛ̀ ! Mbi̶ vǝ̀ ! Saluons comme nos grands-parents — en ewondo, en kom, en lamnso' !",
-        // §2.3/§2.4 attested phrases
+        // §2.3/§2.4 attested phrases + v3.0 Bayangi placeholder
         textBkm: "À bwɛ̀! Nà wù dà?",
         textLns: "Mbi̶ vǝ̀! Wù yé dì?",
-        languages: ["ewo", "en", "fr", "bkm", "lns"],
+        textByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
+        languages: ["ewo", "en", "fr", "bkm", "lns", "byv"],
       },
       instruction: { text: "Listen to the tone, then repeat exactly — high tone rises, low tone stays.", textFr: "Écoute le ton, puis répète exactement — ton haut monte, ton bas reste.", textBkm: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.", textLns: "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀." },
       learn_content: {
@@ -679,6 +685,7 @@ export const LESSONS: LessonPlan[] = [
           "Lamnso': Mbi̶ vǝ̀ — Good morning · Bíŋ — Thank you (vowel length matters: sú “wash” vs súü “harvest completely”)",
           "Kom: Nà wù dà? — How are you? · M̀ bɛ̀ — I am fine",
           "Lamnso': Wù yé dì? — How are you? · Mǝ̀ yé — I am fine",
+          "Bayangi (Banyangi): greetings to be documented — Manyu Division, South West (data collection Q2 2025)",
           "Ewondo family: Mame — my mother · Mtala — my father · Nyaa — grandmother",
           "Tone matters: ñém (to refuse) vs ñém (to be sweet) — the tone changes the meaning! (GACL marked)",
         ],
@@ -688,13 +695,14 @@ export const LESSONS: LessonPlan[] = [
           "Lamnso' : Mbi̶ vǝ̀ — Bonjour · Bíŋ — Merci (la longueur compte : sú “laver” vs súü “récolter complètement”)",
           "Kom : Nà wù dà? — Comment vas-tu ? · M̀ bɛ̀ — Je vais bien",
           "Lamnso' : Wù yé dì? — Comment vas-tu ? · Mǝ̀ yé — Je vais bien",
+          "Bayangi (Banyangi) : greetings to be documented — Manyu Division, South West (data collection Q2 2025)",
           "Famille ewondo : Mame — ma mère · Mtala — mon père · Nyaa — grand-mère",
           "Le ton compte : le ton change le sens ! (orthographe GACL)",
         ],
         visual: "grassfields-family",
       },
       practice_prompts: [
-        { prompt: "Say: Mood ñemed!", target: "mood nemed", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say: Mood ñemed!", promptByv: "[To be documented] — Bayangi greetings arrive after native-speaker documentation (Q2 2025). Try Kom: À bwɛ̀!", target: "mood nemed", targetByv: "[to be documented]", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "Say in Kom: À bwɛ̀!", promptBkm: "Bì: À bwɛ̀!", target: "à bwɛ", targetBkm: "à bwɛ̀", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
         { prompt: "Say in Lamnso': Mbi̶ vǝ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", target: "mbi vǝ", targetLns: "mbi̶ vǝ̀", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
         { prompt: "Say in Kom: Bɛ̀ŋ (thank you)", promptBkm: "Bì: Bɛ̀ŋ!", target: "bɛ̀ŋ", targetBkm: "bɛ̀ŋ", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
@@ -736,9 +744,9 @@ export const LESSONS: LessonPlan[] = [
     ],
     assessment: { criteria: ["Tone accuracy (Grassfields)", "Pronunciation", "Willingness to speak a national language"], methods: ["ASR accuracy score", "Observation checklist"] },
     native_speaker_review: "validated", // all Grassfields strings from Master Prompt §2.3/§2.4/§7.3 tables
-    differentiation: ["Tone visualised as rising/falling arrows for hearing support", "Learners from other regions may share greetings in their own national language", "Bafut, Oku, Babanki, Mankon and Ngie speakers: your greetings arrive in Phase 4 of the roadmap"],
-    cultural_notes: "Kom, Lamnso', Bafut, Oku, Babanki, Mankon and Ngie are Grassfields languages of the North West Region. Tone is phonemically contrastive — in Kom, three tones (high unmarked, falling â, low à) and in Lamnso' vowel length changes meaning (sú “to wash” vs súü “to harvest completely”), exactly as marked in the General Alphabet of Cameroonian Languages (GACL, 1979).",
-    cultural_notesFr: "Le kom, le lamnso', le bafut, l'oku, le babanki, le mankon et le ngie sont des langues des Grassfields de la région du Nord-Ouest. Le ton y est distinctif — trois tons en kom (haut non marqué, descendant â, bas à) et, en lamnso', la longueur vocalique change le sens (sú “laver” vs súü “récolter complètement”), comme marqué dans l'Alphabet Général des Langues Camerounaises (AGLC, 1979).",
+    differentiation: ["Tone visualised as rising/falling arrows for hearing support", "Learners from other regions may share greetings in their own national language", "Bayangi speakers: your greetings are being documented (data collection Q2 2025) — Bafut, Oku, Babanki, Mankon and Ngie arrive in Phase 4 of the roadmap"],
+    cultural_notes: "Kom, Lamnso', Bayangi, Bafut, Oku, Babanki, Mankon and Ngie are Grassfields languages. Bayangi (Banyangi) is spoken in Manyu Division, South West Region, and its community is known for traditional dances and masquerade traditions. Tone is phonemically contrastive — in Kom, three tones (high unmarked, falling â, low à) and in Lamnso' vowel length changes meaning (sú “to wash” vs súü “to harvest completely”), exactly as marked in the General Alphabet of Cameroonian Languages (GACL, 1979).",
+    cultural_notesFr: "Le kom, le lamnso', le bayangi, le bafut, l'oku, le babanki, le mankon et le ngie sont des langues des Grassfields. Le bayangi (banyangi) est parlé dans la division de Manyu (Sud-Ouest) ; sa communauté est connue pour ses danses traditionnelles et ses sociétés masquées. Le ton y est distinctif — trois tons en kom (haut non marqué, descendant â, bas à) et, en lamnso', la longueur vocalique change le sens (sú “laver” vs súü “récolter complètement”), comme marqué dans l'Alphabet Général des Langues Camerounaises (AGLC, 1979).",
   }),
 
   // ================= ARTS — Week 1: Painting materials + NW dance =================

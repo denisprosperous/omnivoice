@@ -18,7 +18,7 @@ export const CHARACTERS: Character[] = [
     role: { en: "Wise Owl Guide", fr: "Hibou Sage Guide" },
     traits: { en: "Warm, patient, elder-like", fr: "Chaleureux, patient, ancien" },
     color: "#B45309", // warm brown
-    languages: ["en", "fr", "bkm", "lns"], // §4.3: pan-Cameroonian wisdom keeper
+    languages: ["en", "fr", "bkm", "lns", "byv"], // §4.3: pan-Cameroonian wisdom keeper + v3.0 8-language pack
     greeting: {
       en: "Welcome, young scholar!", fr: "Bienvenue, jeune savant !", ewo: "Ndoge, mone sem!",
       bkm: "À bwɛ̀, mwɛ̀n!", // §2.3 Good morning, child!
@@ -38,7 +38,7 @@ export const CHARACTERS: Character[] = [
     role: { en: "Brave Girl", fr: "Fille Courageuse" },
     traits: { en: "Confident, encouraging, clear", fr: "Sûre, encourageante, claire" },
     color: "#9D174D",
-    languages: ["en", "fr", "bkm", "lns"], // §4.3: Grassfields (West/Northwest)
+    languages: ["en", "fr", "bkm", "lns", "byv"], // §4.3: Grassfields (West/Northwest/Southwest) + v3.0 8-language pack
     greeting: {
       en: "You can do this with me!", fr: "Tu peux le faire avec moi !", ewo: "Ñemed wo!",
       bkm: "À bwɛ̀! M̀ bɛ̀!", // Good morning! I am fine!

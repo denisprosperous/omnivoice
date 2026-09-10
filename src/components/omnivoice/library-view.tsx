@@ -1,10 +1,12 @@
 "use client";
-// Content Library — two wings:
+// Content Library — two wings + registry console:
 // 1. Official Schemes (units/contents, ELOs, resources + national core skills + domains)
-// 2. Grassfields Languages Expansion Pack (v2.0 §2): 7 language profiles, GACL
-//    orthography, tone-marked sample vocabulary (playable), CEFR progression
-//    (§2.9), content library targets (§2.8), ASR fine-tuning plan + model
-//    registries (§4.1), offline language packs (§4.4), voice model status (§2.7).
+// 2. Grassfields Languages Expansion Pack (v3.0 §2): 8 language profiles (Kom &
+//    Lamnso' separate; Bayangi added), GACL orthography, tone-marked sample
+//    vocabulary (playable), CEFR progression (§2.9), content library targets
+//    (§2.8), ASR fine-tuning plan + model registries (§4.1), offline language
+//    packs (§4.4), voice model status (§2.7), Bayangi data collection plan.
+// 3. Language Registry Console (v3.0): add new dialects/local languages.
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
@@ -15,7 +17,9 @@ import {
   GRASSFIELDS_LANGUAGES, GACL, KOM_TONES, LAMNSO_GRAPHEMES, CORE_PHRASES,
   CONTENT_TARGETS, CONTENT_SOURCES, CEFR_PROGRESSION, ASR_MODELS, TTS_MODELS,
   FINE_TUNING_PLAN, LANGUAGE_PACKS, VOICE_MODEL_STATUS, LANGUAGE_CLASSIFICATION, LANGUAGE_RESOURCES,
+  BAYANGI_DATA_COLLECTION_PLAN,
 } from "@/lib/data/grassfields";
+import { RegistryConsole, statusLabel } from "./registry-console";
 import { cn } from "@/lib/utils";
 import { BookOpen, Calculator, FlaskConical, Languages, Landmark, Palette, Dumbbell, Drum, Monitor, type LucideIcon } from "lucide-react";
 
@@ -30,7 +34,7 @@ interface Subject { id: string; nameEn: string; nameFr: string; domain: string; 
 
 export function LibraryView() {
   const { lang } = useApp();
-  const [wing, setWing] = React.useState<"schemes" | "grassfields">("schemes");
+  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry">("schemes");
   const [weeks, setWeeks] = React.useState<SchemeWeek[]>([]);
   const [subjects, setSubjects] = React.useState<Subject[]>([]);
   const [domains, setDomains] = React.useState<Array<{ name: string; weighting: number }>>([]);
@@ -66,8 +70,8 @@ export function LibraryView() {
           <h1 className="text-2xl font-extrabold text-amber-900">📚 {t("library", lang)}</h1>
           <p className="text-sm text-amber-700">
             {fr
-              ? "Programme officiel (Class 3, Mois 1 — La Maison) + Pack d'extension langues des Grassfields (v2.0)."
-              : "Official schemes (Class 3, Month 1 — The Home) + Grassfields Languages Expansion Pack (v2.0)."}
+              ? "Programme officiel (Class 3, Mois 1 — La Maison) + Pack d'extension langues des Grassfields (v3.0, 8 langues) + Registre des langues."
+              : "Official schemes (Class 3, Month 1 — The Home) + Grassfields Expansion Pack (v3.0, 8 languages) + Language Registry."}
           </p>
         </header>
 
@@ -91,9 +95,20 @@ export function LibraryView() {
           >
             🪶 {t("expansionPack", lang)}
           </button>
+          <button
+            role="tab" aria-selected={wing === "registry"} onClick={() => setWing("registry")}
+            className={cn(
+              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+              wing === "registry" ? "border-sky-700 bg-sky-700 text-white shadow" : "border-sky-200 bg-white text-sky-800 hover:border-sky-500"
+            )}
+          >
+            🧩 {t("registryConsole", lang)}
+          </button>
         </div>
 
-        {wing === "grassfields" ? (
+        {wing === "registry" ? (
+          <RegistryConsole />
+        ) : wing === "grassfields" ? (
           <GrassfieldsExpansion fr={fr} selLang={selLang} setSelLang={setSelLang} sel={sel} />
         ) : (
           <>
@@ -195,7 +210,10 @@ function GrassfieldsExpansion({
         <h2 className="text-base font-extrabold text-lime-900">🪶 {t("expansionPack", fr ? "fr" : "en")}</h2>
         <p className="mt-1 text-xs leading-relaxed text-lime-900/80">{t("expansionIntro", fr ? "fr" : "en")}</p>
         <p className="mt-2 text-[11px] text-lime-800">
-          {GACL.fullName} ({GACL.established}) · {fr ? "Langues tonales" : "Tonal languages"}: Kom 3 tones · Lamnso&apos; vowel length
+          {GACL.fullName} ({GACL.established}) · {fr ? "Langues tonales" : "Tonal languages"}: Kom 3 tones · Lamnso&apos; vowel length · Bayangi {fr ? "à documenter" : "to be documented"}
+        </p>
+        <p className="mt-1 text-[11px] font-bold text-lime-900">
+          {fr ? "Matrice corrigée : 8 langues — kom et lamnso' distincts · bayangi ajouté (Nouveau)." : "Corrected matrix: 8 languages — Kom and Lamnso' distinct · Bayangi added (New)."}
         </p>
       </section>
 
@@ -217,14 +235,19 @@ function GrassfieldsExpansion({
                 <span className="text-sm font-extrabold text-lime-900">{l.flag} {l.name}</span>
                 <span className={cn(
                   "rounded-full px-1.5 py-0.5 text-[9px] font-extrabold uppercase",
-                  l.priority === "HIGH" ? "bg-red-100 text-red-700" : l.priority === "MEDIUM" ? "bg-amber-100 text-amber-700" : "bg-stone-100 text-stone-600"
-                )}>{l.priority}</span>
+                  l.status === "ACTIVE" ? "bg-lime-600 text-white" : l.status === "ACTIVE_PLACEHOLDER" ? "bg-orange-500 text-white" : "bg-stone-200 text-stone-600"
+                )}>{statusLabel(l.status, fr)}</span>
               </div>
               <p className="mt-0.5 text-[10px] text-amber-700">ISO {l.iso} · {l.nativeName}</p>
               <p className="text-[10px] text-amber-700">{l.region} — {l.division}</p>
               <p className="text-[10px] text-amber-700">🗣️ {l.speakers}</p>
               <p className="mt-1 text-[10px] leading-snug text-lime-800">{l.tones}</p>
-              <p className="mt-1 text-[9px] font-bold uppercase text-stone-500">Phase: {VOICE_MODEL_STATUS[l.code]?.phase}</p>
+              <p className="mt-1 text-[9px] font-bold uppercase text-stone-500">
+                {statusLabel(l.status, fr) === "Draft" ? "" : `${fr ? "Phase" : "Phase"}: `}{VOICE_MODEL_STATUS[l.code]?.phase}
+              </p>
+              <p className="mt-1 text-[9px] font-semibold text-amber-600">
+                {t("contentCoverage", fr ? "fr" : "en")}: {l.contentLibrary.vocabulary} {fr ? "mots" : "words"} · {l.contentLibrary.dialogues} {fr ? "dialogues" : "dialogues"} · {l.contentLibrary.songs} {fr ? "chants" : "songs"} · {l.contentLibrary.stories} {fr ? "histoires" : "stories"}
+              </p>
             </button>
           ))}
         </div>
@@ -235,15 +258,30 @@ function GrassfieldsExpansion({
               <h4 className="mb-1 font-extrabold text-lime-900">{sel.name} — {fr ? "détails" : "details"}</h4>
               <p className="text-amber-900"><b>{fr ? "Noms alternatifs" : "Alternate names"}:</b> {sel.alternateNames.join(", ")}</p>
               <p className="text-amber-900"><b>{fr ? "Classification" : "Classification"}:</b> {LANGUAGE_CLASSIFICATION[sel.code] || "Narrow Grassfields"}</p>
+              <p className="text-amber-900"><b>{fr ? "Notation tonale" : "Tone notation"}:</b> {sel.toneNotation.system} — {sel.toneNotation.detail}</p>
               <p className="text-amber-900"><b>{fr ? "Données d'entraînement" : "Training data"}:</b> {sel.trainingHours}</p>
+              <p className="text-amber-900"><b>{fr ? "Modèle ASR" : "ASR model"}:</b> {sel.asrModel || (fr ? "en attente de données" : "pending data collection")}</p>
+              <p className="text-amber-900"><b>{fr ? "Voix TTS" : "TTS voice"}:</b> {sel.ttsVoice || (fr ? "en attente de données" : "pending data collection")}</p>
               <p className="text-amber-900"><b>{fr ? "ASR" : "ASR"}:</b> {VOICE_MODEL_STATUS[sel.code]?.asr}</p>
               <p className="text-amber-900"><b>{fr ? "TTS" : "TTS"}:</b> {VOICE_MODEL_STATUS[sel.code]?.tts}</p>
+              {sel.culturalContext && (
+                <p className="text-amber-900"><b>{fr ? "Contexte culturel" : "Cultural context"}:</b> {sel.culturalContext}</p>
+              )}
             </div>
             <div>
               <h4 className="mb-1 font-extrabold text-lime-900">{fr ? "Ressources d'apprentissage" : "Learning resources"}</h4>
               <ul className="space-y-0.5 text-amber-900">
                 {(LANGUAGE_RESOURCES[sel.code] || []).map((r) => <li key={r}>• {r}</li>)}
               </ul>
+              {sel.code === "byv" && (
+                <div className="mt-2 rounded-xl border-2 border-dashed border-orange-400 bg-orange-50/70 p-2.5">
+                  <h5 className="text-[11px] font-extrabold uppercase tracking-wide text-orange-700">⏳ {t("dataCollection", fr ? "fr" : "en")} — Bayangi (v3.0)</h5>
+                  <p className="mt-1 text-[11px] text-orange-900"><b>{fr ? "Cible" : "Target"}:</b> {BAYANGI_DATA_COLLECTION_PLAN.targetHours}h · <b>{fr ? "Partenaire" : "Partner"}:</b> {BAYANGI_DATA_COLLECTION_PLAN.partner} · <b>{fr ? "Échéance" : "Timeline"}:</b> {BAYANGI_DATA_COLLECTION_PLAN.timeline}</p>
+                  <ol className="mt-1 list-decimal space-y-0.5 pl-4 text-[11px] text-orange-900">
+                    {BAYANGI_DATA_COLLECTION_PLAN.steps.map((s) => <li key={s}>{s}</li>)}
+                  </ol>
+                </div>
+              )}
             </div>
           </div>
         )}

@@ -1,18 +1,37 @@
 // ============================================================================
-// GRASSFIELDS LANGUAGES EXPANSION PACK — OmniVoice Edition v2.0
+// GRASSFIELDS LANGUAGES EXPANSION PACK — OmniVoice Edition v3.0
+// (Preview Deployment & Live Demo Edition)
 // Per Master Negentropic Prompt v2.0 §2.1–2.9 (Expansion Pack), §4.1 (speech
 // stack), §6.4–6.5 (voice data model + tone-aware pipeline), §7.2 Directive 9
-// (Grassfields Language Accuracy), §X (build audit + roadmap + metrics).
+// (Grassfields Language Accuracy), §X (build audit + roadmap + metrics) and
+// the v3.0 Preview Edition audit corrections:
+//   • Correction 1 — Kom (bkm) and Lamnso' (lns) are DISTINCT languages and
+//     are tracked as separate entries everywhere (ASR datasets, TTS voices,
+//     content libraries, audit rows, success metrics).
+//   • Correction 2 — Bayangi (byv) added as the 8th Grassfields language with
+//     placeholder content + data collection plan (SIL Cameroon, Q2 2025).
+//   • Correction 3 — corrected 8-language Grassfields matrix (§2.2 v3.0).
 //
 // GACL = General Alphabet of Cameroonian Languages (1979). All Grassfields
 // content MUST be GACL-compliant with tone markings (Directive 9).
 // ============================================================================
 
 // ---------------------------------------------------------------------------
-// §2.2 Target Languages for MVP — 7 Grassfields languages
+// §2.2 Target Languages — corrected 8-language Grassfields matrix (v3.0)
+// # | Language | ISO | Region | Speakers | Status | Priority
+// 1 Kom (Bikom) bkm Boyo, NW 233,000 Active HIGH
+// 2 Lamnso' (Lamso) lns Nso, NW 125,000 Active HIGH
+// 3 Bayangi (Banyangi) byv Manyu, SW 50,000 NEW HIGH
+// 4 Bafut bfd Mezam, NW 105,000 Planned MEDIUM
+// 5 Oku oku Bui, NW 40,000 Planned MEDIUM
+// 6 Babanki bbk Mezam, NW 25,000 Planned LOW
+// 7 Mankon mgo Mezam, NW 80,000 Planned MEDIUM
+// 8 Ngie ngi Momo, NW 40,000 Planned LOW
 // ---------------------------------------------------------------------------
 
-export type GrassfieldsCode = "bkm" | "lns" | "bfd" | "oku" | "bbk" | "mgo" | "ngi";
+export type GrassfieldsCode = "bkm" | "lns" | "byv" | "bfd" | "oku" | "bbk" | "mgo" | "ngi";
+
+export type LanguageStatus = "ACTIVE" | "ACTIVE_PLACEHOLDER" | "PLANNED";
 
 export interface GrassfieldsLanguage {
   code: GrassfieldsCode;
@@ -24,72 +43,162 @@ export interface GrassfieldsLanguage {
   division: string;
   speakers: string;
   tones: string; // tone system summary
+  toneNotation: { system: string; detail: string }; // v3.0 tone_notation
   priority: "HIGH" | "MEDIUM" | "LOW";
+  status: LanguageStatus; // v3.0 corrected matrix
   trainingHours: string; // fine-tuning data requirement (§4.1.1)
+  greeting: string; // v3.0 data model — spec-attested or placeholder
+  thankYou: string;
+  howAreYou: string;
+  asrModel: string | null; // v3.0: custom/<lang>-asr-v1 (null = pending data)
+  ttsVoice: string | null; // v3.0: custom/<lang>-voice-v1 (null = pending data)
+  contentLibrary: { vocabulary: number; dialogues: number; songs: number; stories: number }; // v3.0 content_library counts
+  culturalContext?: string; // v3.0 — cultural notes (Bayangi: dances/masquerade)
   flag: string;
 }
 
+const PENDING = "[To be documented]"; // v3.0 placeholder — to be documented with native speakers
+
 export const GRASSFIELDS_LANGUAGES: GrassfieldsLanguage[] = [
   {
+    // CORRECTION 1 — Kom is tracked SEPARATELY from Lamnso' (ISO bkm vs lns,
+    // Central Ring vs West Ring, distinct tone systems).
     code: "bkm", name: "Kom (Bikom)", nativeName: "Itaŋikom", iso: "bkm",
     alternateNames: ["Bamekon", "Bekom", "Itangikom", "Nkom", "Kong"],
     region: "North West Region", division: "Boyo Division",
     speakers: "~233,000 (2005)", tones: "3 tones — high (unmarked), falling (â), low (à)",
-    priority: "HIGH", trainingHours: "500+ hours", flag: "🪶",
+    toneNotation: { system: "Kom 3-tone", detail: "high: unmarked · falling: circumflex (â) · low: grave (à)" },
+    priority: "HIGH", status: "ACTIVE", trainingHours: "500+ hours",
+    greeting: "À bwɛ̀", thankYou: "Bɛ̀ŋ", howAreYou: "Nà wù dà?",
+    asrModel: "custom/kom-asr-v1", ttsVoice: "custom/kom-voice-v1",
+    contentLibrary: { vocabulary: 500, dialogues: 50, songs: 20, stories: 30 },
+    flag: "🪶",
   },
   {
+    // CORRECTION 1 — Lamnso' is tracked SEPARATELY from Kom. Unique among
+    // African languages: no dialectal variations. Vowel length is distinctive
+    // (sú "to wash" vs súü "to harvest completely").
     code: "lns", name: "Lamnso' (Lamso)", nativeName: "Lamnso'", iso: "lns",
     alternateNames: ["Banso", "Nso", "Nsaw", "Panso", "Nsho'"],
     region: "North West Region", division: "Nso Division",
     speakers: "~125,000 (1987)", tones: "Multiple tones · 6 short vowels /i e a o ə u/ · distinctive vowel length",
-    priority: "HIGH", trainingHours: "500+ hours", flag: "🪶",
+    toneNotation: { system: "GACL-compliant", detail: "multiple tones · distinctive vowel length (sú vs súü)" },
+    priority: "HIGH", status: "ACTIVE", trainingHours: "500+ hours",
+    greeting: "Mbi̶ vǝ̀", thankYou: "Bíŋ", howAreYou: "Wù yé dì?",
+    asrModel: "custom/lamnso-asr-v1", ttsVoice: "custom/lamnso-voice-v1",
+    contentLibrary: { vocabulary: 500, dialogues: 50, songs: 20, stories: 30 },
+    flag: "🪶",
+  },
+  {
+    // CORRECTION 2 — Bayangi (Banyangi), 8th Grassfields language. Placeholder
+    // content for MVP; greetings/thank-you to be documented with native
+    // speakers; data collection plan below (500h, SIL Cameroon, Q2 2025).
+    code: "byv", name: "Bayangi (Banyangi)", nativeName: "Banyangi", iso: "byv",
+    alternateNames: ["Banyangi", "Manyang", "Bayangi"],
+    region: "South West Region (bordering North West)", division: "Manyu Division",
+    speakers: "~50,000 (estimated)", tones: "Tonal (specific tone inventory to be documented)",
+    toneNotation: { system: "GACL-compliant (pending)", detail: "Latin script with GACL modifications · tone inventory to be documented" },
+    priority: "HIGH", status: "ACTIVE_PLACEHOLDER", trainingHours: "500+ hours (target)",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    culturalContext: "Known for traditional dances and masquerade traditions",
+    flag: "🪶",
   },
   {
     code: "bfd", name: "Bafut", nativeName: "Bafut", iso: "bfd",
     alternateNames: ["Befe", "Bafut"],
     region: "North West Region", division: "Mezam Division",
     speakers: "~105,000", tones: "Tonal",
-    priority: "MEDIUM", trainingHours: "300+ hours", flag: "🪶",
+    toneNotation: { system: "GACL-compliant", detail: "tone inventory pending documentation" },
+    priority: "MEDIUM", status: "PLANNED", trainingHours: "300+ hours",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    flag: "🪶",
   },
   {
     code: "oku", name: "Oku", nativeName: "Oku (Ebkuo)", iso: "oku",
     alternateNames: ["Oku", "Ebkuo"],
     region: "North West Region", division: "Bui Division",
     speakers: "~40,000", tones: "Tonal",
-    priority: "MEDIUM", trainingHours: "300+ hours", flag: "🪶",
+    toneNotation: { system: "GACL-compliant", detail: "tone inventory pending documentation" },
+    priority: "MEDIUM", status: "PLANNED", trainingHours: "300+ hours",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    flag: "🪶",
   },
   {
     code: "bbk", name: "Babanki", nativeName: "Kejom", iso: "bbk",
     alternateNames: ["Kejom", "Kidzom"],
     region: "North West Region", division: "Mezam Division",
     speakers: "~25,000", tones: "Tonal",
-    priority: "LOW", trainingHours: "200+ hours", flag: "🪶",
+    toneNotation: { system: "GACL-compliant", detail: "tone inventory pending documentation" },
+    priority: "LOW", status: "PLANNED", trainingHours: "200+ hours",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    flag: "🪶",
   },
   {
     code: "mgo", name: "Mankon", nativeName: "Mankon", iso: "mgo",
     alternateNames: ["Mankon", "Moghamo"],
     region: "North West Region", division: "Mezam Division",
     speakers: "~80,000", tones: "Tonal",
-    priority: "MEDIUM", trainingHours: "300+ hours", flag: "🪶",
+    toneNotation: { system: "GACL-compliant", detail: "tone inventory pending documentation" },
+    priority: "MEDIUM", status: "PLANNED", trainingHours: "300+ hours",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    flag: "🪶",
   },
   {
     code: "ngi", name: "Ngie", nativeName: "Ngie (Ngoshie)", iso: "ngi",
     alternateNames: ["Ngie", "Ngoshie"],
     region: "North West Region", division: "Momo Division",
     speakers: "~40,000", tones: "Tonal",
-    priority: "LOW", trainingHours: "200+ hours", flag: "🪶",
+    toneNotation: { system: "GACL-compliant", detail: "tone inventory pending documentation" },
+    priority: "LOW", status: "PLANNED", trainingHours: "200+ hours",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    flag: "🪶",
   },
 ];
 
-// Classification notes (§2.3 / §2.4) — shown in the Library
+// v3.0 Correction 2 — Bayangi data collection plan (spec §2.2 data_collection_plan)
+export const BAYANGI_DATA_COLLECTION_PLAN = {
+  targetHours: 500,
+  partner: "SIL Cameroon / Local Community",
+  timeline: "Q2 2025",
+  steps: [
+    "Recruit native-speaker contributors in Manyu Division (Mamfe area)",
+    "Record 500h transcribed speech (greetings, dialogues, songs, folktales)",
+    "Document tone inventory + GACL orthography conventions with linguists",
+    "Fine-tune Simba-S ASR + clone F5-TTS voice from native reference audio",
+    "Native-speaker validation (90% approval target) before graduation to ACTIVE",
+  ],
+} as const;
+
+/** Placeholder marker — used by UI to render "to be documented" states (Directive 9 gate) */
+export function isPlaceholderPhrase(text: string): boolean {
+  return text === PENDING || /\[To be documented/.test(text);
+}
+
+export { PENDING as PLACEHOLDER_PHRASE };
+
+// Classification notes (§2.3 / §2.4 / v3.0 Correction 2) — shown in the Library
 export const LANGUAGE_CLASSIFICATION: Record<string, string> = {
   bkm: "Benue-Congo → Narrow Grassfields → Central Ring",
   lns: "Benue-Congo → Narrow Grassfields → Ring group → West ring (no dialectal variations)",
+  byv: "Benue-Congo → Narrow Grassfields → Momo",
 };
 
 export const LANGUAGE_RESOURCES: Record<string, string[]> = {
   bkm: ["“Ghesìn̳à ye'i Itan̳ikom” (Let's learn Kom) — 1992", "Kom Dictionary App (Google Play)", "Kom Bible translation"],
   lns: ["“Binka wùn Wiyka 1” — 2003", "Nso Language Organisation (NLO) materials", "Lamnso' Bible translation"],
+  byv: ["SIL Cameroon / Local Community (data collection, Q2 2025)", "Community recordings — traditional dances & masquerade traditions (planned)"],
   bfd: ["SIL Cameroon", "Local schools", "Primary textbooks"],
   oku: ["Oku Language Committee", "Community materials"],
   bbk: ["Kejom Language Committee", "Community materials"],
@@ -228,6 +337,7 @@ export const TTS_MODELS = [
 export const LANGUAGE_PACKS: Record<string, { file: string; sizeMb: number; components: string[] }> = {
   bkm: { file: "kom_language_pack_50mb.zip", sizeMb: 50, components: ["asr_small_model", "voice_pack", "phoneme_audio", "vocabulary", "stories"] },
   lns: { file: "lamnso_language_pack_50mb.zip", sizeMb: 50, components: ["asr_small_model", "voice_pack", "phoneme_audio", "vocabulary", "stories"] },
+  byv: { file: "bayangi_language_pack_50mb.zip", sizeMb: 50, components: ["voice_pack (pending data collection)", "vocabulary (placeholder)"] },
   bfd: { file: "bafut_language_pack_50mb.zip", sizeMb: 50, components: ["voice_pack", "vocabulary"] },
   oku: { file: "oku_language_pack_50mb.zip", sizeMb: 50, components: ["voice_pack", "vocabulary"] },
   bbk: { file: "babanki_language_pack_50mb.zip", sizeMb: 50, components: ["voice_pack", "vocabulary"] },
@@ -243,6 +353,7 @@ export const LANGUAGE_PACKS: Record<string, { file: string; sizeMb: number; comp
 export const VOICE_MODEL_STATUS: Record<string, { asr: string; tts: string; phase: string }> = {
   bkm: { asr: "Fine-tune Simba-S — data sourcing (SIL Cameroon)", tts: "F5-TTS cloning from native speaker reference (5-10s)", phase: "Phase 2" },
   lns: { asr: "Fine-tune Simba-S — data sourcing (SIL Cameroon)", tts: "F5-TTS cloning from native speaker reference (5-10s)", phase: "Phase 2" },
+  byv: { asr: "Data collection phase — 500h target (SIL Cameroon / Local Community, Q2 2025)", tts: "Pending tone inventory documentation → F5-TTS cloning", phase: "Phase 2 (NEW — placeholder)" },
   bfd: { asr: "Awaiting fine-tuning window", tts: "Awaiting voice cloning", phase: "Phase 4" },
   oku: { asr: "Awaiting fine-tuning window", tts: "Awaiting voice cloning", phase: "Phase 4" },
   bbk: { asr: "Awaiting fine-tuning window", tts: "Awaiting voice cloning", phase: "Phase 4" },
@@ -258,11 +369,17 @@ export const VOICE_MODEL_STATUS: Record<string, { asr: string; tts: string; phas
 const TONE_DIACRITICS = /[\u0300-\u036F\u0327\u0332]/g; // combining diacritics (tone marks)
 const TONE_LETTERS = /[̀́̂̃̄̅̈̇]/g; // precomposed grave/acute/circumflex marks on letters
 
-/** All supported voice/lesson languages: EN, FR + 7 Grassfields (+ Ewondo legacy) */
+/** All supported voice/lesson languages: EN, FR + 8 Grassfields (+ Ewondo legacy) */
 export const VOICE_LANGUAGES = [
-  { id: "en", label: "English", flag: "🇬🇧" },
-  { id: "fr", label: "Français", flag: "🇫🇷" },
-  ...GRASSFIELDS_LANGUAGES.map((l) => ({ id: l.code as string, label: l.name, flag: "🪶" })),
+  { id: "en", label: "English", flag: "🇬🇧", status: "ACTIVE" as LanguageStatus },
+  { id: "fr", label: "Français", flag: "🇫🇷", status: "ACTIVE" as LanguageStatus },
+  ...GRASSFIELDS_LANGUAGES.map((l) => ({
+    id: l.code as string,
+    label: l.name,
+    flag: "🪶",
+    status: l.status,
+    priority: l.priority,
+  })),
 ] as const;
 
 export const SUPPORTED_LANGUAGES_STANDARD = ["en", "fr", "bkm", "lns"] as const;
@@ -271,9 +388,10 @@ export function isGrassfields(lang: string): boolean {
   return GRASSFIELDS_LANGUAGES.some((l) => l.code === lang);
 }
 
-/** Tonal languages where tone is phonemically contrastive — tone-aware scoring applies */
+/** Tonal languages where tone is phonemically contrastive — tone-aware scoring applies.
+ *  bkm: 3-tone system · lns: multiple tones · byv: tonal (inventory to be documented). */
 export function isTonal(lang: string): boolean {
-  return lang === "bkm" || lang === "lns";
+  return lang === "bkm" || lang === "lns" || lang === "byv";
 }
 
 /** Remove tone diacritics while preserving base GACL letters (ɛ ɔ ŋ ɨ ʉ ə stay) */
@@ -339,10 +457,16 @@ export function plainSimilarity(transcription: string, target: string): number {
  * conventions before synthesis/evaluation.
  * - Kom: low tone marked with grave (à), falling with circumflex (â), high unmarked
  * - Lamnso': special graphemes ny/sh/gh/c/j; vowel length as gemination (súü)
+ * - Bayangi: GACL Latin script; tone inventory to be documented — marks are
+ *   preserved as written (no transformation) until documentation completes.
  */
 export function applyToneRules(text: string, language: string): string {
   if (!isGrassfields(language)) return text;
   let out = text.normalize("NFC");
+  if (language === "byv") {
+    // Bayangi: documentation pending — preserve orthography exactly as provided.
+    return out;
+  }
   if (language === "bkm") {
     // Kom: ensure apostrophe-style glottal and combining marks are composed (NFC does most).
     // Guard: normalize double tone marks (e.g. à̀ → à) that some ASR outputs produce.

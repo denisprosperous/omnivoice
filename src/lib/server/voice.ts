@@ -44,6 +44,10 @@ export interface GrassfieldsAsrModel {
 export const GRASSFIELDS_ASR_MODELS: Record<string, GrassfieldsAsrModel> = {
   bkm: { id: "custom/kom-asr-model", language: "bkm", baseModel: "UBC-NLP/Simba-S", deployed: false, humanInTheLoop: true },
   lns: { id: "custom/lamnso-asr-model", language: "lns", baseModel: "UBC-NLP/Simba-S", deployed: false, humanInTheLoop: true },
+  // v3.0 Correction 2 — Bayangi: ASR model registered but NO deployed weights
+  // (asr_model: null in the v3.0 data model until the 500h data collection
+  // completes — transcriptions fall through to base ASR + human-in-the-loop).
+  byv: { id: "custom/bayangi-asr-model", language: "byv", baseModel: "UBC-NLP/Simba-S", deployed: false, humanInTheLoop: true },
   bfd: { id: "custom/bafut-asr-model", language: "bfd", baseModel: "UBC-NLP/Simba-S", deployed: false, humanInTheLoop: true },
   oku: { id: "custom/oku-asr-model", language: "oku", baseModel: "UBC-NLP/Simba-S", deployed: false, humanInTheLoop: true },
   bbk: { id: "custom/babanki-asr-model", language: "bbk", baseModel: "UBC-NLP/Simba-S", deployed: false, humanInTheLoop: true },

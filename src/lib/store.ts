@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Lang } from "@/lib/i18n";
+import { trackEvent } from "@/lib/analytics";
 
 export type Role = "learner" | "teacher" | "parent" | "supervisor";
 export type View = "landing" | "learner" | "lesson" | "projects" | "profile" | "teacher" | "parent" | "supervisor" | "library";
@@ -65,6 +66,8 @@ export const useApp = create<AppState>()(
         return { lang };
       }),
       setVoiceLang: (voiceLang) => set((s) => {
+        // v3.0 §5.1 — track voice language preference (preview analytics)
+        trackEvent("voice_language_selection", { from: s.voiceLang, to: voiceLang });
         if (s.learner) {
           const updated = { ...s.learner, voiceLang };
           void fetch("/api/learner", {

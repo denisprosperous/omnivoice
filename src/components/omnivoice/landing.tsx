@@ -6,7 +6,8 @@ import { useApp, type Role } from "@/lib/store";
 import { t, type Lang } from "@/lib/i18n";
 import { CHARACTERS } from "@/lib/characters";
 import { LEVELS } from "@/lib/data/curriculum";
-import { VOICE_LANGUAGES } from "@/lib/data/grassfields";
+import { VOICE_LANGUAGES, type LanguageStatus } from "@/lib/data/grassfields";
+import { trackEvent } from "@/lib/analytics";
 import { PatternBand, Spinner } from "./shared";
 import { playBadge } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,8 @@ export function Landing() {
       });
       if (!res.ok) throw new Error("Could not create profile");
       const data = await res.json();
+      // v3.0 §5.1 — profile creation event
+      trackEvent("profile_creation", { role, stage, voiceLang });
       playBadge(); // welcome flourish
       setLearner({ ...data.learner, avatar });
       setView(role === "learner" ? "learner" : role === "teacher" ? "teacher" : role === "parent" ? "parent" : "supervisor");
@@ -60,6 +63,13 @@ export function Landing() {
     { isced: 2, label: "Lower Secondary (ISCED 2)", labelFr: "1er cycle Secondaire (CITE 2)" },
     { isced: 3, label: "Upper Secondary (ISCED 3)", labelFr: "2nd cycle Secondaire (CITE 3)" },
   ];
+
+  const statusBadge = (status: LanguageStatus | string) => {
+    if (status === "ACTIVE") return { label: t("statusActive", lang), cls: "bg-lime-600 text-white" };
+    if (status === "ACTIVE_PLACEHOLDER") return { label: t("statusNew", lang), cls: "bg-orange-500 text-white" };
+    if (status === "PLANNED") return { label: t("statusPlanned", lang), cls: "bg-stone-200 text-stone-600" };
+    return { label: "DRAFT", cls: "bg-sky-600 text-white" };
+  };
 
   return (
     <main className="min-h-screen bg-[#FFFBEB]">
@@ -198,21 +208,25 @@ export function Landing() {
             <h3 className="mb-1 text-sm font-bold text-amber-900">🪶 {t("voiceLanguage", lang)}</h3>
             <p className="mb-2 text-xs text-amber-700">{t("voiceLanguageHint", lang)}</p>
             <div className="mb-2 flex flex-wrap gap-1.5" role="radiogroup" aria-label={t("voiceLanguage", lang)}>
-              {VOICE_LANGUAGES.map((l) => (
-                <button
-                  key={l.id}
-                  onClick={() => setVoiceLang(l.id)}
-                  role="radio"
-                  aria-checked={voiceLang === l.id}
-                  className={cn(
-                    "min-h-[40px] rounded-xl border-2 px-3 py-1.5 text-xs font-bold transition-all",
-                    voiceLang === l.id ? "border-lime-700 bg-lime-50 text-lime-900 shadow-sm" : "border-lime-200 bg-white text-lime-800 hover:border-lime-500"
-                  )}
-                >
-                  <span className="mr-1" aria-hidden>{l.flag}</span>
-                  {l.label}
-                </button>
-              ))}
+              {VOICE_LANGUAGES.map((l) => {
+                const badge = "status" in l ? statusBadge(l.status) : null;
+                return (
+                  <button
+                    key={l.id}
+                    onClick={() => setVoiceLang(l.id)}
+                    role="radio"
+                    aria-checked={voiceLang === l.id}
+                    className={cn(
+                      "min-h-[40px] rounded-xl border-2 px-3 py-1.5 text-xs font-bold transition-all",
+                      voiceLang === l.id ? "border-lime-700 bg-lime-50 text-lime-900 shadow-sm" : "border-lime-200 bg-white text-lime-800 hover:border-lime-500"
+                    )}
+                  >
+                    <span className="mr-1" aria-hidden>{l.flag}</span>
+                    {l.label}
+                    {badge && <span className={cn("ml-1.5 rounded-full px-1.5 py-0.5 text-[8px] font-extrabold uppercase align-middle", badge.cls)}>{badge.label}</span>}
+                  </button>
+                );
+              })}
             </div>
             <p className="rounded-xl bg-lime-50 p-2.5 text-[11px] leading-relaxed text-lime-900">
               <b>{t("expansionPack", lang)}:</b> {t("expansionIntro", lang)}

@@ -1,23 +1,26 @@
 "use client";
 // ============================================================================
 // LESSON PLAYER — 5-phase bite-sized voice-first lesson (Master Prompt v2.0 §5.3)
-// Voice Hook (multilingual: en/fr/bkm/lns) → Listen & Learn → Speak & Practice
-// (tone-aware ASR eval for Grassfields languages) → Apply & Create (STS
-// role-play, code-switching welcome) → Celebrate (badge + makossa).
+// Voice Hook (multilingual: en/fr/bkm/lns/byv) → Listen & Learn → Speak &
+// Practice (tone-aware ASR eval for Grassfields languages) → Apply & Create
+// (STS role-play, code-switching welcome) → Celebrate (badge + makossa).
 // Gamification per phase. Grassfields language packs surfaced offline.
+// v3.0: Bayangi (byv) wired end-to-end with Directive 9 placeholder states —
+// undocumented content renders a data-collection notice, never fake audio.
 // ============================================================================
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { PatternBand, CharacterBubble, MicButton, Spinner, StatPill } from "./shared";
 import { getCharacter } from "@/lib/characters";
-import { VOICE_LANGUAGES, isGrassfields } from "@/lib/data/grassfields";
+import { VOICE_LANGUAGES, isGrassfields, isPlaceholderPhrase } from "@/lib/data/grassfields";
 import { WavRecorder, speak, playWavBase64, transcribe, speakFallback } from "@/lib/voice-client";
+import { trackEvent } from "@/lib/analytics";
 import { playCorrect, playIncorrect, playBadge, playCelebration, playLevelUp, playXp, startAmbient, stopAmbient } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-interface PracticePrompt { prompt: string; promptFr?: string; promptBkm?: string; promptLns?: string; target: string; targetBkm?: string; targetLns?: string; evaluation: string; kind?: string }
+interface PracticePrompt { prompt: string; promptFr?: string; promptBkm?: string; promptLns?: string; promptByv?: string; target: string; targetBkm?: string; targetLns?: string; targetByv?: string; evaluation: string; kind?: string }
 interface LessonPlanData {
   lesson_id: string; subject: string; level: string; isced_level: number;
   integrated_learning_theme: string; sub_theme: string; week: number; month: number;
@@ -25,8 +28,8 @@ interface LessonPlanData {
   expected_learning_outcomes: string[]; teaching_strategies: string[];
   didactic_materials: { physical: string[]; digital: string[] };
   voice_assets: {
-    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; languages: string[] };
-    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string };
+    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; textByv?: string; languages: string[] };
+    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string; textByv?: string };
     learn_content: { title: string; titleFr: string; lines: string[]; linesFr: string[]; visual: string };
     practice_prompts: PracticePrompt[];
     feedback: { correct: string; incorrect: string; encouragement: string };
@@ -37,7 +40,7 @@ interface LessonPlanData {
   sts_scenario?: { description: string; descriptionFr: string; character: string; opener: string };
   gamification: {
     mechanics: string[]; xp_points: number; badge_name: string; badge_code: string;
-    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; evaluation: string };
+    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; descriptionByv?: string; evaluation: string };
   };
   activities: Array<{ phase: string; duration: string; description: string; descriptionFr: string }>;
   assessment: { criteria: string[]; methods: string[] };
@@ -55,7 +58,7 @@ export function LessonPlayer() {
   const [loading, setLoading] = React.useState(true);
   const [phase, setPhase] = React.useState<Phase>("hook");
   const [hookDone, setHookDone] = React.useState(false);
-  // Hook listening language (§7.3: learner may hear the hook in en/fr/bkm/lns)
+  // Hook listening language (§7.3: learner may hear the hook in en/fr/bkm/lns/byv)
   const [hookLang, setHookLang] = React.useState<string>("en");
 
   // Practice state
@@ -66,6 +69,7 @@ export function LessonPlayer() {
   const [stars, setStars] = React.useState(0);
   const [scores, setScores] = React.useState<number[]>([]);
   const recorderRef = React.useRef<WavRecorder | null>(null);
+  const recordStartRef = React.useRef<number>(0);
 
   // Apply (STS) state
   const [stsHistory, setStsHistory] = React.useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
@@ -89,7 +93,7 @@ export function LessonPlayer() {
     if (!plan) return;
     const h = plan.voice_assets.hook;
     const available = (h.languages || ["en", "fr"]).filter((l) =>
-      l === "bkm" ? !!h.textBkm : l === "lns" ? !!h.textLns : true
+      l === "bkm" ? !!h.textBkm : l === "lns" ? !!h.textLns : l === "byv" ? !!h.textByv : true
     );
     setHookLang(available.includes(voiceLang) ? voiceLang : "en");
   }, [plan, voiceLang]);
@@ -103,6 +107,8 @@ export function LessonPlayer() {
   async function finishLesson() {
     if (!learner || !plan) return;
     const total = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 80;
+    // v3.0 §5.1 — lesson completion rate (pedagogical effectiveness metric)
+    trackEvent("lesson_completion", { lessonId: plan.lesson_id, voiceLang, avgScore: total });
     try {
       const res = await fetch("/api/learner", {
         method: "PUT",
@@ -149,6 +155,7 @@ export function LessonPlayer() {
   const promptForVoice = (pp: PracticePrompt): { prompt: string; target: string; isGf: boolean } => {
     if (voiceLang === "bkm" && pp.promptBkm) return { prompt: pp.promptBkm, target: pp.targetBkm || pp.target, isGf: true };
     if (voiceLang === "lns" && pp.promptLns) return { prompt: pp.promptLns, target: pp.targetLns || pp.target, isGf: true };
+    if (voiceLang === "byv" && pp.promptByv) return { prompt: pp.promptByv, target: pp.targetByv || pp.target, isGf: true };
     return { prompt: lang === "fr" ? pp.promptFr || pp.prompt : pp.prompt, target: pp.target, isGf: false };
   };
   const currentPrompt = prompts[promptIdx];
@@ -159,14 +166,17 @@ export function LessonPlayer() {
     hookLang === "fr" ? va.hook.textFr
     : hookLang === "bkm" ? (va.hook.textBkm || va.hook.text)
     : hookLang === "lns" ? (va.hook.textLns || va.hook.text)
+    : hookLang === "byv" ? (va.hook.textByv || va.hook.text)
     : va.hook.text;
+  const hookIsPlaceholder = isPlaceholderPhrase(hookText);
   const hookLanguages = (va.hook.languages || ["en", "fr"]).filter((l) =>
-    l === "bkm" ? !!va.hook.textBkm : l === "lns" ? !!va.hook.textLns : l === "ewo" ? true : true
+    l === "bkm" ? !!va.hook.textBkm : l === "lns" ? !!va.hook.textLns : l === "byv" ? !!va.hook.textByv : l === "ewo" ? true : true
   );
 
   // ---------- Practice handlers ----------
   async function startRecording() {
     setResult(null);
+    recordStartRef.current = Date.now();
     try {
       recorderRef.current = new WavRecorder();
       await recorderRef.current.start();
@@ -186,18 +196,37 @@ export function LessonPlayer() {
   async function stopRecording() {
     if (!recorderRef.current || !activePrompt) return;
     setRecording(false);
+    const heldMs = Date.now() - (recordStartRef.current || 0);
+    // v3.0 fix — ASR providers reject clips below their minimum duration;
+    // a too-short tap must produce supportive feedback, never a NaN score.
+    if (heldMs < 700) {
+      recorderRef.current.stop();
+      playIncorrect();
+      setResult({
+        verdict: "retry", accuracy: 0,
+        message: lang === "fr"
+          ? "Trop court ! Maintiens le bouton et dis toute la phrase. 🎤"
+          : "Too short! Hold the button and say the whole phrase. 🎤",
+        transcription: "—",
+      });
+      return;
+    }
     setEvaluating(true);
     const { wavBase64 } = recorderRef.current.stop();
+    // v3.0 §5.1 — ASR attempts (voice interaction tracking)
+    trackEvent("asr_attempt", { lessonId: plan?.lesson_id, lang: activePrompt?.isGf ? voiceLang : lang === "fr" ? "fr" : "en" });
     try {
       const res = await fetch("/api/pronunciation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ audioBase64: wavBase64, target: activePrompt.target, lang: activePrompt.isGf ? voiceLang : lang === "fr" ? "fr" : "en" }),
       });
+      if (!res.ok) throw new Error("evaluation unavailable");
       const data = await res.json();
+      const accuracy = typeof data.accuracy === "number" && Number.isFinite(data.accuracy) ? data.accuracy : 0;
       const r = {
         verdict: data.verdict as string,
-        accuracy: data.accuracy as number,
+        accuracy,
         message: lang === "fr" ? data.messageFr : data.message,
         transcription: data.transcription || "",
         toneAccuracy: (data.tone_accuracy ?? null) as number | null,
@@ -367,18 +396,31 @@ export function LessonPlayer() {
                 })}
               </div>
             )}
-            <CharacterBubble
-              characterId={va.hook.character}
-              text={hookText}
-              textFr={hookText}
-              lang={hookLang === "fr" ? "fr" : "en"}
-              speakLang={hookLang}
-              onSpeakDone={() => setHookDone(true)}
-            />
+            {hookIsPlaceholder ? (
+              // v3.0 Directive 9 gate — Bayangi placeholder: documented-by-natives notice,
+              // never synthesized placeholder audio.
+              <div className="rounded-2xl border-2 border-dashed border-lime-400 bg-lime-50/80 p-4" role="status">
+                <p className="text-sm font-extrabold text-lime-900">🪶 Bayangi (Banyangi) — {t("pendingDocumentation", lang)}</p>
+                <p className="mt-1 text-xs leading-relaxed text-lime-800">{hookText}</p>
+                <p className="mt-2 text-[11px] font-semibold text-lime-700">
+                  ⏳ {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+                </p>
+              </div>
+            ) : (
+              <CharacterBubble
+                characterId={va.hook.character}
+                text={hookText}
+                textFr={hookText}
+                lang={hookLang === "fr" ? "fr" : "en"}
+                speakLang={hookLang}
+                onSpeakDone={() => setHookDone(true)}
+              />
+            )}
             {isGrassfields(hookLang) && (
               <p className="rounded-xl bg-lime-50 px-3 py-2 text-[11px] font-semibold text-lime-900">
                 🪶 GACL tone-marked {VOICE_LANGUAGES.find((v) => v.id === hookLang)?.label || hookLang} · {t("codeSwitch", lang)}
-                {plan.native_speaker_review === "validated" && <span className="ml-1">· ✅ {t("nativeReview", lang)}</span>}
+                {hookIsPlaceholder && <span className="ml-1">· ⏳ {t("pendingDocumentation", lang)}</span>}
+                {!hookIsPlaceholder && plan.native_speaker_review === "validated" && <span className="ml-1">· ✅ {t("nativeReview", lang)}</span>}
               </p>
             )}
             <div className="rounded-2xl border-2 border-amber-200 bg-white p-4">
@@ -453,18 +495,35 @@ export function LessonPlayer() {
                 {lang === "fr" ? "Objectif" : "Target"}: “{activePrompt.target}”
               </p>
 
-              <div className="my-5 flex flex-col items-center gap-2">
-                <MicButton
-                  recording={recording}
-                  disabled={evaluating}
-                  onDown={startRecording}
-                  onUp={stopRecording}
-                  label={recording ? t("stop", lang) : t("holdToTalk", lang)}
-                />
-                <span className="text-xs font-semibold text-rose-500">
-                  {recording ? t("speakNow", lang) : evaluating ? t("listening", lang) : t("holdToTalk", lang)}
-                </span>
-              </div>
+              {isPlaceholderPhrase(activePrompt.prompt) ? (
+                // v3.0 Directive 9 gate — Bayangi practice placeholder: no synthetic
+                // evaluation of undocumented phrases; learner is routed to an attested language.
+                <div className="my-5 rounded-xl border-2 border-dashed border-lime-400 bg-lime-50/80 p-4 text-left" role="status">
+                  <p className="text-sm font-bold text-lime-900">⏳ {t("pendingDocumentation", lang)}</p>
+                  <p className="mt-1 text-xs leading-relaxed text-lime-800">{activePrompt.prompt}</p>
+                  <p className="mt-2 text-[11px] font-semibold text-lime-700">
+                    📋 {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+                  </p>
+                  <div className="mt-3 flex justify-end">
+                    <Button size="sm" className="h-9 bg-lime-700 text-white hover:bg-lime-800" onClick={nextPrompt}>
+                      {promptIdx < prompts.length - 1 ? `${t("next", lang)} →` : `${t("apply", lang)} →`}
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="my-5 flex flex-col items-center gap-2">
+                  <MicButton
+                    recording={recording}
+                    disabled={evaluating}
+                    onDown={startRecording}
+                    onUp={stopRecording}
+                    label={recording ? t("stop", lang) : t("holdToTalk", lang)}
+                  />
+                  <span className="text-xs font-semibold text-rose-500">
+                    {recording ? t("speakNow", lang) : evaluating ? t("listening", lang) : t("holdToTalk", lang)}
+                  </span>
+                </div>
+              )}
 
               {result && (
                 <div
@@ -556,15 +615,31 @@ export function LessonPlayer() {
               </div>
             ) : (
               <div className="rounded-2xl border-2 border-purple-200 bg-white p-5 text-center">
-                <p className="mb-3 text-sm text-purple-800">
-                  {lang === "fr"
-                    ? "Défi vocal : enregistre-toi en appliquant ce que tu as appris !"
-                    : plan.gamification.voice_challenge.description}
-                </p>
-                <p className="mb-4 text-lg font-extrabold text-purple-900">
-                  🎙️ {shown(plan.gamification.voice_challenge.description, plan.gamification.voice_challenge.descriptionFr)}
-                </p>
-                <VoiceChallengeRecorder onDone={() => { playXp(); setPhase("celebrate"); }} lang={lang} />
+                {voiceLang === "byv" && plan.gamification.voice_challenge.descriptionByv && isPlaceholderPhrase(plan.gamification.voice_challenge.descriptionByv) ? (
+                  // v3.0 Directive 9 gate — Bayangi voice challenge pending documentation
+                  <div role="status">
+                    <p className="mb-3 text-sm font-extrabold text-purple-900">⏳ {t("pendingDocumentation", lang)}</p>
+                    <p className="mb-3 text-sm leading-relaxed text-purple-800">{plan.gamification.voice_challenge.descriptionByv}</p>
+                    <p className="mb-4 text-[11px] font-semibold text-purple-600">
+                      📋 {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+                    </p>
+                    <Button onClick={() => { playXp(); setPhase("celebrate"); }} className="h-12 w-full bg-purple-700 text-base font-extrabold hover:bg-purple-800">
+                      {t("complete", lang)} →
+                    </Button>
+                  </div>
+                ) : (
+                  <>
+                    <p className="mb-3 text-sm text-purple-800">
+                      {lang === "fr"
+                        ? "Défi vocal : enregistre-toi en appliquant ce que tu as appris !"
+                        : plan.gamification.voice_challenge.description}
+                    </p>
+                    <p className="mb-4 text-lg font-extrabold text-purple-900">
+                      🎙️ {shown(plan.gamification.voice_challenge.description, plan.gamification.voice_challenge.descriptionFr)}
+                    </p>
+                    <VoiceChallengeRecorder onDone={() => { playXp(); setPhase("celebrate"); }} lang={lang} />
+                  </>
+                )}
               </div>
             )}
           </section>
@@ -607,7 +682,7 @@ export function LessonPlayer() {
               <ul className="space-y-1 text-xs text-amber-800">
                 {plan.assessment.criteria.map((c) => <li key={c}>✓ {c}</li>)}
                 <li className="pt-1 font-bold">
-                  {lang === "fr" ? "Score ASR moyen" : "Average ASR score"}: {scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : "—"}%
+                  {lang === "fr" ? "Score ASR moyen" : "Average ASR score"}: {(() => { const ok = scores.filter(Number.isFinite); return ok.length ? Math.round(ok.reduce((a, b) => a + b, 0) / ok.length) : "—"; })()}%
                 </li>
               </ul>
               <p className="mt-2 text-[11px] text-amber-600">
@@ -616,6 +691,7 @@ export function LessonPlayer() {
               {plan.offline_capability.grassfields_language_packs && (
                 <p className="mt-1 text-[11px] font-semibold text-lime-800">
                   🪶 {t("languagePacks", lang)}: {plan.offline_capability.grassfields_language_packs.bkm} · {plan.offline_capability.grassfields_language_packs.lns}
+                  {plan.offline_capability.grassfields_language_packs.byv && <> · {plan.offline_capability.grassfields_language_packs.byv}</>}
                 </p>
               )}
             </div>

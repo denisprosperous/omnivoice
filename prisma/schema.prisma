@@ -17,7 +17,7 @@ model Learner {
   stage          String   @default("class3") // kg | class1..class6 | form1..form7
   iscedLevel     Int      @default(1) // 0-3
   language       String   @default("en") // UI language: en | fr
-  voiceLang      String   @default("en") // voice/lesson language: en | fr | bkm | lns | bfd | oku | bbk | mgo | ngi
+  voiceLang      String   @default("en") // voice/lesson language: en | fr | bkm | lns | byv | bfd | oku | bbk | mgo | ngi (v3.0: 8 Grassfields)
   xp             Int      @default(0)
   streak         Int      @default(0)
   lastActiveDate String   @default("") // yyyy-mm-dd
@@ -153,4 +153,43 @@ model ActivityEvent {
   type      String // lesson_complete | badge_earned | level_up | project_phase | voice_practice
   payload   String   @default("{}")
   createdAt DateTime @default(now())
+}
+
+// ============ PREVIEW DEPLOYMENT (v3.0) ============
+
+// §5.2 Embedded feedback widget — stakeholder preview feedback
+model FeedbackSubmission {
+  id               String   @id @default(cuid())
+  rating           Int      // overall rating 1-5
+  voiceQuality     String   @default("good") // excellent | good | needs_improvement
+  languageAccuracy String   @default("mostly_accurate") // accurate | mostly_accurate | needs_review
+  comments         String   @default("")
+  createdAt        DateTime @default(now())
+}
+
+// §5.1 Embedded preview analytics — custom engagement events
+model PreviewEvent {
+  id        String   @id @default(cuid())
+  type      String // page_view | voice_language_selection | lesson_completion | asr_attempt | feedback_open | profile_creation
+  props     String   @default("{}") // JSON payload (language codes, lesson ids, scores)
+  createdAt DateTime @default(now())
+}
+
+// Provision for adding more dialects/local languages — community/linguist
+// submissions enter as DRAFT, merge into the runtime registry, and graduate
+// to ACTIVE after data collection + native-speaker validation.
+model LanguageDraft {
+  id         String   @id @default(cuid())
+  code       String   @unique // 3-letter ISO-style code
+  name       String
+  nativeName String   @default("")
+  iso        String   @default("")
+  region     String   @default("")
+  division   String   @default("")
+  speakers   String   @default("")
+  tones      String   @default("Tonal")
+  priority   String   @default("MEDIUM") // HIGH | MEDIUM | LOW
+  notes      String   @default("")
+  status     String   @default("DRAFT") // DRAFT | IN_REVIEW | ACTIVE
+  createdAt  DateTime @default(now())
 }

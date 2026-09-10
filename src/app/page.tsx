@@ -16,8 +16,10 @@ import { ProfileView } from "@/components/omnivoice/profile-view";
 import { TeacherView } from "@/components/omnivoice/teacher-view";
 import { ParentView, SupervisorView } from "@/components/omnivoice/parent-supervisor";
 import { LibraryView } from "@/components/omnivoice/library-view";
+import { FeedbackWidget } from "@/components/omnivoice/feedback-widget";
 import { useLearnerSync } from "@/components/omnivoice/use-learner-sync";
 import { stopAmbient, setMuted } from "@/lib/sound-engine";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Home() {
   const { view, learner, soundOn, setOnline } = useApp();
@@ -44,6 +46,11 @@ export default function Home() {
   // Stop ambient loops when leaving lesson contexts
   React.useEffect(() => {
     if (view !== "lesson") stopAmbient();
+  }, [view]);
+
+  // v3.0 §5.1 — embedded preview analytics: page views per SPA screen
+  React.useEffect(() => {
+    trackEvent("page_view", { view });
   }, [view]);
 
   // Default landing to role home when profile already exists
@@ -85,6 +92,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       {learner && <Hud />}
       <div className="flex-1">{renderView()}</div>
+      <FeedbackWidget />
       {learner && (
         <footer className="mt-auto border-t-2 border-amber-200 bg-white py-3 text-center text-[11px] text-amber-700/80">
           🦉 OmniVoice Academy — {learner.role === "learner" ? "Every lesson is a quest. Every voice is heard." : "Teacher • Parent • Supervisor tools"} · MINEDUB CBA · ISCED 0-3 · CEFR · IB

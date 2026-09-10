@@ -1,10 +1,14 @@
 "use client";
 // Parent — Progress Tracking (Master 1.4/5.3): engagement, outcomes, voice stats
 // Supervisor — Monitoring, Evaluation, Quality Assurance + analytics
+// v3.0 — Preview Deployment & Live Demo Edition: audit corrections panel,
+// preview feature checklist, golden paths, success criteria, live preview
+// analytics (§5.1) + feedback summary (§5.2), v3.0 build audit + roadmap.
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { PatternBand, Spinner, StatPill } from "./shared";
+import { PreviewOpsPanel } from "./preview-ops";
 import { cn } from "@/lib/utils";
 
 interface LearnerReport {
@@ -185,6 +189,8 @@ export function SupervisorView() {
               </ul>
             </div>
 
+            <PreviewOpsPanel />
+
             <BuildAuditReport lang={lang} />
           </>
         )}
@@ -194,17 +200,27 @@ export function SupervisorView() {
 }
 
 // ============================================================================
-// v2.0 BUILD AUDIT REPORT + ROADMAP + SUCCESS METRICS (Master Prompt v2.0:
-// Critical Build Audit, §VIII Roadmap, §IX Success Metrics incl. Grassfields)
+// v3.0 BUILD AUDIT REPORT + ROADMAP + SUCCESS METRICS (Master Prompt v2.0:
+// Critical Build Audit, §VIII Roadmap, §IX Success Metrics incl. Grassfields;
+// upgraded to the v3.0 Preview Deployment & Live Demo Edition — corrected
+// 8-language matrix with Kom/Lamnso' separate and Bayangi added)
 // ============================================================================
 function BuildAuditReport({ lang }: { lang: string }) {
   const fr = lang === "fr";
   const audit: Array<{ phase: string; task: string; status: "done" | "partial" | "todo" }> = [
+    { phase: "Preview v3.0", task: "CORRECTION 1 — Kom (bkm) and Lamnso' (lns) tracked as separate entries (ASR/TTS/content/audit/metrics)", status: "done" },
+    { phase: "Preview v3.0", task: "CORRECTION 2 — Bayangi (byv) added as 8th language: placeholder content + 500h data collection plan (SIL Cameroon, Q2 2025)", status: "done" },
+    { phase: "Preview v3.0", task: "CORRECTION 3 — corrected 8-language matrix on every surface (picker, HUD, hook switcher, library, registry, audit)", status: "done" },
+    { phase: "Preview v3.0", task: "Lesson hook switcher — EN → FR → Kom → Lamnso' → Bayangi (Directive 9 placeholder states)", status: "done" },
+    { phase: "Preview v3.0", task: "Language Registry Console — add more dialects/local languages (DRAFT → IN_REVIEW → ACTIVE pipeline)", status: "done" },
+    { phase: "Preview v3.0", task: "Embedded preview analytics (§5.1): page views, voice-language selections, lesson completions, ASR attempts", status: "done" },
+    { phase: "Preview v3.0", task: "Embedded feedback widget (§5.2): rating, voice quality, language accuracy, comments", status: "done" },
+    { phase: "Preview v3.0", task: "Golden paths verified end-to-end (Learner 10 / Teacher 6 / Supervisor 5)", status: "done" },
     { phase: "Phase 1: Foundation", task: "Development environment (Next.js + Tailwind, DB)", status: "done" },
     { phase: "Phase 1: Foundation", task: "ASR integration (base ASR; Simba registry + fine-tune hooks for Grassfields)", status: "partial" },
     { phase: "Phase 1: Foundation", task: "TTS integration (neural + GACL tone-rules; F5-TTS clone pending native reference)", status: "partial" },
     { phase: "Phase 1: Foundation", task: "Frontend — Curriculum Navigator (map-based quest board)", status: "done" },
-    { phase: "Phase 1: Foundation", task: "Database schema (learner, curriculum, lessons, gamification, PBL, assessments)", status: "done" },
+    { phase: "Phase 1: Foundation", task: "Database schema (learner, curriculum, lessons, gamification, PBL, assessments, preview analytics/feedback/language drafts)", status: "done" },
     { phase: "Phase 1: Foundation", task: "Kom ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
     { phase: "Phase 1: Foundation", task: "Lamnso' ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
     { phase: "Phase 2: Core Features", task: "Lesson Plan Generator (§7.3 v2.0 format, KG→High School)", status: "done" },
@@ -217,16 +233,17 @@ function BuildAuditReport({ lang }: { lang: string }) {
     { phase: "Phase 3: Integration", task: "Module integration (unified SPA: navigator, player, projects, library, profiles)", status: "done" },
     { phase: "Phase 3: Integration", task: "Closed pilot (5 schools Littoral + 5 North West)", status: "todo" },
     { phase: "Phase 3: Integration", task: "Grassfields Language Validation (native speakers, 90% approval target)", status: "todo" },
-    { phase: "Phase 4: Launch", task: "Production deployment", status: "partial" },
+    { phase: "Phase 3: Integration", task: "Bayangi data collection (500h, SIL Cameroon / Local Community, Q2 2025) → graduation to ACTIVE", status: "todo" },
+    { phase: "Phase 4: Launch", task: "Production deployment (public preview live; production hardening next)", status: "partial" },
     { phase: "Phase 4: Launch", task: "Content expansion (Classes 1-2, Forms 1-5, High School modules)", status: "todo" },
     { phase: "Phase 4: Launch", task: "International framework mapping (IB/Cambridge/CEFR across levels)", status: "done" },
-    { phase: "Phase 4: Launch", task: "Additional Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie)", status: "todo" },
+    { phase: "Phase 4: Launch", task: "Additional Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie) — via Language Registry pipeline", status: "todo" },
   ];
   const roadmap: Array<{ phase: string; weeks: string; focus: string }> = [
     { phase: "Phase 1 — Foundation", weeks: "Weeks 1-2", focus: "Environment, ASR/TTS, Kom + Lamnso' voice, frontend, database" },
-    { phase: "Phase 2 — Core Features", weeks: "Weeks 3-6", focus: "Lesson generator, voice pipeline, content, gamification, assessment, Grassfields content + cloning" },
-    { phase: "Phase 3 — Integration & Testing", weeks: "Weeks 7-8", focus: "Unified platform, closed pilots (Littoral + North West), native-speaker validation" },
-    { phase: "Phase 4 — Launch & Expansion", weeks: "Weeks 9+", focus: "Launch, content expansion, IB/Cambridge mapping, remaining 5 Grassfields languages" },
+    { phase: "Phase 2 — Core Features", weeks: "Weeks 3-6", focus: "Lesson generator, voice pipeline, content, gamification, assessment, Grassfields content + cloning (incl. Bayangi placeholder)" },
+    { phase: "Phase 3 — Integration & Testing", weeks: "Weeks 7-8", focus: "Unified platform, closed pilots (Littoral + North West), native-speaker validation, Bayangi data collection (Q2 2025)" },
+    { phase: "Phase 4 — Launch & Expansion", weeks: "Weeks 9+", focus: "Launch, content expansion, IB/Cambridge mapping, planned Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie) via the Registry pipeline" },
   ];
   const metrics: Array<{ m: string; target: string }> = [
     { m: "Learner engagement", target: "80% daily active use" },
@@ -252,8 +269,8 @@ function BuildAuditReport({ lang }: { lang: string }) {
         <h3 className="mb-2 text-sm font-extrabold text-amber-900">🧾 {t("buildAudit", lang)}</h3>
         <p className="mb-2 text-[11px] text-amber-700">
           {fr
-            ? "Audit de construction v2.0 — statut de chaque tâche stipulée, incluant le Pack d'extension Grassfields."
-            : "v2.0 build audit — status of every stipulated task, including the Grassfields Expansion Pack."}
+            ? "Audit de construction v3.0 — corrections d'audit (Kom ≠ Lamnso', Bayangi ajoutée, matrice à 8 langues) + statut de chaque tâche stipulée."
+            : "v3.0 build audit — audit corrections (Kom ≠ Lamnso', Bayangi added, 8-language matrix) + status of every stipulated task."}
         </p>
         <div className="max-h-80 overflow-y-auto rounded-xl border border-amber-100">
           <table className="w-full min-w-[520px] text-left text-xs">
