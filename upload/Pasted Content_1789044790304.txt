@@ -1,0 +1,1137 @@
+# MASTER NEGENTROPIC PROMPT: OMNIVOICE NATURAL VOICE PIPELINE & PRACTICAL LEARNING EXTENSION
+
+## CAMEROON PRIMARY EDUCATION AI PLATFORM (OMNIVOICE v4.0)
+
+### OPEN-SOURCE VOICE STACK + DIY PRACTICAL LEARNING INTEGRATION
+
+---
+
+## ⚠️ CRITICAL VOICE QUALITY CORRECTION
+
+### Problem Statement
+
+The current TTS implementation (Edge-TTS) produces **slow, unnatural, and robotic speech** that fails to engage young learners. This violates the OmniVoice mandate for "natural, culturally appropriate voice synthesis" and undermines the platform's pedagogical effectiveness.
+
+### Root Cause Analysis
+
+| Issue | Current Implementation | Impact |
+|-------|----------------------|--------|
+| **Robotic Voice** | Edge-TTS neural voices lack warmth | Learners disengage |
+| **Slow Pacing** | Default speaking rate too slow | Lessons feel tedious |
+| **No Emotion** | Flat prosody | No celebration excitement |
+| **No Voice Cloning** | Cannot create culturally authentic voices | Generic, foreign-sounding |
+| **Cascaded Pipeline** | Separate STT → LLM → TTS adds latency | Delayed responses feel unnatural |
+
+### Solution: Best-in-Class Open-Source Voice Stack
+
+Replace Edge-TTS with a **complete open-source voice pipeline** optimized for naturalness and speed:
+
+| Component | Current | NEW (v4.0) | Rationale |
+|-----------|---------|------------|-----------|
+| **TTS** | Edge-TTS | **Kokoro-82M** | Natural-sounding, 82M params, efficient |
+| **STT** | Simba-S | **Faster-Whisper** | 4× faster than Whisper, 99 languages |
+| **STS** | Cascaded | **Chroma-1.0 or MOSS-Speech** | True end-to-end speech-to-speech |
+| **Voice Cloning** | F5-TTS | **Kokoro + Chroma** | Culturally authentic voices |
+| **Pipeline** | Custom | **HuggingFace speech-to-speech** | Production-ready, modular |
+
+---
+
+## I. RECOMMENDED OPEN-SOURCE VOICE STACK
+
+### 1.1 Text-to-Speech (TTS): Kokoro-82M
+
+**Why Kokoro?**
+
+Kokoro is an open-source TTS model that transforms text into natural-sounding speech with remarkable efficiency. Despite its compact size of 82 million parameters, it delivers high-quality voice synthesis comparable to models ten times larger.
+
+**Key Features:**
+- **54 voices** across multiple languages (English, French, Japanese, Chinese, Hindi)
+- **Near real-time generation** on modern hardware
+- **Natural prosody** that sounds human, not robotic
+- **Voice cloning** via reference audio
+
+**Available Voices:**
+
+| Category | Voice IDs | Use Case |
+|----------|-----------|----------|
+| **American Female** | `af_bella`, `af_sarah`, `af_sky`, `af_nicole` | Child-friendly characters |
+| **American Male** | `am_adam`, `am_michael`, `am_liam`, `am_eric` | Teacher/guide voices |
+| **British Female** | `bf_emma`, `bf_alice`, `bf_isabella` | Formal narration |
+| **British Male** | `bm_george`, `bm_lewis`, `bm_daniel` | Authority figures |
+| **French** | `ff_siwis` | Français content |
+
+**Installation:**
+```bash
+# Clone Kokoro TTS repository
+git clone https://github.com/hexgrad/kokoro.git
+cd kokoro
+
+# Install dependencies
+pip install kokoro
+
+# Download models (~340MB)
+python -c "from kokoro import KPipeline; KPipeline(lang_code='a')"
+```
+
+**Python API:**
+```python
+from kokoro import KPipeline
+
+# Initialize pipeline
+pipeline = KPipeline(lang_code='a')  # 'a' for American English
+
+# Generate speech
+text = "À bwɛ̀, mwɛ̀n! Nà wù dà?"
+generator = pipeline(text, voice='af_bella', speed=1.0)
+
+# Save audio
+for i, (gs, ps, audio) in enumerate(generator):
+    import soundfile as sf
+    sf.write(f'output_{i}.wav', audio, 24000)
+```
+
+**Integration with Platform:**
+```python
+# server/services/kokoro_tts.py
+from kokoro import KPipeline
+import io
+import soundfile as sf
+
+class KokoroTTSService:
+    def __init__(self):
+        self.pipelines = {
+            'en': KPipeline(lang_code='a'),  # American English
+            'fr': KPipeline(lang_code='f'),  # French
+        }
+        self.default_voices = {
+            'en': 'af_bella',
+            'fr': 'ff_siwis',
+        }
+    
+    async def synthesize(
+        self,
+        text: str,
+        language: str = 'en',
+        voice: str = None,
+        speed: float = 1.0
+    ) -> bytes:
+        """Generate natural-sounding speech."""
+        pipeline = self.pipelines.get(language, self.pipelines['en'])
+        voice = voice or self.default_voices.get(language, 'af_bella')
+        
+        # Generate audio
+        generator = pipeline(text, voice=voice, speed=speed)
+        
+        # Collect audio chunks
+        audio_chunks = []
+        for _, _, audio in generator:
+            audio_chunks.append(audio)
+        
+        # Concatenate and convert to bytes
+        import numpy as np
+        full_audio = np.concatenate(audio_chunks)
+        
+        buffer = io.BytesIO()
+        sf.write(buffer, full_audio, 24000, format='WAV')
+        buffer.seek(0)
+        
+        return buffer.read()
+```
+
+### 1.2 Speech-to-Text (STT): Faster-Whisper
+
+**Why Faster-Whisper?**
+
+Faster-Whisper is a reimplementation of OpenAI's Whisper using CTranslate2. It runs up to **4× faster** than original Whisper, uses less RAM, and works seamlessly with Python.
+
+**Key Features:**
+- **99 languages** supported
+- **4× faster** than original Whisper
+- **Lower memory** usage
+- **GPU acceleration** available
+- **100% local** - no data leaves the server
+
+**Model Sizes:**
+
+| Model | Parameters | Use Case | Latency |
+|-------|------------|----------|---------|
+| `tiny` | 39M | Real-time | Lowest |
+| `base` | 74M | General | Low |
+| `small` | 244M | High accuracy | Medium |
+| `medium` | 769M | Professional | Higher |
+| `large` | 1550M | Best accuracy | Highest |
+
+**Installation:**
+```bash
+# Install Faster-Whisper
+pip install faster-whisper
+
+# Install audio processing dependencies
+pip install pydub
+sudo apt install ffmpeg  # Linux
+# brew install ffmpeg    # macOS
+```
+
+**Python API:**
+```python
+from faster_whisper import WhisperModel
+
+# Load model (use 'base' for balance of speed/accuracy)
+model = WhisperModel("base", device="cuda", compute_type="float16")
+
+# Transcribe audio
+segments, info = model.transcribe("learner_audio.wav", language="en")
+
+# Collect transcription
+transcription = " ".join([segment.text for segment in segments])
+print(f"Transcription: {transcription}")
+```
+
+**Integration with Platform:**
+```python
+# server/services/faster_whisper_stt.py
+from faster_whisper import WhisperModel
+
+class FasterWhisperSTTService:
+    def __init__(self):
+        # Load models for different languages
+        self.models = {
+            'base': WhisperModel("base", device="cuda", compute_type="float16"),
+            'small': WhisperModel("small", device="cuda", compute_type="float16"),
+        }
+    
+    async def transcribe(
+        self,
+        audio_bytes: bytes,
+        language: str = None,
+        model_size: str = 'base'
+    ) -> dict:
+        """Transcribe audio to text with language detection."""
+        # Save to temporary file
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as f:
+            f.write(audio_bytes)
+            audio_path = f.name
+        
+        # Transcribe
+        model = self.models.get(model_size, self.models['base'])
+        segments, info = model.transcribe(
+            audio_path,
+            language=language,  # None for auto-detect
+            beam_size=5,
+            word_timestamps=True
+        )
+        
+        # Collect results
+        transcription = " ".join([segment.text for segment in segments])
+        
+        return {
+            "text": transcription.strip(),
+            "language": info.language,
+            "language_probability": info.language_probability,
+            "duration": info.duration
+        }
+```
+
+### 1.3 Speech-to-Speech (STS): Chroma-1.0 or MOSS-Speech
+
+#### Option A: Chroma-1.0 (Recommended for Voice Cloning)
+
+Chroma-1.0 is an open-source end-to-end speech conversation model developed by FlashLabs, focusing on real-time speech generation, customized voice cloning, and end-to-end architecture.
+
+**Key Features:**
+- **Real-time speech generation** with low latency
+- **Customized voice cloning** capability
+- **End-to-end architecture** - complete speech-to-speech workflow
+- **Speech reasoning** - understands and processes speech content
+
+**Architecture:**
+- **Reasoner:** Based on Qwen2.5-Omni-3B
+- **Backbone:** Based on Llama3 (16 layers, 2048 hidden size)
+- **Codec:** Mimi (24kHz sampling rate)
+
+**Installation:**
+```bash
+# Pull Docker image
+docker pull flashlabs/chroma:latest
+
+# Download model weights
+huggingface-cli download FlashLabs/Chroma-4B --local-dir Chroma-4B
+
+# Clone SGLang version
+git clone https://github.com/FlashLabs-AI-Corp/Chroma-SGLang.git
+cd Chroma-SGLang
+
+# Run server
+docker run -d \
+  --gpus all \
+  -p 8000:8000 \
+  -v "your_Chroma-SGLang_path":/app/Chroma-SGLang \
+  -v "your_chroma_path":/model \
+  -e CHROMA_MODEL_PATH=/model \
+  flashlabs/chroma:latest \
+  /opt/conda/bin/python -m uvicorn api_server:app \
+  --host 0.0.0.0 \
+  --port 8000
+```
+
+**Python Client:**
+```python
+import requests
+import base64
+
+url = "http://localhost:8000/v1/chat/completions"
+headers = {"Content-Type": "application/json"}
+
+payload = {
+    "model": "chroma",
+    "messages": [
+        {"role": "system", "content": "You are Kwe, a wise owl guide for Cameroonian children."},
+        {"role": "user", "content": [{"type": "audio", "audio": "learner_question.wav"}]}
+    ],
+    "max_tokens": 1000,
+    "return_audio": True
+}
+
+response = requests.post(url, json=payload, headers=headers)
+result = response.json()
+
+if result.get("audio"):
+    audio_data = base64.b64decode(result["audio"])
+    with open("response.wav", "wb") as f:
+        f.write(audio_data)
+```
+
+#### Option B: MOSS-Speech (True Speech-to-Speech Without Text Guidance)
+
+MOSS-Speech introduces true end-to-end speech interaction. Unlike cascaded pipelines or text-guided models, it directly generates speech without first producing text. This overcomes the limitation of generated speech being constrained by a text bottleneck, enabling more natural and efficient speech-to-speech dialogue.
+
+**Key Features:**
+- **True Speech-to-Speech Modeling:** No text guidance required
+- **Layer-Splitting Architecture:** Integrates modality-specific layers on top of pretrained text LLM backbones
+- **Frozen Pre-Training Strategy:** Preserves LLM reasoning while enhancing speech understanding and generation
+- **Expressive & Efficient:** Maintains paralinguistic cues often lost in cascaded pipelines, such as tone, emotion, and prosody
+
+**Installation:**
+```bash
+# Clone repository
+git clone https://github.com/OpenMOSS/MOSS-Speech
+cd MOSS-Speech
+
+# Install dependencies
+pip install -r requirements.txt
+git submodule update --init --recursive
+
+# Launch web demo
+python3 gradio_demo.py
+```
+
+**Python API:**
+```python
+import os
+from dataclasses import astuple
+import torch
+import torchaudio
+from transformers import AutoModel, AutoProcessor, GenerationConfig
+
+model_path = "fnlp/MOSS-Speech"
+codec_path = "fnlp/MOSS-Speech-Codec"
+
+processor = AutoProcessor.from_pretrained(
+    model_path, 
+    codec_path=codec_path, 
+    device="cuda", 
+    trust_remote_code=True
+)
+
+model = AutoModel.from_pretrained(
+    model_path, 
+    trust_remote_code=True, 
+    device_map="cuda"
+).eval()
+
+messages = [
+    {"role": "system", "content": "You are a helpful voice assistant for Cameroonian children."},
+    {"role": "user", "content": "À bwɛ̀! Nà wù dà?"}
+]
+
+encoded_inputs = processor(messages, "audio")
+
+with torch.inference_mode():
+    token_ids = model.generate(
+        input_ids=encoded_inputs["input_ids"].to("cuda"),
+        attention_mask=encoded_inputs["attention_mask"].to("cuda"),
+    )
+
+results = processor.decode(token_ids, "audio")
+audio, text, sample_rate = astuple(results[0])
+
+# Save audio
+torchaudio.save("response.wav", audio, sample_rate)
+```
+
+### 1.4 Complete Pipeline: HuggingFace Speech-to-Speech
+
+For a **production-ready, modular solution**, use the HuggingFace `speech-to-speech` codebase. The `speech-to-speech` codebase is a modular framework for building local voice agents using open-source models. Its primary goal is to implement a low-latency, cascaded speech-to-speech pipeline.
+
+**Architecture Components:**
+- **VAD (Voice Activity Detection):** Silero VAD v5
+- **STT (Speech-to-Text):** Whisper, Parakeet TDT, Faster-Whisper
+- **LLM (Language Model):** Hugging Face Transformers, MLX-LM, any OpenAI-compatible API
+- **TTS (Text-to-Speech):** Qwen3-TTS, Kokoro, Pocket TTS, ChatTTS
+
+**Installation:**
+```bash
+# Clone repository
+git clone https://github.com/huggingface/speech-to-speech
+cd speech-to-speech
+
+# Install dependencies
+pip install -e .
+```
+
+**Run Complete Pipeline:**
+```bash
+# Start the full speech-to-speech pipeline
+speech-to-speech serve \
+    --stt whisper \
+    --llm transformers \
+    --tts kokoro \
+    --host 127.0.0.1 \
+    --port 8000
+```
+
+**Configuration:**
+```yaml
+# config.yaml
+vad:
+  model: silero-vad
+  threshold: 0.5
+
+stt:
+  backend: faster-whisper
+  model: base
+  language: auto
+
+llm:
+  backend: transformers
+  model: meta-llama/Llama-3.2-3B-Instruct
+  max_tokens: 256
+
+tts:
+  backend: kokoro
+  voice: af_bella
+  speed: 1.0
+```
+
+---
+
+## II. PLATFORM INTEGRATION ARCHITECTURE
+
+### 2.1 Updated Voice Pipeline Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    LEARNER INTERACTION                           │
+│                    (Audio Input)                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    VAD (Silero)                                  │
+│         Detects speech start/end, filters silence               │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    STT (Faster-Whisper)                          │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │  • Transcribes learner speech                            │    │
+│  │  • Detects language (EN/FR/Kom/Lamnso')                  │    │
+│  │  • Returns text + confidence                             │    │
+│  └─────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    LLM (Content Generator)                       │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │  • Generates pedagogically appropriate response          │    │
+│  │  • Adapts to learner's level and context                 │    │
+│  │  • Includes tone-aware feedback for Grassfields          │    │
+│  └─────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    TTS (Kokoro-82M)                              │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │  • Natural-sounding voice synthesis                      │    │
+│  │  • Character voices (Kwe, Mbi, Ngo, Kong)                │    │
+│  │  • Emotional expression (celebratory, encouraging)       │    │
+│  │  • Voice cloning for Grassfields languages               │    │
+│  └─────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    AUDIO OUTPUT                                  │
+│                    (Natural, Warm, Culturally Authentic)         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 2.2 Voice Service Registry
+
+```python
+# server/services/voice_registry.py
+from enum import Enum
+from dataclasses import dataclass
+from typing import Optional
+
+class TTSBackend(Enum):
+    KOKORO = "kokoro"
+    QWEN3_TTS = "qwen3-tts"
+    CHATTTS = "chattts"
+    POCKET_TTS = "pocket-tts"
+
+class STTBackend(Enum):
+    FASTER_WHISPER = "faster-whisper"
+    WHISPER_TRANSFORMERS = "whisper-transformers"
+    PARAKEET = "parakeet"
+
+class STSBackend(Enum):
+    CHROMA = "chroma"
+    MOSS_SPEECH = "moss-speech"
+    CASCADED = "cascaded"
+
+@dataclass
+class VoiceConfig:
+    tts_backend: TTSBackend
+    stt_backend: STTBackend
+    sts_backend: STSBackend
+    tts_voice: str
+    tts_speed: float
+    stt_model: str
+    stt_language: Optional[str]
+
+class VoiceRegistry:
+    """Central registry for all voice services."""
+    
+    # Language-specific configurations
+    LANGUAGE_CONFIGS = {
+        "en": VoiceConfig(
+            tts_backend=TTSBackend.KOKORO,
+            stt_backend=STTBackend.FASTER_WHISPER,
+            sts_backend=STSBackend.CHROMA,
+            tts_voice="af_bella",
+            tts_speed=1.0,
+            stt_model="base",
+            stt_language="en"
+        ),
+        "fr": VoiceConfig(
+            tts_backend=TTSBackend.KOKORO,
+            stt_backend=STTBackend.FASTER_WHISPER,
+            sts_backend=STSBackend.CHROMA,
+            tts_voice="ff_siwis",
+            tts_speed=0.95,
+            stt_model="base",
+            stt_language="fr"
+        ),
+        "bkm": VoiceConfig(  # Kom
+            tts_backend=TTSBackend.KOKORO,  # With voice cloning
+            stt_backend=STTBackend.FASTER_WHISPER,
+            sts_backend=STSBackend.CHROMA,
+            tts_voice="kom_native",  # Custom cloned voice
+            tts_speed=0.9,  # Slightly slower for tonal accuracy
+            stt_model="small",  # Higher accuracy for tonal
+            stt_language="bkm"
+        ),
+        "lns": VoiceConfig(  # Lamnso'
+            tts_backend=TTSBackend.KOKORO,
+            stt_backend=STTBackend.FASTER_WHISPER,
+            sts_backend=STSBackend.CHROMA,
+            tts_voice="lamnso_native",
+            tts_speed=0.9,
+            stt_model="small",
+            stt_language="lns"
+        ),
+        "byv": VoiceConfig(  # Bayangi
+            tts_backend=TTSBackend.KOKORO,
+            stt_backend=STTBackend.FASTER_WHISPER,
+            sts_backend=STSBackend.CHROMA,
+            tts_voice="bayangi_native",  # Pending data collection
+            tts_speed=0.9,
+            stt_model="small",
+            stt_language="byv"
+        ),
+    }
+    
+    def get_config(self, language: str) -> VoiceConfig:
+        """Get voice configuration for a language."""
+        return self.LANGUAGE_CONFIGS.get(language, self.LANGUAGE_CONFIGS["en"])
+```
+
+### 2.3 Unified Voice Service
+
+```python
+# server/services/unified_voice.py
+from typing import Optional
+import numpy as np
+
+class UnifiedVoiceService:
+    """Complete voice pipeline: STT → LLM → TTS with STS option."""
+    
+    def __init__(self):
+        # Initialize STT
+        from faster_whisper import WhisperModel
+        self.stt_models = {
+            "base": WhisperModel("base", device="cuda", compute_type="float16"),
+            "small": WhisperModel("small", device="cuda", compute_type="float16"),
+        }
+        
+        # Initialize TTS
+        from kokoro import KPipeline
+        self.tts_pipelines = {
+            "en": KPipeline(lang_code='a'),
+            "fr": KPipeline(lang_code='f'),
+        }
+        
+        # Initialize STS (Chroma)
+        self.chroma_url = "http://localhost:8000/v1/chat/completions"
+    
+    async def speech_to_text(
+        self,
+        audio_bytes: bytes,
+        language: Optional[str] = None,
+        model_size: str = "base"
+    ) -> dict:
+        """Convert speech to text."""
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as f:
+            f.write(audio_bytes)
+            audio_path = f.name
+        
+        model = self.stt_models.get(model_size, self.stt_models["base"])
+        segments, info = model.transcribe(
+            audio_path,
+            language=language,
+            beam_size=5,
+            word_timestamps=True
+        )
+        
+        transcription = " ".join([seg.text for seg in segments])
+        
+        return {
+            "text": transcription.strip(),
+            "language": info.language,
+            "confidence": info.language_probability,
+        }
+    
+    async def text_to_speech(
+        self,
+        text: str,
+        language: str = "en",
+        voice: Optional[str] = None,
+        speed: float = 1.0
+    ) -> bytes:
+        """Convert text to natural speech."""
+        pipeline = self.tts_pipelines.get(language, self.tts_pipelines["en"])
+        
+        # Default voices per language
+        default_voices = {
+            "en": "af_bella",
+            "fr": "ff_siwis",
+        }
+        voice = voice or default_voices.get(language, "af_bella")
+        
+        # Generate audio
+        generator = pipeline(text, voice=voice, speed=speed)
+        
+        audio_chunks = []
+        for _, _, audio in generator:
+            audio_chunks.append(audio)
+        
+        full_audio = np.concatenate(audio_chunks)
+        
+        import io
+        import soundfile as sf
+        buffer = io.BytesIO()
+        sf.write(buffer, full_audio, 24000, format='WAV')
+        buffer.seek(0)
+        
+        return buffer.read()
+    
+    async def speech_to_speech(
+        self,
+        audio_bytes: bytes,
+        language: str = "en",
+        character: str = "kwe"
+    ) -> bytes:
+        """Complete speech-to-speech pipeline."""
+        import requests
+        import base64
+        import tempfile
+        
+        # Save input audio
+        with tempfile.NamedTemporaryFile(suffix='.wav', delete=False) as f:
+            f.write(audio_bytes)
+            audio_path = f.name
+        
+        # Call Chroma STS
+        payload = {
+            "model": "chroma",
+            "messages": [
+                {"role": "system", "content": self._get_character_prompt(character)},
+                {"role": "user", "content": [{"type": "audio", "audio": audio_path}]}
+            ],
+            "max_tokens": 500,
+            "return_audio": True
+        }
+        
+        response = requests.post(self.chroma_url, json=payload)
+        result = response.json()
+        
+        if result.get("audio"):
+            return base64.b64decode(result["audio"])
+        else:
+            # Fallback to cascaded pipeline
+            stt_result = await self.speech_to_text(audio_bytes, language)
+            response_text = await self._generate_response(stt_result["text"], character)
+            return await self.text_to_speech(response_text, language)
+    
+    def _get_character_prompt(self, character: str) -> str:
+        """Get system prompt for a character."""
+        prompts = {
+            "kwe": "You are Kwe, a wise owl guide for Cameroonian children. Speak warmly and encouragingly.",
+            "mbi": "You are Mbi, a curious monkey. Speak playfully and energetically.",
+            "ngo": "You are Ngo, a brave girl from the Grassfields. Speak confidently and clearly.",
+            "kong": "You are Kong, a resourceful boy from the coast. Speak adventurously and friendly."
+        }
+        return prompts.get(character, prompts["kwe"])
+```
+
+---
+
+## III. PRACTICAL DIY LEARNING INTEGRATION
+
+### 3.1 DIY Learning Philosophy
+
+The platform must provide **hands-on, practical learning experiences** that reinforce digital lessons with physical activities. Every lesson should include a **"DIY Practical"** component where learners create, build, or experiment with locally available materials.
+
+### 3.2 DIY Learning Framework
+
+| Lesson Type | DIY Component | Materials | Duration |
+|-------------|---------------|-----------|----------|
+| **Language** | Role-play scripts, puppet making | Paper, sticks, markers | 15-20 min |
+| **Mathematics** | Counting aids, shape models | Bottle caps, sticks, clay | 15-20 min |
+| **Science** | Simple experiments, nature journals | Local plants, water, containers | 20-30 min |
+| **Social Studies** | Map making, cultural artifacts | Paper, clay, natural dyes | 20-30 min |
+| **Vocational** | Tool making, planting, crafts | Local materials | 30-45 min |
+| **Arts** | Drawing, painting, music | Natural pigments, instruments | 20-30 min |
+| **PES** | Traditional games, obstacle courses | Found objects | 20-30 min |
+| **ICT** | Unplugged coding, logic games | Cards, stones, string | 15-20 min |
+
+### 3.3 DIY Lesson Template
+
+```json
+{
+  "diy_lesson": {
+    "lesson_id": "eng_class3_home_w1_diy",
+    "title": "Greeting Puppet Theater",
+    "linked_lesson": "eng_class3_home_w1",
+    "learning_objective": "Practice greetings at different times of day through role-play",
+    "materials": {
+      "required": [
+        "Paper or cardboard",
+        "Sticks or pencils",
+        "Markers or crayons",
+        "Scissors (with adult supervision)"
+      ],
+      "optional": [
+        "Fabric scraps",
+        "Googly eyes",
+        "Yarn for hair"
+      ]
+    },
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Draw two characters on paper: one adult, one child",
+        "voice_guide": "Let's draw our puppet friends! Draw a big person and a small person.",
+        "duration": "5 min"
+      },
+      {
+        "step": 2,
+        "instruction": "Color and cut out your characters",
+        "voice_guide": "Now add colors! Make them bright and beautiful.",
+        "duration": "5 min"
+      },
+      {
+        "step": 3,
+        "instruction": "Tape or glue sticks to the back of each character",
+        "voice_guide": "Attach the sticks so you can hold your puppets.",
+        "duration": "3 min"
+      },
+      {
+        "step": 4,
+        "instruction": "Practice the greeting dialogue with your puppets",
+        "voice_guide": "Now let's play! Say 'Good morning!' with your puppet.",
+        "duration": "7 min"
+      }
+    ],
+    "dialogue_script": {
+      "morning": {
+        "child": "Good morning, Mama!",
+        "adult": "Good morning, my dear!"
+      },
+      "afternoon": {
+        "child": "Good afternoon, Papa!",
+        "adult": "Good afternoon, my child!"
+      },
+      "night": {
+        "child": "Good night, Mama!",
+        "adult": "Good night, sleep well!"
+      }
+    },
+    "assessment": {
+      "criteria": [
+        "Correct greeting for time of day",
+        "Clear pronunciation",
+        "Engagement in role-play"
+      ],
+      "method": "Parent/teacher observation"
+    },
+    "extension": "Perform the puppet show for family members",
+    "gamification": {
+      "xp_points": 30,
+      "badge_name": "Puppet Master",
+      "photo_challenge": "Take a photo of your puppet show!"
+    }
+  }
+}
+```
+
+### 3.4 DIY Content Library (Per ILT)
+
+#### The Home (ILT 1)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Family portrait with labels | Paper, crayons | Name family members |
+| **Mathematics** | Kitchen item counting | Pots, spoons, cups | Count 1-20 |
+| **Science** | Water filtration experiment | Sand, gravel, cloth, bottles | Understand clean water |
+| **Vocational** | Bedroom organization chart | Paper, markers | Home management |
+| **Arts** | Traditional house model | Clay, sticks, grass | Cultural architecture |
+
+#### The Village/Town (ILT 2)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Market dialogue script | Paper, props | Transactional language |
+| **Mathematics** | Market stall money game | Bottle caps, leaves | Money calculations |
+| **Science** | Local plant identification | Leaves, notebook | Environmental awareness |
+| **Social Studies** | Village map creation | Paper, natural dyes | Map reading skills |
+| **Vocational** | Basket weaving | Palm fronds, grass | Traditional craft |
+
+#### The School (ILT 3)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Classroom objects flashcards | Paper, markers | Vocabulary building |
+| **Mathematics** | Abacus from bottle caps | String, caps, stick | Counting and operations |
+| **Science** | Shadow clock | Stick, stones, ground | Time measurement |
+| **Social Studies** | School rules poster | Paper, crayons | Citizenship values |
+| **Arts** | School song composition | Voice, clapping | Musical creativity |
+
+#### Occupations (ILT 4)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Job interview role-play | Paper, props | Speaking practice |
+| **Mathematics** | Farming yield calculations | Seeds, containers | Multiplication |
+| **Science** | Seed germination experiment | Beans, cotton, water | Plant life cycle |
+| **Vocational** | Tool making (toy hammer) | Wood, string | Craft skills |
+| **Social Studies** | Community helpers chart | Paper, markers | Civic awareness |
+
+#### Travelling (ILT 5)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Travel dialogue script | Paper, props | Conversational language |
+| **Mathematics** | Distance measurement | String, ruler | Units of length |
+| **Science** | Weather observation journal | Notebook, pencil | Weather patterns |
+| **Social Studies** | Transportation timeline | Paper, drawings | Historical changes |
+| **Arts** | Vehicle models | Clay, sticks, leaves | Creative construction |
+
+#### Health (ILT 6)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Doctor-patient dialogue | Paper, props | Health vocabulary |
+| **Mathematics** | Growth chart | String, markers | Measurement |
+| **Science** | Handwashing experiment | Water, soap, pepper | Hygiene practice |
+| **Vocational** | First aid kit assembly | Box, cloth, sticks | Emergency response |
+| **PES** | Exercise routine creation | Body, space | Physical fitness |
+
+#### Games (ILT 7)
+
+| Subject | DIY Activity | Materials | Learning Objective |
+|---------|--------------|-----------|-------------------|
+| **English** | Game rules writing | Paper, pencil | Instructional language |
+| **Mathematics** | Traditional game scoring | Stones, sticks | Addition and counting |
+| **Science** | Ball bounce experiment | Various balls | Physics concepts |
+| **Social Studies** | Game origins research | Interviews | Cultural heritage |
+| **Arts** | Game song and dance | Voice, body | Performance arts |
+
+### 3.5 DIY Implementation in Platform
+
+```typescript
+// components/DIYLessonCard.tsx
+interface DIYLesson {
+  id: string;
+  title: string;
+  linkedLessonId: string;
+  materials: {
+    required: string[];
+    optional: string[];
+  };
+  steps: DIYStep[];
+  assessment: DIYAssessment;
+  gamification: DIYGamification;
+}
+
+interface DIYStep {
+  step: number;
+  instruction: string;
+  voiceGuide: string;
+  audioUrl: string;
+  duration: string;
+}
+
+export function DIYLessonCard({ lesson }: { lesson: DIYLesson }) {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
+  
+  return (
+    <div className="diy-lesson-card">
+      <div className="diy-header">
+        <span className="diy-badge">🔨 DIY Practical</span>
+        <h3>{lesson.title}</h3>
+      </div>
+      
+      <div className="materials-section">
+        <h4>Materials Needed</h4>
+        <ul>
+          {lesson.materials.required.map((item, i) => (
+            <li key={i}>✓ {item}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="steps-section">
+        {lesson.steps.map((step, i) => (
+          <div 
+            key={i} 
+            className={`diy-step ${completedSteps.includes(i) ? 'completed' : ''}`}
+          >
+            <div className="step-number">{step.step}</div>
+            <div className="step-content">
+              <p>{step.instruction}</p>
+              <button 
+                className="voice-guide-btn"
+                onClick={() => playAudio(step.audioUrl)}
+              >
+                🔊 Listen
+              </button>
+              <span className="duration">{step.duration}</span>
+            </div>
+            <button 
+              className="complete-btn"
+              onClick={() => markComplete(i)}
+            >
+              {completedSteps.includes(i) ? '✓' : 'Done'}
+            </button>
+          </div>
+        ))}
+      </div>
+      
+      <div className="diy-reward">
+        <p>Complete all steps to earn:</p>
+        <span className="badge">{lesson.gamification.badge_name}</span>
+        <span className="xp">+{lesson.gamification.xp_points} XP</span>
+      </div>
+    </div>
+  );
+}
+```
+
+---
+
+## IV. LESSON EXTENSION FRAMEWORK
+
+### 4.1 Extended Lesson Structure
+
+Each lesson now includes **three components**:
+
+| Component | Duration | Description |
+|-----------|----------|-------------|
+| **Digital Lesson** | 5-10 min | Interactive AI-powered lesson |
+| **DIY Practical** | 15-30 min | Hands-on activity with local materials |
+| **Voice Practice** | 5-10 min | Speech-to-speech conversation practice |
+
+### 4.2 Extended Lesson Data Model
+
+```json
+{
+  "extended_lesson": {
+    "lesson_id": "eng_class3_home_w1",
+    "title": "Greetings at Home",
+    "components": {
+      "digital": {
+        "duration": "8 min",
+        "phases": ["Voice Hook", "Listen & Learn", "Speak & Practice", "Apply & Create", "Celebrate"],
+        "voice_assets": {
+          "hook": "eng_class3_home_w1_hook_kwe.mp3",
+          "instruction": "eng_class3_home_w1_instr.mp3",
+          "celebration": "makossa_short_celebration.mp3"
+        }
+      },
+      "diy": {
+        "duration": "20 min",
+        "title": "Greeting Puppet Theater",
+        "materials": ["Paper", "Sticks", "Markers", "Scissors"],
+        "steps": 4,
+        "assessment": "Parent/teacher observation"
+      },
+      "voice_practice": {
+        "duration": "7 min",
+        "mode": "speech_to_speech",
+        "character": "kwe",
+        "scenarios": [
+          "Greet Kwe in the morning",
+          "Greet Kwe in the afternoon",
+          "Greet Kwe at night"
+        ],
+        "evaluation": {
+          "pronunciation": true,
+          "tone_accuracy": true,
+          "fluency": true
+        }
+      }
+    },
+    "gamification": {
+      "total_xp": 100,
+      "badges": ["Polite Speaker", "Puppet Master", "Voice Champion"],
+      "streak_bonus": 20
+    }
+  }
+}
+```
+
+### 4.3 Lesson Extension Generator Prompt
+
+```
+Generate an extended lesson for [SUBJECT] at [LEVEL] within ILT [THEME].
+
+Requirements:
+1. Digital Lesson Component:
+   - Voice hook with character Kwe (natural Kokoro voice)
+   - 3-5 interactive phases
+   - Multilingual support (EN, FR, Kom, Lamnso')
+   
+2. DIY Practical Component:
+   - Hands-on activity using locally available materials
+   - 3-5 clear steps with voice guidance
+   - Assessment criteria
+   - Safety considerations
+   
+3. Voice Practice Component:
+   - Speech-to-speech scenarios with AI character
+   - Pronunciation and tone accuracy evaluation
+   - Progressive difficulty
+
+Output as Extended Lesson JSON per v4.0 schema.
+```
+
+---
+
+## V. IMPLEMENTATION ROADMAP
+
+### Phase 1: Voice Stack Replacement (Week 1-2)
+
+| Task | Tool | Deliverable |
+|------|------|-------------|
+| Install Kokoro TTS | `pip install kokoro` | Working TTS service |
+| Install Faster-Whisper | `pip install faster-whisper` | Working STT service |
+| Deploy Chroma-1.0 | Docker | Working STS service |
+| Update VoicePipeline class | Python | Unified voice service |
+| Test natural voice quality | Manual | Voice quality report |
+
+### Phase 2: DIY Content Generation (Week 3-4)
+
+| Task | Tool | Deliverable |
+|------|------|-------------|
+| Create DIY lesson schema | JSON | Data model |
+| Generate DIY content for Class 3, Month 1 | AI | 12 DIY lessons |
+| Build DIYLessonCard component | React | UI component |
+| Integrate DIY into lesson player | TypeScript | Updated lesson flow |
+
+### Phase 3: Voice Practice Integration (Week 5-6)
+
+| Task | Tool | Deliverable |
+|------|------|-------------|
+| Build STS practice mode | React + Python | Voice practice UI |
+| Implement tone-aware evaluation | Python | Scoring service |
+| Create character voice profiles | Kokoro | 4 character voices |
+| Test end-to-end voice flow | Manual | Verification report |
+
+### Phase 4: Extended Lesson Deployment (Week 7-8)
+
+| Task | Tool | Deliverable |
+|------|------|-------------|
+| Generate extended lessons for all subjects | AI | Complete lesson library |
+| Update lesson player | React | Extended lesson UI |
+| Deploy to preview | Vercel/Railway | Live preview |
+| Collect feedback | Analytics | Feedback report |
+
+---
+
+## VI. SUCCESS METRICS (v4.0)
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| **Voice Naturalness** | 4.5/5 rating | User feedback |
+| **TTS Latency** | < 500ms | Performance monitoring |
+| **STT Accuracy** | > 90% | Transcription testing |
+| **STS Response Time** | < 2s | End-to-end latency |
+| **DIY Completion Rate** | > 70% | Analytics |
+| **Voice Practice Engagement** | > 80% | Session duration |
+| **Lesson Extension Adoption** | > 60% | Feature usage |
+| **Learner Satisfaction** | 4.5/5 | Survey |
+
+---
+
+## VII. SUMMARY: WHAT THIS PROMPT DELIVERS
+
+When executed, the agent will:
+
+✅ **Replace Edge-TTS with Kokoro-82M** — natural, warm, human-sounding voices
+✅ **Replace Simba-S with Faster-Whisper** — 4× faster, 99 languages
+✅ **Deploy Chroma-1.0 or MOSS-Speech** — true end-to-end speech-to-speech
+✅ **Implement HuggingFace speech-to-speech pipeline** — production-ready, modular
+✅ **Add DIY Practical Learning** — hands-on activities with local materials
+✅ **Extend all lessons** — digital + DIY + voice practice components
+✅ **Maintain Grassfields language support** — Kom, Lamnso', Bayangi + 5 more
+✅ **Preserve gamification** — XP, badges, streaks, celebrations
+✅ **Deploy to preview** — live, shareable URL
+
+**Next Step:** Execute this prompt to upgrade the voice stack and add DIY practical learning to the platform.
+
+---
+
+This **OMNIVOICE v4.0 NATURAL VOICE & PRACTICAL LEARNING EDITION** ensures that your platform delivers:
+- **Natural, engaging voices** that children love to hear
+- **Fast, accurate speech recognition** that understands learners
+- **True speech-to-speech conversation** that feels human
+- **Hands-on practical learning** that reinforces digital lessons
+- **Complete curriculum coverage** from KG to High School

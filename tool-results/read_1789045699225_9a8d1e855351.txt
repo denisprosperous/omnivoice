@@ -1,0 +1,722 @@
+    24→    24→interface LessonPlanData {
+    25→    25→  lesson_id: string; subject: string; level: string; isced_level: number;
+    26→    26→  integrated_learning_theme: string; sub_theme: string; week: number; month: number;
+    27→    27→  cefr_alignment: string; ib_learner_profile: string[]; supported_languages?: string[];
+    28→    28→  expected_learning_outcomes: string[]; teaching_strategies: string[];
+    29→    29→  didactic_materials: { physical: string[]; digital: string[] };
+    30→    30→  voice_assets: {
+    31→    31→    hook: { character: string; text: string; textFr: string; textBkm?: string; textLns?: string; textByv?: string; languages: string[] };
+    32→    32→    instruction: { text: string; textFr: string; textBkm?: string; textLns?: string; textByv?: string };
+    33→    33→    learn_content: { title: string; titleFr: string; lines: string[]; linesFr: string[]; visual: string };
+    34→    34→    practice_prompts: PracticePrompt[];
+    35→    35→    feedback: { correct: string; incorrect: string; encouragement: string };
+    36→    36→    celebration: { character: string; text: string; textFr: string };
+    37→    37→    background_music: string;
+    38→    38→  };
+    39→    39→  voice_interactions: Array<{ type: string; prompt: string; asr_target?: string; evaluation_criteria: string[] }>;
+    40→    40→  sts_scenario?: { description: string; descriptionFr: string; character: string; opener: string };
+    41→    41→  gamification: {
+    42→    42→    mechanics: string[]; xp_points: number; badge_name: string; badge_code: string;
+    43→    43→    voice_challenge: { description: string; descriptionFr: string; descriptionBkm?: string; descriptionLns?: string; descriptionByv?: string; evaluation: string };
+    44→    44→  };
+    45→    45→  activities: Array<{ phase: string; duration: string; description: string; descriptionFr: string }>;
+    46→    46→  assessment: { criteria: string[]; methods: string[] };
+    47→    47→  offline_capability: { downloadable: boolean; size_mb: number; components: string[]; grassfields_language_packs?: { bkm: string; lns: string } };
+    48→    48→  differentiation: string[];
+    49→    49→  cultural_notes: string; cultural_notesFr: string;
+    50→    50→  native_speaker_review?: string;
+    51→    51→}
+    52→    52→const PHASES = ["hook", "listen", "speak", "apply", "celebrate"] as const;
+    53→    53→type Phase = (typeof PHASES)[number];
+    54→    54→
+    55→    55→export function LessonPlayer() {
+    56→    56→  const { learner, lang, voiceLang, currentLessonId, setView } = useApp();
+    57→    57→  const [plan, setPlan] = React.useState<LessonPlanData | null>(null);
+    58→    58→  const [loading, setLoading] = React.useState(true);
+    59→    59→  const [phase, setPhase] = React.useState<Phase>("hook");
+    60→    60→  const [hookDone, setHookDone] = React.useState(false);
+    61→    61→  // Hook listening language (§7.3: learner may hear the hook in en/fr/bkm/lns/byv)
+    62→    62→  const [hookLang, setHookLang] = React.useState<string>("en");
+    63→    63→
+    64→    64→  // Practice state
+    65→    65→  const [promptIdx, setPromptIdx] = React.useState(0);
+    66→    66→  const [recording, setRecording] = React.useState(false);
+    67→    67→  const [evaluating, setEvaluating] = React.useState(false);
+    68→    68→  const [result, setResult] = React.useState<{ verdict: string; accuracy: number; message: string; transcription: string; toneAccuracy?: number | null; toneAware?: boolean } | null>(null);
+    69→    69→  const [stars, setStars] = React.useState(0);
+    70→    70→  const [scores, setScores] = React.useState<number[]>([]);
+    71→    71→  const recorderRef = React.useRef<WavRecorder | null>(null);
+    72→    72→  const recordStartRef = React.useRef<number>(0);
+    73→    73→
+    74→    74→  // Apply (STS) state
+    75→    75→  const [stsHistory, setStsHistory] = React.useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
+    76→    76→  const [stsBusy, setStsBusy] = React.useState(false);
+    77→    77→  const [stsOpened, setStsOpened] = React.useState(false);
+    78→    78→
+    79→    79→  // Celebrate state
+    80→    80→  const [awarded, setAwarded] = React.useState<{ xp: number; badge: string | null; levelUp: { level: number; title: string } | null } | null>(null);
+    81→    81→
+    82→    82→  React.useEffect(() => {
+    83→    83→    if (!currentLessonId) return;
+    84→    84→    setLoading(true);
+    85→    85→    fetch(`/api/lessons?id=${currentLessonId}`)
+    86→    86→      .then((r) => r.json())
+    87→    87→      .then((d) => { setPlan(d.lesson?.plan || null); })
+    88→    88→      .finally(() => setLoading(false));
+    89→    89→  }, [currentLessonId]);
+    90→    90→
+    91→    91→  // Default the hook language to the learner's chosen voice language when available (§7.3)
+    92→    92→  React.useEffect(() => {
+    93→    93→    if (!plan) return;
+    94→    94→    const h = plan.voice_assets.hook;
+    95→    95→    const available = (h.languages || ["en", "fr"]).filter((l) =>
+    96→    96→      l === "bkm" ? !!h.textBkm : l === "lns" ? !!h.textLns : l === "byv" ? !!h.textByv : true
+    97→    97→    );
+    98→    98→    setHookLang(available.includes(voiceLang) ? voiceLang : "en");
+    99→    99→  }, [plan, voiceLang]);
+   100→   100→
+   101→   101→  // Ambient background music per ILT mood (stipulated per-ILT BGM)
+   102→   102→  React.useEffect(() => {
+   103→   103→    startAmbient("home"); // Month 1 = The Home mood
+   104→   104→    return () => stopAmbient();
+   105→   105→  }, []);
+   106→   106→
+   107→   107→  async function finishLesson() {
+   108→   108→    if (!learner || !plan) return;
+   109→   109→    const total = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 80;
+   110→   110→    // v3.0 §5.1 — lesson completion rate (pedagogical effectiveness metric)
+   111→   111→    trackEvent("lesson_completion", { lessonId: plan.lesson_id, voiceLang, avgScore: total });
+   112→   112→    try {
+   113→   113→      const res = await fetch("/api/learner", {
+   114→   114→        method: "PUT",
+   115→   115→        headers: { "Content-Type": "application/json" },
+   116→   116→        body: JSON.stringify({
+   117→   117→          learnerId: learner.id,
+   118→   118→          xp: plan.gamification.xp_points,
+   119→   119→          reason: `Lesson: ${plan.lesson_id}`,
+   120→   120→          badgeCode: plan.gamification.badge_code,
+   121→   121→          skillCode: undefined,
+   122→   122→          assessment: {
+   123→   123→            lessonId: plan.lesson_id,
+   124→   124→            type: "formative",
+   125→   125→            score: total,
+   126→   126→            details: { scores, stars },
+   127→   127→          },
+   128→   128→        }),
+   129→   129→      });
+   130→   130→      const data = await res.json();
+   131→   131→      setAwarded({
+   132→   132→        xp: plan.gamification.xp_points,
+   133→   133→        badge: data.badge ? plan.gamification.badge_name : null,
+   134→   134→        levelUp: data.levelUp ? { level: data.levelUp.level, title: data.levelUp.title } : null,
+   135→   135→      });
+   136→   136→    } catch {
+   137→   137→      setAwarded({ xp: plan.gamification.xp_points, badge: null, levelUp: null });
+   138→   138→    }
+   139→   139→  }
+   140→   140→
+   141→   141→  if (loading) return <div className="min-h-screen bg-[#FFFBEB]"><PatternBand /><Spinner label={lang === "fr" ? "Chargement de la quête..." : "Loading quest..."} /></div>;
+   142→   142→  if (!plan) {
+   143→   143→    return (
+   144→   144→      <div className="min-h-screen bg-[#FFFBEB]">
+   145→   145→        <PatternBand />
+   146→   146→        <div className="p-8 text-center text-amber-800">{lang === "fr" ? "Leçon introuvable." : "Lesson not found."}</div>
+   147→   147→      </div>
+   148→   148→    );
+   149→   149→  }
+   150→   150→
+   151→   151→  const va = plan.voice_assets;
+   152→   152→  const shown = (en: string, fr: string) => (lang === "fr" ? fr : en);
+   153→   153→  const prompts = va.practice_prompts;
+   154→   154→  // §7.3 — resolve the practice prompt in the learner's voice language
+   155→   155→  const promptForVoice = (pp: PracticePrompt): { prompt: string; target: string; isGf: boolean } => {
+   156→   156→    if (voiceLang === "bkm" && pp.promptBkm) return { prompt: pp.promptBkm, target: pp.targetBkm || pp.target, isGf: true };
+   157→   157→    if (voiceLang === "lns" && pp.promptLns) return { prompt: pp.promptLns, target: pp.targetLns || pp.target, isGf: true };
+   158→   158→    if (voiceLang === "byv" && pp.promptByv) return { prompt: pp.promptByv, target: pp.targetByv || pp.target, isGf: true };
+   159→   159→    return { prompt: lang === "fr" ? pp.promptFr || pp.prompt : pp.prompt, target: pp.target, isGf: false };
+   160→   160→  };
+   161→   161→  const currentPrompt = prompts[promptIdx];
+   162→   162→  const activePrompt = currentPrompt ? promptForVoice(currentPrompt) : null;
+   163→   163→  const char = getCharacter(va.hook.character);
+   164→   164→  // §7.3 multilingual hook — hook text in the selected listening language
+   165→   165→  const hookText =
+   166→   166→    hookLang === "fr" ? va.hook.textFr
+   167→   167→    : hookLang === "bkm" ? (va.hook.textBkm || va.hook.text)
+   168→   168→    : hookLang === "lns" ? (va.hook.textLns || va.hook.text)
+   169→   169→    : hookLang === "byv" ? (va.hook.textByv || va.hook.text)
+   170→   170→    : va.hook.text;
+   171→   171→  const hookIsPlaceholder = isPlaceholderPhrase(hookText);
+   172→   172→  const hookLanguages = (va.hook.languages || ["en", "fr"]).filter((l) =>
+   173→   173→    l === "bkm" ? !!va.hook.textBkm : l === "lns" ? !!va.hook.textLns : l === "byv" ? !!va.hook.textByv : l === "ewo" ? true : true
+   174→   174→  );
+   175→   175→
+   176→   176→  // ---------- Practice handlers ----------
+   177→   177→  async function startRecording() {
+   178→   178→    setResult(null);
+   179→   179→    recordStartRef.current = Date.now();
+   180→   180→    try {
+   181→   181→      recorderRef.current = new WavRecorder();
+   182→   182→      await recorderRef.current.start();
+   183→   183→      setRecording(true);
+   184→   184→    } catch {
+   185→   185→      playIncorrect();
+   186→   186→      setResult({
+   187→   187→        verdict: "retry", accuracy: 0,
+   188→   188→        message: lang === "fr"
+   189→   189→          ? "Je ne peux pas accéder au micro. Demande à un adulte d'autoriser le microphone, puis réessaie !"
+   190→   190→          : "I cannot reach the microphone. Ask a grown-up to allow the microphone, then try again!",
+   191→   191→        transcription: "—",
+   192→   192→      });
+   193→   193→    }
+   194→   194→  }
+   195→   195→
+   196→   196→  async function stopRecording() {
+   197→   197→    if (!recorderRef.current || !activePrompt) return;
+   198→   198→    setRecording(false);
+   199→   199→    const heldMs = Date.now() - (recordStartRef.current || 0);
+   200→   200→    // v3.0 fix — ASR providers reject clips below their minimum duration;
+   201→   201→    // a too-short tap must produce supportive feedback, never a NaN score.
+   202→   202→    if (heldMs < 700) {
+   203→   203→      recorderRef.current.stop();
+   204→   204→      playIncorrect();
+   205→   205→      setResult({
+   206→   206→        verdict: "retry", accuracy: 0,
+   207→   207→        message: lang === "fr"
+   208→   208→          ? "Trop court ! Maintiens le bouton et dis toute la phrase. 🎤"
+   209→   209→          : "Too short! Hold the button and say the whole phrase. 🎤",
+   210→   210→        transcription: "—",
+   211→   211→      });
+   212→   212→      return;
+   213→   213→    }
+   214→   214→    setEvaluating(true);
+   215→   215→    const { wavBase64 } = recorderRef.current.stop();
+   216→   216→    // v3.0 §5.1 — ASR attempts (voice interaction tracking)
+   217→   217→    trackEvent("asr_attempt", { lessonId: plan?.lesson_id, lang: activePrompt?.isGf ? voiceLang : lang === "fr" ? "fr" : "en" });
+   218→   218→    try {
+   219→   219→      const res = await fetch("/api/pronunciation", {
+   220→   220→        method: "POST",
+   221→   221→        headers: { "Content-Type": "application/json" },
+   222→   222→        body: JSON.stringify({ audioBase64: wavBase64, target: activePrompt.target, lang: activePrompt.isGf ? voiceLang : lang === "fr" ? "fr" : "en" }),
+   223→   223→      });
+   224→   224→      if (!res.ok) throw new Error("evaluation unavailable");
+   225→   225→      const data = await res.json();
+   226→   226→      const accuracy = typeof data.accuracy === "number" && Number.isFinite(data.accuracy) ? data.accuracy : 0;
+   227→   227→      const r = {
+   228→   228→        verdict: data.verdict as string,
+   229→   229→        accuracy,
+   230→   230→        message: lang === "fr" ? data.messageFr : data.message,
+   231→   231→        transcription: data.transcription || "",
+   232→   232→        toneAccuracy: (data.tone_accuracy ?? null) as number | null,
+   233→   233→        toneAware: !!data.tone_aware,
+   234→   234→      };
+   235→   235→      setResult(r);
+   236→   236→      setScores((s) => [...s, r.accuracy]);
+   237→   237→      if (r.verdict === "correct") { playCorrect(); setStars((v) => v + 3); }
+   238→   238→      else if (r.verdict === "close") { playXp(); setStars((v) => v + 2); }
+   239→   239→      else playIncorrect();
+   240→   240→    } catch {
+   241→   241→      // Offline / API failure → gentle supportive feedback (never punitive)
+   242→   242→      setResult({
+   243→   243→        verdict: "close", accuracy: 60,
+   244→   244→        message: lang === "fr" ? "Je n'ai pas pu évaluer maintenant. Essaie encore !" : "I could not evaluate just now. Try again!",
+   245→   245→        transcription: "",
+   246→   246→      });
+   247→   247→      playIncorrect();
+   248→   248→    } finally {
+   249→   249→      setEvaluating(false);
+   250→   250→    }
+   251→   251→  }
+   252→   252→
+   253→   253→  async function nextPrompt() {
+   254→   254→    if (promptIdx < prompts.length - 1) {
+   255→   255→      setPromptIdx((i) => i + 1);
+   256→   256→      setResult(null);
+   257→   257→    } else {
+   258→   258→      setPhase("apply");
+   259→   259→    }
+   260→   260→  }
+   261→   261→
+   262→   262→  // ---------- STS handlers ----------
+   263→   263→  async function openSts() {
+   264→   264→    if (!plan.sts_scenario || stsOpened) return;
+   265→   265→    setStsOpened(true);
+   266→   266→    setStsBusy(true);
+   267→   267→    const opener = plan.sts_scenario.opener;
+   268→   268→    setStsHistory([{ role: "assistant", content: opener }]);
+   269→   269→    void speak(opener, plan.sts_scenario.character, lang);
+   270→   270→    setTimeout(() => setStsBusy(false), 2500);
+   271→   271→  }
+   272→   272→
+   273→   273→  async function stsTurn() {
+   274→   274→    if (!plan.sts_scenario || stsBusy) return;
+   275→   275→    setStsBusy(true);
+   276→   276→    try {
+   277→   277→      recorderRef.current = new WavRecorder();
+   278→   278→      await recorderRef.current.start();
+   279→   279→      setRecording(true);
+   280→   280→    } catch {
+   281→   281→      setStsBusy(false);
+   282→   282→    }
+   283→   283→  }
+   284→   284→
+   285→   285→  async function stsStop() {
+   286→   286→    if (!recorderRef.current || !plan.sts_scenario) return;
+   287→   287→    setRecording(false);
+   288→   288→    setStsBusy(true);
+   289→   289→    const { wavBase64 } = recorderRef.current.stop();
+   290→   290→    try {
+   291→   291→      const res = await fetch("/api/sts", {
+   292→   292→        method: "POST",
+   293→   293→        headers: { "Content-Type": "application/json" },
+   294→   294→        body: JSON.stringify({
+   295→   295→          audioBase64: wavBase64,
+   296→   296→          character: plan.sts_scenario.character,
+   297→   297→          scenario: plan.sts_scenario.description,
+   298→   298→          history: stsHistory,
+   299→   299→          learnerName: learner?.name || "my friend",
+   300→   300→          learnerLevel: plan.level,
+   301→   301→          lang: isGrassfields(voiceLang) ? voiceLang : lang === "fr" ? "fr" : "en",
+   302→   302→        }),
+   303→   303→      });
+   304→   304→      const data = await res.json();
+   305→   305→      if (data.reply) {
+   306→   306→        setStsHistory((h) => [
+   307→   307→          ...h,
+   308→   308→          { role: "user", content: data.transcript || "…" },
+   309→   309→          { role: "assistant", content: data.reply },
+   310→   310→        ]);
+   311→   311→        if (data.audioBase64) playWavBase64(data.audioBase64, data.pitchRate || 1);
+   312→   312→        else void speak(data.reply, plan.sts_scenario.character, lang);
+   313→   313→        playXp();
+   314→   314→      } else if (data.error === "no_speech") {
+   315→   315→        const msg = lang === "fr" ? "Je ne t'ai pas entendu — essaie encore !" : "I did not hear you — try again!";
+   316→   316→        setStsHistory((h) => [...h, { role: "assistant", content: msg }]);
+   317→   317→        void speak(msg, plan.sts_scenario.character, lang);
+   318→   318→      }
+   319→   319→    } catch {
+   320→   320→      const msg = lang === "fr" ? "Hmm, réessayons dans un instant." : "Hmm, let us try again in a moment.";
+   321→   321→      setStsHistory((h) => [...h, { role: "assistant", content: msg }]);
+   322→   322→    } finally {
+   323→   323→      setStsBusy(false);
+   324→   324→    }
+   325→   325→  }
+   326→   326→
+   327→   327→  const phaseMeta: Record<Phase, { label: string; icon: string }> = {
+   328→   328→    hook: { label: t("hook", lang), icon: "🎣" },
+   329→   329→    listen: { label: t("listen", lang), icon: "👂🏾" },
+   330→   330→    speak: { label: t("speak", lang), icon: "🎤" },
+   331→   331→    apply: { label: t("apply", lang), icon: "✨" },
+   332→   332→    celebrate: { label: t("celebrate", lang), icon: "🎉" },
+   333→   333→  };
+   334→   334→
+   335→   335→  return (
+   336→   336→    <main className="min-h-screen bg-[#FFFBEB] pb-28">
+   337→   337→      <PatternBand />
+   338→   338→      {/* Progress header */}
+   339→   339→      <div className="sticky top-[52px] z-30 border-b border-amber-200 bg-[#FFFBEB]/95 backdrop-blur">
+   340→   340→        <div className="mx-auto flex max-w-3xl items-center gap-1.5 px-3 py-2">
+   341→   341→          {PHASES.map((p, i) => (
+   342→   342→            <React.Fragment key={p}>
+   343→   343→              <button
+   344→   344→                onClick={() => { if (PHASES.indexOf(phase) > i) setPhase(p); }}
+   345→   345→                className={cn(
+   346→   346→                  "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
+   347→   347→                  phase === p ? "border-amber-600 bg-amber-600 text-white shadow" : "border-amber-200 bg-white text-amber-700"
+   348→   348→                )}
+   349→   349→                aria-current={phase === p ? "step" : undefined}
+   350→   350→              >
+   351→   351→                <span aria-hidden>{phaseMeta[p].icon}</span>
+   352→   352→                <span className="hidden sm:inline">{phaseMeta[p].label}</span>
+   353→   353→              </button>
+   354→   354→              {i < PHASES.length - 1 && <span className="h-0.5 flex-1 bg-amber-200" aria-hidden />}
+   355→   355→            </React.Fragment>
+   356→   356→          ))}
+   357→   357→        </div>
+   358→   358→      </div>
+   359→   359→
+   360→   360→      <div className="mx-auto max-w-3xl space-y-4 px-4 pt-4">
+   361→   361→        {/* Lesson meta */}
+   362→   362→        <div className="flex flex-wrap items-center gap-2">
+   363→   363→          <StatPill icon="📚" label={plan.subject} value={plan.level} />
+   364→   364→          <StatPill icon="🌍" label="CEFR" value={plan.cefr_alignment} color="#065F46" />
+   365→   365→          <StatPill icon="🎯" label="XP" value={`+${plan.gamification.xp_points}`} color="#9D174D" />
+   366→   366→          {plan.gamification.mechanics.map((m) => (
+   367→   367→            <StatPill key={m} icon="🎮" label="mechanic" value={m} color="#7C2D12" />
+   368→   368→          ))}
+   369→   369→        </div>
+   370→   370→
+   371→   371→        {/* PHASE 1 — Voice Hook (multilingual per §7.3) */}
+   372→   372→        {phase === "hook" && (
+   373→   373→          <section aria-label={phaseMeta.hook.label} className="space-y-4">
+   374→   374→            <h1 className="text-xl font-extrabold text-amber-900 sm:text-2xl">
+   375→   375→              {shown(va.learn_content.title, va.learn_content.titleFr)}
+   376→   376→            </h1>
+   377→   377→            {/* Hook language switcher — listen in en/fr/bkm/lns (§7.3 voice hook) */}
+   378→   378→            {hookLanguages.length > 1 && (
+   379→   379→              <div className="flex flex-wrap items-center gap-1.5 rounded-xl border-2 border-lime-200 bg-lime-50/60 p-2">
+   380→   380→                <span className="px-1 text-[11px] font-bold uppercase tracking-wide text-lime-800">🪶 {t("hookLanguage", lang)}:</span>
+   381→   381→                {hookLanguages.map((l) => {
+   382→   382→                  const vl = VOICE_LANGUAGES.find((v) => v.id === l);
+   383→   383→                  return (
+   384→   384→                    <button
+   385→   385→                      key={l}
+   386→   386→                      onClick={() => setHookLang(l)}
+   387→   387→                      aria-pressed={hookLang === l}
+   388→   388→                      className={cn(
+   389→   389→                        "min-h-[32px] rounded-full border-2 px-2.5 text-[11px] font-bold transition-all",
+   390→   390→                        hookLang === l ? "border-lime-700 bg-lime-700 text-white" : "border-lime-300 bg-white text-lime-800 hover:border-lime-500"
+   391→   391→                      )}
+   392→   392→                    >
+   393→   393→                      {vl ? vl.label : l}
+   394→   394→                    </button>
+   395→   395→                  );
+   396→   396→                })}
+   397→   397→              </div>
+   398→   398→            )}
+   399→   399→            {hookIsPlaceholder ? (
+   400→   400→              // v3.0 Directive 9 gate — Bayangi placeholder: documented-by-natives notice,
+   401→   401→              // never synthesized placeholder audio.
+   402→   402→              <div className="rounded-2xl border-2 border-dashed border-lime-400 bg-lime-50/80 p-4" role="status">
+   403→   403→                <p className="text-sm font-extrabold text-lime-900">🪶 Bayangi (Banyangi) — {t("pendingDocumentation", lang)}</p>
+   404→   404→                <p className="mt-1 text-xs leading-relaxed text-lime-800">{hookText}</p>
+   405→   405→                <p className="mt-2 text-[11px] font-semibold text-lime-700">
+   406→   406→                  ⏳ {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+   407→   407→                </p>
+   408→   408→              </div>
+   409→   409→            ) : (
+   410→   410→              <CharacterBubble
+   411→   411→                characterId={va.hook.character}
+   412→   412→                text={hookText}
+   413→   413→                textFr={hookText}
+   414→   414→                lang={hookLang === "fr" ? "fr" : "en"}
+   415→   415→                speakLang={hookLang}
+   416→   416→                onSpeakDone={() => setHookDone(true)}
+   417→   417→              />
+   418→   418→            )}
+   419→   419→            {isGrassfields(hookLang) && (
+   420→   420→              <p className="rounded-xl bg-lime-50 px-3 py-2 text-[11px] font-semibold text-lime-900">
+   421→   421→                🪶 GACL tone-marked {VOICE_LANGUAGES.find((v) => v.id === hookLang)?.label || hookLang} · {t("codeSwitch", lang)}
+   422→   422→                {hookIsPlaceholder && <span className="ml-1">· ⏳ {t("pendingDocumentation", lang)}</span>}
+   423→   423→                {!hookIsPlaceholder && plan.native_speaker_review === "validated" && <span className="ml-1">· ✅ {t("nativeReview", lang)}</span>}
+   424→   424→              </p>
+   425→   425→            )}
+   426→   426→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4">
+   427→   427→              <h3 className="mb-1 text-sm font-bold text-amber-900">📖 {lang === "fr" ? "Histoire du thème" : "Theme story"}</h3>
+   428→   428→              <p className="text-sm leading-relaxed text-amber-800">
+   429→   429→                {shown(plan.cultural_notes, plan.cultural_notesFr)}
+   430→   430→              </p>
+   431→   431→            </div>
+   432→   432→            <Button
+   433→   433→              onClick={() => { playXp(); setPhase("listen"); }}
+   434→   434→              className="h-14 w-full bg-amber-600 text-lg font-extrabold hover:bg-amber-700"
+   435→   435→              size="lg"
+   436→   436→            >
+   437→   437→              {shown("Begin the quest →", "Commencer la quête →")}
+   438→   438→            </Button>
+   439→   439→          </section>
+   440→   440→        )}
+   441→   441→
+   442→   442→        {/* PHASE 2 — Listen & Learn */}
+   443→   443→        {phase === "listen" && (
+   444→   444→          <section aria-label={phaseMeta.listen.label} className="space-y-4">
+   445→   445→            <CharacterBubble
+   446→   446→              characterId={va.hook.character}
+   447→   447→              text={va.instruction.text}
+   448→   448→              textFr={va.instruction.textFr}
+   449→   449→              lang={lang === "ewo" ? "en" : lang}
+   450→   450→              autoSpeak={false}
+   451→   451→              compact
+   452→   452→            />
+   453→   453→            <div className="rounded-2xl border-2 border-lime-200 bg-gradient-to-br from-lime-50 to-white p-4 shadow-sm">
+   454→   454→              <h3 className="mb-3 text-lg font-extrabold text-lime-900">
+   455→   455→                {shown(va.learn_content.title, va.learn_content.titleFr)}
+   456→   456→              </h3>
+   457→   457→              <ul className="space-y-2.5">
+   458→   458→                {va.learn_content.lines.map((line, i) => (
+   459→   459→                  <li key={i} className="flex items-start gap-2 rounded-xl bg-white p-3 shadow-sm">
+   460→   460→                    <button
+   461→   461→                      onClick={() => void speak(lang === "fr" ? va.learn_content.linesFr[i] || line : line, va.hook.character, lang === "fr" ? "fr" : "en")}
+   462→   462→                      className="mt-0.5 shrink-0 rounded-full bg-lime-100 p-1.5 text-lime-700 hover:bg-lime-200"
+   463→   463→                      aria-label="Listen to this line"
+   464→   464→                    >
+   465→   465→                      🔊
+   466→   466→                    </button>
+   467→   467→                    <span className="text-sm leading-relaxed text-amber-900">
+   468→   468→                      {lang === "fr" ? va.learn_content.linesFr[i] || line : line}
+   469→   469→                    </span>
+   470→   470→                  </li>
+   471→   471→                ))}
+   472→   472→              </ul>
+   473→   473→            </div>
+   474→   474→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 text-xs text-amber-700">
+   475→   475→              🖼️ <b>{lang === "fr" ? "Visuel" : "Visual"}</b>: {va.learn_content.visual} · 🎵 <b>BGM</b>: {va.background_music}
+   476→   476→            </div>
+   477→   477→            <Button onClick={() => { playXp(); setPhase("speak"); }} className="h-14 w-full bg-lime-700 text-lg font-extrabold hover:bg-lime-800" size="lg">
+   478→   478→              {shown("I am ready to speak →", "Je suis prêt à parler →")}
+   479→   479→            </Button>
+   480→   480→          </section>
+   481→   481→        )}
+   482→   482→
+   483→   483→        {/* PHASE 3 — Speak & Practice (tone-aware ASR per §6.5) */}
+   484→   484→        {phase === "speak" && activePrompt && (
+   485→   485→          <section aria-label={phaseMeta.speak.label} className="space-y-4">
+   486→   486→            <div className="rounded-2xl border-2 border-rose-200 bg-gradient-to-br from-rose-50 to-white p-5 text-center shadow-sm">
+   487→   487→              <div className="mb-1 text-xs font-bold uppercase tracking-wide text-rose-500">
+   488→   488→                {lang === "fr" ? `Invite ${promptIdx + 1} / ${prompts.length}` : `Prompt ${promptIdx + 1} / ${prompts.length}`}
+   489→   489→                {activePrompt.isGf && <span className="ml-1 rounded-full bg-lime-100 px-2 py-0.5 text-[10px] text-lime-800">🪶 {VOICE_LANGUAGES.find((v) => v.id === voiceLang)?.label || voiceLang}</span>}
+   490→   490→              </div>
+   491→   491→              <p className="mb-1 text-xl font-extrabold text-rose-900">
+   492→   492→                {activePrompt.prompt}
+   493→   493→              </p>
+   494→   494→              <p className="text-sm font-semibold text-rose-600/80">
+   495→   495→                {lang === "fr" ? "Objectif" : "Target"}: “{activePrompt.target}”
+   496→   496→              </p>
+   497→   497→
+   498→   498→              {isPlaceholderPhrase(activePrompt.prompt) ? (
+   499→   499→                // v3.0 Directive 9 gate — Bayangi practice placeholder: no synthetic
+   500→   500→                // evaluation of undocumented phrases; learner is routed to an attested language.
+   501→   501→                <div className="my-5 rounded-xl border-2 border-dashed border-lime-400 bg-lime-50/80 p-4 text-left" role="status">
+   502→   502→                  <p className="text-sm font-bold text-lime-900">⏳ {t("pendingDocumentation", lang)}</p>
+   503→   503→                  <p className="mt-1 text-xs leading-relaxed text-lime-800">{activePrompt.prompt}</p>
+   504→   504→                  <p className="mt-2 text-[11px] font-semibold text-lime-700">
+   505→   505→                    📋 {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+   506→   506→                  </p>
+   507→   507→                  <div className="mt-3 flex justify-end">
+   508→   508→                    <Button size="sm" className="h-9 bg-lime-700 text-white hover:bg-lime-800" onClick={nextPrompt}>
+   509→   509→                      {promptIdx < prompts.length - 1 ? `${t("next", lang)} →` : `${t("apply", lang)} →`}
+   510→   510→                    </Button>
+   511→   511→                  </div>
+   512→   512→                </div>
+   513→   513→              ) : (
+   514→   514→                <div className="my-5 flex flex-col items-center gap-2">
+   515→   515→                  <MicButton
+   516→   516→                    recording={recording}
+   517→   517→                    disabled={evaluating}
+   518→   518→                    onDown={startRecording}
+   519→   519→                    onUp={stopRecording}
+   520→   520→                    label={recording ? t("stop", lang) : t("holdToTalk", lang)}
+   521→   521→                  />
+   522→   522→                  <span className="text-xs font-semibold text-rose-500">
+   523→   523→                    {recording ? t("speakNow", lang) : evaluating ? t("listening", lang) : t("holdToTalk", lang)}
+   524→   524→                  </span>
+   525→   525→                </div>
+   526→   526→              )}
+   527→   527→
+   528→   528→              {result && (
+   529→   529→                <div
+   530→   530→                  className={cn(
+   531→   531→                    "mx-auto max-w-md rounded-xl border-2 p-3 text-left text-sm",
+   532→   532→                    result.verdict === "correct" ? "border-lime-300 bg-lime-50 text-lime-900" : "border-amber-300 bg-amber-50 text-amber-900"
+   533→   533→                  )}
+   534→   534→                  role="status"
+   535→   535→                >
+   536→   536→                  <div className="mb-1 flex items-center justify-between">
+   537→   537→                    <b>{result.verdict === "correct" ? `✨ ${t("correct", lang)}` : result.verdict === "close" ? `👍 ${t("wellDone", lang)}` : `🥁 ${t("tryAgain", lang)}`}</b>
+   538→   538→                    <span className="rounded-full bg-white px-2 py-0.5 text-xs font-bold">{result.accuracy}%</span>
+   539→   539→                  </div>
+   540→   540→                  <p>{result.message}</p>
+   541→   541→                  {result.toneAware && typeof result.toneAccuracy === "number" && (
+   542→   542→                    <p className="mt-1 text-xs font-bold text-lime-800">
+   543→   543→                      🪶 {t("toneAccuracy", lang)}: {result.toneAccuracy}%
+   544→   544→                    </p>
+   545→   545→                  )}
+   546→   546→                  <p className="mt-1 text-xs opacity-70">
+   547→   547→                    ASR: “{result.transcription || "—"}” → {lang === "fr" ? "cible" : "target"}: “{activePrompt.target}”
+   548→   548→                  </p>
+   549→   549→                  <div className="mt-2 flex gap-2">
+   550→   550→                    <Button size="sm" variant="outline" className="h-9 border-rose-300 text-rose-700" onClick={() => setResult(null)}>
+   551→   551→                      🔄 {t("tryAgain", lang)}
+   552→   552→                    </Button>
+   553→   553→                    <Button size="sm" className="h-9 bg-lime-700 text-white hover:bg-lime-800" onClick={nextPrompt}>
+   554→   554→                      {promptIdx < prompts.length - 1 ? `${t("next", lang)} →` : `${t("apply", lang)} →`}
+   555→   555→                    </Button>
+   556→   556→                  </div>
+   557→   557→                </div>
+   558→   558→              )}
+   559→   559→            </div>
+   560→   560→            <div className="text-center text-2xl" aria-hidden aria-label={`${stars} stars`}>
+   561→   561→              {"⭐".repeat(Math.min(stars, 12)) || "🎤"}
+   562→   562→            </div>
+   563→   563→          </section>
+   564→   564→        )}
+   565→   565→
+   566→   566→        {/* PHASE 4 — Apply & Create (STS role-play) */}
+   567→   567→        {phase === "apply" && (
+   568→   568→          <section aria-label={phaseMeta.apply.label} className="space-y-4">
+   569→   569→            {plan.sts_scenario ? (
+   570→   570→              <div className="rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-4 shadow-sm">
+   571→   571→                <h3 className="mb-1 text-lg font-extrabold text-purple-900">
+   572→   572→                  🎭 {t("speakingQuest", lang)}
+   573→   573→                </h3>
+   574→   574→                <p className="mb-3 text-sm text-purple-800">
+   575→   575→                  {shown(plan.sts_scenario.description, plan.sts_scenario.descriptionFr)}
+   576→   576→                </p>
+   577→   577→                {!stsOpened ? (
+   578→   578→                  <Button onClick={openSts} className="h-13 w-full bg-purple-700 text-base font-extrabold hover:bg-purple-800" size="lg">
+   579→   579→                    ▶ {t("greetKwe", lang)} {getCharacter(plan.sts_scenario.character).name} {getCharacter(plan.sts_scenario.character).emoji}
+   580→   580→                  </Button>
+   581→   581→                ) : (
+   582→   582→                  <>
+   583→   583→                    <div className="mb-3 max-h-64 space-y-2 overflow-y-auto rounded-xl bg-white p-3" role="log" aria-live="polite">
+   584→   584→                      {stsHistory.map((h, i) => (
+   585→   585→                        <div key={i} className={cn("flex", h.role === "user" ? "justify-end" : "justify-start")}>
+   586→   586→                          <div
+   587→   587→                            className={cn(
+   588→   588→                              "max-w-[85%] rounded-2xl px-3 py-2 text-sm",
+   589→   589→                              h.role === "user" ? "bg-purple-600 text-white" : "bg-amber-100 text-amber-900"
+   590→   590→                            )}
+   591→   591→                          >
+   592→   592→                            {h.content}
+   593→   593→                          </div>
+   594→   594→                        </div>
+   595→   595→                      ))}
+   596→   596→                      {stsBusy && <Spinner label={t("listening", lang)} />}
+   597→   597→                    </div>
+   598→   598→                    <div className="flex flex-col items-center gap-2">
+   599→   599→                      <MicButton
+   600→   600→                        recording={recording}
+   601→   601→                        disabled={stsBusy}
+   602→   602→                        onDown={stsTurn}
+   603→   603→                        onUp={stsStop}
+   604→   604→                        label={recording ? t("stop", lang) : t("holdToTalk", lang)}
+   605→   605→                      />
+   606→   606→                      <span className="text-xs font-semibold text-purple-500">
+   607→   607→                        {recording ? t("speakNow", lang) : stsBusy ? t("listening", lang) : t("holdToTalk", lang)}
+   608→   608→                      </span>
+   609→   609→                    </div>
+   610→   610→                    <Button variant="outline" className="mt-3 w-full border-purple-300 text-purple-800" onClick={() => { playXp(); setPhase("celebrate"); }}>
+   611→   611→                      {t("complete", lang)} → 🎉
+   612→   612→                    </Button>
+   613→   613→                  </>
+   614→   614→                )}
+   615→   615→              </div>
+   616→   616→            ) : (
+   617→   617→              <div className="rounded-2xl border-2 border-purple-200 bg-white p-5 text-center">
+   618→   618→                {voiceLang === "byv" && plan.gamification.voice_challenge.descriptionByv && isPlaceholderPhrase(plan.gamification.voice_challenge.descriptionByv) ? (
+   619→   619→                  // v3.0 Directive 9 gate — Bayangi voice challenge pending documentation
+   620→   620→                  <div role="status">
+   621→   621→                    <p className="mb-3 text-sm font-extrabold text-purple-900">⏳ {t("pendingDocumentation", lang)}</p>
+   622→   622→                    <p className="mb-3 text-sm leading-relaxed text-purple-800">{plan.gamification.voice_challenge.descriptionByv}</p>
+   623→   623→                    <p className="mb-4 text-[11px] font-semibold text-purple-600">
+   624→   624→                      📋 {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+   625→   625→                    </p>
+   626→   626→                    <Button onClick={() => { playXp(); setPhase("celebrate"); }} className="h-12 w-full bg-purple-700 text-base font-extrabold hover:bg-purple-800">
+   627→   627→                      {t("complete", lang)} →
+   628→   628→                    </Button>
+   629→   629→                  </div>
+   630→   630→                ) : (
+   631→   631→                  <>
+   632→   632→                    <p className="mb-3 text-sm text-purple-800">
+   633→   633→                      {lang === "fr"
+   634→   634→                        ? "Défi vocal : enregistre-toi en appliquant ce que tu as appris !"
+   635→   635→                        : plan.gamification.voice_challenge.description}
+   636→   636→                    </p>
+   637→   637→                    <p className="mb-4 text-lg font-extrabold text-purple-900">
+   638→   638→                      🎙️ {shown(plan.gamification.voice_challenge.description, plan.gamification.voice_challenge.descriptionFr)}
+   639→   639→                    </p>
+   640→   640→                    <VoiceChallengeRecorder onDone={() => { playXp(); setPhase("celebrate"); }} lang={lang} />
+   641→   641→                  </>
+   642→   642→                )}
+   643→   643→              </div>
+   644→   644→            )}
+   645→   645→          </section>
+   646→   646→        )}
+   647→   647→
+   648→   648→        {/* PHASE 5 — Celebrate */}
+   649→   649→        {phase === "celebrate" && !awarded && (
+   650→   650→          <section aria-label={phaseMeta.celebrate.label} className="space-y-4 text-center">
+   651→   651→            <div className="text-6xl" aria-hidden>🎉</div>
+   652→   652→            <CharacterBubble
+   653→   653→              characterId={va.celebration.character}
+   654→   654→              text={va.celebration.text}
+   655→   655→              textFr={va.celebration.textFr}
+   656→   656→              lang={lang === "ewo" ? "en" : lang}
+   657→   657→              autoSpeak={false}
+   658→   658→            />
+   659→   659→            <Button
+   660→   660→              onClick={async () => { playCelebration(); await finishLesson(); }}
+   661→   661→              className="h-16 w-full bg-gradient-to-r from-amber-600 to-orange-600 text-xl font-extrabold hover:from-amber-700 hover:to-orange-700"
+   662→   662→              size="lg"
+   663→   663→            >
+   664→   664→              🏅 {lang === "fr" ? "Réclamer ma récompense" : "Claim my reward"}
+   665→   665→            </Button>
+   666→   666→          </section>
+   667→   667→        )}
+   668→   668→
+   669→   669→        {phase === "celebrate" && awarded && (
+   670→   670→          <section className="space-y-4 text-center" aria-live="polite">
+   671→   671→            <div className="animate-bounce text-7xl" aria-hidden>{awarded.badge ? "🏅" : "⭐"}</div>
+   672→   672→            <h2 className="text-2xl font-extrabold text-amber-900">
+   673→   673→              +{awarded.xp} XP {awarded.badge && `· ${lang === "fr" ? "Badge débloqué" : "Badge unlocked"}: ${awarded.badge}`}
+   674→   674→            </h2>
+   675→   675→            {awarded.levelUp && (
+   676→   676→              <p className="text-lg font-bold text-orange-700">
+   677→   677→                🚀 {lang === "fr" ? "Niveau" : "Level"} {awarded.levelUp.level} — {awarded.levelUp.title}!
+   678→   678→              </p>
+   679→   679→            )}
+   680→   680→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 text-left">
+   681→   681→              <h3 className="mb-2 text-sm font-bold text-amber-900">📊 {lang === "fr" ? "Évaluation" : "Assessment"}</h3>
+   682→   682→              <ul className="space-y-1 text-xs text-amber-800">
+   683→   683→                {plan.assessment.criteria.map((c) => <li key={c}>✓ {c}</li>)}
+   684→   684→                <li className="pt-1 font-bold">
+   685→   685→                  {lang === "fr" ? "Score ASR moyen" : "Average ASR score"}: {(() => { const ok = scores.filter(Number.isFinite); return ok.length ? Math.round(ok.reduce((a, b) => a + b, 0) / ok.length) : "—"; })()}%
+   686→   686→                </li>
+   687→   687→              </ul>
+   688→   688→              <p className="mt-2 text-[11px] text-amber-600">
+   689→   689→                💾 {lang === "fr" ? "Téléchargeable hors ligne" : "Offline downloadable"} · ~{plan.offline_capability.size_mb} MB · {plan.offline_capability.components.join(", ")}
+   690→   690→              </p>
+   691→   691→              {plan.offline_capability.grassfields_language_packs && (
+   692→   692→                <p className="mt-1 text-[11px] font-semibold text-lime-800">
+   693→   693→                  🪶 {t("languagePacks", lang)}: {plan.offline_capability.grassfields_language_packs.bkm} · {plan.offline_capability.grassfields_language_packs.lns}
+   694→   694→                  {plan.offline_capability.grassfields_language_packs.byv && <> · {plan.offline_capability.grassfields_language_packs.byv}</>}
+   695→   695→                </p>
+   696→   696→              )}
+   697→   697→            </div>
+   698→   698→            <div className="flex gap-2">
+   699→   699→              <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); }}>
+   700→   700→                🔄 {lang === "fr" ? "Rejouer" : "Replay"}
+   701→   701→              </Button>
+   702→   702→              <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
+   703→   703→                🗺️ {t("dashboard", lang)}
+   704→   704→              </Button>
+   705→   705→            </div>
+   706→   706→          </section>
+   707→   707→        )}
+   708→   708→      </div>
+   709→   709→    </main>
+   710→   710→  );
+   711→   711→}
+   712→   712→
+   713→   713→/** Standalone voice challenge recorder (for lessons without STS scenario) */
+   714→   714→function VoiceChallengeRecorder({ onDone, lang }: { onDone: () => void; lang: string }) {
+   715→   715→  const [recording, setRecording] = React.useState(false);
+   716→   716→  const [saved, setSaved] = React.useState(false);
+   717→   717→  const recRef = React.useRef<WavRecorder | null>(null);
+   718→   718→
+   719→   719→  async function down() {
+   720→   720→    recRef.current = new WavRecorder();
+   721→   721→    try {
+   722→   722→      await recRef.current.start();
+   723→   723→      setRecording(true);
+   724→   724→    } catch { /* mic unavailable */ }
+   725→   725→  }
+   726→   726→  function up() {
+   727→   727→    if (!recRef.current) return;
+   728→   728→    setRecording(false);
+   729→   729→    recRef.current.stop(); // demo capture — human-in-the-loop portfolio piece
+   730→   730→    setSaved(true);
+   731→   731→    playBadge();
+   732→   732→  }
+   733→   733→  return (
+   734→   734→    <div className="flex flex-col items-center gap-3">
+   735→   735→      <MicButton recording={recording} onDown={down} onUp={up} label={t("record", lang)} />
+   736→   736→      {saved && (
+   737→   737→        <Button className="h-12 bg-lime-700 px-8 font-extrabold hover:bg-lime-800" onClick={onDone}>
+   738→   738→          ✓ {t("complete", lang)}
+   739→   739→        </Button>
+   740→   740→      )}
+   741→   741→    </div>
+   742→   742→  );
+   743→   743→}
+
+[showing lines 24-743 of 744; use offset=744 with limit to continue reading]

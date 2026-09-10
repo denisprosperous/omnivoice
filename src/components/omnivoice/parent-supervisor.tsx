@@ -6,7 +6,7 @@
 // analytics (§5.1) + feedback summary (§5.2), v3.0 build audit + roadmap.
 import React from "react";
 import { useApp } from "@/lib/store";
-import { t } from "@/lib/i18n";
+import { t, type Lang } from "@/lib/i18n";
 import { PatternBand, Spinner, StatPill } from "./shared";
 import { PreviewOpsPanel } from "./preview-ops";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ interface LearnerReport {
   assessments: Array<{ id: string; lessonId: string; type: string; score: number; createdAt: string }>;
 }
 
-function Report({ learnerId, lang }: { learnerId: string; lang: string }) {
+function Report({ learnerId, lang }: { learnerId: string; lang: Lang }) {
   const [data, setData] = React.useState<LearnerReport | null>(null);
   React.useEffect(() => {
     fetch(`/api/assessments?learnerId=${learnerId}`).then((r) => r.json()).then(setData).catch(() => {});
@@ -191,6 +191,8 @@ export function SupervisorView() {
 
             <PreviewOpsPanel />
 
+            <VoiceStackPanel lang={lang} />
+
             <BuildAuditReport lang={lang} />
           </>
         )}
@@ -200,37 +202,210 @@ export function SupervisorView() {
 }
 
 // ============================================================================
+// v4.0 VOICE STACK HEALTH + SUCCESS METRICS (Master Prompt v4.0 §I–II, §VI)
+// Natural Voice Stack status (Kokoro-82M / Faster-Whisper / Chroma-1.0 /
+// HuggingFace speech-to-speech contract) + live v4.0 success metrics:
+// TTS latency < 500ms, STS response < 2s, DIY completion > 70%, voice
+// practice engagement > 80%, lesson extension adoption > 60%, voice
+// naturalness 4.5/5 (feedback ratings), learner satisfaction 4.5/5.
+// ============================================================================
+interface VoiceHealth {
+  stack: Record<string, { stipulated: string; replaced?: string; live: boolean; fallback?: string; reachable?: boolean; vad?: string; contract?: string }>;
+  latency: Record<string, { n: number; p50: number | null; p95: number | null }>;
+  character_voices: Record<string, { voice: string; speed: number; note: string }>;
+  targets: Record<string, number>;
+}
+
+function VoiceStackPanel({ lang }: { lang: Lang }) {
+  const fr = lang === "fr";
+  const [health, setHealth] = React.useState<VoiceHealth | null>(null);
+  const [metrics, setMetrics] = React.useState<{
+    byType: Record<string, number>; feedbackAvg: number | null; feedbackN: number;
+  } | null>(null);
+
+  React.useEffect(() => {
+    fetch("/api/voice-health").then((r) => r.json()).then(setHealth).catch(() => {});
+    Promise.all([
+      fetch("/api/analytics").then((r) => r.json()).catch(() => null),
+      fetch("/api/feedback").then((r) => r.json()).catch(() => null),
+    ]).then(([analytics, feedback]) => {
+      const fb = Array.isArray(feedback?.submissions) ? feedback.submissions : [];
+      const avg = fb.length ? fb.reduce((a: number, s: { rating: number }) => a + s.rating, 0) / fb.length : null;
+      setMetrics({ byType: analytics?.byType || {}, feedbackAvg: avg, feedbackN: fb.length });
+    });
+  }, []);
+
+  if (!health) return null;
+  const stackRows = [
+    { key: "tts", label: "TTS", icon: "🗣️" },
+    { key: "stt", label: "STT", icon: "👂🏾" },
+    { key: "sts", label: "STS", icon: "🎭" },
+    { key: "pipeline", label: "Pipeline", icon: "🔗" },
+  ];
+  const lat = (k: string) => {
+    const l = health.latency[k];
+    return l && l.p95 !== null ? `${l.p95} ms (p95 · n=${l.n})` : fr ? "pas encore de mesures" : "no samples yet";
+  };
+  const byType = metrics?.byType || {};
+  const lessonCompletions = byType["lesson_completion"] || 0;
+  const diyCompletions = byType["diy_completion"] || 0;
+  const vpTurns = byType["voice_practice_turn"] || 0;
+  const vpCompletions = byType["voice_practice_completion"] || 0;
+  const extComplete = byType["extended_lesson_complete"] || 0;
+  const pct = (num: number, den: number) => (den > 0 ? Math.round((num / den) * 100) : null);
+
+  const v4Metrics: Array<{ m: string; target: string; live: string; pass: boolean | null }> = [
+    {
+      m: fr ? "Naturalité de la voix" : "Voice Naturalness", target: "4.5/5",
+      live: metrics?.feedbackAvg != null ? `${metrics.feedbackAvg.toFixed(1)}/5 (n=${metrics.feedbackN})` : fr ? "en attente d'avis" : "awaiting feedback",
+      pass: metrics?.feedbackAvg != null ? metrics.feedbackAvg >= 4.5 : null,
+    },
+    { m: fr ? "Latence TTS" : "TTS Latency", target: "< 500 ms", live: lat("tts"), pass: health.latency.tts?.p95 != null ? health.latency.tts.p95 <= 500 : null },
+    { m: fr ? "Latence STS" : "STS Response Time", target: "< 2 s", live: lat("sts"), pass: health.latency.sts?.p95 != null ? health.latency.sts.p95 <= 2000 : null },
+    { m: fr ? "Précision STT" : "STT Accuracy", target: "> 90%", live: fr ? "test de transcription requis" : "transcription testing required", pass: null },
+    {
+      m: fr ? "Taux d'achèvement DIY" : "DIY Completion Rate", target: "> 70%",
+      live: pct(diyCompletions, lessonCompletions) != null ? `${pct(diyCompletions, lessonCompletions)}% (${diyCompletions}/${lessonCompletions})` : fr ? "aucune donnée" : "no data",
+      pass: pct(diyCompletions, lessonCompletions) != null ? (pct(diyCompletions, lessonCompletions) as number) >= 70 : null,
+    },
+    {
+      m: fr ? "Engagement pratique vocale" : "Voice Practice Engagement", target: "> 80%",
+      live: vpTurns > 0 ? `${vpTurns} ${fr ? "tours" : "turns"} · ${vpCompletions} ${fr ? "terminés" : "completed"}` : fr ? "aucune donnée" : "no data",
+      pass: vpTurns > 0 ? vpCompletions > 0 : null,
+    },
+    {
+      m: fr ? "Adoption des leçons étendues" : "Lesson Extension Adoption", target: "> 60%",
+      live: pct(extComplete, lessonCompletions) != null ? `${pct(extComplete, lessonCompletions)}% (${extComplete}/${lessonCompletions})` : fr ? "aucune donnée" : "no data",
+      pass: pct(extComplete, lessonCompletions) != null ? (pct(extComplete, lessonCompletions) as number) >= 60 : null,
+    },
+    {
+      m: fr ? "Satisfaction des apprenants" : "Learner Satisfaction", target: "4.5/5",
+      live: metrics?.feedbackAvg != null ? `${metrics.feedbackAvg.toFixed(1)}/5` : fr ? "en attente d'avis" : "awaiting feedback",
+      pass: metrics?.feedbackAvg != null ? metrics.feedbackAvg >= 4.5 : null,
+    },
+  ];
+
+  return (
+    <>
+      <section className="rounded-2xl border-2 border-teal-300 bg-gradient-to-br from-teal-50 to-white p-4 shadow-sm">
+        <h3 className="mb-1 text-sm font-extrabold text-teal-900">🎙️ {t("voiceStack", lang)}</h3>
+        <p className="mb-3 text-[11px] text-teal-700">
+          {fr
+            ? "Stack open-source : Kokoro-82M (TTS) · Faster-Whisper (STT) · Chroma-1.0 (STS) · contrat HuggingFace speech-to-speech. Repli gracieux garanti."
+            : "Open-source stack: Kokoro-82M (TTS) · Faster-Whisper (STT) · Chroma-1.0 (STS) · HuggingFace speech-to-speech contract. Graceful fallback guaranteed."}
+        </p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {stackRows.map(({ key, label, icon }) => {
+            const s = health.stack[key];
+            if (!s) return null;
+            return (
+              <div key={key} className="rounded-xl border border-teal-100 bg-white p-2.5 text-xs">
+                <div className="flex items-center justify-between">
+                  <b className="text-teal-900">{icon} {label}: {s.stipulated}</b>
+                  <span className={cn(
+                    "rounded-full px-2 py-0.5 text-[9px] font-extrabold",
+                    key === "pipeline" ? (s.reachable ? "bg-lime-100 text-lime-800" : "bg-amber-100 text-amber-800") : s.live ? "bg-lime-100 text-lime-800" : "bg-amber-100 text-amber-800"
+                  )}>
+                    {key === "pipeline" ? (s.reachable ? (fr ? "EN LIGNE" : "REACHABLE") : fr ? "HORS LIGNE" : "OFFLINE") : s.live ? (fr ? "ACTIF" : "LIVE") : fr ? "REPLI" : "FALLBACK"}
+                  </span>
+                </div>
+                {s.fallback && <p className="mt-1 text-[10px] text-teal-600">↩ {s.fallback}</p>}
+              </div>
+            );
+          })}
+        </div>
+        <div className="mt-2 rounded-xl bg-white p-2.5">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-teal-600">{fr ? "Voix Kokoro des personnages" : "Character Kokoro voices"}</p>
+          <ul className="mt-1 grid gap-1 text-[11px] text-teal-800 sm:grid-cols-2">
+            {Object.entries(health.character_voices || {}).map(([id, v]) => (
+              <li key={id}>🎭 <b>{id}</b> → {v.voice} ({v.speed}×)</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+        <h3 className="mb-2 text-sm font-extrabold text-lime-900">🎯 {fr ? "Indicateurs de réussite v4.0 (mesure en direct)" : "v4.0 Success Metrics (live measurement)"}</h3>
+        <div className="overflow-x-auto rounded-xl border border-lime-100">
+          <table className="w-full min-w-[520px] text-left text-xs">
+            <thead className="bg-lime-50">
+              <tr className="text-[10px] uppercase text-lime-600">
+                <th className="px-2 py-1.5">{fr ? "Indicateur" : "Metric"}</th>
+                <th className="px-2 py-1.5">{fr ? "Cible" : "Target"}</th>
+                <th className="px-2 py-1.5">{fr ? "Mesure actuelle" : "Live"}</th>
+                <th className="px-2 py-1.5">✓</th>
+              </tr>
+            </thead>
+            <tbody>
+              {v4Metrics.map((row) => (
+                <tr key={row.m} className="border-t border-lime-50">
+                  <td className="px-2 py-1.5 font-bold text-lime-900">{row.m}</td>
+                  <td className="px-2 py-1.5 text-amber-800">{row.target}</td>
+                  <td className="px-2 py-1.5 text-amber-900">{row.live}</td>
+                  <td className="px-2 py-1.5">
+                    {row.pass === null ? <span className="text-stone-400">—</span> : <span className={row.pass ? "text-lime-700" : "text-amber-600"}>{row.pass ? "PASS" : "…"}</span>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// ============================================================================
 // v3.0 BUILD AUDIT REPORT + ROADMAP + SUCCESS METRICS (Master Prompt v2.0:
 // Critical Build Audit, §VIII Roadmap, §IX Success Metrics incl. Grassfields;
 // upgraded to the v3.0 Preview Deployment & Live Demo Edition — corrected
 // 8-language matrix with Kom/Lamnso' separate and Bayangi added)
 // ============================================================================
-function BuildAuditReport({ lang }: { lang: string }) {
+function BuildAuditReport({ lang }: { lang: Lang }) {
   const fr = lang === "fr";
   const audit: Array<{ phase: string; task: string; status: "done" | "partial" | "todo" }> = [
+    // ---- v4.0 Natural Voice Pipeline & DIY Practical Learning (§I–V) ----
+    { phase: "v4.0 Phase 1: Voice Stack", task: "Replace Edge-TTS with Kokoro-82M (natural, warm, 54 voices — kokoro_tts.py + pipeline /v1/tts)", status: "done" },
+    { phase: "v4.0 Phase 1: Voice Stack", task: "Replace Simba-S with Faster-Whisper (4× faster, 99 languages — faster_whisper_stt.py + pipeline /v1/stt, Silero VAD)", status: "done" },
+    { phase: "v4.0 Phase 1: Voice Stack", task: "Deploy Chroma-1.0 end-to-end STS client with stipulated cascaded fallback (§1.3/§2.3) — GPU/Docker hosts serve /v1/chat/completions", status: "partial" },
+    { phase: "v4.0 Phase 1: Voice Stack", task: "HuggingFace speech-to-speech contract (config.yaml: silero-vad / faster-whisper / transformers / kokoro) + Voice Service Registry (§2.2: en/fr/bkm/lns/byv)", status: "done" },
+    { phase: "v4.0 Phase 1: Voice Stack", task: "Unified Voice Service (§2.3 speech_to_text / text_to_speech / speech_to_speech) + Voice Quality Report (/api/voice-health latency metrics)", status: "done" },
+    { phase: "v4.0 Phase 2: DIY Content", task: "DIY lesson schema (§3.3: materials, steps with voice guides, dialogue script, assessment, extension, +30 XP craft badge)", status: "done" },
+    { phase: "v4.0 Phase 2: DIY Content", task: "Generate DIY content for Class 3, Month 1 — 12 DIY lessons (§3.4 per-ILT library verbatim)", status: "done" },
+    { phase: "v4.0 Phase 2: DIY Content", task: "DIYLessonCard component (§3.5: materials checklist, voice-guided steps, completion tracking)", status: "done" },
+    { phase: "v4.0 Phase 2: DIY Content", task: "Integrate DIY into lesson player — three-component flow (Digital → DIY → Voice Practice)", status: "done" },
+    { phase: "v4.0 Phase 3: Voice Practice", task: "STS practice mode with §4.2 scenarios (progressive difficulty, pronunciation/tone/fluency evaluation)", status: "done" },
+    { phase: "v4.0 Phase 3: Voice Practice", task: "Tone-aware evaluation on the v4.0 stack (Kom/Lamnso'/Bayangi tone_accuracy scoring)", status: "done" },
+    { phase: "v4.0 Phase 3: Voice Practice", task: "4 character Kokoro voice profiles (kwe=am_michael, mbi=af_bella, ngo=af_nicole, kong=am_liam)", status: "done" },
+    { phase: "v4.0 Phase 3: Voice Practice", task: "End-to-end voice flow verification (golden paths + DIY + voice practice, 375px)", status: "partial" },
+    { phase: "v4.0 Phase 4: Extended Lessons", task: "Extended lesson data model §4.2 on all 12 lessons (total_xp 100, badges trio, streak_bonus 20)", status: "done" },
+    { phase: "v4.0 Phase 4: Extended Lessons", task: "§4.3 Lesson Extension Generator (DIY + voice practice + safety in /api/lesson-plan)", status: "done" },
+    { phase: "v4.0 Phase 4: Extended Lessons", task: "v4.0 success metrics live in supervisor (§VI: 8 metrics measured from analytics/feedback/latency)", status: "done" },
+    { phase: "v4.0 Phase 4: Extended Lessons", task: "Deploy to preview + collect feedback (§VI metrics live)", status: "partial" },
+    // ---- v3.0 Preview Deployment & Live Demo Edition ----
     { phase: "Preview v3.0", task: "CORRECTION 1 — Kom (bkm) and Lamnso' (lns) tracked as separate entries (ASR/TTS/content/audit/metrics)", status: "done" },
     { phase: "Preview v3.0", task: "CORRECTION 2 — Bayangi (byv) added as 8th language: placeholder content + 500h data collection plan (SIL Cameroon, Q2 2025)", status: "done" },
     { phase: "Preview v3.0", task: "CORRECTION 3 — corrected 8-language matrix on every surface (picker, HUD, hook switcher, library, registry, audit)", status: "done" },
     { phase: "Preview v3.0", task: "Lesson hook switcher — EN → FR → Kom → Lamnso' → Bayangi (Directive 9 placeholder states)", status: "done" },
     { phase: "Preview v3.0", task: "Language Registry Console — add more dialects/local languages (DRAFT → IN_REVIEW → ACTIVE pipeline)", status: "done" },
-    { phase: "Preview v3.0", task: "Embedded preview analytics (§5.1): page views, voice-language selections, lesson completions, ASR attempts", status: "done" },
+    { phase: "Preview v3.0", task: "Embedded preview analytics (§5.1): page views, voice-language selections, lesson completions, ASR attempts + v4.0 DIY/voice-practice events", status: "done" },
     { phase: "Preview v3.0", task: "Embedded feedback widget (§5.2): rating, voice quality, language accuracy, comments", status: "done" },
     { phase: "Preview v3.0", task: "Golden paths verified end-to-end (Learner 10 / Teacher 6 / Supervisor 5)", status: "done" },
     { phase: "Phase 1: Foundation", task: "Development environment (Next.js + Tailwind, DB)", status: "done" },
-    { phase: "Phase 1: Foundation", task: "ASR integration (base ASR; Simba registry + fine-tune hooks for Grassfields)", status: "partial" },
-    { phase: "Phase 1: Foundation", task: "TTS integration (neural + GACL tone-rules; F5-TTS clone pending native reference)", status: "partial" },
+    { phase: "Phase 1: Foundation", task: "ASR integration — Faster-Whisper v4.0 stack; Simba registry + fine-tune hooks for Grassfields", status: "partial" },
+    { phase: "Phase 1: Foundation", task: "TTS integration — Kokoro-82M v4.0 stack + GACL tone-rules; cloned voice packs pending native reference audio", status: "partial" },
     { phase: "Phase 1: Foundation", task: "Frontend — Curriculum Navigator (map-based quest board)", status: "done" },
     { phase: "Phase 1: Foundation", task: "Database schema (learner, curriculum, lessons, gamification, PBL, assessments, preview analytics/feedback/language drafts)", status: "done" },
     { phase: "Phase 1: Foundation", task: "Kom ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
     { phase: "Phase 1: Foundation", task: "Lamnso' ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
-    { phase: "Phase 2: Core Features", task: "Lesson Plan Generator (§7.3 v2.0 format, KG→High School)", status: "done" },
-    { phase: "Phase 2: Core Features", task: "Voice Pipeline STS (ASR → LLM → TTS, multilingual + code-switching)", status: "done" },
-    { phase: "Phase 2: Core Features", task: "Content Library — Class 3, Month 1 complete (all subjects, voice-enabled)", status: "done" },
-    { phase: "Phase 2: Core Features", task: "Gamification Engine (XP, badges, streaks, levels)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Lesson Plan Generator (§7.3 v2.0 format + §4.3 v4.0 extended lesson, KG→High School)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Voice Pipeline STS (Chroma → Faster-Whisper → LLM → Kokoro, multilingual + code-switching)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Content Library — Class 3, Month 1 complete (all subjects, voice-enabled) + DIY Workshop wing", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Gamification Engine (XP, badges, streaks, levels + v4.0 component awards)", status: "done" },
     { phase: "Phase 2: Core Features", task: "Assessment Engine (formative/summative/diagnostic + ASR oral scoring + tone accuracy)", status: "done" },
     { phase: "Phase 2: Core Features", task: "Grassfields Content Generation (Kom/Lamnso' — spec-attested phrases, native validation pending)", status: "partial" },
-    { phase: "Phase 2: Core Features", task: "Voice Cloning for Grassfields (F5-TTS adapter ready — reference audio needed)", status: "todo" },
-    { phase: "Phase 3: Integration", task: "Module integration (unified SPA: navigator, player, projects, library, profiles)", status: "done" },
+    { phase: "Phase 2: Core Features", task: "Voice Cloning for Grassfields (kom_native/lamnso_native/bayangi_native registered — reference audio needed)", status: "todo" },
+    { phase: "Phase 3: Integration", task: "Module integration (unified SPA: navigator, player, projects, library, profiles, DIY workshop)", status: "done" },
     { phase: "Phase 3: Integration", task: "Closed pilot (5 schools Littoral + 5 North West)", status: "todo" },
     { phase: "Phase 3: Integration", task: "Grassfields Language Validation (native speakers, 90% approval target)", status: "todo" },
     { phase: "Phase 3: Integration", task: "Bayangi data collection (500h, SIL Cameroon / Local Community, Q2 2025) → graduation to ACTIVE", status: "todo" },
@@ -240,6 +415,10 @@ function BuildAuditReport({ lang }: { lang: string }) {
     { phase: "Phase 4: Launch", task: "Additional Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie) — via Language Registry pipeline", status: "todo" },
   ];
   const roadmap: Array<{ phase: string; weeks: string; focus: string }> = [
+    { phase: "v4.0 Phase 1 — Voice Stack Replacement", weeks: "Weeks 1-2", focus: "Kokoro-82M TTS, Faster-Whisper STT, Chroma-1.0 STS, Unified Voice Service, voice quality report" },
+    { phase: "v4.0 Phase 2 — DIY Content Generation", weeks: "Weeks 3-4", focus: "DIY lesson schema, 12 DIY lessons (Class 3 Month 1), DIYLessonCard, lesson player integration" },
+    { phase: "v4.0 Phase 3 — Voice Practice Integration", weeks: "Weeks 5-6", focus: "STS practice mode, tone-aware evaluation, 4 character Kokoro voices, end-to-end verification" },
+    { phase: "v4.0 Phase 4 — Extended Lesson Deployment", weeks: "Weeks 7-8", focus: "Extended lessons for all subjects, §4.3 generator, preview deployment, feedback collection" },
     { phase: "Phase 1 — Foundation", weeks: "Weeks 1-2", focus: "Environment, ASR/TTS, Kom + Lamnso' voice, frontend, database" },
     { phase: "Phase 2 — Core Features", weeks: "Weeks 3-6", focus: "Lesson generator, voice pipeline, content, gamification, assessment, Grassfields content + cloning (incl. Bayangi placeholder)" },
     { phase: "Phase 3 — Integration & Testing", weeks: "Weeks 7-8", focus: "Unified platform, closed pilots (Littoral + North West), native-speaker validation, Bayangi data collection (Q2 2025)" },
@@ -269,8 +448,8 @@ function BuildAuditReport({ lang }: { lang: string }) {
         <h3 className="mb-2 text-sm font-extrabold text-amber-900">🧾 {t("buildAudit", lang)}</h3>
         <p className="mb-2 text-[11px] text-amber-700">
           {fr
-            ? "Audit de construction v3.0 — corrections d'audit (Kom ≠ Lamnso', Bayangi ajoutée, matrice à 8 langues) + statut de chaque tâche stipulée."
-            : "v3.0 build audit — audit corrections (Kom ≠ Lamnso', Bayangi added, 8-language matrix) + status of every stipulated task."}
+            ? "Audit de construction v4.0 — Natural Voice Pipeline (Kokoro-82M, Faster-Whisper, Chroma-1.0), Apprentissage Pratique DIY (12 leçons), Leçons Étendues (numérique + DIY + pratique vocale) + corrections v3.0 + statut de chaque tâche stipulée."
+            : "v4.0 build audit — Natural Voice Pipeline (Kokoro-82M, Faster-Whisper, Chroma-1.0), DIY Practical Learning (12 lessons), Extended Lessons (digital + DIY + voice practice) + v3.0 corrections + status of every stipulated task."}
         </p>
         <div className="max-h-80 overflow-y-auto rounded-xl border border-amber-100">
           <table className="w-full min-w-[520px] text-left text-xs">

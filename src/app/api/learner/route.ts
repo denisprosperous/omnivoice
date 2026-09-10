@@ -73,7 +73,7 @@ export async function PUT(req: NextRequest) {
     const reason = body.reason || "learning";
     const result = await awardXp(learnerId, xp, reason);
 
-    let badge = null;
+    let badge: Awaited<ReturnType<typeof awardBadge>> = null;
     if (body.badgeCode) badge = await awardBadge(learnerId, body.badgeCode);
 
     if (body.skillCode) await bumpSkill(learnerId, body.skillCode, body.masteryDelta ?? 10);

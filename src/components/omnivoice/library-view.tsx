@@ -20,6 +20,7 @@ import {
   BAYANGI_DATA_COLLECTION_PLAN,
 } from "@/lib/data/grassfields";
 import { RegistryConsole, statusLabel } from "./registry-console";
+import { DiyWorkshop } from "./diy-workshop";
 import { cn } from "@/lib/utils";
 import { BookOpen, Calculator, FlaskConical, Languages, Landmark, Palette, Dumbbell, Drum, Monitor, type LucideIcon } from "lucide-react";
 
@@ -34,7 +35,7 @@ interface Subject { id: string; nameEn: string; nameFr: string; domain: string; 
 
 export function LibraryView() {
   const { lang } = useApp();
-  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry">("schemes");
+  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "diy">("schemes");
   const [weeks, setWeeks] = React.useState<SchemeWeek[]>([]);
   const [subjects, setSubjects] = React.useState<Subject[]>([]);
   const [domains, setDomains] = React.useState<Array<{ name: string; weighting: number }>>([]);
@@ -104,10 +105,21 @@ export function LibraryView() {
           >
             🧩 {t("registryConsole", lang)}
           </button>
+          <button
+            role="tab" aria-selected={wing === "diy"} onClick={() => setWing("diy")}
+            className={cn(
+              "min-h-[40px] rounded-full border-2 px-4 text-sm font-bold transition-all",
+              wing === "diy" ? "border-orange-600 bg-orange-600 text-white shadow" : "border-orange-200 bg-white text-orange-800 hover:border-orange-400"
+            )}
+          >
+            🔨 {t("diyWorkshop", lang)}
+          </button>
         </div>
 
         {wing === "registry" ? (
           <RegistryConsole />
+        ) : wing === "diy" ? (
+          <DiyWorkshop />
         ) : wing === "grassfields" ? (
           <GrassfieldsExpansion fr={fr} selLang={selLang} setSelLang={setSelLang} sel={sel} />
         ) : (

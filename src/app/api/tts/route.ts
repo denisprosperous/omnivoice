@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  synthesizeSpeech, synthesizeGrassfields, CHARACTER_VOICES, CharacterId,
-} from "@/lib/server/voice";
+import { kokoroTTS, getVoiceConfig, VOICE_REGISTRY_V4, CHARACTER_KOKORO_VOICES } from "@/lib/server/voice-v4";
+import { CharacterId } from "@/lib/server/voice";
 import { isGrassfields } from "@/lib/data/grassfields";
 
 export const maxDuration = 60;
 
 /**
- * POST /api/tts — Text-to-Speech (Master Prompt v2.0 §4.1.2)
+ * POST /api/tts — Text-to-Speech (v4.0 §1.1 — Kokoro-82M natural voice stack)
  * body: { text, character?: 'kwe'|'mbi'|'ngo'|'kong', voice?, speed?, lang? }
- * Grassfields languages route through synthesize_grassfields (§6.5):
- * apply_tone_rules → F5-TTS cloning adapter → neural synthesis.
- * returns: { audioBase64 (WAV), pitchRate, toneMarked?, voiceEngine? }
+ * Routes through the v4.0 Voice Service Registry (§2.2): Kokoro-82M synthesis
+ * via the Python pipeline server; Grassfields languages carry GACL tone rules
+ * (apply_tone_rules) and their registered cloned voices (kom_native /
+ * lamnso_native / bayangi_native). Falls back to the platform neural engine
+ * when the pipeline is offline — never robotic silence.
+ * returns: { audioBase64 (WAV), pitchRate?, engine, backend, latencyMs, toneMarked? }
  */
 export async function POST(req: NextRequest) {
   try {
@@ -19,26 +21,49 @@ export async function POST(req: NextRequest) {
     const text: string = (body.text || "").trim();
     if (!text) return NextResponse.json({ error: "text is required" }, { status: 400 });
     const lang: string = body.lang || body.language || "en";
-
     const character = (body.character || "kwe") as CharacterId;
-    const persona = CHARACTER_VOICES[character] || CHARACTER_VOICES.kwe;
-    const voice = body.voice || persona.voice;
-    const speed = typeof body.speed === "number" ? body.speed : persona.speed;
 
-    if (isGrassfields(lang)) {
-      const out = await synthesizeGrassfields({ text, language: lang, voice, speed });
-      return NextResponse.json({
-        audioBase64: out.audioBase64, contentType: out.contentType,
-        pitchRate: persona.pitchRate, character,
-        toneMarked: out.toneMarked, voiceEngine: out.voiceEngine, language: lang,
-      });
-    }
+    const out = await kokoroTTS({
+      text: text.slice(0, 900),
+      language: lang,
+      character,
+      voice: body.voice,
+      speed: typeof body.speed === "number" ? body.speed : undefined,
+    });
 
-    const { audioBase64 } = await synthesizeSpeech({ text, voice, speed });
-    return NextResponse.json({ audioBase64, contentType: "audio/wav", pitchRate: persona.pitchRate, character });
+    const personaPitch = characterPitch(character);
+    return NextResponse.json({
+      audioBase64: out.audioBase64,
+      contentType: out.contentType,
+      pitchRate: personaPitch,
+      character,
+      engine: out.engine,
+      backend: out.backend,
+      latencyMs: out.latencyMs,
+      voice: out.voice,
+      toneMarked: out.toneMarked,
+      language: lang,
+      registry: getVoiceConfig(lang),
+      voiceRegistryVersion: "4.0",
+    });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : "TTS failed";
     console.error("TTS error:", msg);
     return NextResponse.json({ error: msg, fallback: "webspeech" }, { status: 502 });
   }
+}
+
+/** GET /api/tts — v4.0 TTS registry + character Kokoro voice profiles */
+export async function GET() {
+  return NextResponse.json({
+    registry_version: "4.0",
+    tts_backend_stipulated: "kokoro-82m",
+    language_configs: VOICE_REGISTRY_V4,
+    character_voices: CHARACTER_KOKORO_VOICES,
+  });
+}
+
+function characterPitch(character: string): number {
+  const pitch: Record<string, number> = { kwe: 0.8, mbi: 1.32, ngo: 1.05, kong: 0.9 };
+  return pitch[character] ?? 1;
 }

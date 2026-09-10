@@ -155,13 +155,13 @@ export function LearnerDashboard() {
         </div>
 
         {loading ? (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="h-40 animate-pulse rounded-2xl bg-amber-100/60" />
             ))}
           </div>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {subjects.map((s, idx) => {
               const hues = SUBJECT_HUES[s.color] || SUBJECT_HUES.amber;
               const subjLessons = grouped[s.id] || [];

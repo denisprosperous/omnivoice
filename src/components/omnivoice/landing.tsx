@@ -79,6 +79,12 @@ export function Landing() {
           <div className="mb-2 text-6xl" aria-hidden>🦉</div>
           <h1 className="text-3xl font-extrabold text-amber-900 sm:text-4xl">{t("appName", lang)}</h1>
           <p className="mt-2 text-base font-medium text-amber-700">{t("tagline", lang)}</p>
+          {/* v4.0 Natural Voice Pipeline & DIY Practical Learning edition chips */}
+          <div className="mt-3 flex flex-wrap items-center justify-center gap-1.5" aria-label="Platform edition">
+            <span className="rounded-full bg-teal-600 px-3 py-1 text-[11px] font-extrabold text-white">🎙️ Kokoro-82M Natural Voice</span>
+            <span className="rounded-full bg-orange-600 px-3 py-1 text-[11px] font-extrabold text-white">🔨 DIY Practical Learning</span>
+            <span className="rounded-full bg-purple-600 px-3 py-1 text-[11px] font-extrabold text-white">🎭 Speech-to-Speech Practice</span>
+          </div>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-amber-800/80">
             {lang === "fr"
               ? "Plateforme éducative IA pour le Cameroun — de la maternelle au lycée. Alignée sur le programme de la MINEDUB, IB, Cambridge et le CECRL."

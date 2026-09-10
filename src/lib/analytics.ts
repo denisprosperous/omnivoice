@@ -10,7 +10,13 @@ export type PreviewEventType =
   | "asr_attempt"
   | "feedback_open"
   | "profile_creation"
-  | "language_registered";
+  | "language_registered"
+  // v4.0 — DIY Practical + Voice Practice + extended lesson adoption (§VI metrics)
+  | "diy_step_complete"
+  | "diy_completion"
+  | "voice_practice_turn"
+  | "voice_practice_completion"
+  | "extended_lesson_complete";
 
 export function trackEvent(type: PreviewEventType, props?: Record<string, unknown>) {
   if (typeof window === "undefined") return;

@@ -10,6 +10,9 @@ import { db } from "@/lib/db";
 const EVENT_TYPES = [
   "page_view", "voice_language_selection", "lesson_completion",
   "asr_attempt", "feedback_open", "profile_creation", "language_registered",
+  // v4.0 §VI metrics — DIY completion, voice practice engagement, extension adoption
+  "diy_step_complete", "diy_completion", "voice_practice_turn",
+  "voice_practice_completion", "extended_lesson_complete",
 ] as const;
 
 export async function POST(req: NextRequest) {

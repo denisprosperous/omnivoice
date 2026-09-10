@@ -1109,3 +1109,157 @@ export const LESSONS: LessonPlan[] = [
     cultural_notesFr: "Les calendriers traditionnels au Cameroun suivent la lune — certaines communautés comptent treize lunes par an.",
   }),
 ];
+
+// ============================================================================
+// v4.0 EXTENDED LESSON FRAMEWORK (Master Prompt v4.0 §IV)
+// §4.1 — every lesson now has THREE components:
+//   Digital Lesson (5-10 min) · DIY Practical (15-30 min) · Voice Practice
+//   (5-10 min, speech-to-speech). §4.2 — extended_lesson JSON data model.
+// Gamification: total 100 XP (digital 50 + DIY 30 + voice practice 20),
+// three badges (digital + DIY craft + Voice Champion), streak_bonus 20.
+// ============================================================================
+
+import { diyForLesson, type DIYLesson } from "./diy";
+
+export interface VoicePracticeComponent {
+  duration: string;
+  mode: "speech_to_speech";
+  character: string;
+  scenarios: string[];
+  scenariosFr: string[];
+  evaluation: { pronunciation: boolean; tone_accuracy: boolean; fluency: boolean };
+}
+
+export interface ExtendedLesson {
+  lesson_id: string;
+  title: string;
+  components: {
+    digital: { duration: string; phases: string[]; voice_assets: { hook: string; instruction: string; celebration: string } };
+    diy: { duration: string; title: string; materials: string[]; steps: number; assessment: string };
+    voice_practice: VoicePracticeComponent;
+  };
+  gamification: { total_xp: number; badges: string[]; streak_bonus: number };
+  diy?: DIYLesson; // full §3.3 DIY payload (embedded for the lesson player)
+}
+
+// §4.2 voice_practice scenarios per lesson — progressive difficulty,
+// pronunciation + tone_accuracy + fluency all evaluated (spec §4.2)
+const VOICE_PRACTICE: Record<string, { character: string; scenarios: string[]; scenariosFr: string[] }> = {
+  eng_class3_home_w1: {
+    character: "kwe",
+    scenarios: ["Greet Kwe in the morning", "Greet Kwe in the afternoon", "Greet Kwe at night"],
+    scenariosFr: ["Salue Kwe le matin", "Salue Kwe l'après-midi", "Salue Kwe le soir"],
+  },
+  eng_class3_home_w2: {
+    character: "mbi",
+    scenarios: ["Name a common noun in the sitting room", "Name a proper noun from Cameroon", "Name a concrete noun you can touch"],
+    scenariosFr: ["Nomme un nom commun dans le salon", "Nomme un nom propre du Cameroun", "Nomme un nom concret que tu peux toucher"],
+  },
+  mat_class3_home_w1: {
+    character: "kwe",
+    scenarios: ["Count 5 spoons for Kwe", "Count from 10 to 20 without stopping", "Say how many people live in your home"],
+    scenariosFr: ["Compte 5 cuillères pour Kwe", "Compte de 10 à 20 sans t'arrêter", "Dis combien de personnes vivent chez toi"],
+  },
+  sci_class3_home_w1: {
+    character: "ngo",
+    scenarios: ["Name three parts of the head", "Name two parts of the arm", "Say one thing your legs can do"],
+    scenariosFr: ["Nomme trois parties de la tête", "Nomme deux parties du bras", "Dis une chose que tes jambes savent faire"],
+  },
+  fra_class3_home_w1: {
+    character: "ngo",
+    scenarios: ["Salue Ngo en français le matin", "Salue Ngo l'après-midi", "Dis bonne nuit à Ngo"],
+    scenariosFr: ["Salue Ngo en français le matin", "Salue Ngo l'après-midi", "Dis bonne nuit à Ngo"],
+  },
+  soc_class3_home_w1: {
+    character: "kong",
+    scenarios: ["Say the three colours of our flag", "Say what the yellow star means", "Say the name of our country"],
+    scenariosFr: ["Dis les trois couleurs de notre drapeau", "Dis ce que signifie l'étoile jaune", "Dis le nom de notre pays"],
+  },
+  nat_class3_home_w1: {
+    character: "ngo",
+    scenarios: ["Greet in Kom: say 'À bwɛ̀'", "Greet in Lamnso': say 'Mbi̶ vǝ̀'", "Answer 'Nà wù dà?' with 'M̀ bɛ̀'"],
+    scenariosFr: ["Salue en kom : dis « À bwɛ̀ »", "Salue en lamnso' : dis « Mbi̶ vǝ̀ »", "Réponds à « Nà wù dà ? » avec « M̀ bɛ̀ »"],
+  },
+  art_class3_home_w1: {
+    character: "ngo",
+    scenarios: ["Name two painting materials", "Name the colours of the Bamenda dance", "Say one dance step you learned"],
+    scenariosFr: ["Nomme deux matériaux de peinture", "Nomme les couleurs de la danse de Bamenda", "Dis un pas de danse que tu as appris"],
+  },
+  pe_class3_home_w1: {
+    character: "kong",
+    scenarios: ["Name two activities in a relay", "Say what balancing means", "Count your jumps from 1 to 10"],
+    scenariosFr: ["Nomme deux activités d'un relais", "Dis ce que veut dire s'équilibrer", "Compte tes sauts de 1 à 10"],
+  },
+  ict_class3_home_w1: {
+    character: "kong",
+    scenarios: ["Name the parts of a computer", "Say what the mouse does", "Say one key you can press on the keyboard"],
+    scenariosFr: ["Nomme les parties d'un ordinateur", "Dis ce que fait la souris", "Dis une touche que tu peux presser"],
+  },
+  eng_class3_home_w3: {
+    character: "mbi",
+    scenarios: ["Sing one line of the bedroom song", "Say whose mat it is using an apostrophe", "Say good night to Mbi"],
+    scenariosFr: ["Chante une ligne de la chanson de la chambre", "Dis à qui est le tapis avec l'apostrophe", "Dis bonne nuit à Mbi"],
+  },
+  mat_class3_home_w2: {
+    character: "mbi",
+    scenarios: ["Name the elements in a set of 5 caps", "Say the months of the dry season", "Say which set a stone belongs to"],
+    scenariosFr: ["Nomme les éléments d'un ensemble de 5 bouchons", "Dis les mois de la saison sèche", "Dis à quel ensemble appartient une pierre"],
+  },
+};
+
+/**
+ * extendedLesson (§4.2) — assemble the v4.0 extended_lesson JSON for any
+ * digital lesson: digital 5-phase plan + linked DIY Practical (§3.3) +
+ * Voice Practice (§4.2 speech_to_speech with pronunciation/tone/fluency).
+ */
+export function extendedLesson(plan: LessonPlan): ExtendedLesson {
+  const diy = diyForLesson(plan.lesson_id);
+  const vp = VOICE_PRACTICE[plan.lesson_id] || {
+    character: plan.sts_scenario?.character || plan.voice_assets.hook.character,
+    scenarios: [plan.sts_scenario?.description || "Talk with your character about the lesson"],
+    scenariosFr: [plan.sts_scenario?.descriptionFr || "Parle avec ton personnage de la leçon"],
+  };
+  const badges = [
+    plan.gamification.badge_name,
+    ...(diy ? [diy.gamification.badge_name] : []),
+    "Voice Champion",
+  ].filter(Boolean);
+  return {
+    lesson_id: plan.lesson_id,
+    title: plan.voice_assets.learn_content.title,
+    components: {
+      digital: {
+        duration: "8 min",
+        phases: ["Voice Hook", "Listen & Learn", "Speak & Practice", "Apply & Create", "Celebrate"],
+        voice_assets: {
+          hook: `${plan.lesson_id}_hook_${plan.voice_assets.hook.character}.mp3`,
+          instruction: `${plan.lesson_id}_instr.mp3`,
+          celebration: "makossa_short_celebration.mp3",
+        },
+      },
+      diy: diy
+        ? {
+            duration: "20 min",
+            title: diy.title,
+            materials: diy.materials.required,
+            steps: diy.steps.length,
+            assessment: diy.assessment.method,
+          }
+        : { duration: "20 min", title: "Hands-on practical", materials: plan.didactic_materials.physical, steps: 4, assessment: "Parent/teacher observation" },
+      voice_practice: {
+        duration: "7 min",
+        mode: "speech_to_speech",
+        character: vp.character,
+        scenarios: vp.scenarios,
+        scenariosFr: vp.scenariosFr,
+        evaluation: { pronunciation: true, tone_accuracy: true, fluency: true },
+      },
+    },
+    gamification: {
+      total_xp: 100,
+      badges,
+      streak_bonus: 20,
+    },
+    diy,
+  };
+}

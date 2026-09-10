@@ -94,8 +94,6 @@ export function playWavBase64(b64: string, pitchRate = 1, onEnded?: () => void):
   const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   const ac = new AC();
   void ac.decodeAudioData(bytes.buffer.slice(0)).then((buf) => {
-    const src = ac.createAudioBufferSourceNode ? ac.createAudioBufferSourceNode() : ac.createBufferSource();
-    // createBufferSource is standard
     const source: AudioBufferSourceNode = ac.createBufferSource();
     source.buffer = buf;
     source.playbackRate.value = pitchRate;

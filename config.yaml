@@ -1,0 +1,21 @@
+# OmniVoice v4.0 — speech-to-speech pipeline configuration (spec §1.4)
+# Mirrors the HuggingFace speech-to-speech deployment contract:
+#   speech-to-speech serve --stt whisper --llm transformers --tts kokoro
+vad:
+  model: silero-vad
+  threshold: 0.5
+
+stt:
+  backend: faster-whisper
+  model: base
+  language: auto
+
+llm:
+  backend: transformers
+  model: meta-llama/Llama-3.2-3B-Instruct
+  max_tokens: 256
+
+tts:
+  backend: kokoro
+  voice: af_bella
+  speed: 1.0

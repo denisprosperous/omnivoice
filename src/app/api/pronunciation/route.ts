@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  transcribeAudio, transcribeGrassfields, evaluateSimilarity, generateFeedback,
+  evaluateSimilarity, generateFeedback,
 } from "@/lib/server/voice";
+import { grassfieldsSTT, fasterWhisperSTT, getVoiceConfig } from "@/lib/server/voice-v4";
 import { isGrassfields } from "@/lib/data/grassfields";
 
 export const maxDuration = 60;
 
 /**
- * POST /api/pronunciation — evaluate_pronunciation (Master Prompt v2.0 §6.5)
+ * POST /api/pronunciation — evaluate_pronunciation (Master Prompt v2.0 §6.5
+ * on the v4.0 Faster-Whisper stack §1.2). Tonal Grassfields languages route
+ * to tone-aware scoring; STT executes via Faster-Whisper + Silero VAD with
+ * platform-ASR graceful degradation.
  * body: { audioBase64 (WAV), target: string, lang?: 'en'|'fr'|'bkm'|'lns'|... }
- * Tonal Grassfields languages (bkm, lns) route to tone-aware scoring:
  * returns { transcription, target, language, accuracy, tone_accuracy, feedback }
  */
 export async function POST(req: NextRequest) {
@@ -25,12 +28,14 @@ export async function POST(req: NextRequest) {
     let asrModel = "base";
     let humanInTheLoop = false;
     if (isGrassfields(lang)) {
-      const g = await transcribeGrassfields(clean, lang);
+      const g = await grassfieldsSTT(clean, lang);
       transcription = g.text;
-      asrModel = g.model;
+      asrModel = `${g.engine} · custom/${lang}-asr-v1 (fine-tune pending)`;
       humanInTheLoop = g.humanInTheLoop;
     } else {
-      transcription = await transcribeAudio(clean);
+      const r = await fasterWhisperSTT({ wavBase64: clean, language: lang === "fr" ? "fr" : "en" });
+      transcription = r.text;
+      asrModel = r.engine;
     }
 
     const { accuracy, toneAccuracy, toneAware } = evaluateSimilarity(transcription, target, lang);
@@ -41,6 +46,8 @@ export async function POST(req: NextRequest) {
       tone_accuracy: toneAccuracy,
       tone_aware: toneAware,
       asr_model: asrModel,
+      asr_backend: isGrassfields(lang) ? "faster-whisper/grassfields" : "faster-whisper",
+      registry: getVoiceConfig(lang),
       human_in_the_loop: humanInTheLoop,
       verdict: fb.verdict, message: fb.message, messageFr: fb.messageFr,
     });

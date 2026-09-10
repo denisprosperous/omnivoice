@@ -1,0 +1,14 @@
+# OMNIVOICE v4.0 — Open-Source Voice Stack (spec §I)
+# TTS: Kokoro-82M (natural, warm — replaces Edge-TTS)
+# STT: Faster-Whisper (4x faster, 99 languages — replaces Simba-S)
+# STS: Chroma-1.0 / MOSS-Speech via Docker on GPU hosts (client in Node layer)
+# Pipeline: HuggingFace speech-to-speech contract (config.yaml)
+kokoro
+soundfile
+numpy
+faster-whisper
+pydub
+fastapi
+uvicorn
+pyyaml
+requests

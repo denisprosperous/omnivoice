@@ -74,7 +74,7 @@ export const STRINGS: Record<string, { en: string; fr: string; ewo: string }> = 
   nativeReview: { en: "Native-speaker reviewed", fr: "Validé par un locuteur natif", ewo: "Atsi" },
   pendingReview: { en: "Awaiting native-speaker validation", fr: "Validation par locuteur natif en cours", ewo: "Atsi" },
   codeSwitch: { en: "Code-switching welcome", fr: "L'alternance de langues est bienvenue", ewo: "Atsi" },
-  buildAudit: { en: "Build Audit Report (v3.0)", fr: "Rapport d'Audit de Construction (v3.0)", ewo: "Atsi" },
+  buildAudit: { en: "Build Audit Report (v4.0)", fr: "Rapport d'Audit de Construction (v4.0)", ewo: "Atsi" },
   roadmap: { en: "Rapid Deployment Roadmap", fr: "Feuille de Route de Déploiement", ewo: "Atsi" },
   hookLanguage: { en: "Listen in", fr: "Écouter en", ewo: "Atsi" },
   toneGame: { en: "Tone game: does the voice rise or fall?", fr: "Jeu de tons : la voix monte ou descend ?", ewo: "Atsi" },
@@ -106,6 +106,23 @@ export const STRINGS: Record<string, { en: string; fr: string; ewo: string }> = 
   pageViews: { en: "Page Views", fr: "Vues de Page", ewo: "Atsi" },
   corrections: { en: "Audit Corrections Applied (v3.0)", fr: "Corrections d'Audit Appliquées (v3.0)", ewo: "Atsi" },
   contentCoverage: { en: "Content coverage", fr: "Couverture de contenu", ewo: "Atsi" },
+  // ---- Natural Voice Pipeline & DIY Practical Learning (v4.0) ----
+  digitalLesson: { en: "Digital Lesson", fr: "Leçon Numérique", ewo: "Dutu" },
+  diyPractical: { en: "DIY Practical", fr: "Pratique DIY", ewo: "Tal" },
+  voicePractice: { en: "Voice Practice", fr: "Pratique Vocale", ewo: "Dutu Atsi" },
+  materialsNeeded: { en: "Materials Needed", fr: "Matériel Nécessaire", ewo: "Bebisol" },
+  diyIntro: { en: "Hands-on time! Build it with your own hands using things found at home.", fr: "À toi de faire ! Construis de tes mains avec des objets de la maison.", ewo: "Tal!" },
+  startDiy: { en: "Start the DIY Practical", fr: "Commencer la Pratique DIY", ewo: "Tal" },
+  startVoicePractice: { en: "Start Voice Practice", fr: "Commencer la Pratique Vocale", ewo: "Dutu Atsi" },
+  practiceScenarios: { en: "Practice scenarios", fr: "Scénarios de pratique", ewo: "Mvetome" },
+  evaluationOn: { en: "Evaluated", fr: "Évalué", ewo: "Beweng" },
+  totalXp: { en: "Total XP", fr: "XP Total", ewo: "XP" },
+  streakBonus: { en: "Streak bonus", fr: "Bonus de suite", ewo: "Mboa" },
+  extendedComplete: { en: "Extended lesson complete!", fr: "Leçon étendue terminée !", ewo: "Ful!" },
+  diyWorkshop: { en: "DIY Workshop", fr: "Atelier DIY", ewo: "Tal" },
+  diyLibraryIntro: { en: "Hands-on activities per ILT and subject — digital lessons reinforced with physical making using local materials.", fr: "Activités manuelles par ILT et matière — les leçons numériques renforcées par la fabrication avec des matériaux locaux.", ewo: "Tal" },
+  builtDiyLessons: { en: "Built DIY lessons (Class 3 · Month 1)", fr: "Leçons DIY construites (Classe 3 · Mois 1)", ewo: "Bewulu" },
+  voiceStack: { en: "Natural Voice Stack (v4.0)", fr: "Stack Vocale Naturelle (v4.0)", ewo: "Atsi" },
 };
 
 export function t(key: string, lang: Lang): string {

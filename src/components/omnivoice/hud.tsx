@@ -30,7 +30,7 @@ export function Hud() {
 
   return (
     <header className="sticky top-0 z-40 shadow-md" style={{ background: "#7C2D12" }}>
-      <div className="mx-auto flex max-w-6xl items-center gap-2 px-3 py-2 sm:gap-3">
+      <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-2 py-2 sm:gap-3 sm:px-3">
         <button onClick={() => setView(learner.role === "learner" ? "learner" : nav[0].view)} className="flex items-center gap-2" aria-label="OmniVoice Academy home">
           <span className="text-2xl" aria-hidden>🦉</span>
           <span className="hidden text-sm font-extrabold tracking-wide text-amber-50 md:block">{t("appName", lang)}</span>
@@ -43,7 +43,7 @@ export function Hud() {
               onClick={() => setView(n.view)}
               aria-current={view === n.view ? "page" : undefined}
               className={cn(
-                "flex h-9 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 text-xs font-bold transition-colors sm:text-sm",
+                "flex h-9 items-center gap-1 whitespace-nowrap rounded-full px-2 text-xs font-bold transition-colors sm:px-2.5 sm:text-sm",
                 view === n.view ? "bg-amber-500 text-white shadow" : "text-amber-100 hover:bg-white/10"
               )}
             >
@@ -66,7 +66,7 @@ export function Hud() {
               onClick={() => setLang(l)}
               aria-pressed={lang === l}
               className={cn(
-                "h-8 rounded-full px-2 text-xs font-bold transition-colors",
+                "h-8 rounded-full px-1.5 text-xs font-bold transition-colors sm:px-2",
                 lang === l ? "bg-white text-amber-900" : "bg-white/10 text-amber-100 hover:bg-white/20"
               )}
             >
@@ -119,8 +119,14 @@ export function Hud() {
         </Button>
 
         <span
-          className={cn("flex h-8 items-center gap-1 rounded-full px-2 text-[10px] font-bold", online ? "bg-lime-600/30 text-lime-100" : "bg-red-600/40 text-red-100")}
+          className={cn(
+            "flex h-8 items-center gap-1 rounded-full px-2 text-[10px] font-bold",
+            // online chip is decorative on tiny screens (hidden < 640px);
+            // the offline state is always visible — it matters on mobile.
+            online ? "hidden sm:flex bg-lime-600/30 text-lime-100" : "bg-red-600/40 text-red-100"
+          )}
           title={online ? "Online" : t("offline", lang)}
+          aria-label={online ? "Online" : t("offline", lang)}
         >
           <span aria-hidden>{online ? "🟢" : "📴"}</span>
           <span className="hidden lg:inline">{online ? t("online", lang) : t("offline", lang)}</span>

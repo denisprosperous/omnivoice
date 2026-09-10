@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { extendedLesson, type LessonPlan } from "@/lib/data/lessons";
 
-/** GET /api/lessons?subjectId=&week=&stage= — voice-enabled lesson catalog */
+/** GET /api/lessons?subjectId=&week=&stage= — voice-enabled lesson catalog
+ *  (v4.0: single-lesson GET also returns the §4.2 extended lesson:
+ *   Digital + DIY Practical + Voice Practice components) */
 export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
   const subjectId = sp.get("subjectId");
@@ -12,7 +15,8 @@ export async function GET(req: NextRequest) {
   if (id) {
     const lesson = await db.lesson.findUnique({ where: { id } });
     if (!lesson) return NextResponse.json({ error: "not found" }, { status: 404 });
-    return NextResponse.json({ lesson: { ...lesson, plan: JSON.parse(lesson.plan) } });
+    const plan = JSON.parse(lesson.plan) as LessonPlan;
+    return NextResponse.json({ lesson: { ...lesson, plan }, extended: extendedLesson(plan) });
   }
 
   const lessons = await db.lesson.findMany({

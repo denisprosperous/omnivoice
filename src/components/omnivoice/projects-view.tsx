@@ -6,7 +6,7 @@
 // ============================================================================
 import React from "react";
 import { useApp } from "@/lib/store";
-import { t } from "@/lib/i18n";
+import { t, type Lang } from "@/lib/i18n";
 import { PatternBand, Spinner, MicButton } from "./shared";
 import { WavRecorder, playWavBase64, speakFallback } from "@/lib/voice-client";
 import { playBadge, playXp, playCelebration } from "@/lib/sound-engine";
@@ -309,7 +309,7 @@ export function ProjectsView() {
   );
 }
 
-function TextNote({ onAdd, lang }: { onAdd: (t: string) => void; lang: string }) {
+function TextNote({ onAdd, lang }: { onAdd: (t: string) => void; lang: Lang }) {
   const [open, setOpen] = React.useState(false);
   const [val, setVal] = React.useState("");
   if (!open) {

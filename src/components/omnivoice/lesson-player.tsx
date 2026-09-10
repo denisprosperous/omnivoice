@@ -18,7 +18,10 @@ import { WavRecorder, speak, playWavBase64, transcribe, speakFallback } from "@/
 import { trackEvent } from "@/lib/analytics";
 import { playCorrect, playIncorrect, playBadge, playCelebration, playLevelUp, playXp, startAmbient, stopAmbient } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
+import { DIYLessonCard } from "./diy-lesson-card";
+import type { ExtendedLesson } from "@/lib/data/lessons";
 import { cn } from "@/lib/utils";
+import type { Lang } from "@/lib/i18n";
 
 interface PracticePrompt { prompt: string; promptFr?: string; promptBkm?: string; promptLns?: string; promptByv?: string; target: string; targetBkm?: string; targetLns?: string; targetByv?: string; evaluation: string; kind?: string }
 interface LessonPlanData {
@@ -44,17 +47,28 @@ interface LessonPlanData {
   };
   activities: Array<{ phase: string; duration: string; description: string; descriptionFr: string }>;
   assessment: { criteria: string[]; methods: string[] };
-  offline_capability: { downloadable: boolean; size_mb: number; components: string[]; grassfields_language_packs?: { bkm: string; lns: string } };
+  offline_capability: { downloadable: boolean; size_mb: number; components: string[]; grassfields_language_packs?: { bkm: string; lns: string; byv?: string } };
   differentiation: string[];
   cultural_notes: string; cultural_notesFr: string;
   native_speaker_review?: string;
 }
 const PHASES = ["hook", "listen", "speak", "apply", "celebrate"] as const;
 type Phase = (typeof PHASES)[number];
+// v4.0 §4.1 — every lesson has THREE components: Digital Lesson, DIY
+// Practical, Voice Practice. The 5 phases run inside the Digital component;
+// DIY and Voice Practice are extension stages.
+const STAGES = ["digital", "diy", "voice_practice"] as const;
+type Stage = (typeof STAGES)[number];
+
+interface ExtendedLessonLite extends Omit<ExtendedLesson, "diy"> {
+  diy?: ExtendedLesson["diy"];
+}
 
 export function LessonPlayer() {
   const { learner, lang, voiceLang, currentLessonId, setView } = useApp();
   const [plan, setPlan] = React.useState<LessonPlanData | null>(null);
+  const [extended, setExtended] = React.useState<ExtendedLessonLite | null>(null);
+  const [stage, setStage] = React.useState<Stage>("digital"); // v4.0 component stage
   const [loading, setLoading] = React.useState(true);
   const [phase, setPhase] = React.useState<Phase>("hook");
   const [hookDone, setHookDone] = React.useState(false);
@@ -78,13 +92,21 @@ export function LessonPlayer() {
 
   // Celebrate state
   const [awarded, setAwarded] = React.useState<{ xp: number; badge: string | null; levelUp: { level: number; title: string } | null } | null>(null);
+  // v4.0 — DIY + Voice Practice state
+  const [diyAwarded, setDiyAwarded] = React.useState<{ xp: number; badge: string | null } | null>(null);
+  const [vpScenario, setVpScenario] = React.useState(0);
+  const [vpDone, setVpDone] = React.useState<number[]>([]);
+  const [vpAwarded, setVpAwarded] = React.useState<{ xp: number; bonus: number; badges: string[] } | null>(null);
 
   React.useEffect(() => {
     if (!currentLessonId) return;
     setLoading(true);
     fetch(`/api/lessons?id=${currentLessonId}`)
       .then((r) => r.json())
-      .then((d) => { setPlan(d.lesson?.plan || null); })
+      .then((d) => {
+        setPlan(d.lesson?.plan || null);
+        setExtended(d.extended || null); // §4.2 extended_lesson (DIY + Voice Practice)
+      })
       .finally(() => setLoading(false));
   }, [currentLessonId]);
 
@@ -136,6 +158,141 @@ export function LessonPlayer() {
     } catch {
       setAwarded({ xp: plan.gamification.xp_points, badge: null, levelUp: null });
     }
+  }
+
+  // ---- v4.0 component award engine (§4.2 gamification: digital 50 + DIY 30 +
+  // voice practice 20 = total 100 XP, streak_bonus 20) ----
+  async function awardComponent(opts: {
+    xp: number; badgeCode: string | null; reason: string;
+    assessment?: { lessonId: string; type: string; score: number; details: Record<string, unknown> };
+  }): Promise<{ badge: boolean | null; badgeName: string | null }> {
+    if (!learner) return { badge: null, badgeName: null };
+    try {
+      const res = await fetch("/api/learner", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          learnerId: learner.id,
+          xp: opts.xp,
+          reason: opts.reason,
+          badgeCode: opts.badgeCode || undefined,
+          ...(opts.assessment ? { assessment: opts.assessment } : {}),
+        }),
+      });
+      const data = await res.json();
+      return { badge: !!data.badge, badgeName: data.badge?.nameEn || null };
+    } catch {
+      return { badge: null, badgeName: null };
+    }
+  }
+
+  async function completeDiy() {
+    if (!extended?.diy || !plan) return;
+    playBadge();
+    trackEvent("diy_completion", { diyId: extended.diy.id, linkedLesson: plan.lesson_id, awarded: true });
+    const r = await awardComponent({
+      xp: extended.diy.gamification.xp_points,
+      badgeCode: extended.diy.gamification.badge_code,
+      reason: `DIY Practical: ${extended.diy.title}`,
+      assessment: { lessonId: plan.lesson_id, type: "practical", score: 100, details: { diyId: extended.diy.id } },
+    });
+    setDiyAwarded({ xp: extended.diy.gamification.xp_points, badge: r.badgeName || extended.diy.gamification.badge_name });
+    setStage("voice_practice");
+  }
+
+  function vpScenarioText(i: number): string {
+    const vp = extended?.components.voice_practice;
+    if (!vp) return "";
+    return lang === "fr" ? vp.scenariosFr[i] || vp.scenarios[i] : vp.scenarios[i];
+  }
+
+  async function vpStart() {
+    if (stsBusy) return;
+    setStsBusy(true);
+    try {
+      recorderRef.current = new WavRecorder();
+      await recorderRef.current.start();
+      setRecording(true);
+    } catch {
+      setStsBusy(false);
+    }
+  }
+
+  async function vpStop() {
+    if (!recorderRef.current || stsBusy) return;
+    setRecording(false);
+    setStsBusy(true);
+    const { wavBase64 } = recorderRef.current.stop();
+    const vp = extended?.components.voice_practice;
+    const scenario = vpScenarioText(vpScenario) || "Friendly conversation practice";
+    const character = vp?.character || plan?.sts_scenario?.character || "kwe";
+    trackEvent("voice_practice_turn", { lessonId: plan?.lesson_id, scenario: vpScenario + 1, character });
+    try {
+      const res = await fetch("/api/sts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          audioBase64: wavBase64,
+          character,
+          scenario: `${scenario} (voice practice, progressive difficulty)`,
+          history: stsHistory,
+          learnerName: learner?.name || "my friend",
+          learnerLevel: plan?.level || "Class 3",
+          lang: isGrassfields(voiceLang) ? voiceLang : lang === "fr" ? "fr" : "en",
+        }),
+      });
+      const data = await res.json();
+      if (data.reply) {
+        setStsHistory((h) => [
+          ...h,
+          { role: "user", content: data.transcript || "…" },
+          { role: "assistant", content: data.reply },
+        ]);
+        if (data.audioBase64) playWavBase64(data.audioBase64, data.pitchRate || 1);
+        else void speak(data.reply, character, lang);
+        playXp();
+        // scenario complete — advance (progressive difficulty per §4.2)
+        const done = vpDone.includes(vpScenario) ? vpDone : [...vpDone, vpScenario];
+        setVpDone(done);
+        if (done.length >= (vp?.scenarios.length || 1) && !vpAwarded) {
+          await completeVoicePractice(done);
+        } else {
+          const nextIdx = vp?.scenarios.findIndex((_, i) => !done.includes(i));
+          if (typeof nextIdx === "number" && nextIdx >= 0) setVpScenario(nextIdx);
+        }
+      } else if (data.error === "no_speech") {
+        const msg = lang === "fr" ? "Je ne t'ai pas entendu — essaie encore !" : "I did not hear you — try again!";
+        setStsHistory((h) => [...h, { role: "assistant", content: msg }]);
+        void speak(msg, character, lang);
+      }
+    } catch {
+      const msg = lang === "fr" ? "Hmm, réessayons dans un instant." : "Hmm, let us try again in a moment.";
+      setStsHistory((h) => [...h, { role: "assistant", content: msg }]);
+    } finally {
+      setStsBusy(false);
+    }
+  }
+
+  async function completeVoicePractice(doneList: number[]) {
+    if (!plan) return;
+    playBadge();
+    trackEvent("voice_practice_completion", { lessonId: plan.lesson_id, scenarios: doneList.length });
+    // +20 XP (voice practice) + Voice Champion badge + streak_bonus 20 (§4.2)
+    const r = await awardComponent({
+      xp: 20,
+      badgeCode: "voice-champion",
+      reason: "Voice Practice complete",
+      assessment: { lessonId: plan.lesson_id, type: "oral", score: 90, details: { mode: "speech_to_speech", scenarios: doneList.length } },
+    });
+    await awardComponent({ xp: 20, badgeCode: null, reason: "Extended lesson streak bonus" });
+    trackEvent("extended_lesson_complete", { lessonId: plan.lesson_id, totalXp: 100 });
+    const badgeNames = [
+      plan.gamification.badge_name,
+      extended?.diy?.gamification.badge_name,
+      "Voice Champion",
+    ].filter(Boolean) as string[];
+    setVpAwarded({ xp: 20, bonus: 20, badges: badgeNames });
+    playCelebration();
   }
 
   if (loading) return <div className="min-h-screen bg-[#FFFBEB]"><PatternBand /><Spinner label={lang === "fr" ? "Chargement de la quête..." : "Loading quest..."} /></div>;
@@ -261,7 +418,7 @@ export function LessonPlayer() {
 
   // ---------- STS handlers ----------
   async function openSts() {
-    if (!plan.sts_scenario || stsOpened) return;
+    if (!plan?.sts_scenario || stsOpened) return;
     setStsOpened(true);
     setStsBusy(true);
     const opener = plan.sts_scenario.opener;
@@ -271,7 +428,7 @@ export function LessonPlayer() {
   }
 
   async function stsTurn() {
-    if (!plan.sts_scenario || stsBusy) return;
+    if (!plan?.sts_scenario || stsBusy) return;
     setStsBusy(true);
     try {
       recorderRef.current = new WavRecorder();
@@ -283,7 +440,7 @@ export function LessonPlayer() {
   }
 
   async function stsStop() {
-    if (!recorderRef.current || !plan.sts_scenario) return;
+    if (!recorderRef.current || !plan?.sts_scenario) return;
     setRecording(false);
     setStsBusy(true);
     const { wavBase64 } = recorderRef.current.stop();
@@ -335,26 +492,51 @@ export function LessonPlayer() {
   return (
     <main className="min-h-screen bg-[#FFFBEB] pb-28">
       <PatternBand />
-      {/* Progress header */}
+      {/* Progress header — v4.0: three components (§4.1) each carrying the digital 5 phases */}
       <div className="sticky top-[52px] z-30 border-b border-amber-200 bg-[#FFFBEB]/95 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center gap-1.5 px-3 py-2">
-          {PHASES.map((p, i) => (
-            <React.Fragment key={p}>
-              <button
-                onClick={() => { if (PHASES.indexOf(phase) > i) setPhase(p); }}
-                className={cn(
-                  "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
-                  phase === p ? "border-amber-600 bg-amber-600 text-white shadow" : "border-amber-200 bg-white text-amber-700"
-                )}
-                aria-current={phase === p ? "step" : undefined}
-              >
-                <span aria-hidden>{phaseMeta[p].icon}</span>
-                <span className="hidden sm:inline">{phaseMeta[p].label}</span>
-              </button>
-              {i < PHASES.length - 1 && <span className="h-0.5 flex-1 bg-amber-200" aria-hidden />}
-            </React.Fragment>
-          ))}
-        </div>
+        {stage === "digital" ? (
+          <div className="mx-auto flex max-w-3xl items-center gap-1.5 px-3 py-2">
+            {PHASES.map((p, i) => (
+              <React.Fragment key={p}>
+                <button
+                  onClick={() => { if (PHASES.indexOf(phase) > i) setPhase(p); }}
+                  className={cn(
+                    "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
+                    phase === p ? "border-amber-600 bg-amber-600 text-white shadow" : "border-amber-200 bg-white text-amber-700"
+                  )}
+                  aria-current={phase === p ? "step" : undefined}
+                >
+                  <span aria-hidden>{phaseMeta[p].icon}</span>
+                  <span className="hidden sm:inline">{phaseMeta[p].label}</span>
+                </button>
+                {i < PHASES.length - 1 && <span className="h-0.5 flex-1 bg-amber-200" aria-hidden />}
+              </React.Fragment>
+            ))}
+          </div>
+        ) : (
+          <div className="mx-auto flex max-w-3xl items-center gap-1.5 px-3 py-2">
+            {STAGES.map((s, i) => {
+              const done = (s === "digital" && !!awarded) || (s === "diy" && !!diyAwarded) || (s === "voice_practice" && !!vpAwarded);
+              const meta = s === "digital" ? { icon: "💻", label: t("digitalLesson", lang) } : s === "diy" ? { icon: "🔨", label: t("diyPractical", lang) } : { icon: "🎙️", label: t("voicePractice", lang) };
+              return (
+                <React.Fragment key={s}>
+                  <button
+                    onClick={() => { if (STAGES.indexOf(stage) > i) { setStage(s); if (s === "digital") setPhase("celebrate"); } }}
+                    className={cn(
+                      "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
+                      stage === s ? "border-orange-600 bg-orange-600 text-white shadow" : "border-orange-200 bg-white text-orange-700"
+                    )}
+                    aria-current={stage === s ? "step" : undefined}
+                  >
+                    <span aria-hidden>{done ? "✓" : meta.icon}</span>
+                    <span className="hidden sm:inline">{meta.label}</span>
+                  </button>
+                  {i < STAGES.length - 1 && <span className="h-0.5 flex-1 bg-orange-200" aria-hidden />}
+                </React.Fragment>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="mx-auto max-w-3xl space-y-4 px-4 pt-4">
@@ -368,8 +550,8 @@ export function LessonPlayer() {
           ))}
         </div>
 
-        {/* PHASE 1 — Voice Hook (multilingual per §7.3) */}
-        {phase === "hook" && (
+        {/* PHASE 1 — Voice Hook (multilingual per §7.3) — Digital component */}
+        {stage === "digital" && phase === "hook" && (
           <section aria-label={phaseMeta.hook.label} className="space-y-4">
             <h1 className="text-xl font-extrabold text-amber-900 sm:text-2xl">
               {shown(va.learn_content.title, va.learn_content.titleFr)}
@@ -440,7 +622,7 @@ export function LessonPlayer() {
         )}
 
         {/* PHASE 2 — Listen & Learn */}
-        {phase === "listen" && (
+        {stage === "digital" && phase === "listen" && (
           <section aria-label={phaseMeta.listen.label} className="space-y-4">
             <CharacterBubble
               characterId={va.hook.character}
@@ -481,7 +663,7 @@ export function LessonPlayer() {
         )}
 
         {/* PHASE 3 — Speak & Practice (tone-aware ASR per §6.5) */}
-        {phase === "speak" && activePrompt && (
+        {stage === "digital" && phase === "speak" && activePrompt && (
           <section aria-label={phaseMeta.speak.label} className="space-y-4">
             <div className="rounded-2xl border-2 border-rose-200 bg-gradient-to-br from-rose-50 to-white p-5 text-center shadow-sm">
               <div className="mb-1 text-xs font-bold uppercase tracking-wide text-rose-500">
@@ -564,7 +746,7 @@ export function LessonPlayer() {
         )}
 
         {/* PHASE 4 — Apply & Create (STS role-play) */}
-        {phase === "apply" && (
+        {stage === "digital" && phase === "apply" && (
           <section aria-label={phaseMeta.apply.label} className="space-y-4">
             {plan.sts_scenario ? (
               <div className="rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-4 shadow-sm">
@@ -646,7 +828,7 @@ export function LessonPlayer() {
         )}
 
         {/* PHASE 5 — Celebrate */}
-        {phase === "celebrate" && !awarded && (
+        {stage === "digital" && phase === "celebrate" && !awarded && (
           <section aria-label={phaseMeta.celebrate.label} className="space-y-4 text-center">
             <div className="text-6xl" aria-hidden>🎉</div>
             <CharacterBubble
@@ -666,7 +848,7 @@ export function LessonPlayer() {
           </section>
         )}
 
-        {phase === "celebrate" && awarded && (
+        {stage === "digital" && phase === "celebrate" && awarded && (
           <section className="space-y-4 text-center" aria-live="polite">
             <div className="animate-bounce text-7xl" aria-hidden>{awarded.badge ? "🏅" : "⭐"}</div>
             <h2 className="text-2xl font-extrabold text-amber-900">
@@ -695,13 +877,137 @@ export function LessonPlayer() {
                 </p>
               )}
             </div>
+            {/* v4.0 §4.1 — continue to the DIY Practical component */}
+            {extended?.diy && (
+              <Button
+                onClick={() => { playXp(); trackEvent("page_view", { view: "lesson_diy", lessonId: plan.lesson_id }); setStage("diy"); }}
+                className="h-14 w-full bg-orange-600 text-lg font-extrabold hover:bg-orange-700"
+                size="lg"
+              >
+                🔨 {t("startDiy", lang)} → +{extended.diy.gamification.xp_points} XP
+              </Button>
+            )}
             <div className="flex gap-2">
-              <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); }}>
+              <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
                 🔄 {lang === "fr" ? "Rejouer" : "Replay"}
               </Button>
               <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
                 🗺️ {t("dashboard", lang)}
               </Button>
+            </div>
+          </section>
+        )}
+
+        {/* ---- v4.0 COMPONENT 2 — DIY Practical (§III / §3.5 DIYLessonCard) ---- */}
+        {stage === "diy" && extended?.diy && (
+          <section aria-label={t("diyPractical", lang)} className="space-y-4">
+            <p className="rounded-2xl border-2 border-orange-200 bg-orange-50/70 p-3 text-center text-sm font-bold text-orange-900">
+              🔨 {t("diyIntro", lang)}
+            </p>
+            {diyAwarded && (
+              <div className="rounded-2xl border-2 border-lime-300 bg-lime-50/80 p-3 text-center" role="status">
+                <p className="text-sm font-extrabold text-lime-900">
+                  +{diyAwarded.xp} XP {diyAwarded.badge && `· ${lang === "fr" ? "Badge débloqué" : "Badge unlocked"}: ${diyAwarded.badge}`}
+                </p>
+              </div>
+            )}
+            <DIYLessonCard lesson={extended.diy} lang={lang} onComplete={completeDiy} />
+          </section>
+        )}
+
+        {/* ---- v4.0 COMPONENT 3 — Voice Practice (§4.2 speech_to_speech) ---- */}
+        {stage === "voice_practice" && (
+          <section aria-label={t("voicePractice", lang)} className="space-y-4">
+            <div className="rounded-2xl border-2 border-teal-300 bg-gradient-to-br from-teal-50 to-white p-4 shadow-sm">
+              <h3 className="mb-1 text-lg font-extrabold text-teal-900">🎙️ {t("voicePractice", lang)}</h3>
+              <p className="mb-3 text-xs font-semibold text-teal-700">
+                {lang === "fr"
+                  ? "Conversation speech-to-speech avec ton personnage — prononciation, précision tonale et fluidité évaluées."
+                  : "Speech-to-speech conversation with your character — pronunciation, tone accuracy and fluency evaluated."}
+              </p>
+              {/* §4.2 evaluation block */}
+              <div className="mb-3 flex flex-wrap gap-1.5">
+                {["pronunciation", "tone_accuracy", "fluency"].map((k) => (
+                  <span key={k} className="rounded-full bg-teal-100 px-2 py-0.5 text-[10px] font-bold text-teal-800">
+                    ✓ {k.replace("_", " ")} {t("evaluationOn", lang).toLowerCase()}
+                  </span>
+                ))}
+              </div>
+              {/* §4.2 scenarios — progressive difficulty */}
+              <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-teal-600">{t("practiceScenarios", lang)}</p>
+              <div className="mb-3 flex flex-wrap gap-1.5">
+                {(extended?.components.voice_practice.scenarios || [plan.sts_scenario?.description || "Talk with your character"]).map((s, i) => {
+                  const done = vpDone.includes(i);
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => { if (!stsBusy) { setVpScenario(i); setStsHistory([]); } }}
+                      aria-pressed={vpScenario === i}
+                      className={cn(
+                        "min-h-[32px] rounded-full border-2 px-2.5 text-[11px] font-bold transition-all",
+                        done
+                          ? "border-lime-500 bg-lime-600 text-white"
+                          : vpScenario === i
+                          ? "border-teal-600 bg-teal-600 text-white"
+                          : "border-teal-200 bg-white text-teal-800 hover:border-teal-400"
+                      )}
+                    >
+                      {done ? "✓ " : `${i + 1}. `}{lang === "fr" ? extended?.components.voice_practice.scenariosFr[i] || s : s}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {vpAwarded ? (
+                // §4.2 gamification — total 100 XP, badges trio, streak bonus 20
+                <div className="space-y-3 text-center" aria-live="polite">
+                  <div className="animate-bounce text-6xl" aria-hidden>🏆</div>
+                  <h4 className="text-xl font-extrabold text-teal-900">🏆 {t("extendedComplete", lang)}</h4>
+                  <div className="rounded-2xl border-2 border-lime-300 bg-lime-50/80 p-4 text-left">
+                    <p className="mb-2 text-sm font-extrabold text-lime-900">
+                      {t("totalXp", lang)}: 100 · {t("streakBonus", lang)}: +{vpAwarded.bonus} XP
+                    </p>
+                    <p className="mb-1 text-xs font-bold text-lime-800">{lang === "fr" ? "Badges" : "Badges"}:</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {vpAwarded.badges.map((b) => (
+                        <span key={b} className="rounded-full bg-amber-200 px-2.5 py-1 text-[11px] font-extrabold text-amber-900">🏅 {b}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
+                      🔄 {lang === "fr" ? "Rejouer" : "Replay"}
+                    </Button>
+                    <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
+                      🗺️ {t("dashboard", lang)}
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-3 max-h-56 space-y-2 overflow-y-auto rounded-xl bg-white p-3" role="log" aria-live="polite">
+                    {stsHistory.length === 0 && (
+                      <p className="text-center text-xs font-semibold text-teal-600">
+                        🎯 {vpScenarioText(vpScenario)}
+                      </p>
+                    )}
+                    {stsHistory.map((h, i) => (
+                      <div key={i} className={cn("flex", h.role === "user" ? "justify-end" : "justify-start")}>
+                        <div className={cn("max-w-[85%] rounded-2xl px-3 py-2 text-sm", h.role === "user" ? "bg-teal-600 text-white" : "bg-amber-100 text-amber-900")}>
+                          {h.content}
+                        </div>
+                      </div>
+                    ))}
+                    {stsBusy && <Spinner label={t("listening", lang)} />}
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <MicButton recording={recording} disabled={stsBusy} onDown={vpStart} onUp={vpStop} label={recording ? t("stop", lang) : t("holdToTalk", lang)} />
+                    <span className="text-xs font-semibold text-teal-600">
+                      {recording ? t("speakNow", lang) : stsBusy ? t("listening", lang) : t("holdToTalk", lang)}
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
           </section>
         )}
@@ -711,7 +1017,7 @@ export function LessonPlayer() {
 }
 
 /** Standalone voice challenge recorder (for lessons without STS scenario) */
-function VoiceChallengeRecorder({ onDone, lang }: { onDone: () => void; lang: string }) {
+function VoiceChallengeRecorder({ onDone, lang }: { onDone: () => void; lang: Lang }) {
   const [recording, setRecording] = React.useState(false);
   const [saved, setSaved] = React.useState(false);
   const recRef = React.useRef<WavRecorder | null>(null);

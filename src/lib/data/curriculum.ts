@@ -692,6 +692,20 @@ export const BADGES = [
   { code: "voice-master", nameEn: "Voice Master", nameFr: "Maître de la Voix", descEn: "Completed 10 speaking practice activities", icon: "🎤", category: "language", rarity: "epic" },
   { code: "streak-7", nameEn: "7-Day Flame", nameFr: "Flamme de 7 Jours", descEn: "Learned every day for a week", icon: "🔥", category: "streak", rarity: "rare" },
   { code: "level-5", nameEn: "Level 5 Achiever", nameFr: "Niveau 5 Atteint", descEn: "Reached level 5 of wisdom", icon: "🎖️", category: "level", rarity: "epic" },
+  // ---- v4.0 DIY Practical + Voice Practice badges (§3.3/§4.2) ----
+  { code: "puppet-master", nameEn: "Puppet Master", nameFr: "Maître des Marionnettes", descEn: "Built greeting puppets and performed the dialogue", icon: "🎭", category: "diy", rarity: "rare" },
+  { code: "label-legend", nameEn: "Label Legend", nameFr: "Légende des Étiquettes", descEn: "Labelled a family portrait with correct nouns", icon: "🏷️", category: "diy", rarity: "common" },
+  { code: "kitchen-counter", nameEn: "Kitchen Counter", nameFr: "Compteur de Cuisine", descEn: "Counted 20 kitchen items aloud", icon: "🥄", category: "diy", rarity: "common" },
+  { code: "body-engineer", nameEn: "Body Engineer", nameFr: "Ingénieur du Corps", descEn: "Built a bendable body machine model", icon: "💪", category: "diy", rarity: "common" },
+  { code: "star-puppet", nameEn: "Star Puppet", nameFr: "Marionnette Étoile", descEn: "Performed French greeting puppet theatre", icon: "🌟", category: "diy", rarity: "common" },
+  { code: "flag-keeper", nameEn: "Flag Keeper", nameFr: "Gardien du Drapeau", descEn: "Crafted the Cameroon flag and explained its colours", icon: "🇨🇲", category: "diy", rarity: "rare" },
+  { code: "tone-keeper", nameEn: "Tone Keeper", nameFr: "Gardien des Tons", descEn: "Made Grassfields greeting puppets with correct tones", icon: "🪶", category: "diy", rarity: "rare" },
+  { code: "master-builder", nameEn: "Master Builder", nameFr: "Maître Bâtisseur", descEn: "Built a traditional house model with natural pigments", icon: "🏠", category: "diy", rarity: "rare" },
+  { code: "course-champion", nameEn: "Course Champion", nameFr: "Champion du Parcours", descEn: "Designed and ran a compound obstacle course", icon: "🏃🏾", category: "diy", rarity: "common" },
+  { code: "code-crafter", nameEn: "Code Crafter", nameFr: "Artisan du Code", descEn: "Built an unplugged paper keyboard and robot game", icon: "⌨️", category: "diy", rarity: "common" },
+  { code: "song-maker", nameEn: "Song Maker", nameFr: "Faiseur de Chansons", descEn: "Performed a puppet concert with possession labels", icon: "🎵", category: "diy", rarity: "common" },
+  { code: "set-sorter", nameEn: "Set Sorter", nameFr: "Rangeur d'Ensembles", descEn: "Sorted household objects into sets and named elements", icon: "🧺", category: "diy", rarity: "common" },
+  { code: "voice-champion", nameEn: "Voice Champion", nameFr: "Champion de la Voix", descEn: "Completed speech-to-speech voice practice scenarios", icon: "🎙️", category: "language", rarity: "epic" },
 ];
 
 // ============================================================================
