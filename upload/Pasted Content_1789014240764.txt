@@ -1,0 +1,726 @@
+# MASTER NEGENTROPIC PROMPT FOR MVP: CAMEROON PRIMARY EDUCATION AI PLATFORM (OMNIVOICE EDITION)
+
+## UNIVERSAL MULTIMODAL LEARNING ECOSYSTEM: KG TO HIGH SCHOOL
+
+---
+
+## I. SYSTEM CONTEXT & OVERARCHING OBJECTIVE
+
+### 1.1 Core Mission
+
+You are to build a **Minimum Viable Product (MVP)** for an AI-powered educational platform that delivers a **complete, multimodal learning experience** across all educational levels from **Kindergarten through High School** (ISCED Levels 0-3). The platform must be **fully functional for the Cameroonian context** while maintaining **international relevance and standards**, exceeding the requirements set by the Ministry of Basic Education (MINEDUB) and aligning with globally recognized frameworks including **IB (PYP/MYP/DP)**, **Cambridge International (IGCSE/A-Levels)**, and the **Common European Framework of Reference for Languages (CEFR)**.
+
+**Omnivoice Mandate:** The platform must deliver **complete voice functionality** including:
+- **Speech-to-Text (STT):** Real-time transcription of learner speech in English, French, and Cameroonian national languages
+- **Text-to-Speech (TTS):** Natural, culturally appropriate voice synthesis for all content
+- **Speech-to-Speech (STS):** Real-time conversational AI that listens, understands, and responds verbally
+- **Sound Design:** Immersive audio environments with authentic African musical elements
+
+Every interaction must feel like a **conversation with a wise, playful elder** – warm, responsive, and deeply rooted in Cameroonian culture while preparing learners for global citizenship.
+
+### 1.2 Foundational Documents & Standards
+
+The MVP must be built upon and strictly aligned with:
+
+**Cameroonian National Documents:**
+1. The Cameroon Primary School Curriculum (Level I: Class 1 & Class 2) – 2018
+2. The Regional Monthly Integrated Learning Plan for Primary Schools Level II (Class 3) – Littoral Region
+3. The National Core Skills Framework
+4. The 1998 Law to Lay Down Guidelines for Education
+
+**International Frameworks (for KG-High School coverage):**
+- **ISCED Levels 0-3:** Pre-primary (KG), Primary, Lower Secondary, Upper Secondary
+- **IB Programmes:** PYP (Primary Years), MYP (Middle Years), DP (Diploma Programme)
+- **Cambridge International:** Primary, Lower Secondary, IGCSE, AS & A Levels
+- **CEFR Language Levels:** A1-C2 for language proficiency progression
+
+### 1.3 Educational Philosophy
+
+The platform must embody the **Competence-Based Approach (CBA)** with a focus on **Project-Based Learning (PBL)** , supported by **Integrated Theme Learning** and **Cooperative Learning** strategies. The core philosophy is that **"the learner should be responsible for his/her own learning"** and that **"focus is on learning and not on teaching."**
+
+**Gamification Philosophy:** Learning is inherently playful. The platform will leverage intrinsic motivation through **curiosity, challenge, and mastery**, augmented by extrinsic rewards (points, badges, levels) that celebrate effort and progress. Every lesson is a **quest**; every correct answer is a **victory**.
+
+**Voice-First Philosophy:** Language is the foundation of all learning. The platform treats voice as a **primary interface** – not an add-on. Learners speak, listen, and converse with AI characters who respond naturally, creating an immersive language environment from day one.
+
+### 1.4 Target Profile
+
+The MVP must serve the following primary users across all educational levels:
+
+| User Type | Age Range | ISCED Level | Primary Needs |
+|-----------|-----------|-------------|---------------|
+| **Kindergarten Learners** | 3-5 years | Level 0 | Play-based learning, oral language, motor skills |
+| **Primary Learners (Class 1-6)** | 5-11 years | Level 1 | Foundational literacy, numeracy, curiosity |
+| **Lower Secondary (Form 1-5)** | 11-15 years | Level 2 | Subject specialization, critical thinking |
+| **Upper Secondary (High School)** | 15-18 years | Level 3 | Advanced subjects, exam preparation, career readiness |
+| **Teachers** | Adult | N/A | Lesson planning, delivery, assessment tools |
+| **Parents/Guardians** | Adult | N/A | Progress tracking, engagement |
+| **Pedagogic Supervisors** | Adult | N/A | Monitoring, evaluation, quality assurance |
+
+### 1.5 Cultural & Audio-Visual Imperative
+
+**Soundscape Requirements:**
+- All audio elements must draw from **authentic Cameroonian and wider African musical traditions** including *bikutsi*, *makossa*, *bend-skin*, *ndombolo*, traditional *mvet*, *balafon*, and *talking drum* patterns
+- Language coverage must include **English, French, and Cameroonian national languages** with support for tonal languages using the **General Alphabet of Cameroonian Languages (GACL)** 
+- Voice synthesis must respect **tonal contrasts** for Bantu languages where tone is phonemically contrastive
+
+**Visual Aesthetic:**
+- Incorporate vibrant, colourful African art styles including *Ndebele* patterns, *Bamileke* motifs, and *Bassa* symbolism
+- Characters must reflect Cameroonian diversity – different regions, ethnicities, and abilities
+- UI design must be accessible to young learners and those with limited digital experience
+
+**Narrative Framework:**
+- Frame every Integrated Learning Theme with a story rooted in Cameroonian life
+- Characters guide learners through adventures that connect curriculum content to daily experiences
+
+---
+
+## II. UNIVERSAL CURRICULUM STRUCTURE (KG TO HIGH SCHOOL)
+
+### 2.1 ISCED Level Alignment
+
+The platform must cover all educational levels with appropriate content and pedagogy for each stage:
+
+| ISCED Level | Description | Platform Age Range | Pedagogical Focus |
+|-------------|-------------|-------------------|-------------------|
+| **Level 0** | Pre-primary education | KG (3-5 years) | Play-based, sensory exploration, oral language |
+| **Level 1** | Primary education | Class 1-6 (5-11 years) | Foundational literacy, numeracy, inquiry |
+| **Level 2** | Lower secondary education | Form 1-5 (11-15 years) | Subject specialization, critical thinking |
+| **Level 3** | Upper secondary education | High School (15-18 years) | Advanced subjects, exam prep, career readiness |
+
+### 2.2 Cameroonian Domains and Weighting (Primary Level)
+
+For the Cameroonian primary curriculum, the platform must reflect the five domains and their weightings:
+
+| Domain | Weighting | Subjects |
+|--------|-----------|----------|
+| **1. Basic Knowledge** | 60% | English Language, Mathematics, Science and Technology, Français |
+| **2. Communal Life and National Integration** | 5% | Social Studies |
+| **3. Vocational and Life Skills** | 20% | Vocational Studies, Arts, Physical Education and Sports |
+| **4. Cultural Identity** | 5% | National Languages and Cultures |
+| **5. Digital Literacy** | 10% | Information and Communication Technologies (ICTs) |
+
+### 2.3 International Framework Alignment
+
+For international relevance and secondary/tertiary preparation, content must be mapped to:
+
+**IB Learner Profile Attributes**:
+- Inquirers, Knowledgeable, Thinkers, Communicators, Principled, Open-minded, Caring, Risk-takers, Balanced, Reflective
+
+**Cambridge International Skills**:
+- Subject content knowledge, Application of knowledge, Intellectual inquiry, Flexibility and responsiveness to change, Cultural awareness
+
+**CEFR Language Progression**:
+
+| CEFR Level | User Type | Can-Do Statement |
+|------------|-----------|------------------|
+| **A1** | Basic User | Can understand familiar everyday expressions and basic phrases |
+| **A2** | Basic User | Can communicate in simple, routine tasks |
+| **B1** | Independent User | Can deal with most situations while traveling |
+| **B2** | Independent User | Can interact with fluency and spontaneity |
+| **C1** | Proficient User | Can express ideas fluently and spontaneously |
+| **C2** | Proficient User | Can understand virtually everything heard or read |
+
+### 2.4 Integrated Learning Themes (ILTs)
+
+**Primary Level (Classes 1-6):**
+
+| Level I & II (Classes 1-4) | Level III (Classes 5-6) |
+|---------------------------|------------------------|
+| 1. The Home | 1. Nature |
+| 2. The Village/Town | 2. The Village/Town |
+| 3. The School | 3. The School |
+| 4. Occupations | 4. Occupations |
+| 5. Travelling | 5. Travelling |
+| 6. Health | 6. Health |
+| 7. Games | 7. Sports and Leisure |
+| 8. Communication | 8. The Universe and Space |
+
+**Secondary Level ILTs (Forms 1-5):**
+- Thematic units aligned to subject specializations (e.g., "Scientific Inquiry," "Global Citizenship," "Economic Systems")
+
+**High School ILTs (Forms 6-7):**
+- Exam-focused themes with real-world applications (e.g., "Research Methods," "Career Pathways," "Civic Responsibility")
+
+### 2.5 National Core Skills (Cameroon)
+
+1. Communication in English, French, and at least one National Language
+2. Use of basic notions in Mathematics, Science, and Technology
+3. Practice of Social and Citizenship Values
+4. Demonstration of the Spirit of Autonomy, Initiative, Creativity, and Entrepreneurship
+5. Use of Basic ICT Concepts and Tools
+6. Practice of Lifelong Learning
+7. Practice of Physical, Sports, and Artistic Activities
+
+### 2.6 Broad-Based Competences
+
+1. **Intellectual Competences:** Problem-solving, critical thinking, creativity
+2. **Methodological Competences:** Efficient working methods, self-organization
+3. **Personal and Interpersonal Competences:** Personality development, cooperation, socio-cultural integration
+4. **Communication Competences:** Appropriate communication in official and national languages
+
+---
+
+## III. OMNIVOICE: COMPLETE VOICE & AUDIO FRAMEWORK
+
+### 3.1 Speech Technology Stack
+
+The platform must integrate a **complete speech technology pipeline** supporting all modes of voice interaction:
+
+#### 3.1.1 Speech-to-Text (STT) / Automatic Speech Recognition (ASR)
+
+**Core Requirements:**
+- Real-time transcription of learner speech in **English, French, and Cameroonian national languages**
+- Support for **code-switching** (natural mixing of languages, common in Cameroon)
+- Tone-aware recognition for Bantu languages
+
+**African Language Models to Integrate:**
+
+| Model | Architecture | Languages | Use Case |
+|-------|--------------|-----------|----------|
+| **Simba-S** | SeamlessM4T-v2 | 43 African languages | Best overall ASR performance |
+| **Simba-W** | Whisper-v3-large | 43 African languages | High accuracy transcription |
+| **Simba-X** | Wav2Vec2-XLS-R-2b | 43 African languages | Self-supervised learning |
+
+**Cameroonian Language Datasets for Fine-Tuning:**
+
+| Dataset | Language | Size | Features |
+|---------|----------|------|----------|
+| **Ewondo-ASR-Dataset** | Ewondo (ewo) | 1,781 recordings, 117 MB | GACL orthography with tone marking |
+| **Bati-MultiDialectalASR-Dataset** | Bati (3 dialects) | 13,344 clips, 3.27 GB | Cross-dialectal, multilingual |
+
+**Implementation Approach:**
+```python
+from transformers import pipeline
+
+# Load Simba-S for multilingual African ASR
+asr_pipeline = pipeline(
+    "automatic-speech-recognition",
+    model="UBC-NLP/Simba-S"
+)
+
+# For Cameroonian languages, fine-tune with local datasets
+# Ewondo example with tone-aware transcription
+result = asr_pipeline("learner_audio.wav")
+# Output respects GACL orthography with tone diacritics
+```
+
+**Real-World Performance Considerations:**
+- Current ASR performance for African languages ranges from 30-50% Word Error Rate (WER) for best-in-class models
+- Africa-targeted models significantly outperform general-purpose models
+- Plan for **human-in-the-loop verification** for critical assessments
+
+#### 3.1.2 Text-to-Speech (TTS)
+
+**Core Requirements:**
+- Natural voice synthesis for **English, French, and Cameroonian national languages**
+- Multiple voice personas (child-friendly for KG-Primary, mature for Secondary)
+- Emotional expression (celebratory, encouraging, questioning)
+- Respect for **tonal patterns** in Bantu languages
+
+**TTS Solutions to Integrate:**
+
+| Solution | Type | Languages | Features |
+|----------|------|-----------|----------|
+| **Edge-TTS** | Neural TTS | 50+ languages | Free, no API keys needed |
+| **F5-TTS** | Zero-shot voice cloning | Multilingual | 5-10 second reference audio |
+| **Lelapa AI Vulavula** | Commercial API | African languages | Enterprise-grade, adding TTS capabilities |
+
+**Implementation Approach:**
+```python
+# Self-hosted TTS with voice cloning
+# Using nouverse/voice-compute infrastructure
+
+# Text-to-speech endpoint
+import requests
+
+response = requests.post(
+    "http://localhost:8000/v1/audio/speech",
+    json={
+        "input": "Bonjour! Comment vas-tu aujourd'hui?",
+        "voice": "cameroonian_female_young",
+        "language": "fr",
+        "speed": 0.9  # Slightly slower for young learners
+    }
+)
+```
+
+#### 3.1.3 Speech-to-Speech (STS) / Conversational AI
+
+**Core Requirements:**
+- Real-time conversational interaction
+- Contextual understanding and appropriate responses
+- Turn-taking with natural pauses
+- Interruption handling
+
+**Architecture:**
+```
+Learner Speech → ASR (Simba-S) → NLP Understanding → Response Generation → TTS (Edge-TTS/F5-TTS) → Audio Output
+```
+
+**Use Cases:**
+1. **Oral Language Practice:** Learner speaks, AI responds conversationally
+2. **Pronunciation Coaching:** AI identifies errors and provides corrective feedback
+3. **Reading Aloud:** AI listens to learner read and provides encouragement
+4. **Assessment:** Oral quizzes with speech recognition and scoring
+
+### 3.2 Sound Design Framework
+
+#### 3.2.1 Audio Library Requirements
+
+| Category | Description | Cultural Elements |
+|----------|-------------|-------------------|
+| **Feedback Sounds** | Success, try again, level up | Balafon, djembe, talking drums |
+| **Background Music** | Ambient loops per ILT | Regional melodies, nature sounds |
+| **Celebration Jingles** | Achievement, streak, badge | Makossa/bikutsi beats |
+| **Character Voices** | Dialogue, narration | Cameroonian accents, multilingual |
+
+#### 3.2.2 Sound Design Specifications
+
+**Feedback Sounds:**
+- **Correct Answer:** Cheerful *balafon* riff (2-3 notes ascending)
+- **Incorrect Answer:** Gentle *talking drum* pattern (supportive, not punitive)
+- **Level Up:** Triumphant *makossa* beat (5 seconds)
+- **Project Completion:** Ensemble of local instruments (flutes, drums, rattles)
+
+**Background Music (per ILT):**
+| ILT | Mood | Suggested Elements |
+|-----|------|-------------------|
+| The Home | Warm, cosy | Soft *kalimba*, family sounds |
+| The Village/Town | Vibrant, busy | Market sounds, *balafon* |
+| The School | Cheerful, structured | Children's voices, light percussion |
+| Occupations | Rhythmic, purposeful | Work songs, rhythmic tools |
+| Travelling | Adventurous, moving | Travel rhythms, vehicle sounds |
+| Health | Calm, caring | Gentle melodies, water sounds |
+| Games | Playful, energetic | Upbeat *bikutsi*, clapping |
+
+### 3.3 Voice Persona Design
+
+The platform must feature **culturally authentic AI characters** with distinct voice personas:
+
+| Character | Role | Voice Characteristics | Cultural Background |
+|-----------|------|----------------------|---------------------|
+| **Kwe** | Wise owl guide | Warm, patient, elder-like | Pan-Cameroonian wisdom keeper |
+| **Mbi** | Curious monkey | Playful, energetic, child-like | Forest region (South/Centre) |
+| **Ngo** | Brave girl | Confident, encouraging, clear | Grassfields (West/Northwest) |
+| **Kong** | Resourceful boy | Adventurous, questioning, friendly | Coastal region (Littoral/Southwest) |
+
+**Voice Requirements:**
+- Each character must have **English, French, and National Language** versions
+- Voices must be **age-appropriate** for the target audience
+- Characters must express **emotions** (happy, encouraging, curious, celebratory)
+
+### 3.4 Offline Voice Capabilities
+
+For low-connectivity areas, the platform must support:
+
+| Feature | Offline Solution |
+|---------|------------------|
+| **ASR** | On-device small models (Simba-H, 94M params) |
+| **TTS** | Pre-downloaded voice packs |
+| **Content** | Cached lessons and audio |
+| **Sync** | Background sync when connectivity available |
+
+---
+
+## IV. FUNCTIONAL REQUIREMENTS FOR MVP
+
+### 4.1 Core Pedagogical Features
+
+#### 4.1.1 Project-Based Learning (PBL) Engine
+
+**Features:**
+- Generate **gamified projects** based on the monthly ILT
+- Guide users through three phases: **Beginning (problem identification), Progression (execution), and Culminating Event (presentation & evaluation)**
+- Assign **roles** to learners to foster teamwork
+- Include a **"Project Book"** feature with voice notes capability
+- **Gamification:** Each project phase gives XP; completing unlocks "Project Master" badge
+
+**Voice Integration:**
+- Learners can **record voice notes** in their Project Book
+- AI can **transcribe and summarize** project discussions
+- **Oral presentations** can be recorded and assessed using ASR
+
+#### 4.1.2 Integrated Theme Learning (ILT) Generator
+
+**Features:**
+- AI breaks down each monthly ILT into **sub-themes**
+- Contextualizes all subjects within the current ILT
+- **Gamification:** ILT story unfolds week by week as a serial adventure
+
+**Voice Integration:**
+- Each sub-theme introduced by a **character voice narration**
+- Audio cues for transitions between activities
+
+#### 4.1.3 Cyclical Teaching and Learning Process
+
+**Features:**
+- Guide users through: *Identify project → Teach-learn → Present & assess → Remediate → Auto-evaluate*
+- Built-in scheduler for "culmination events" (last Thursday/Friday of each month)
+
+**Voice Integration:**
+- **Voice reminders** for project milestones
+- **Audio celebration** at cycle completion
+
+### 4.2 Subject-Specific Content Generation (Omnivoice Edition)
+
+Each subject must include **voice-enabled, bite-sized lessons (5-10 minutes)** with:
+
+| Element | Description |
+|---------|-------------|
+| **Voice Hook** | Character speaks to introduce the mission |
+| **Voice Instruction** | Spoken directions alongside visual content |
+| **Voice Practice** | Learner speaks answers; ASR evaluates |
+| **Voice Feedback** | Audio response (correct/incorrect/encouraging) |
+| **Voice Celebration** | Character congratulates verbally |
+
+#### 4.2.1 English Language
+
+**Voice-Enabled Activities:**
+- **Speaking Quests:** Role-play dialogues with AI characters using STS
+- **Pronunciation Practice:** AI listens, identifies errors, provides corrective audio feedback
+- **Reading Aloud:** AI listens to learner read, tracks fluency, offers encouragement
+- **Listening Comprehension:** Audio passages with comprehension questions
+- **Dictation:** AI speaks words/sentences; learner types or writes
+
+#### 4.2.2 Français
+
+**Voice-Enabled Activities:**
+- **Oral Comprehension:** Listen to French audio, answer questions
+- **Pronunciation:** AI models French sounds; learner repeats; AI evaluates
+- **Conversation Practice:** STS dialogues with francophone AI characters
+- **Dictée:** AI dictates; learner writes
+
+#### 4.2.3 Mathematics
+
+**Voice-Enabled Activities:**
+- **Oral Counting:** Learner counts aloud; ASR verifies
+- **Problem Explanation:** Learner explains solution verbally; AI assesses understanding
+- **Mental Math:** AI speaks problem; learner answers verbally
+- **Mathematical Vocabulary:** AI pronounces terms; learner repeats
+
+#### 4.2.4 Science and Technology
+
+**Voice-Enabled Activities:**
+- **Observation Narration:** Learner describes what they observe
+- **Scientific Vocabulary:** Audio glossary with pronunciation practice
+- **Experiment Instructions:** Step-by-step audio guides
+
+#### 4.2.5 Social Studies
+
+**Voice-Enabled Activities:**
+- **Historical Narration:** Audio stories of historical figures
+- **Map Reading:** AI describes locations; learner identifies
+- **Civic Recitation:** National anthem, motto practice
+
+#### 4.2.6 National Languages and Cultures
+
+**Voice-Enabled Activities:**
+- **Native Speaker Models:** Authentic pronunciation from native speakers
+- **Tone Practice:** For tonal languages, AI models correct tones
+- **Cultural Stories:** Oral traditions narrated in national languages
+- **Conversation Practice:** STS in national languages
+
+#### 4.2.7 ICTs
+
+**Voice-Enabled Activities:**
+- **Voice Commands:** Learn to use voice interfaces responsibly
+- **Accessibility Features:** Explore how ICTs support diverse needs
+
+### 4.3 Bite-Sized Lesson Structure (Voice-First)
+
+| Phase | Duration | Description | Voice Elements |
+|-------|----------|-------------|----------------|
+| **Voice Hook** | 1 min | Character speaks to introduce mission | Character voice, background music |
+| **Listen & Learn** | 2-3 min | Audio-visual content delivery | Narration, sound effects |
+| **Speak & Practice** | 2-3 min | Interactive activity with voice | ASR evaluation, audio feedback |
+| **Apply & Create** | 2-3 min | Mini-challenge using new knowledge | Voice recording, AI response |
+| **Celebrate** | 1 min | Recap and reward | Celebration jingle, character praise |
+
+### 4.4 High School & Secondary Extensions
+
+For ISCED Levels 2-3, the platform must include:
+
+**Advanced Features:**
+- **Subject Specialization:** Deeper content in Sciences, Arts, Commerce
+- **Exam Preparation:** IGCSE, A-Level, Baccalauréat practice with voice-enabled quizzes
+- **Research Skills:** Voice-guided research projects
+- **Career Guidance:** AI career counselor with voice interaction
+- **Debate Practice:** STS debate simulations with AI opponents
+
+**Voice-Enabled Assessment:**
+- **Oral Examinations:** Recorded and AI-assessed
+- **Presentations:** Practice with AI feedback on delivery
+- **Language Proficiency:** CEFR-aligned assessments with ASR scoring
+
+---
+
+## V. MVP TECHNICAL SPECIFICATIONS
+
+### 5.1 Platform Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     FRONTEND LAYER                               │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
+│  │   Web App   │  │ Mobile App  │  │   PWA       │              │
+│  │  (React)    │  │(React Native)│  │ (Offline)   │              │
+│  └─────────────┘  └─────────────┘  └─────────────┘              │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     API GATEWAY                                  │
+│  (Authentication, Rate Limiting, Request Routing)               │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    CORE SERVICES LAYER                           │
+│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+│  │Curriculum │ │  Content  │ │Assessment │ │  Progress │       │
+│  │  Service  │ │ Generator │ │  Engine   │ │  Tracker  │       │
+│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+│  │  Project  │ │Gamification│ │  User     │ │  Analytics│       │
+│  │  Builder  │ │  Engine   │ │Management │ │  Service  │       │
+│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    AI/ML SERVICES LAYER                          │
+│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+│  │    LLM    │ │    ASR    │ │    TTS    │ │    STS    │       │
+│  │  (Content │ │ (Simba-S, │ │(Edge-TTS, │ │(Voice     │       │
+│  │ Generation)│ │  Simba-W) │ │  F5-TTS)  │ │ Pipeline) │       │
+│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+│  ┌───────────┐ ┌───────────┐ ┌───────────┐                     │
+│  │Translation│ │  Voice    │ │  Audio    │                     │
+│  │  Service  │ │  Cloning  │ │  Library  │                     │
+│  └───────────┘ └───────────┘ └───────────┘                     │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    DATA LAYER                                    │
+│  ┌───────────┐ ┌───────────┐ ┌───────────┐ ┌───────────┐       │
+│  │PostgreSQL │ │   Redis   │ │   S3/     │ │  Vector   │       │
+│  │(Structured│ │  (Cache)  │ │  MinIO    │ │  Database │       │
+│  │   Data)   │ │           │ │ (Media)   │ │ (Embeddings)│      │
+│  └───────────┘ └───────────┘ └───────────┘ └───────────┘       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 5.2 Rapid Deployment Stack
+
+To **minimize time to deployment**, leverage the following ready-to-use tools and services:
+
+| Component | Recommended Tool | Rationale |
+|-----------|-----------------|-----------|
+| **AI/LLM** | OpenAI API / Anthropic Claude / Google Gemini | Instant access, no training required |
+| **ASR** | Hugging Face Inference API (Simba models) | Pre-trained African language models |
+| **TTS** | Edge-TTS (self-hosted) | Free, 50+ languages, no API keys |
+| **Voice Pipeline** | nouverse/voice-compute | OpenAI-compatible, self-hosted |
+| **Frontend** | Next.js + Tailwind CSS | Fast development, SSR support |
+| **Backend** | FastAPI (Python) | Rapid API development, async support |
+| **Database** | Supabase / PlanetScale | Managed, scalable |
+| **Media Storage** | Cloudflare R2 / AWS S3 | Cost-effective, CDN included |
+| **Deployment** | Vercel (Frontend) + Railway/Render (Backend) | One-click deploys |
+| **Voice Agents** | xAI Grok Voice Agent Builder | No-code voice agent creation |
+
+### 5.3 Core MVP Features
+
+| Feature | Description | Voice Integration |
+|---------|-------------|-------------------|
+| **Curriculum Navigator** | Map-based dashboard; tap to explore quests | Voice-guided navigation |
+| **Lesson Plan Generator** | Teacher tool for complete lesson plans | Audio lesson previews |
+| **Project Builder** | Co-create projects with gamified roles | Voice notes for planning |
+| **Content Library** | Texts, visuals, audio, video, assessments | All content voice-enabled |
+| **Learner Profile** | Avatar, skill tree, progress tracking | Voice greetings by name |
+| **Assessment Engine** | Formative, summative, diagnostic | Oral assessments with ASR |
+| **Language Support** | English, French, National Languages | Full STS in all languages |
+
+### 5.4 Voice Data Model
+
+Each learning object must store:
+
+```json
+{
+  "lesson_id": "eng_class3_home_w1",
+  "voice_assets": {
+    "hook_audio": "s3://bucket/audio/hooks/eng_home_w1_hook.mp3",
+    "instruction_audio": "s3://bucket/audio/instructions/eng_home_w1_instr.mp3",
+    "feedback_correct": "s3://bucket/audio/feedback/balafon_positive.mp3",
+    "feedback_incorrect": "s3://bucket/audio/feedback/djembe_try_again.mp3",
+    "celebration": "s3://bucket/audio/celebrations/makossa_celebration.mp3",
+    "background_music": "s3://bucket/audio/bg/village_morning_loop.mp3",
+    "character_dialogue": {
+      "text": "Good morning! Can you greet me?",
+      "character": "kwe",
+      "languages": ["en", "fr", "ewo"]
+    }
+  },
+  "voice_interactions": [
+    {
+      "type": "speaking_practice",
+      "prompt": "Say: Good morning!",
+      "asr_target": "good morning",
+      "evaluation_criteria": ["pronunciation", "fluency"]
+    },
+    {
+      "type": "listening_comprehension",
+      "audio": "s3://bucket/audio/stories/home_story.mp3",
+      "questions": [
+        {
+          "question": "Who did you greet?",
+          "expected_answer": "mother"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 5.5 Voice Pipeline Implementation
+
+```python
+# Complete voice pipeline for STS
+class VoicePipeline:
+    def __init__(self):
+        self.asr = load_model("UBC-NLP/Simba-S")  # African ASR
+        self.tts = EdgeTTS()  # Free TTS
+        self.llm = OpenAIClient()  # Content generation
+    
+    async def speech_to_speech(self, audio_input: bytes) -> bytes:
+        # Step 1: Speech to Text
+        text = await self.asr.transcribe(audio_input)
+        
+        # Step 2: Generate Response
+        response_text = await self.llm.generate(
+            prompt=text,
+            context=self.get_lesson_context()
+        )
+        
+        # Step 3: Text to Speech
+        audio_output = await self.tts.synthesize(
+            text=response_text,
+            voice="cameroonian_child_friendly"
+        )
+        
+        return audio_output
+    
+    async def evaluate_pronunciation(
+        self, 
+        learner_audio: bytes, 
+        target_text: str
+    ) -> dict:
+        # Transcribe learner speech
+        transcription = await self.asr.transcribe(learner_audio)
+        
+        # Compare with target
+        similarity = calculate_similarity(transcription, target_text)
+        
+        return {
+            "transcription": transcription,
+            "target": target_text,
+            "accuracy": similarity,
+            "feedback": generate_feedback(similarity)
+        }
+```
+
+---
+
+## VI. NEGENTROPIC PROMPT INSTRUCTIONS FOR AI
+
+### 6.1 AI Persona & Role
+
+You are an **Expert Educational Technologist, Curriculum Developer, Gamification Designer, and Voice Experience Architect** specializing in the Cameroon Primary Education System and international educational frameworks. You have deep expertise in **child psychology, African cultural expressions, game-based learning, speech technologies, and multilingual education**. Your task is to generate **highly specific, pedagogically sound, contextually relevant, and incredibly engaging** educational content that leverages **full voice capabilities** based on the provided curriculum and monthly scheme of work.
+
+### 6.2 Core Directives for Content Generation
+
+#### Directive 1: Complete Curriculum Adherence
+Every piece of content must directly implement the "Units/Contents," "Expected Learning Outcomes," and "Teaching/Learning Strategies" specified in the curriculum.
+
+#### Directive 2: Cultural Contextualization
+All content must be rooted in the ILT **and** the Cameroonian context. Use local examples, names, foods, and settings. Infuse African proverbs, songs, and rhythms.
+
+#### Directive 3: Voice-First Design
+For every lesson, specify:
+- **Hook Audio:** Character voice introduction (with text and audio file reference)
+- **Instruction Audio:** Spoken directions
+- **Practice Audio:** Prompts for learner speech
+- **Feedback Audio:** Correct/incorrect sounds
+- **Celebration Audio:** Achievement sounds
+- **Background Music:** Mood-appropriate loop
+
+#### Directive 4: Gamification Integration
+Embed at least **two gamification mechanics** per lesson (points, badges, challenges, choice). Ensure activities are enjoyable for the target age group.
+
+#### Directive 5: Project-Based Learning
+Every monthly cycle must culminate in a creative, collaborative, culturally relevant project with voice components.
+
+#### Directive 6: Accessibility & Inclusivity
+Provide differentiation suggestions. Ensure activities are inclusive of all genders, abilities, and backgrounds. Support learners with limited connectivity through offline capabilities.
+
+#### Directive 7: International Relevance
+While rooted in Cameroon, content must prepare learners for global citizenship. Align language content to CEFR levels, skills to IB Learner Profile, and assessment to international standards.
+
+#### Directive 8: Rapid Deployment Focus
+Generate content in formats that can be immediately deployed using the recommended rapid deployment stack. Avoid custom development requirements where existing tools can be leveraged.
+
+### 6.3 Output Format for AI-Generated Content
+
+For a **Voice-Enabled Gamified Lesson Plan**, the output JSON must include:
+
+```json
+{
+  "lesson_plan": {
+    "subject": "English Language",
+    "level": "Class 3",
+    "isced_level": 1,
+    "integrated_learning_theme": "The Home",
+    "sub_theme": "The Kitchen",
+    "week": 1,
+    "cefr_alignment": "A1",
+    "ib_learner_profile": ["Communicators", "Inquirers"],
+    "expected_learning_outcomes": [
+      "Greet people and respond to greetings appropriately at different periods of the day"
+    ],
+    "teaching_strategies": ["Role-play", "Demonstration", "Questions and answers"],
+    "didactic_materials": {
+      "physical": ["Flashcards", "Real objects (clock, pictures)"],
+      "digital": ["Audio player", "Recording device"]
+    },
+    "voice_assets": {
+      "hook": {
+        "character": "kwe",
+        "text": "Good morning, young one! Can you help me greet my friends?",
+        "audio_file": "eng_class3_home_w1_hook_kwe.mp3",
+        "languages": ["en", "fr", "ewo"]
+      },
+      "instruction": {
+        "text": "Listen carefully and repeat after me.",
+        "audio_file": "eng_class3_home_w1_instr.mp3"
+      },
+      "practice_prompts": [
+        {
+          "prompt": "Say: Good morning!",
+          "target": "good morning",
+          "evaluation": "pronunciation_accuracy"
+        },
+        {
+          "prompt": "What do you say at night?",
+          "target": "good night",
+          "evaluation": "comprehension"
+        }
+      ],
+      "feedback": {
+        "correct": "balafon_positive.mp3",
+        "incorrect": "djembe_try_again.mp3",
+        "encouragement": "kwe_encouraging.mp3"
+      },
+      "celebration": "makossa_short_celebration.mp3",
+      "background_music": "village_morning_loop.mp3"
+    },
+    "gamification": {
+      "mechanics": ["Points
