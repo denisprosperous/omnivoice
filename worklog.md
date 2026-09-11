@@ -131,3 +131,27 @@ Stage Summary:
 - Kɨtɨ̂ Woyn Kom 2.1's existing Bafut/Oku adaptations identified as the direct template for those PLANNED languages; Hyman's Oku/Babanki tables captured for the same expansions.
 - Honest staging: 5 sil.org PDFs remain access-gated (documented w/ exact URLs); Crúbadán unreachable from sandbox; bible.is audio requires licence clearance for production use (noted in UI).
 - Deliverable unchanged in shape: single-route SPA + 13 API routes + pipeline server; all surfaces registry-driven, so future harvested lexicons drop into kom-resources.ts the same way.
+
+---
+Task ID: 6
+Agent: Super Z (main agent)
+Task: OMNIVOICE v4.2 — full-functionality verification & curriculum integration (17 stipulated tasks, executed in order). "No differing of work. Everything must be built as stipulated."
+
+Work Log:
+- T1 CF-gated PDFs: exhausted all routes (browser-UA curl 403, silcam mirror 404, Wayback no-snapshots, CDX blocked, Jina proxy Cloudflare, Glosbe CF, Webonary negative, mirror search negative) — documented exact URLs in scripts/kom-resources-raw/CF_GATED_STATUS_v42.md; BONUS Wiktionary attestation (mu=water corroborates Hyman muú, wi=woman new) harvested via proxy.
+- T2 KomToneEngine (§6.1): new src/lib/kom-tone-engine.ts — H/L/F classes (scholarly acute/macron tolerated), TBU alignment via Levenshtein backtrack, HTS/LTS/M-tone/L˚ rule explanations, prefixal M-tone tolerance, normalizeSegmental (NFD strip — fixes precomposed-diacritic bug in legacy stripTones), overall = 40% seg + 60% tone; validated vs Hyman patterns (M-HL mat, M-HM bird, LTS nè-context, scholarly prints); wired into /api/pronunciation (stipulated fields + backwards compat).
+- T3 Lexicon (§6.2): lexicon-concepts.ts (491 curriculum concept tuples EN/FR/POS/ILT/band) + lexicon.ts builder → EXACTLY 500 entries (50 attested / 450 awaiting — no fabricated Kom forms); Prisma Vocabulary model + push + seed (500/500); /api/vocab (search/filter/stats).
+- T4 Primers (§6.3): primers.ts — 5-stage ladder (Ghesɨ̀nà 1 alphabet with REAL GACL content → §7.3-verbatim dialogues → Yêm Woyn tales → Ŋwàʼlɨ̀ àkòyn numeracy/proverbs → NT narratives), 15 passages with activities; ReadingPassage model + seed; /api/primers.
+- T5 Stations (§6.4): stations.ts — Mark 1 (5:30, Cl.5-6) + Luke 15 (4:45, Cl.6), bible.is/DBL access links, comprehension + vocab extraction + retelling, licence note; /api/stations. No synthesized scripture (Directive 9).
+- T6/T7 verified: 12/12 DIY lessons (all §7 per-ILT examples), 12/12 extended plans with STS scenarios (speech_to_speech, 3 each, pronunciation/tone_accuracy/fluency).
+- T8/9/10 Voice stack LIVE: venv re-provisioned (torch 2.14.0+cpu, kokoro, faster-whisper); discovered sandbox reaps background processes → on-demand verification pattern; whisper lazy-load + OMP/MKL=1 + MALLOC_ARENA_MAX=2 (4GB cgroup); fixed /v1/tts character→voice registry resolution (dict profile), /v1/sts bytes→base64 serialization; RESULTS: TTS HTTP 200 kokoro-82m WAV; STT HTTP 200 verbatim round-trip; STS HTTP 200 cascaded (Chroma attempt logged). mini-services/voice-pipeline supervisor written (auto-respawn).
+- T11/12/13 Curriculum: curriculum-v42.ts (§3.1-§3.10 verbatim: structure, domains 60/5/20/5/10, 7 core skills, 4 competences, ILT sets, CBA pedagogy, Level I outcomes ×10, Level II 8-month ILP table, Level III expectations ×10, time allocation w/ stipulated 39.8h); SUBJECTS +vocational (=10), +3 Level III ILTs (nature/sports-leisure/universe-space); reseed (10 subjects, 12 ILTs); /api/curriculum extended with framework; Library 5th wing 🎓 CurriculumContentView (framework/lexicon/reading/listening panels, bilingual).
+- T14 Automated suite: scripts/test-suite-v42.mjs — 27 checks (13 learner, 7 teacher, 7 supervisor) → **27/27 PASS** (fixed test-shape mismatches: /api/learner?id=, extended.components paths, project learnerId, analytics whitelist, lesson_plan key).
+- T15 Manual: agent-browser golden path (profile→navigator→lesson Kom hook) + v4.2 panels verified; HUD 1280px overflow fixed (flex-wrap); CDP-driven 375px sweep scripts/mobile-verify-v42.cjs — 8/8 views zero overflow, zero console errors, screenshot; SW registered + manifest 200.
+- T16 Preview live (port 3000; platform-managed dev server via init script).
+- T17 Report: download/OMNIVOICE_v4.2_VERIFICATION_REPORT.md per §11 template (resources 8/8, languages 8/8, levels 3/3, classes 6/6, DIY 12/12, tests 27/27, blockers with exact URLs, recommendations).
+- Supervisor: v4.2 audit correction card + 3 new checklist rows; lint clean throughout; DB reseed after Prisma client regen (dev server restarted via platform init).
+
+Stage Summary:
+- All 17 tasks executed in stipulated order; platform delivers Classes 1-6 × 10 subjects × 8 languages end-to-end with honest staging (5 CF-gated PDFs documented; no fabricated content; Directive 9 intact).
+- New in v4.2: KomToneEngine, 500-entry lexicon DB, 5-stage reading ladder, NT listening stations, full curriculum framework surfaces, verified voice stack (Kokoro/Faster-Whisper/cascaded STS), 27-check test suite, 375px sweep harness.

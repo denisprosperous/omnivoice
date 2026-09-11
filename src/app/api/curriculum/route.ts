@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { LEVELS } from "@/lib/data/curriculum";
+import {
+  CURRICULUM_STRUCTURE, DOMAINS, CORE_SKILLS, COMPETENCES,
+  ILT_LEVELS_1_2, ILT_LEVEL_3, PEDAGOGY,
+  LEVEL1_OUTCOMES, LEVEL2_MONTHS, LEVEL3_EXPECTATIONS,
+  TIME_ALLOCATION_LEVEL1, TIME_ALLOCATION_TOTAL, TEN_SUBJECTS,
+  CLASS_LEVEL_MAP, curriculumCoverage,
+} from "@/lib/data/curriculum-v42";
 
 /** GET /api/curriculum — full curriculum metadata (levels ladder, subjects, ILTs, scheme weeks) */
 export async function GET(req: NextRequest) {
@@ -24,6 +31,22 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({
     levels: LEVELS,
     badges,
+    // v4.2 §3 — full curriculum framework
+    framework: {
+      structure: CURRICULUM_STRUCTURE, // §3.1
+      domains: DOMAINS, // §3.2
+      coreSkills: CORE_SKILLS, // §3.3
+      competences: COMPETENCES, // §3.4
+      ilts: { level12: ILT_LEVELS_1_2, level3: ILT_LEVEL_3 }, // §3.5
+      pedagogy: PEDAGOGY, // §3.6
+      level1Outcomes: LEVEL1_OUTCOMES, // §3.7
+      level2Months: LEVEL2_MONTHS, // §3.8
+      level3Expectations: LEVEL3_EXPECTATIONS, // §3.9
+      timeAllocation: { rows: TIME_ALLOCATION_LEVEL1, total: TIME_ALLOCATION_TOTAL }, // §3.10
+      tenSubjects: TEN_SUBJECTS,
+      classLevelMap: CLASS_LEVEL_MAP,
+      coverage: curriculumCoverage(),
+    },
     domains: [
       { name: "Basic Knowledge", weighting: 60 },
       { name: "Communal Life and National Integration", weighting: 5 },

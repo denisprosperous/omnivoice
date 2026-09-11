@@ -4,6 +4,7 @@ import {
 } from "@/lib/server/voice";
 import { grassfieldsSTT, fasterWhisperSTT, getVoiceConfig } from "@/lib/server/voice-v4";
 import { isGrassfields } from "@/lib/data/grassfields";
+import { komToneEngine } from "@/lib/kom-tone-engine";
 
 export const maxDuration = 60;
 
@@ -40,16 +41,33 @@ export async function POST(req: NextRequest) {
 
     const { accuracy, toneAccuracy, toneAware } = evaluateSimilarity(transcription, target, lang);
     const fb = generateFeedback(accuracy, transcription, target);
+
+    // §6.1 KomToneEngine — Hyman HTS/LTS/M-tone rules for Kom (bkm) evaluations.
+    // overall_accuracy = 40% segmental + 60% tonal (stipulated 40/60 split).
+    const komTone = lang === "bkm" ? komToneEngine.evaluate(transcription, target) : null;
+    const finalAccuracy = komTone ? komTone.overall_accuracy : accuracy;
+    const finalToneAccuracy = komTone ? komTone.tone_accuracy : toneAccuracy;
+    const komFeedback = komTone ? komTone.tone_feedback.slice(0, 4).join(" ") : null;
+
     return NextResponse.json({
       transcription, target, language: lang,
-      accuracy,
-      tone_accuracy: toneAccuracy,
-      tone_aware: toneAware,
+      accuracy: finalAccuracy,
+      tone_accuracy: finalToneAccuracy,
+      tone_aware: toneAware || Boolean(komTone),
+      // §6.1 stipulated KomToneEngine fields
+      ...(komTone ? {
+        segmental_accuracy: komTone.segmental_accuracy,
+        overall_accuracy: komTone.overall_accuracy,
+        tone_feedback: komTone.tone_feedback,
+        tone_rules_applied: komTone.tone_rules_applied,
+        tone_errors: komTone.tone_errors,
+        tone_total: komTone.tone_total,
+      } : {}),
       asr_model: asrModel,
       asr_backend: isGrassfields(lang) ? "faster-whisper/grassfields" : "faster-whisper",
       registry: getVoiceConfig(lang),
       human_in_the_loop: humanInTheLoop,
-      verdict: fb.verdict, message: fb.message, messageFr: fb.messageFr,
+      verdict: fb.verdict, message: komFeedback ?? fb.message, messageFr: fb.messageFr,
     });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : "Pronunciation evaluation failed";

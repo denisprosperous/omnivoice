@@ -30,7 +30,7 @@ export function Hud() {
 
   return (
     <header className="sticky top-0 z-40 shadow-md" style={{ background: "#7C2D12" }}>
-      <div className="mx-auto flex max-w-6xl items-center gap-1.5 px-2 py-2 sm:gap-3 sm:px-3">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-1.5 px-2 py-2 sm:gap-3 sm:px-3">
         <button onClick={() => setView(learner.role === "learner" ? "learner" : nav[0].view)} className="flex items-center gap-2" aria-label="OmniVoice Academy home">
           <span className="text-2xl" aria-hidden>🦉</span>
           <span className="hidden text-sm font-extrabold tracking-wide text-amber-50 md:block">{t("appName", lang)}</span>

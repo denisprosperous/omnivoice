@@ -1,6 +1,6 @@
 // Seed script — run with: bunx tsx scripts/seed.ts (or bun run scripts/seed.ts)
 import { PrismaClient } from "@prisma/client";
-import { ILTS, SUBJECTS, SCHEME_WEEKS, BADGES, SKILL_TREE, LEVELS } from "../src/lib/data/curriculum";
+import { ILTS, SUBJECTS, SCHEME_WEEKS, BADGES, SKILL_TREE, LEVELS, LEVEL3_ILTS } from "../src/lib/data/curriculum";
 import { LESSONS } from "../src/lib/data/lessons";
 
 const db = new PrismaClient();
@@ -21,7 +21,7 @@ async function main() {
   await db.badge.deleteMany();
   await db.learner.deleteMany();
 
-  for (const ilt of ILTS) {
+  for (const ilt of [...ILTS, ...LEVEL3_ILTS]) {
     await db.iLT.create({
       data: {
         id: ilt.id, nameEn: ilt.nameEn, nameFr: ilt.nameFr, nameEw: ilt.nameEw,
@@ -30,7 +30,7 @@ async function main() {
       },
     });
   }
-  console.log(`ILTs: ${ILTS.length}`);
+  console.log(`ILTs: ${[...ILTS, ...LEVEL3_ILTS].length}`);
 
   for (const s of SUBJECTS) {
     await db.subject.create({

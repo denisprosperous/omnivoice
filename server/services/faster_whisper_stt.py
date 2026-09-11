@@ -28,25 +28,33 @@ class FasterWhisperSTTService:
 
     def __init__(self):
         self.models = {}
-        if FASTER_WHISPER_AVAILABLE:
-            # Load models for different languages (spec: base + small).
-            # `small` is the higher-accuracy model used for tonal Grassfields
-            # languages (bkm/lns/byv) per the VoiceRegistry §2.2.
-            # Constrained hosts may skip `small` (OMNIVOICE_STT_LOAD_SMALL=0) —
-            # base still serves all requests with graceful degradation.
+        self._loaded = False
+
+    def _ensure_loaded(self):
+        """v4.2: lazy-load — on 4GB shared sandbox hosts, Kokoro TTS and
+        Whisper STT never peak together (Kokoro constructs ~1.4GB RSS).
+        Models load on first transcription request instead of at boot."""
+        if self._loaded or not FASTER_WHISPER_AVAILABLE:
+            return
+        # Load models for different languages (spec: base + small).
+        # `small` is the higher-accuracy model used for tonal Grassfields
+        # languages (bkm/lns/byv) per the VoiceRegistry §2.2.
+        # Constrained hosts may skip `small` (OMNIVOICE_STT_LOAD_SMALL=0) —
+        # base still serves all requests with graceful degradation.
+        try:
+            self.models["base"] = WhisperModel("base", device=DEVICE, compute_type=COMPUTE_TYPE)
+        except Exception as e:
+            log.error("Faster-Whisper base failed to load: %s", e)
+        if os.environ.get("OMNIVOICE_STT_LOAD_SMALL", "1") not in ("0", "false", "no"):
             try:
-                self.models["base"] = WhisperModel("base", device=DEVICE, compute_type=COMPUTE_TYPE)
+                self.models["small"] = WhisperModel("small", device=DEVICE, compute_type=COMPUTE_TYPE)
             except Exception as e:
-                log.error("Faster-Whisper base failed to load: %s", e)
-            if os.environ.get("OMNIVOICE_STT_LOAD_SMALL", "1") not in ("0", "false", "no"):
-                try:
-                    self.models["small"] = WhisperModel("small", device=DEVICE, compute_type=COMPUTE_TYPE)
-                except Exception as e:
-                    log.warning("Faster-Whisper small unavailable (%s) — base serves all requests", e)
+                log.warning("Faster-Whisper small unavailable (%s) — base serves all requests", e)
+        self._loaded = True
 
     @property
     def ready(self) -> bool:
-        return bool(self.models)
+        return FASTER_WHISPER_AVAILABLE
 
     async def transcribe(
         self,
@@ -55,8 +63,11 @@ class FasterWhisperSTTService:
         model_size: str = "base",
     ) -> dict:
         """Transcribe audio to text with language detection (spec §1.2)."""
-        if not FASTER_WHISPER_AVAILABLE or not self.models:
+        if not FASTER_WHISPER_AVAILABLE:
             raise RuntimeError("Faster-Whisper unavailable on this host")
+        self._ensure_loaded()
+        if not self.models:
+            raise RuntimeError("Faster-Whisper models failed to load")
 
         # Save to temporary file
         with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:

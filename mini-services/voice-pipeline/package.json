@@ -1,0 +1,8 @@
+{
+  "name": "omnivoice-voice-pipeline",
+  "version": "4.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "bun --hot index.ts"
+  }
+}

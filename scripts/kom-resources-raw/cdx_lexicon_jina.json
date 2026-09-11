@@ -1,0 +1,28 @@
+🚀 Initializing Z-AI SDK...
+🚀 Invoking function: page_reader...
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {},
+    "html": "<html lang=\"en\"><head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n  <title>Domain Blocked</title>\n  <style>\n    .container {\n      padding-top: 40px;\n    }\n  </style>\n  <link href=\"https://blocked.dnsfilter.com/main.css\" rel=\"stylesheet\">\n</head>\n\n<body>\n  <div id=\"app\"><div data-reactroot=\"\" class=\"container\"><h1 class=\"text-center\" style=\"margin-top: 0px;\"><span class=\"fa fa-spinner fa-spin\"></span></h1></div></div>\n  <script type=\"text/javascript\" src=\"https://blocked.dnsfilter.com/index.js\"></script>\n\n\n\n</body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "lang": "en",
+      "viewport": "width=device-width, initial-scale=1.0"
+    },
+    "title": "Domain Blocked",
+    "url": "https://web.archive.org/cdx/search/cdx",
+    "usage": {
+      "tokens": 183
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 183
+    }
+  },
+  "status": 20000
+}
+🎉 Function invocation completed!

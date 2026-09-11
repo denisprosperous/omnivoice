@@ -23,6 +23,7 @@ import {
   BAYANGI_DATA_COLLECTION_PLAN,
 } from "@/lib/data/grassfields";
 import { RegistryConsole, statusLabel } from "./registry-console";
+import { CurriculumContentView } from "./curriculum-content";
 import { DiyWorkshop } from "./diy-workshop";
 import {
   KOM_LITERATURE, KOM_LANGUAGE_DESCRIPTIONS, KOM_LEXICAL_RESOURCES, KOM_SCRIPTURE,
@@ -43,7 +44,7 @@ interface Subject { id: string; nameEn: string; nameFr: string; domain: string; 
 
 export function LibraryView() {
   const { lang } = useApp();
-  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "diy">("schemes");
+  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "diy" | "v42">("schemes");
   const [weeks, setWeeks] = React.useState<SchemeWeek[]>([]);
   const [subjects, setSubjects] = React.useState<Subject[]>([]);
   const [domains, setDomains] = React.useState<Array<{ name: string; weighting: number }>>([]);
@@ -122,12 +123,23 @@ export function LibraryView() {
           >
             🔨 {t("diyWorkshop", lang)}
           </button>
+          <button
+            role="tab" aria-selected={wing === "v42"} onClick={() => setWing("v42")}
+            className={cn(
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
+              wing === "v42" ? "border-emerald-700 bg-emerald-700 text-white shadow" : "border-emerald-200 bg-white text-emerald-800 hover:border-emerald-400"
+            )}
+          >
+            🎓 {fr ? "Programme & contenus v4.2" : "Curriculum & Content v4.2"}
+          </button>
         </div>
 
         {wing === "registry" ? (
           <RegistryConsole />
         ) : wing === "diy" ? (
           <DiyWorkshop />
+        ) : wing === "v42" ? (
+          <CurriculumContentView />
         ) : wing === "grassfields" ? (
           <GrassfieldsExpansion fr={fr} selLang={selLang} setSelLang={setSelLang} sel={sel} />
         ) : (

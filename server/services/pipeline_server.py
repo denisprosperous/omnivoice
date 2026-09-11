@@ -124,7 +124,13 @@ def tts(req: TTSRequest):
     # Cloned native voice packs (kom_native/lamnso_native/bayangi_native) are
     # served by the EN phonemizer pipeline until reference-audio packs deploy.
     pipeline_lang = req.language if req.language in TTS_SERVICE.pipelines else "en"
-    requested_voice = req.voice or cfg.tts_voice
+    # v4.2: resolve character aliases (kwe/mbi/ngo/kong) through the registry
+    char_profile = CHARACTER_VOICES.get(req.character) if req.character else None
+    requested_voice = (
+        (char_profile.get("voice") if isinstance(char_profile, dict) else char_profile)
+        or req.voice
+        or cfg.tts_voice
+    )
     if requested_voice in ("kom_native", "lamnso_native", "bayangi_native"):
         # Custom cloned voice requested but pack not deployed → default voice
         voice = TTS_SERVICE.default_voices.get(pipeline_lang, "af_bella")
@@ -192,6 +198,11 @@ def sts(req: STSRequest):
         raise HTTPException(status_code=400, detail="invalid base64 audio")
     started = time.perf_counter()
     result = _run_sync(UNIFIED.speech_to_speech(audio, req.language, req.character))
+    # v4.2 fix: audio bytes are not JSON-serializable — wrap as base64
+    if isinstance(result.get("audio"), (bytes, bytearray)):
+        result["audio_base64"] = base64.b64encode(result["audio"]).decode("ascii")
+        result["content_type"] = "audio/wav"
+        result["audio"] = None
     result["latency_ms"] = round((time.perf_counter() - started) * 1000, 1)
     result["character"] = req.character
     result["character_prompt"] = get_character_prompt(req.character)

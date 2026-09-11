@@ -193,3 +193,52 @@ model LanguageDraft {
   status     String   @default("DRAFT") // DRAFT | IN_REVIEW | ACTIVE
   createdAt  DateTime @default(now())
 }
+
+// v4.2 §6.2 — Phase 1 lexicon (500 high-frequency entries, Classes 1–3).
+// word is null where the Kom gloss awaits the Jones (2001) lexicon PDF or
+// native-speaker input; those rows carry reviewStatus PENDING_NATIVE_REVIEW.
+model Vocabulary {
+  id           String   @id // KOM-001 …
+  lang         String   // bkm (Phase 1)
+  word         String?
+  glossEn      String
+  glossFr      String   @default("")
+  pos          String
+  tonePattern  String?
+  nounClass    String?
+  example      String?
+  exampleEn    String?
+  culturalNote String   @default("")
+  phase        Int      @default(1)
+  classBand    String   @default("1-2")
+  ilt          String   @default("home")
+  attestation  String   // attested | awaiting
+  source       String?
+  audioStatus  String   @default("")
+  reviewStatus String   @default("PENDING_NATIVE_REVIEW")
+  createdAt    DateTime @default(now())
+
+  @@index([attestation])
+  @@index([ilt])
+}
+
+// v4.2 §6.3 — graded Kom reading library (primer ladder, 5 stages).
+// textKom is null where printed pages await clearance — never fabricated.
+model ReadingPassage {
+  id           String @id
+  stage        Int
+  stageName    String
+  titleKom     String
+  titleEn      String
+  source       String
+  textKom      String?
+  textEn       String?
+  activities   String @default("[]") // JSON PrimerActivity[]
+  audioStatus  String @default("")
+  reviewStatus String @default("AWAITING_CONTENT")
+  classBand    String @default("1-2")
+  ilt          String @default("school")
+  createdAt    DateTime @default(now())
+
+  @@index([stage])
+}

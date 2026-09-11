@@ -63,7 +63,10 @@ export function PreviewOpsPanel() {
     { f: fr ? "Retour sensible aux tons (indicateur visuel)" : "Tone-Aware Feedback (visual indicator)", demo: "Lesson → Speak" },
     { f: fr ? "Gamification — XP, badge, audio de célébration" : "Gamification — XP, badge, celebration audio", demo: "Lesson → Celebrate" },
     { f: fr ? "Bibliothèque — Aile Grassfields (8 langues)" : "Library — Grassfields Wing (8 languages)", demo: "Library" },
-    { f: fr ? "Rapport d'audit superviseur v3.0" : "Supervisor Audit Report v3.0", demo: "Supervisor" },
+    { f: fr ? "Rapport d'audit superviseur v4.2" : "Supervisor Audit Report v4.2", demo: "Supervisor" },
+    { f: fr ? "Cadre du programme v4.2 (3 niveaux, 6 classes, 10 matières)" : "v4.2 Curriculum Framework (3 levels, 6 classes, 10 subjects)", demo: "Library → 🎓" },
+    { f: fr ? "Lexique kom 500 entrées + badges d'attestation" : "500-entry Kom lexicon + attestation badges", demo: "Library → 🎓 Lexicon" },
+    { f: fr ? "Échelle de lecture 5 étages + stations d'écoute NT" : "5-stage reading ladder + NT listening stations", demo: "Library → 🎓 Reading/Listening" },
     { f: fr ? "PWA / mode hors ligne" : "PWA / Offline Mode", demo: "Install / Offline" },
     { f: fr ? "Responsive mobile (375px)" : "Mobile Responsive (375px)", demo: "Device" },
     { f: fr ? "Console du registre des langues" : "Language Registry Console", demo: "Library → 🧩" },
@@ -97,6 +100,13 @@ export function PreviewOpsPanel() {
       body: fr
         ? "Moisson en ligne des 8 registres stipulés : série d'alphabétisation SIL (Ghesɨ̀nà 1/2, Yêm Woyn Kom 1, Ŋwàʼlɨ̀ àkòyn 1, Sweet Nectar 1.2/2, Kɨtɨ̂ Woyn 2.1), lexique kom–anglais de 225 pp. (Jones 2001), grammaire/phonologie/tons (Shultz & Jones), Nouveau Testament kom 2004 avec audio dramatisé (bible.is), 44 mots attestés + règles tonales (HTS/LTS/M) depuis le papier de Hyman (UC Berkeley). Intégré dans l'aile Grassfields de la bibliothèque ; 5 PDF sil.org à accès restreint documentés."
         : "Live harvest of all 8 stipulated records: SIL literacy series (Ghesɨ̀nà 1/2, Yêm Woyn Kom 1, Ŋwàʼlɨ̀ àkòyn 1, Sweet Nectar 1.2/2, Kɨtɨ̂ Woyn 2.1), the 225-pp. Kom–English lexicon (Jones 2001), grammar/phonology/tone papers (Shultz & Jones), the 2004 Kom New Testament with dramatized audio (bible.is), plus 44 attested words + tone rules (HTS/LTS/M) from Hyman's UC Berkeley paper. Integrated into the Library Grassfields wing; 5 access-gated sil.org PDFs documented.",
+      status: "done",
+    },
+    {
+      title: fr ? "v4.2 — moteur tonal Kom + lexique 500 + échelle de lecture + stations d'écoute + programme complet (Cl. 1–6)" : "v4.2 — KomToneEngine + 500-entry lexicon + reading ladder + listening stations + full curriculum (Cl. 1–6)",
+      body: fr
+        ? "Moteur tonal KomToneEngine (§6.1 : H/L/F, HTS/LTS/M, précision globale 40/60 % segmental/tonal) branché sur /api/pronunciation ; lexique Phase 1 de 500 entrées en base (50 attestées, 450 en attente de glose native — lexique Jones 2001 bloqué par Cloudflare, URL documentée) ; échelle de lecture 5 étages (Ghesɨ̀nà 1 → NT) avec activités ; stations d'écoute NT (Marc 1, Luc 15) reliées à bible.is/DBL ; cadre du programme complet §3.1–§3.10 (3 niveaux, 6 classes, 10 matières, 7 compétences, dotation horaire) dans la bibliothèque. Vérifié : 27/27 tests automatisés."
+        : "KomToneEngine (§6.1: H/L/F, HTS/LTS/M rules, 40/60 overall split) wired into /api/pronunciation; 500-entry Phase 1 lexicon in DB (50 attested, 450 awaiting native gloss — Jones 2001 lexicon Cloudflare-gated, URL documented); 5-stage reading ladder (Ghesɨ̀nà 1 → NT) with activities; NT listening stations (Mark 1, Luke 15) wired to bible.is/DBL; full curriculum framework §3.1–§3.10 (3 levels, 6 classes, 10 subjects, 7 core skills, time allocation) in the Library. Verified: 27/27 automated tests.",
       status: "done",
     },
   ];

@@ -1,0 +1,50 @@
+🚀 Initializing Z-AI SDK...
+🚀 Invoking function: web_search...
+[
+  {
+    "url": "https://www.silcam.org",
+    "name": "Kom language reading and writing book | Cameroon",
+    "snippet": "Guide to the Kom alphabet: Kom language reading and writing book ... Edition: rev. ed. Authors: Chia, Emmanuel N. ... Kimbi, Joseph C. Read more",
+    "host_name": "www.silcam.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://theswissbay.ch",
+    "name": "kom language grammar sketch part 1",
+    "snippet": "Oct 17, 1997 — The lexicon of the Kom language is being expanded somewhat through the use of loan words from English and French. 1.7.1 Loan words. The ... Read more 42 pages",
+    "host_name": "theswissbay.ch",
+    "rank": 1,
+    "date": "Oct 17, 1997",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.degruyterbrill.com",
+    "name": "Reference sources",
+    "snippet": "Jones , Randy. Provisional Kom-English Lexicon : Boyo Division, North. West Province. Yaoundé: Ministry of Scientific Research, Republic of. Cameroon : SIL , 2001 .",
+    "host_name": "www.degruyterbrill.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://files.eric.ed.gov",
+    "name": "Reproductions supplied by EDRS are the best that can be made",
+    "snippet": "by N Dutcher · 2001 · Cited by 244 — Broadly speaking, where linguistic and cultural diversity is high, biodiversity is high as well. PROEIB Andes ( 2001a ) cites a World Wildlife Fund (WWF) study ... Read more 127 pages",
+    "host_name": "files.eric.ed.gov",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://starlingdb.org",
+    "name": "This database, compiled by Merritt Ruhlen, contains certain",
+    "snippet": "... 2001 . Vowels and Consonants. Malden, MA: Blackwell. Ruhlen, Merritt. 1991. A ... Kom . Alternate Name. Nkom. Location. Cameroon . Population. 16,000. Read more 2,102 pages",
+    "host_name": "starlingdb.org",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  }
+]
+🎉 Function invocation completed!

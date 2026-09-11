@@ -142,12 +142,59 @@ export const SUBJECTS = [
   // Domain 2: Communal Life and National Integration — 5%
   { id: "social-studies", nameEn: "Social Studies", nameFr: "Études Sociales", domain: "Communal Life", weighting: 5, color: "orange", icon: "landmark", order: 5 },
   // Domain 3: Vocational and Life Skills — 20%
-  { id: "arts", nameEn: "Arts", nameFr: "Arts", domain: "Vocational & Life Skills", weighting: 20, color: "purple", icon: "palette", order: 6 },
-  { id: "pe", nameEn: "Physical Education & Sports", nameFr: "Éducation Physique et Sportive", domain: "Vocational & Life Skills", weighting: 20, color: "red", icon: "dumbbell", order: 7 },
+  { id: "vocational", nameEn: "Vocational Studies", nameFr: "Études Professionnelles", domain: "Vocational & Life Skills", weighting: 20, color: "amber", icon: "hammer", order: 6 },
+  { id: "arts", nameEn: "Arts", nameFr: "Arts", domain: "Vocational & Life Skills", weighting: 20, color: "purple", icon: "palette", order: 7 },
+  { id: "pe", nameEn: "Physical Education & Sports", nameFr: "Éducation Physique et Sportive", domain: "Vocational & Life Skills", weighting: 20, color: "red", icon: "dumbbell", order: 8 },
   // Domain 4: Cultural Identity — 5%
-  { id: "national-languages", nameEn: "National Languages and Cultures", nameFr: "Langues Nationales et Cultures", domain: "Cultural Identity", weighting: 5, color: "yellow", icon: "drum", order: 8 },
+  { id: "national-languages", nameEn: "National Languages and Cultures", nameFr: "Langues Nationales et Cultures", domain: "Cultural Identity", weighting: 5, color: "yellow", icon: "drum", order: 9 },
   // Domain 5: Digital Literacy — 10%
-  { id: "ict", nameEn: "Information and Communication Technologies", nameFr: "Technologies de l'Information et de la Communication", domain: "Digital Literacy", weighting: 10, color: "teal", icon: "monitor", order: 9 },
+  { id: "ict", nameEn: "Information and Communication Technologies", nameFr: "Technologies de l'Information et de la Communication", domain: "Digital Literacy", weighting: 10, color: "teal", icon: "monitor", order: 10 },
+];
+
+// v4.2 §3.5 — Level III ILTs (Classes 5–6)
+export const LEVEL3_ILTS = [
+  {
+    id: "nature",
+    nameEn: "Nature",
+    nameFr: "La Nature",
+    nameEw: "Ekölö",
+    order: 9,
+    months: [1],
+    mood: "village",
+    storyEn:
+      "Class 5 steps outside: the water cycle in the morning mist, useful plants along the path, insects at work. Kwe brings a magnifying glass — every leaf becomes a question.",
+    storyFr:
+      "La classe 5 sort dehors : le cycle de l'eau dans la brume du matin, les plantes utiles du chemin, les insectes au travail. Kwe apporte une loupe — chaque feuille devient une question.",
+    stageScope: "primary",
+  },
+  {
+    id: "sports-leisure",
+    nameEn: "Sports & Leisure",
+    nameFr: "Sport et Loisirs",
+    nameEw: "Mvet",
+    order: 10,
+    months: [7],
+    mood: "games",
+    storyEn:
+      "Sports day approaches! The class organises a real tournament with rules, scorers and a trophy. Leisure becomes learning: traditional games meet football tactics.",
+    storyFr:
+      "Le jour du sport approche ! La classe organise un vrai tournoi avec règles, marqueurs et un trophée. Les loisirs deviennent apprentissage : jeux traditionnels et tactique du football.",
+    stageScope: "primary",
+  },
+  {
+    id: "universe-space",
+    nameEn: "Universe & Space",
+    nameFr: "L'Univers et l'Espace",
+    nameEw: "Mefû",
+    order: 11,
+    months: [8],
+    mood: "communication",
+    storyEn:
+      "Under the night sky of Boyo, Class 6 charts the moon, the planets and the seasons. From the village under the stars to the solar system — curiosity has no ceiling.",
+    storyFr:
+      "Sous le ciel nocturne du Boyo, la classe 6 observe la lune, les planètes et les saisons. Du village sous les étoiles au système solaire — la curiosité n'a pas de plafond.",
+    stageScope: "primary",
+  },
 ];
 
 // ISCED 0-3 full ladder — KG to High School (Master Prompt 1.4 / 2.1)
