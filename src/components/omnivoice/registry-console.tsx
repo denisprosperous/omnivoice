@@ -13,8 +13,9 @@ import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { trackEvent } from "@/lib/analytics";
 import {
-  GRASSFIELDS_LANGUAGES, CONTENT_TARGETS, type LanguageStatus,
+  CONTENT_TARGETS, type LanguageStatus,
 } from "@/lib/data/grassfields";
+import { useLanguageRegistry } from "@/lib/use-language-registry";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -44,16 +45,24 @@ export function statusLabel(status: string, fr: boolean): string {
 export function RegistryConsole() {
   const { lang } = useApp();
   const fr = lang === "fr";
+  const reloadRegistry = useLanguageRegistry((s) => s.reload);
+  const registryLanguages = useLanguageRegistry((s) => s.languages);
   const [drafts, setDrafts] = React.useState<Draft[]>([]);
   const [loading, setLoading] = React.useState(true);
+  const [loadError, setLoadError] = React.useState<string | null>(null);
   const [form, setForm] = React.useState({ code: "", name: "", nativeName: "", region: "", division: "", speakers: "", tones: "", priority: "MEDIUM", notes: "" });
   const [busy, setBusy] = React.useState(false);
   const [msg, setMsg] = React.useState<{ kind: "ok" | "err"; text: string } | null>(null);
 
   const load = React.useCallback(() => {
+    setLoadError(null);
     fetch("/api/languages")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`registry unavailable (${r.status})`);
+        return r.json();
+      })
       .then((d) => setDrafts(d.drafts || []))
+      .catch((e) => setLoadError(e instanceof Error ? e.message : "registry unavailable"))
       .finally(() => setLoading(false));
   }, []);
 
@@ -75,6 +84,7 @@ export function RegistryConsole() {
       setMsg({ kind: "ok", text: t("languageAdded", lang) });
       setForm({ code: "", name: "", nativeName: "", region: "", division: "", speakers: "", tones: "", priority: "MEDIUM", notes: "" });
       load();
+      void reloadRegistry(); // propagate instantly to every picker (HUD, Landing, Profile, Teacher)
     } catch (err) {
       setMsg({ kind: "err", text: err instanceof Error ? err.message : "Registration failed" });
     } finally {
@@ -157,7 +167,7 @@ export function RegistryConsole() {
         </form>
       </section>
 
-      {/* Registry matrix — 8 stipulated languages */}
+      {/* Registry matrix — static 8-language Grassfields matrix + community drafts */}
       <section className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
         <h3 className="mb-1 text-sm font-extrabold text-lime-900">📋 {fr ? "Registre officiel (matrice corrigée v3.0)" : "Official registry (corrected v3.0 matrix)"}</h3>
         <p className="mb-3 text-[11px] text-amber-600">
@@ -177,12 +187,12 @@ export function RegistryConsole() {
               </tr>
             </thead>
             <tbody>
-              {GRASSFIELDS_LANGUAGES.map((l, i) => (
+              {registryLanguages.map((l, i) => (
                 <tr key={l.code} className="border-b border-lime-50">
                   <td className="py-1.5 pr-2 font-bold text-amber-600">{i + 1}</td>
-                  <td className="py-1.5 pr-2 font-extrabold text-lime-900">{l.flag} {l.name}</td>
+                  <td className="py-1.5 pr-2 font-extrabold text-lime-900">{l.flag} {l.name}{l.isDraft && <span className="ml-1 rounded-full bg-sky-100 px-1.5 py-0.5 text-[9px] font-extrabold uppercase text-sky-700">community</span>}</td>
                   <td className="py-1.5 pr-2 font-mono text-amber-800">{l.iso}</td>
-                  <td className="py-1.5 pr-2 text-amber-800">{l.division}</td>
+                  <td className="py-1.5 pr-2 text-amber-800">{l.division || l.region}</td>
                   <td className="py-1.5 pr-2 text-amber-800">{l.speakers}</td>
                   <td className="py-1.5 pr-2">
                     <span className={cn("rounded-full px-1.5 py-0.5 text-[9px] font-extrabold uppercase", STATUS_STYLE[l.status])}>
@@ -200,7 +210,14 @@ export function RegistryConsole() {
       {/* Community drafts */}
       <section className="rounded-2xl border-2 border-sky-200 bg-white p-4 shadow-sm">
         <h3 className="mb-2 text-sm font-extrabold text-sky-900">🗂️ {fr ? "Langues ajoutées par la communauté" : "Community-added languages"} ({drafts.length})</h3>
-        {loading ? (
+        {loadError ? (
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-xs font-semibold text-red-700" role="alert">⚠️ {fr ? "Registre indisponible" : "Registry unavailable"} — {loadError}</p>
+            <Button size="sm" variant="outline" className="h-8 border-sky-300 text-sky-800" onClick={load}>
+              🔄 {fr ? "Réessayer" : "Retry"}
+            </Button>
+          </div>
+        ) : loading ? (
           <p className="text-xs text-amber-600">…</p>
         ) : drafts.length === 0 ? (
           <p className="text-xs text-amber-600">{fr ? "Aucune langue communautaire pour l'instant — utilisez le formulaire ci-dessus pour en ajouter une." : "No community languages yet — use the form above to add one."}</p>
@@ -227,11 +244,16 @@ export function RegistryConsole() {
       <section className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
         <h3 className="mb-2 text-sm font-extrabold text-amber-900">🛠️ {fr ? "Pipeline d'intégration (automatique)" : "Integration pipeline (automatic)"}</h3>
         <ol className="grid gap-1.5 text-xs text-amber-900 sm:grid-cols-2">
-          <li className="rounded-lg bg-amber-50 p-2">1. {fr ? "Le code apparaît dans le sélecteur de langue vocale + HUD" : "Code appears in the voice-language picker + HUD"}</li>
+          <li className="rounded-lg bg-amber-50 p-2">1. {fr ? "Le code apparaît immédiatement dans le menu déroulant des langues nationales (HUD, accueil, profil, enseignant)" : "The code instantly appears in the national-language dropdown menu (HUD, landing, profile, teacher)"}</li>
           <li className="rounded-lg bg-amber-50 p-2">2. {fr ? "Fiche profil dans l'Aile Grassfields de la bibliothèque" : "Profile card in the Library Grassfields Wing"}</li>
-          <li className="rounded-lg bg-amber-50 p-2">3. {fr ? "Ligne dans la matrice d'audit du superviseur" : "Row in the Supervisor audit language matrix"}</li>
-          <li className="rounded-lg bg-amber-50 p-2">4. {fr ? "Inscrit au plan de collecte (cible CONTENT_TARGETS)" : "Enrolled in the collection plan (CONTENT_TARGETS)"}</li>
+          <li className="rounded-lg bg-amber-50 p-2">3. {fr ? "Ligne dans la matrice du registre ci-dessus" : "Row in the registry matrix above"}</li>
+          <li className="rounded-lg bg-amber-50 p-2">4. {fr ? "Inscrit au plan de collecte (cible CONTENT_TARGETS) — les contenus arrivent via 📥 Ingestion" : "Enrolled in the collection plan (CONTENT_TARGETS) — content arrives via 📥 Ingestion"}</li>
         </ol>
+        <p className="mt-2 rounded-xl bg-sky-50 p-2.5 text-[11px] leading-relaxed text-sky-900">
+          {fr
+            ? "💬 Vous avez des mots, phrases ou salutations dans votre langue ? Ne vous contentez pas d'ajouter la langue — envoyez le contenu via l'onglet 📥 Ingestion de contenu : il sera vérifié puis publié avec votre nom."
+            : "💬 Have words, phrases or greetings in your language? Don't just add the language — submit the content through the 📥 Content Ingestion tab: it will be reviewed and published with your name credited."}
+        </p>
         <p className="mt-2 text-[11px] text-amber-600">
           {fr ? "Cibles de contenu par langue : " : "Per-language content targets: "}
           {CONTENT_TARGETS.slice(0, 4).map((c) => `${c.type} (${c.quantity})`).join(" · ")}

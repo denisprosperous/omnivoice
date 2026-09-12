@@ -1,13 +1,14 @@
 "use client";
-// Content Library — two wings + registry console:
+// Content Library — wings + registry console + ingestion portal:
 // 1. Official Schemes (units/contents, ELOs, resources + national core skills + domains)
-// 2. Grassfields Languages Expansion Pack (v3.0 §2): 8 language profiles (Kom &
-//    Lamnso' separate; Bayangi added), GACL orthography, tone-marked sample
-//    vocabulary (playable), CEFR progression (§2.9), content library targets
-//    (§2.8), ASR fine-tuning plan + model registries (§4.1), offline language
-//    packs (§4.4), voice model status (§2.7), Bayangi data collection plan.
+// 2. Grassfields Languages Expansion Pack (v3.0 §2): registry-driven language
+//    profiles (incl. Ewondo + community drafts), GACL orthography, attested
+//    tone-marked vocabulary (playable), CEFR progression (§2.9), content
+//    targets (§2.8), ASR/TTS registries (§4.1), offline packs (§4.4).
 // 3. Language Registry Console (v3.0): add new dialects/local languages.
-// 4. Kom Attested Literature & Resources (v4.1 resource harvest): SIL Cameroon
+// 4. TRUSTED CONTENT INGESTION (user directive): tutors/parents/authorities
+//    submit words, greetings, stories with source citations → review → publish.
+// 5. Kom Attested Literature & Resources (v4.1 resource harvest): SIL Cameroon
 //    primer series + linguistic descriptions + lexicon + Kom NT audio access
 //    points + Hyman-attested tone-marked vocabulary — see lib/data/kom-resources.ts.
 import React from "react";
@@ -16,6 +17,7 @@ import { t } from "@/lib/i18n";
 import { PatternBand, Spinner } from "./shared";
 import { speak } from "@/lib/voice-client";
 import { playXp } from "@/lib/sound-engine";
+import { useLanguageRegistry } from "@/lib/use-language-registry";
 import {
   GRASSFIELDS_LANGUAGES, GACL, KOM_TONES, LAMNSO_GRAPHEMES, CORE_PHRASES,
   CONTENT_TARGETS, CONTENT_SOURCES, CEFR_PROGRESSION, ASR_MODELS, TTS_MODELS,
@@ -23,6 +25,7 @@ import {
   BAYANGI_DATA_COLLECTION_PLAN,
 } from "@/lib/data/grassfields";
 import { RegistryConsole, statusLabel } from "./registry-console";
+import { IngestionPortal } from "./ingestion-portal";
 import { CurriculumContentView } from "./curriculum-content";
 import { DiyWorkshop } from "./diy-workshop";
 import {
@@ -44,7 +47,7 @@ interface Subject { id: string; nameEn: string; nameFr: string; domain: string; 
 
 export function LibraryView() {
   const { lang } = useApp();
-  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "diy" | "v42">("schemes");
+  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "ingest" | "diy" | "v42">("schemes");
   const [weeks, setWeeks] = React.useState<SchemeWeek[]>([]);
   const [subjects, setSubjects] = React.useState<Subject[]>([]);
   const [domains, setDomains] = React.useState<Array<{ name: string; weighting: number }>>([]);
@@ -115,6 +118,15 @@ export function LibraryView() {
             🧩 {t("registryConsole", lang)}
           </button>
           <button
+            role="tab" aria-selected={wing === "ingest"} onClick={() => setWing("ingest")}
+            className={cn(
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
+              wing === "ingest" ? "border-indigo-700 bg-indigo-700 text-white shadow" : "border-indigo-200 bg-white text-indigo-800 hover:border-indigo-500"
+            )}
+          >
+            📥 {fr ? "Ingestion de contenu" : "Content Ingestion"}
+          </button>
+          <button
             role="tab" aria-selected={wing === "diy"} onClick={() => setWing("diy")}
             className={cn(
               "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
@@ -136,6 +148,8 @@ export function LibraryView() {
 
         {wing === "registry" ? (
           <RegistryConsole />
+        ) : wing === "ingest" ? (
+          <IngestionPortal />
         ) : wing === "diy" ? (
           <DiyWorkshop />
         ) : wing === "v42" ? (
@@ -226,7 +240,8 @@ export function LibraryView() {
 }
 
 // ============================================================================
-// GRASSFIELDS EXPANSION PACK WING (v2.0 §2)
+// GRASSFIELDS EXPANSION PACK WING (v2.0 §2) — registry-driven (v4.2):
+// static matrix + Ewondo + community drafts via useLanguageRegistry.
 // ============================================================================
 function GrassfieldsExpansion({
   fr, selLang, setSelLang, sel,
@@ -236,6 +251,9 @@ function GrassfieldsExpansion({
   setSelLang: (l: string) => void;
   sel?: (typeof GRASSFIELDS_LANGUAGES)[number];
 }) {
+  const { languages } = useLanguageRegistry();
+  React.useEffect(() => { /* registry loaded lazily by the hook consumers */ }, []);
+  const selRegistry = languages.find((l) => l.code === selLang);
   return (
     <div className="space-y-4" role="tabpanel" aria-label={t("expansionPack", fr ? "fr" : "en")}>
       <section className="rounded-2xl border-2 border-lime-300 bg-gradient-to-br from-lime-50 to-white p-4 shadow-sm">
@@ -249,11 +267,11 @@ function GrassfieldsExpansion({
         </p>
       </section>
 
-      {/* §2.2 Language profiles */}
+      {/* §2.2 Language profiles — registry-driven (static matrix + Ewondo + community drafts) */}
       <section aria-label={t("languageProfile", fr ? "fr" : "en")} className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
-        <h3 className="mb-3 text-sm font-extrabold text-lime-900">🌍 {t("languageProfile", fr ? "fr" : "en")}</h3>
+        <h3 className="mb-3 text-sm font-extrabold text-lime-900">🌍 {t("languageProfile", fr ? "fr" : "en")} ({languages.length})</h3>
         <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-          {GRASSFIELDS_LANGUAGES.map((l) => (
+          {languages.map((l) => (
             <button
               key={l.code}
               onClick={() => setSelLang(l.code)}
@@ -267,16 +285,13 @@ function GrassfieldsExpansion({
                 <span className="text-sm font-extrabold text-lime-900">{l.flag} {l.name}</span>
                 <span className={cn(
                   "rounded-full px-1.5 py-0.5 text-[9px] font-extrabold uppercase",
-                  l.status === "ACTIVE" ? "bg-lime-600 text-white" : l.status === "ACTIVE_PLACEHOLDER" ? "bg-orange-500 text-white" : "bg-stone-200 text-stone-600"
+                  l.status === "ACTIVE" ? "bg-lime-600 text-white" : l.status === "ACTIVE_PLACEHOLDER" ? "bg-orange-500 text-white" : l.status === "DRAFT" ? "bg-sky-600 text-white" : l.status === "IN_REVIEW" ? "bg-amber-500 text-white" : "bg-stone-200 text-stone-600"
                 )}>{statusLabel(l.status, fr)}</span>
               </div>
               <p className="mt-0.5 text-[10px] text-amber-700">ISO {l.iso} · {l.nativeName}</p>
-              <p className="text-[10px] text-amber-700">{l.region} — {l.division}</p>
-              <p className="text-[10px] text-amber-700">🗣️ {l.speakers}</p>
+              {l.region && <p className="text-[10px] text-amber-700">{l.region}{l.division ? ` — ${l.division}` : ""}</p>}
+              {l.speakers && <p className="text-[10px] text-amber-700">🗣️ {l.speakers}</p>}
               <p className="mt-1 text-[10px] leading-snug text-lime-800">{l.tones}</p>
-              <p className="mt-1 text-[9px] font-bold uppercase text-stone-500">
-                {statusLabel(l.status, fr) === "Draft" ? "" : `${fr ? "Phase" : "Phase"}: `}{VOICE_MODEL_STATUS[l.code]?.phase}
-              </p>
               <p className="mt-1 text-[9px] font-semibold text-amber-600">
                 {t("contentCoverage", fr ? "fr" : "en")}: {l.contentLibrary.vocabulary} {fr ? "mots" : "words"} · {l.contentLibrary.dialogues} {fr ? "dialogues" : "dialogues"} · {l.contentLibrary.songs} {fr ? "chants" : "songs"} · {l.contentLibrary.stories} {fr ? "histoires" : "stories"}
               </p>
@@ -305,6 +320,11 @@ function GrassfieldsExpansion({
               <ul className="space-y-0.5 text-amber-900">
                 {(LANGUAGE_RESOURCES[sel.code] || []).map((r) => <li key={r}>• {r}</li>)}
               </ul>
+              {sel.code === "bkm" && (
+                <p className="mt-2 rounded-lg bg-amber-50 p-2 text-[10px] leading-snug text-amber-800">
+                  🔊 {fr ? "Seules les formes attestées (Hyman, SIL) sont listées ci-contre ; les salutations et dialogues arrivent via 📥 Ingestion de contenu." : "Only attested forms (Hyman, SIL) are listed beside; greetings and dialogues arrive via 📥 Content Ingestion."}
+                </p>
+              )}
               {sel.code === "byv" && (
                 <div className="mt-2 rounded-xl border-2 border-dashed border-orange-400 bg-orange-50/70 p-2.5">
                   <h5 className="text-[11px] font-extrabold uppercase tracking-wide text-orange-700">⏳ {t("dataCollection", fr ? "fr" : "en")} — Bayangi (v3.0)</h5>
@@ -317,9 +337,18 @@ function GrassfieldsExpansion({
             </div>
           </div>
         )}
+        {selRegistry?.isDraft && (
+          <div className="mt-3 grid gap-3 rounded-xl border-2 border-dashed border-sky-300 bg-sky-50/70 p-3 text-xs">
+            <h4 className="font-extrabold text-sky-900">🪶 {selRegistry.name} ({selRegistry.code}) — {fr ? "langue communautaire" : "community-registered language"}</h4>
+            <p className="text-amber-900">{selRegistry.tones} · {selRegistry.speakers || (fr ? "locuteurs à documenter" : "speakers to be documented")}</p>
+            <p className="text-[11px] leading-relaxed text-sky-900">
+              {fr
+                ? "Cette langue a été ajoutée via la Console du Registre. Son contenu (mots, salutations, histoires) arrive via l'onglet 📥 Ingestion de contenu — il sera publié après vérification par un encadreur."
+                : "This language was added through the Registry Console. Its content (words, greetings, stories) arrives via the 📥 Content Ingestion tab — it will be published after supervisor review."}
+            </p>
+          </div>
+        )}
       </section>
-
-      {/* §2.6 GACL Orthography */}
       <section aria-label={t("orthography", fr ? "fr" : "en")} className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
         <h3 className="mb-2 text-sm font-extrabold text-amber-900">✍️ {t("orthography", fr ? "fr" : "en")} ({GACL.established})</h3>
         <div className="grid gap-3 text-xs md:grid-cols-3">
@@ -354,12 +383,20 @@ function GrassfieldsExpansion({
         </div>
       </section>
 
-      {/* §2.3/§2.4 Sample vocabulary — playable */}
+      {/* Sample vocabulary — ATTESTED words only (trusted-sources policy) */}
       <section aria-label={t("sampleVocabulary", fr ? "fr" : "en")} className="rounded-2xl border-2 border-lime-300 bg-white p-4 shadow-sm">
         <h3 className="mb-1 text-sm font-extrabold text-lime-900">🔊 {t("sampleVocabulary", fr ? "fr" : "en")}</h3>
         <p className="mb-3 text-[11px] text-amber-700">
-          {fr ? "Touchez une phrase pour écouter la voix du personnage (Kwe). Les tons sont marqués selon le GACL." : "Tap a phrase to hear the character voice (Kwe). Tones are marked per the GACL."}
+          {fr ? "Touchez un mot pour écouter la voix du personnage (Kwe)." : "Tap a word to hear the character voice (Kwe)."}
         </p>
+        <div className="mb-3 rounded-xl border-2 border-dashed border-amber-300 bg-amber-50/70 p-3">
+          <p className="text-xs font-extrabold text-amber-900">⏳ {t("pendingDocumentation", fr ? "fr" : "en")} — {fr ? "salutations et dialogues" : "greetings & dialogues"}</p>
+          <p className="mt-1 text-[11px] leading-relaxed text-amber-800">
+            {fr
+              ? "Aucune salutation Kom/Lamnso'/Ewondo n'est encore attestée dans nos sources de confiance — la plateforme n'invente jamais de contenu. Les salutations proviendront des locuteurs natifs via l'onglet 📥 Ingestion de contenu."
+              : "No Kom/Lamnso'/Ewondo greeting is attested in our trusted sources yet — the platform never invents content. Greetings arrive from native speakers through the 📥 Content Ingestion tab."}
+          </p>
+        </div>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {CORE_PHRASES.map((p) => (
             <div key={p.en} className="rounded-xl border-2 border-lime-100 bg-lime-50/50 p-2.5">
@@ -439,14 +476,7 @@ function GrassfieldsExpansion({
             {CONTENT_SOURCES.map((s) => <li key={s}>• {s}</li>)}
           </ul>
           <h3 className="mb-2 mt-3 text-sm font-extrabold text-lime-900">💾 {t("languagePacks", fr ? "fr" : "en")}</h3>
-          <ul className="space-y-1 text-xs text-amber-900">
-            {GRASSFIELDS_LANGUAGES.map((l) => (
-              <li key={l.code} className="flex items-center justify-between gap-2 rounded-lg bg-lime-50 px-2 py-1.5">
-                <span className="font-bold">{l.flag} {l.name}</span>
-                <span className="text-[10px] text-amber-700">{LANGUAGE_PACKS[l.code]?.file} · ~{LANGUAGE_PACKS[l.code]?.sizeMb}MB</span>
-              </li>
-            ))}
-          </ul>
+          <PackList fr={fr} />
         </div>
       </section>
 
@@ -694,5 +724,43 @@ function KomResourcePanel({ fr }: { fr: boolean }) {
         </ul>
       </section>
     </div>
+  );
+}
+
+// ============================================================================
+// PACK LIST (§4.4 offline language packs) — honest download buttons: the pack
+// bundles AFTER native-speaker audio is documented (Directive 9). Clicking
+// shows exactly what the pack will contain instead of a fake download.
+// ============================================================================
+function PackList({ fr }: { fr: boolean }) {
+  const [openPack, setOpenPack] = React.useState<string | null>(null);
+  return (
+    <ul className="space-y-1 text-xs text-amber-900">
+      {GRASSFIELDS_LANGUAGES.map((l) => (
+        <li key={l.code} className="rounded-lg bg-lime-50 px-2 py-1.5">
+          <div className="flex items-center justify-between gap-2">
+            <span className="font-bold">{l.flag} {l.name}</span>
+            <span className="flex items-center gap-2">
+              <span className="text-[10px] text-amber-700">~{LANGUAGE_PACKS[l.code]?.sizeMb}MB</span>
+              <button
+                onClick={() => setOpenPack(openPack === l.code ? null : l.code)}
+                aria-expanded={openPack === l.code}
+                className="min-h-[28px] rounded-full border-2 border-lime-300 bg-white px-2.5 text-[10px] font-extrabold text-lime-800 hover:border-lime-500"
+              >
+                📦 {t("downloadPack", fr ? "fr" : "en")}
+              </button>
+            </span>
+          </div>
+          {openPack === l.code && (
+            <p className="mt-1.5 rounded-md bg-white p-2 text-[10px] leading-snug text-amber-800" role="status">
+              ⏳ {fr
+                ? "Le pack se constitue dès que l'audio des locuteurs natifs est documenté (Directive 9 — pas de voix synthétisée sans référence native). Contenu prévu : "
+                : "The pack bundles as soon as native-speaker audio is documented (Directive 9 — no synthesized voice without native reference). Planned contents: "}
+              {(LANGUAGE_PACKS[l.code]?.components || []).join(" · ")}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
   );
 }

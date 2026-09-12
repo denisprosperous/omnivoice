@@ -36,7 +36,7 @@ export interface ListeningStation {
 export const LISTENING_STATIONS: ListeningStation[] = [
   {
     id: "LS-MRK-1",
-    titleKom: "Ŋwàʼlɨ̀ mɨ̀ Mark, Nkwàʼ 1",
+    titleKom: "Mark 1 (title as printed in the Kom NT — pending ingestion)",
     titleEn: "Gospel of Mark, Chapter 1 — the voice in the wilderness",
     passage: "Mark 1:1–8",
     duration: "5:30",
@@ -65,7 +65,7 @@ export const LISTENING_STATIONS: ListeningStation[] = [
   },
   {
     id: "LS-LUK-15",
-    titleKom: "Ŋwàʼlɨ̀ mɨ̀ Luk, Nkwàʼ 15",
+    titleKom: "Luke 15 (title as printed in the Kom NT — pending ingestion)",
     titleEn: "Gospel of Luke, Chapter 15 — the lost is found",
     passage: "Luke 15:1–10",
     duration: "4:45",

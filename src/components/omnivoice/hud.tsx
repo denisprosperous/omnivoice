@@ -1,10 +1,15 @@
 "use client";
-// HUD — top navigation bar with gamification state + language switcher + offline indicator
+// HUD — top navigation bar with gamification state + language switchers + offline indicator
+// Language surfaces (trusted-sources build):
+//  • Interface language chips: EN / FR (the platform's working languages)
+//  • National-language DROPDOWN MENU (user directive): Kom, Ewondo, Lamnso',
+//    Bayangi, … registry-driven (static matrix + community drafts) with honest
+//    status badges.
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
-import { VOICE_LANGUAGES } from "@/lib/data/grassfields";
 import { XpBar } from "./shared";
+import { NationalLanguageSelect } from "./national-language-select";
 import { setMuted } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -26,7 +31,6 @@ export function Hud() {
         { view: "library" as const, key: "library", icon: "📚" },
       ]
     : NAV;
-  const voiceLangLabel = VOICE_LANGUAGES.find((v) => v.id === voiceLang);
 
   return (
     <header className="sticky top-0 z-40 shadow-md" style={{ background: "#7C2D12" }}>
@@ -59,8 +63,8 @@ export function Hud() {
           </div>
         )}
 
-        <div className="flex items-center gap-1" role="group" aria-label="Language">
-          {(["en", "fr", "ewo"] as const).map((l) => (
+        <div className="flex items-center gap-1" role="group" aria-label="Interface language">
+          {(["en", "fr"] as const).map((l) => (
             <button
               key={l}
               onClick={() => setLang(l)}
@@ -70,43 +74,21 @@ export function Hud() {
                 lang === l ? "bg-white text-amber-900" : "bg-white/10 text-amber-100 hover:bg-white/20"
               )}
             >
-              {l === "en" ? "EN" : l === "fr" ? "FR" : "EW"}
+              {l === "en" ? "EN" : "FR"}
             </button>
           ))}
         </div>
 
-        {/* Voice language — Grassfields Expansion Pack selector (v2.0 §2) */}
-        <details className="relative" title={t("voiceLanguage", lang)}>
-          <summary
-            className={cn(
-              "flex h-8 cursor-pointer list-none items-center gap-1 rounded-full px-2 text-xs font-bold transition-colors",
-              voiceLang && voiceLang !== "en" && voiceLang !== "fr" ? "bg-lime-400 text-lime-950" : "bg-white/10 text-amber-100 hover:bg-white/20"
-            )}
-            aria-label={`${t("voiceLanguage", lang)}: ${voiceLangLabel?.label || voiceLang}`}
-          >
-            <span aria-hidden>🪶</span>
-            <span className="hidden sm:inline">{(voiceLangLabel?.label || voiceLang).split(" ")[0]}</span>
-            <span aria-hidden className="text-[8px]">▼</span>
-          </summary>
-          <div className="absolute right-0 z-50 mt-1 max-h-72 w-56 overflow-y-auto rounded-xl border-2 border-lime-700 bg-white p-1.5 shadow-xl">
-            <p className="px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-lime-700">{t("voiceLanguage", lang)}</p>
-            {VOICE_LANGUAGES.map((v) => (
-              <button
-                key={v.id}
-                onClick={(e) => { setVoiceLang(v.id); e.currentTarget.closest("details")?.removeAttribute("open"); }}
-                aria-pressed={voiceLang === v.id}
-                className={cn(
-                  "flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-xs font-bold transition-colors",
-                  voiceLang === v.id ? "bg-lime-100 text-lime-900" : "text-amber-900 hover:bg-amber-50"
-                )}
-              >
-                <span aria-hidden>{v.flag}</span>
-                {v.label}
-                {voiceLang === v.id && <span className="ml-auto" aria-hidden>✓</span>}
-              </button>
-            ))}
-          </div>
-        </details>
+        {/* National language — DROPDOWN MENU (registry-driven, user directive) */}
+        <div className="w-[150px] sm:w-[170px]" title={t("voiceLanguage", lang)}>
+          <NationalLanguageSelect
+            value={voiceLang}
+            onChange={(code) => setVoiceLang(code)}
+            lang={lang}
+            compact
+            className="border-white/30 bg-white/10 text-[11px] font-bold text-amber-50 [&>span]:truncate [&>span]:text-amber-50 [&>svg]:text-amber-100"
+          />
+        </div>
 
         <Button
           variant="ghost"

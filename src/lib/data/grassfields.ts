@@ -29,7 +29,7 @@
 // 8 Ngie ngi Momo, NW 40,000 Planned LOW
 // ---------------------------------------------------------------------------
 
-export type GrassfieldsCode = "bkm" | "lns" | "byv" | "bfd" | "oku" | "bbk" | "mgo" | "ngi";
+export type GrassfieldsCode = "bkm" | "lns" | "byv" | "ewo" | "bfd" | "oku" | "bbk" | "mgo" | "ngi";
 
 export type LanguageStatus = "ACTIVE" | "ACTIVE_PLACEHOLDER" | "PLANNED";
 
@@ -71,7 +71,11 @@ export const GRASSFIELDS_LANGUAGES: GrassfieldsLanguage[] = [
     speakers: "~233,000 (2005)", tones: "3 tones — high (unmarked), falling (â), low (à)",
     toneNotation: { system: "Kom 3-tone", detail: "high: unmarked · falling: circumflex (â) · low: grave (à)" },
     priority: "HIGH", status: "ACTIVE", trainingHours: "500+ hours",
-    greeting: "À bwɛ̀", thankYou: "Bɛ̀ŋ", howAreYou: "Nà wù dà?",
+    // TRUSTED-SOURCES POLICY (user directive): no Kom greeting is attested in the
+    // ingested sources (Hyman tables, SIL primer records, Kom NT metadata), so
+    // greetings are PENDING until native speakers contribute them via the
+    // Content Ingestion portal. Never list invented phrases (Directive 9).
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
     asrModel: "custom/kom-asr-v1", ttsVoice: "custom/kom-voice-v1",
     contentLibrary: { vocabulary: 500, dialogues: 50, songs: 20, stories: 30 },
     flag: "🪶",
@@ -86,7 +90,9 @@ export const GRASSFIELDS_LANGUAGES: GrassfieldsLanguage[] = [
     speakers: "~125,000 (1987)", tones: "Multiple tones · 6 short vowels /i e a o ə u/ · distinctive vowel length",
     toneNotation: { system: "GACL-compliant", detail: "multiple tones · distinctive vowel length (sú vs súü)" },
     priority: "HIGH", status: "ACTIVE", trainingHours: "500+ hours",
-    greeting: "Mbi̶ vǝ̀", thankYou: "Bíŋ", howAreYou: "Wù yé dì?",
+    // TRUSTED-SOURCES POLICY: no Lamnso' phrase was ingested from the trusted
+    // sources — greetings remain PENDING (pending ingestion, Directive 9).
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
     asrModel: "custom/lamnso-asr-v1", ttsVoice: "custom/lamnso-voice-v1",
     contentLibrary: { vocabulary: 500, dialogues: 50, songs: 20, stories: 30 },
     flag: "🪶",
@@ -106,6 +112,23 @@ export const GRASSFIELDS_LANGUAGES: GrassfieldsLanguage[] = [
     contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
     culturalContext: "Known for traditional dances and masquerade traditions",
     flag: "🪶",
+  },
+  {
+    // EWNDO — added by user directive to the national-language registry.
+    // Ewondo is a Bantu (Beti-Bulu/Fang-Beti, A.70) national language of the
+    // Centre/South Regions — NOT a Grassfields language, and tracked honestly
+    // as such. No Ewondo phrase content has been ingested from trusted sources;
+    // greetings stay PENDING until contributed via the ingestion portal.
+    code: "ewo", name: "Ewondo", nativeName: "Ewondo", iso: "ewo",
+    alternateNames: ["Ewondo Populaire", "Yaoundé", "Jaunde", "Kolo", "Beti (A.70)"],
+    region: "Centre & South Regions", division: "Mfoundi and neighbouring divisions",
+    speakers: "~600,000 (native; far more as a second language)", tones: "Tonal (inventory pending documentation)",
+    toneNotation: { system: "GACL-compliant (pending)", detail: "tone inventory to be documented with native speakers" },
+    priority: "HIGH", status: "PLANNED", trainingHours: "300+ hours",
+    greeting: PENDING, thankYou: PENDING, howAreYou: PENDING,
+    asrModel: null, ttsVoice: null,
+    contentLibrary: { vocabulary: 0, dialogues: 0, songs: 0, stories: 0 },
+    flag: "🌍",
   },
   {
     code: "bfd", name: "Bafut", nativeName: "Bafut", iso: "bfd",
@@ -197,6 +220,8 @@ export const LANGUAGE_CLASSIFICATION: Record<string, string> = {
   bkm: "Benue-Congo → Narrow Grassfields → Western Grassfields → Ring → Centre branch (GFW 822)",
   lns: "Benue-Congo → Narrow Grassfields → Ring group → West ring (no dialectal variations)",
   byv: "Benue-Congo → Narrow Grassfields → Momo",
+  // Ewondo is a Bantu (Beti) language, NOT Grassfields — tracked honestly.
+  ewo: "Benue-Congo → Bantu → Beti-Bulu (Fang-Beti, zone A.70)",
 };
 
 export const LANGUAGE_RESOURCES: Record<string, string[]> = {
@@ -214,6 +239,7 @@ export const LANGUAGE_RESOURCES: Record<string, string[]> = {
     "Kom Dictionary App (Google Play)",
   ],
   lns: ["“Binka wùn Wiyka 1” — 2003", "Nso Language Organisation (NLO) materials", "Lamnso' Bible translation"],
+  ewo: ["Ewondo Bible / New Testament translation", "Ewondo liturgical and community materials", "National-language ingestion drive (tutors, parents, educational authorities)"],
   byv: ["SIL Cameroon / Local Community (data collection, Q2 2025)", "Community recordings — traditional dances & masquerade traditions (planned)"],
   bfd: ["SIL Cameroon", "Local schools", "Primary textbooks"],
   oku: ["Oku Language Committee", "Community materials"],
@@ -242,10 +268,12 @@ export const GACL = {
 } as const;
 
 // Kom tone system (§2.3): 3 tones — high [˥] unmarked, falling [˥˩] circumflex, low [˩] grave
+// Examples are TRUSTED-SOURCE words from Hyman (UC Berkeley) Tables 1–6:
+//   ká 'will (future)' high · a-tâʔ 'snail' falling (tâʔ) · nè 'with' low
 export const KOM_TONES = [
-  { tone: "High [˥]", mark: "(unmarked)", example: "bwɛ (high syllable)" },
-  { tone: "Falling [˥˩]", mark: "circumflex â", example: "â" },
-  { tone: "Low [˩]", mark: "grave à", example: "à bwɛ̀" },
+  { tone: "High [˥]", mark: "(unmarked)", example: "ká — will (future marker)" },
+  { tone: "Falling [˥˩]", mark: "circumflex â", example: "tâʔ in a-tâʔ — snail" },
+  { tone: "Low [˩]", mark: "grave à", example: "nè — with" },
 ] as const;
 
 // Lamnso' special graphemes (§2.4)
@@ -269,13 +297,26 @@ export interface Phrase {
   note?: string;
 }
 
+/**
+ * Core phrasebook — TRUSTED-SOURCES POLICY (user directive).
+ * The previously listed greetings were NOT from the ingested trusted sources
+ * and have been removed. Only Hyman-attested words (Tables 1–9, UC Berkeley)
+ * are listed. Lamnso' has no ingested words yet → fields omitted. Greetings in
+ * Kom/Lamnso' arrive exclusively through the Content Ingestion portal.
+ */
 export const CORE_PHRASES: Phrase[] = [
-  { en: "Good morning", bkm: "À bwɛ̀", lns: "Mbi̶ vǝ̀", note: "Tone-marked" },
-  { en: "Thank you", bkm: "Bɛ̀ŋ", lns: "Bíŋ", note: "Tone-marked" },
-  { en: "How are you?", bkm: "Nà wù dà?", lns: "Wù yé dì?", note: "Question form" },
-  { en: "I am fine", bkm: "M̀ bɛ̀", lns: "Mǝ̀ yé", note: "Response" },
-  { en: "What is your name?", bkm: "Nà wù yì ə?", lns: "Wù yé wǝ́?", note: "Question form" },
-  { en: "My name is…", bkm: "Yì əm…", lns: "Yé mǝ…", note: "Response" },
+  { en: "child", bkm: "wáyn", note: "Hyman Tables — noun class 1" },
+  { en: "children", bkm: "ghóyn", note: "Hyman Tables — noun class 2" },
+  { en: "dog", bkm: "bì", note: "Hyman Tables — noun class 9" },
+  { en: "dogs", bkm: "bì-se", note: "Hyman Tables — noun class 10" },
+  { en: "water", bkm: "muú", note: "Hyman Tables — noun class 6a" },
+  { en: "fruit", bkm: "fe-tám", note: "Hyman Tables — class 19, M-H" },
+  { en: "mat", bkm: "fe-ghâm", note: "Hyman Tables — class 19, M-HL" },
+  { en: "chiefs", bkm: "te-fôyn", note: "Hyman Tables — class 13, M-HL" },
+  { en: "market", bkm: "e-wé", note: "Hyman Tables — initial-vowel form" },
+  { en: "house", bkm: "e-ndo", note: "Hyman Tables — initial-vowel form" },
+  { en: "with", bkm: "nè", note: "Hyman Table 5 — low-tone function word" },
+  { en: "will (future)", bkm: "ká", note: "Hyman Table 5 — future marker" },
 ];
 
 // Kom orthography inventory (GACL-compliant) — phoneme practice set (§2.8 Phoneme Audio)
@@ -370,6 +411,7 @@ export const VOICE_MODEL_STATUS: Record<string, { asr: string; tts: string; phas
   bkm: { asr: "Fine-tune Simba-S — data sourcing (SIL Cameroon)", tts: "F5-TTS cloning from native speaker reference (5-10s)", phase: "Phase 2" },
   lns: { asr: "Fine-tune Simba-S — data sourcing (SIL Cameroon)", tts: "F5-TTS cloning from native speaker reference (5-10s)", phase: "Phase 2" },
   byv: { asr: "Data collection phase — 500h target (SIL Cameroon / Local Community, Q2 2025)", tts: "Pending tone inventory documentation → F5-TTS cloning", phase: "Phase 2 (NEW — placeholder)" },
+  ewo: { asr: "Pending data sourcing — national-language ingestion drive", tts: "Pending native reference audio (Directive 9)", phase: "Phase 4" },
   bfd: { asr: "Awaiting fine-tuning window", tts: "Awaiting voice cloning", phase: "Phase 4" },
   oku: { asr: "Awaiting fine-tuning window", tts: "Awaiting voice cloning", phase: "Phase 4" },
   bbk: { asr: "Awaiting fine-tuning window", tts: "Awaiting voice cloning", phase: "Phase 4" },
@@ -385,14 +427,21 @@ export const VOICE_MODEL_STATUS: Record<string, { asr: string; tts: string; phas
 const TONE_DIACRITICS = /[\u0300-\u036F\u0327\u0332]/g; // combining diacritics (tone marks)
 const TONE_LETTERS = /[̀́̂̃̄̅̈̇]/g; // precomposed grave/acute/circumflex marks on letters
 
-/** All supported voice/lesson languages: EN, FR + 8 Grassfields (+ Ewondo legacy) */
+/**
+ * NATIONAL_LANGUAGES — the dropdown registry (user directive: "Kom, Ewondo as
+ * well as others should be here"). Order: interface languages first, then the
+ * 9 registry languages (8 Grassfields + Ewondo), then community drafts at runtime.
+ */
+export const NATIONAL_LANGUAGES = GRASSFIELDS_LANGUAGES;
+
+/** All supported voice/lesson languages: EN, FR + 8 Grassfields + Ewondo */
 export const VOICE_LANGUAGES = [
   { id: "en", label: "English", flag: "🇬🇧", status: "ACTIVE" as LanguageStatus },
   { id: "fr", label: "Français", flag: "🇫🇷", status: "ACTIVE" as LanguageStatus },
-  ...GRASSFIELDS_LANGUAGES.map((l) => ({
+  ...NATIONAL_LANGUAGES.map((l) => ({
     id: l.code as string,
     label: l.name,
-    flag: "🪶",
+    flag: l.flag,
     status: l.status,
     priority: l.priority,
   })),

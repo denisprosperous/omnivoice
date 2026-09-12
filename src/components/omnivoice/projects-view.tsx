@@ -312,6 +312,13 @@ export function ProjectsView() {
 function TextNote({ onAdd, lang }: { onAdd: (t: string) => void; lang: Lang }) {
   const [open, setOpen] = React.useState(false);
   const [val, setVal] = React.useState("");
+  const empty = !val.trim();
+  const add = () => {
+    if (empty) return; // guard: empty notes are rejected by the API anyway
+    onAdd(val);
+    setVal("");
+    setOpen(false);
+  };
   if (!open) {
     return (
       <Button variant="outline" className="h-14 border-amber-300 text-amber-800" onClick={() => setOpen(true)}>
@@ -320,11 +327,14 @@ function TextNote({ onAdd, lang }: { onAdd: (t: string) => void; lang: Lang }) {
     );
   }
   return (
-    <div className="flex flex-1 gap-2">
-      <Input value={val} onChange={(e) => setVal(e.target.value)} placeholder={lang === "fr" ? "Écris une note..." : "Type a note..."} className="h-12 border-amber-300"
-        onKeyDown={(e) => { if (e.key === "Enter") { onAdd(val); setVal(""); setOpen(false); } }}
-      />
-      <Button className="h-12 bg-amber-600 font-bold hover:bg-amber-700" onClick={() => { onAdd(val); setVal(""); setOpen(false); }}>
+    <div className="flex flex-1 flex-col gap-1 sm:flex-row sm:items-start">
+      <div className="flex-1">
+        <Input value={val} onChange={(e) => setVal(e.target.value)} placeholder={lang === "fr" ? "Écris une note..." : "Type a note..."} className="h-12 border-amber-300"
+          onKeyDown={(e) => { if (e.key === "Enter") add(); }}
+        />
+        {empty && <p className="mt-1 text-[10px] font-semibold text-amber-500">{lang === "fr" ? "Écris d'abord une note, puis enregistre." : "Type a note first, then save."}</p>}
+      </div>
+      <Button disabled={empty} className="h-12 shrink-0 bg-amber-600 font-bold hover:bg-amber-700 disabled:opacity-50" onClick={add}>
         {t("save", lang)}
       </Button>
     </div>

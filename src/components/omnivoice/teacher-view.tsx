@@ -8,6 +8,7 @@ import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { PatternBand, Spinner } from "./shared";
+import { NationalLanguageSelect } from "./national-language-select";
 import { speak } from "@/lib/voice-client";
 import { playBadge } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
@@ -28,10 +29,11 @@ interface GeneratedPlan {
 }
 
 export function TeacherView() {
-  const { learner, lang } = useApp();
+  const { learner, lang, voiceLang } = useApp();
   const [subject, setSubject] = React.useState("english");
   const [stage, setStage] = React.useState("class3");
   const [week, setWeek] = React.useState(1);
+  const [lessonLang, setLessonLang] = React.useState<string>(voiceLang || "en");
   const [busy, setBusy] = React.useState(false);
   const [plan, setPlan] = React.useState<GeneratedPlan | null>(null);
   const [error, setError] = React.useState("");
@@ -54,7 +56,7 @@ export function TeacherView() {
       const res = await fetch("/api/lesson-plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ subject, stage, week, language: lang === "fr" ? "fr" : "en" }),
+        body: JSON.stringify({ subject, stage, week, language: lang === "fr" ? "fr" : "en", voiceLanguage: lessonLang }),
       });
       if (!res.ok) throw new Error(`Generation failed (${res.status})`);
       const data = await res.json();
@@ -84,7 +86,7 @@ export function TeacherView() {
         </header>
 
         <section className="rounded-2xl border-2 border-amber-300 bg-white p-4 shadow-sm">
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <label htmlFor="subj" className="mb-1 block text-xs font-bold text-amber-800">{t("subjects", lang)}</label>
               <select id="subj" value={subject} onChange={(e) => setSubject(e.target.value)} className="h-11 w-full rounded-lg border-2 border-amber-300 bg-white px-2 text-sm font-semibold text-amber-900">
@@ -108,6 +110,10 @@ export function TeacherView() {
               <select id="wk" value={week} onChange={(e) => setWeek(Number(e.target.value))} className="h-11 w-full rounded-lg border-2 border-amber-300 bg-white px-2 text-sm font-semibold text-amber-900">
                 {[1, 2, 3, 4].map((w) => <option key={w} value={w}>{lang === "fr" ? `Semaine ${w}` : `Week ${w}`}</option>)}
               </select>
+            </div>
+            <div>
+              <label htmlFor="llang" className="mb-1 block text-xs font-bold text-lime-700">🇨🇲 {lang === "fr" ? "Langue de la leçon" : "Lesson language"}</label>
+              <NationalLanguageSelect id="llang" value={lessonLang} onChange={setLessonLang} lang={lang} includeInterfaceLanguages compact allowPlaceholder={false} />
             </div>
           </div>
           <Button onClick={generate} disabled={busy} className="mt-3 h-13 w-full bg-amber-600 text-base font-extrabold hover:bg-amber-700" size="lg">

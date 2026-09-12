@@ -12,7 +12,17 @@ export function useLearnerSync() {
     if (!learner?.id) return;
     let cancelled = false;
     fetch(`/api/learner?id=${learner.id}`)
-      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => {
+        // v4.2 fix — stale profile (e.g. after a DB re-seed): the API 404s and
+        // every profile-scoped button silently failed. Clear the dead profile
+        // so the learner can recreate it and all buttons work again.
+        if (r.status === 404) {
+          useApp.getState().setLearner(null);
+          useApp.getState().setView("landing");
+          return null;
+        }
+        return r.ok ? r.json() : null;
+      })
       .then((d) => {
         if (cancelled || !d?.learner) return;
         const current = useApp.getState().learner;

@@ -6,6 +6,7 @@ import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { PatternBand, Spinner, XpBar } from "./shared";
 import { AVATARS_LIST } from "./avatars";
+import { NationalLanguageSelect } from "./national-language-select";
 import { playBadge } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,7 +16,7 @@ interface Skill { skillCode: string; mastery: number }
 interface AssessmentRow { id: string; lessonId: string; type: string; score: number; createdAt: string }
 
 export function ProfileView() {
-  const { learner, lang, setLearner } = useApp();
+  const { learner, lang, setLang, voiceLang, setVoiceLang, setLearner } = useApp();
   const [badges, setBadges] = React.useState<BadgeDef[]>([]);
   const [earned, setEarned] = React.useState<string[]>([]);
   const [skills, setSkills] = React.useState<Skill[]>([]);
@@ -61,6 +62,7 @@ export function ProfileView() {
   }
 
   if (!learner) return null;
+  const fr = lang === "fr";
   const avg = assessments.length ? Math.round(assessments.reduce((s, a) => s + a.score, 0) / assessments.length) : null;
 
   return (
@@ -102,6 +104,40 @@ export function ProfileView() {
                 {a}
               </button>
             ))}
+          </div>
+        </section>
+
+        {/* Language settings — interface language + national-language dropdown */}
+        <section className="rounded-2xl border-2 border-lime-300 bg-white p-5 shadow-sm" aria-label="Language settings">
+          <h2 className="mb-1 text-lg font-extrabold text-lime-900">🌍 {fr ? "Langues" : "Languages"}</h2>
+          <p className="mb-3 text-xs text-amber-700">
+            {fr
+              ? "Langue d'interface (EN/FR) et langue nationale d'apprentissage — le contenu n'affiche que des formes attestées ou validées par des locuteurs natifs."
+              : "Interface language (EN/FR) and national learning language — content lists only attested or native-speaker-validated forms."}
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 className="mb-1.5 text-xs font-bold uppercase tracking-wide text-amber-600">{fr ? "Langue d'interface" : "Interface language"}</h3>
+              <div className="flex gap-2" role="group" aria-label={fr ? "Langue d'interface" : "Interface language"}>
+                {(["en", "fr"] as const).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => setLang(l)}
+                    aria-pressed={lang === l}
+                    className={cn(
+                      "min-h-[44px] flex-1 rounded-xl border-2 px-3 py-2 text-sm font-bold transition-all",
+                      lang === l ? "border-amber-600 bg-amber-50 text-amber-900" : "border-amber-200 text-amber-700 hover:border-amber-400"
+                    )}
+                  >
+                    {l === "en" ? "🇬🇧 English" : "🇫🇷 Français"}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-1.5 text-xs font-bold uppercase tracking-wide text-lime-700">🇨🇲 {fr ? "Langue nationale (leçons et voix)" : "National language (lessons & voice)"}</h3>
+              <NationalLanguageSelect value={voiceLang} onChange={(code) => setVoiceLang(code)} lang={lang} />
+            </div>
           </div>
         </section>
 

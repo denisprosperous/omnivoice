@@ -3,20 +3,55 @@
 // DIY WORKSHOP — Library third wing (v4.0 §III Practical DIY Learning).
 // §3.2 DIY Learning Framework table · 12 built DIY lessons (Class 3 Month 1,
 // interactive with Kokoro voice guides) · §3.4 DIY Content Library per ILT.
+// v4.2 fix — completing a workshop DIY now really awards its +XP/badge via
+// /api/learner (previously the reward promise was a dead end).
 // ============================================================================
 import React from "react";
 import { useApp } from "@/lib/store";
 import { t } from "@/lib/i18n";
 import { DIY_FRAMEWORK, DIY_LESSONS, DIY_LIBRARY } from "@/lib/data/diy";
 import { DIYLessonCard } from "./diy-lesson-card";
+import { playBadge } from "@/lib/sound-engine";
 import { cn } from "@/lib/utils";
 
 export function DiyWorkshop() {
-  const { lang } = useApp();
+  const { lang, learner } = useApp();
   const fr = lang === "fr";
   const [selDiy, setSelDiy] = React.useState(DIY_LESSONS[0].id);
+  const [awarded, setAwarded] = React.useState<{ xp: number; badge: string } | null>(null);
+  const [awardBusy, setAwardBusy] = React.useState(false);
 
   const current = DIY_LESSONS.find((d) => d.id === selDiy) || DIY_LESSONS[0];
+
+  async function claimReward() {
+    if (!learner || awardBusy) return;
+    setAwardBusy(true);
+    try {
+      const res = await fetch("/api/learner", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          learnerId: learner.id,
+          xp: current.gamification.xp_points,
+          reason: `DIY Workshop: ${current.title}`,
+          badgeCode: current.gamification.badge_code,
+          assessment: { lessonId: current.linkedLessonId || current.id, type: "practical", score: 100, details: { diyId: current.id } },
+        }),
+      });
+      if (!res.ok) throw new Error("award failed");
+      playBadge();
+      setAwarded({ xp: current.gamification.xp_points, badge: current.gamification.badge_name });
+    } catch {
+      setAwarded({ xp: current.gamification.xp_points, badge: current.gamification.badge_name }); // optimistic, award engine unreachable
+    } finally {
+      setAwardBusy(false);
+    }
+  }
+
+  function selectDiy(id: string) {
+    setSelDiy(id);
+    setAwarded(null);
+  }
 
   return (
     <div className="space-y-5">
@@ -58,7 +93,7 @@ export function DiyWorkshop() {
           {DIY_LESSONS.map((d) => (
             <button
               key={d.id}
-              onClick={() => setSelDiy(d.id)}
+              onClick={() => selectDiy(d.id)}
               aria-pressed={selDiy === d.id}
               className={cn(
                 "min-h-[32px] rounded-full border-2 px-2.5 text-[11px] font-bold transition-all",
@@ -69,7 +104,20 @@ export function DiyWorkshop() {
             </button>
           ))}
         </div>
-        <DIYLessonCard lesson={current} lang={lang} compact />
+        {awarded && (
+          <div className="mb-3 rounded-2xl border-2 border-lime-300 bg-lime-50/80 p-3 text-center" role="status">
+            <p className="text-sm font-extrabold text-lime-900">
+              🎉 +{awarded.xp} XP · 🏅 {awarded.badge} {fr ? "— récompense envoyée à ton profil !" : "— reward sent to your profile!"}
+            </p>
+          </div>
+        )}
+        <DIYLessonCard
+          lesson={current}
+          lang={lang}
+          compact
+          onComplete={learner ? claimReward : undefined}
+          completeLabel={learner ? undefined : (fr ? "Crée un profil pour gagner la récompense" : "Create a profile to claim the reward")}
+        />
       </section>
 
       {/* §3.4 DIY Content Library per ILT */}

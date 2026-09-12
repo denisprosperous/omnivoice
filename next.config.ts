@@ -10,3 +10,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// touch: reload prisma client (ContentSubmission model)

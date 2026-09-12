@@ -64,9 +64,13 @@ export const PRIMER_PASSAGES: PrimerPassage[] = [
     id: "PR-S1-U2",
     stage: 1, stageName: STAGES[1],
     titleKom: "Njàng e-mwààtɨ̀m mɨ̀ Kòm", titleEn: "Special Kom letters",
-    source: "Ghesɨ̀nà Yeʼi Itaŋikom 1 (1996); GACL orthography (1979)",
-    textKom: "ŋ — as in ŋwàʼlɨ̀ (book)\nɨ — as in ŋwàʼlɨ̀, ghesɨ̀nà\nɛ — as in bwɛ̀ (hello)\nɔ — as in shɔ̀ɔ (spec vocabulary context)\nʼ — glottal, as in bwàʼ, tâʔ",
-    textEn: "Kom adds ŋ, ɨ, ɛ, ɔ and the glottal stop marker ʼ to the Latin alphabet.",
+    source: "Ghesɨ̀nà Yeʼi Itaŋikom 1 (1996); GACL orthography (1979); example words attested in Hyman (UC Berkeley) Tables 1–9",
+    // Example words are Hyman-attested ONLY (trusted-sources policy):
+    //   ŋwàʼlɨ̀ (book, SIL primer title) · ghesɨ̀nà (reading, primer title) ·
+    //   nè 'with' (ɛ + low tone) · e-ndo 'house' · a-tâʔ 'snail' (glottal ʔ)
+    // No attested Kom word with ɔ was ingested → ɔ example awaits the primer pages.
+    textKom: "ŋ — as in ŋwàʼlɨ̀ (book)\nɨ — as in ŋwàʼlɨ̀, ghesɨ̀nà\nɛ — as in nè (with)\nɔ — printed example awaits the primer pages (ingest via the portal)\nʼ — glottal, as in a-tâʔ (snail)",
+    textEn: "Kom adds ŋ, ɨ, ɛ, ɔ and the glottal stop marker ʼ to the Latin alphabet. Every example word is attested: ŋwàʼlɨ̀, ghesɨ̀nà, nè, e-ndo, a-tâʔ (Hyman, UC Berkeley / SIL titles).",
     activities: [
       { type: "tracing", prompt: "Trace ŋ and ɨ five times each.", promptFr: "Retrace ŋ et ɨ cinq fois chacun." },
       { type: "vocab", prompt: "Find ɨ in: ŋwàʼlɨ̀, ghesɨ̀nà, itaŋikom.", promptFr: "Trouve ɨ dans : ŋwàʼlɨ̀, ghesɨ̀nà, itaŋikom." },
@@ -99,32 +103,35 @@ export const PRIMER_PASSAGES: PrimerPassage[] = [
     audioStatus: "no audio (text awaiting clearance)", reviewStatus: "AWAITING_CONTENT", classBand: "1-2", ilt: "school",
   },
 
-  // ---------------- Stage 2 — Dialogues (spec-attested verbatim) ----------------
+  // ---------------- Stage 2 — Dialogues ----------------
+  // TRUSTED-SOURCES POLICY: the greeting/classroom dialogues previously printed
+  // here were platform-invented and were removed by user directive. The printed
+  // dialogue pages of Ghesɨ̀nà Yeʼi Itaŋikom 2 (SIL 33002) are not yet digitized,
+  // so Kom text stays null until native speakers ingest the real dialogues.
   {
     id: "PR-S2-U1",
     stage: 2, stageName: STAGES[2],
-    titleKom: "À bwɛ̀, mwɛ̀n!", titleEn: "Hello, friend! — greeting dialogue",
-    source: "Master Prompt v2.0 §7.3 (verbatim); Ghesɨ̀nà Yeʼi Itaŋikom 2 — SIL 33002",
-    textKom: "Kwe: À bwɛ̀, mwɛ̀n! Nà wù dà?\nBì: Mbi vǝ̀, wòn! Wù yé dì?",
-    textEn: "Kwe: Hello, friend! How are you?\nMe: I am fine, thank you! And you?",
+    titleKom: "Ghesɨ̀nà yeʼi itaŋikom 2", titleEn: "Reading dialogues — greetings unit",
+    source: "Ghesɨ̀nà Yeʼi Itaŋikom 2 — SIL 33002 (record only; pages not yet digitized)",
+    textKom: null,
+    textEn: "Greeting dialogues as printed in Ghesɨ̀nà 2. The Kom text awaits page clearance — ingest it from the printed primer via the Content Ingestion portal (Library → 📥 Content Ingestion).",
     activities: [
-      { type: "comprehension", prompt: "What does Kwe ask first?", promptFr: "Que demande d'abord Kwe ?" },
-      { type: "retelling", prompt: "Role-play the greeting with a partner, then swap roles.", promptFr: "Jouez la salutation à deux, puis échangez les rôles." },
+      { type: "comprehension", prompt: "Which greetings do you use at home? Say them in your language.", promptFr: "Quelles salutations utilises-tu à la maison ? Dis-les dans ta langue." },
+      { type: "retelling", prompt: "Ask a Kom speaker to record the real greeting dialogue and submit it to the platform.", promptFr: "Demande à un locuteur kom d'enregistrer le vrai dialogue de salutation et de l'envoyer sur la plateforme." },
     ],
-    audioStatus: AUDIO_PENDING, reviewStatus: "VALIDATED", classBand: "1-2", ilt: "communication",
+    audioStatus: "no audio (text awaiting native-speaker ingestion)", reviewStatus: "AWAITING_CONTENT", classBand: "1-2", ilt: "communication",
   },
   {
     id: "PR-S2-U2",
     stage: 2, stageName: STAGES[2],
-    titleKom: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀!", titleEn: "Let us begin! — classroom dialogue",
-    source: "Master Prompt v2.0 §7.3 (verbatim)",
-    textKom: "Kwe: Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀ kɨ̏n e-ghɔ̀ ghà kɨ woyn.\nBì: Tɔ̀ŋtɛ̀ ghɔ̀m ghɨ mè nǐ e-bwɔ̀.",
-    textEn: "Kwe: Let us begin today's lesson, children.\nMe: Repeat after me and say it well.",
+    titleKom: "Ghesɨ̀nà yeʼi itaŋikom 2", titleEn: "Reading dialogues — classroom unit",
+    source: "Ghesɨ̀nà Yeʼi Itaŋikom 2 — SIL 33002 (record only; pages not yet digitized)",
+    textKom: null,
+    textEn: "Classroom dialogues as printed in Ghesɨ̀nà 2. The Kom text awaits page clearance — no phrase is shown until it comes from a trusted source.",
     activities: [
-      { type: "comprehension", prompt: "Which phrase tells you to repeat?", promptFr: "Quelle phrase demande de répéter ?" },
-      { type: "tone", prompt: "Point to every grave accent (à) in the dialogue and say the word aloud.", promptFr: "Pointe chaque accent grave (à) du dialogue et dis le mot à voix haute." },
+      { type: "tone", prompt: "Point to every grave accent (à) you can find in your printed primer page and say the word aloud.", promptFr: "Pointe chaque accent grave (à) de ta page imprimée et dis le mot à voix haute." },
     ],
-    audioStatus: AUDIO_PENDING, reviewStatus: "VALIDATED", classBand: "1-2", ilt: "school",
+    audioStatus: "no audio (text awaiting native-speaker ingestion)", reviewStatus: "AWAITING_CONTENT", classBand: "1-2", ilt: "school",
   },
   {
     id: "PR-S2-U3",

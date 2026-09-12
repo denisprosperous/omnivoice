@@ -554,42 +554,25 @@ export const CONCEPTS: ConceptTuple[] = [
   ["inheritance", "héritage", "noun", "home", "3"],
 ];
 
-/** Spec-attested Kom phrases (Master Prompt v2.0 §7.3 verbatim) */
+/**
+ * ATTESTED_PHRASES — REMOVED (trusted-sources policy, user directive).
+ * The four greeting/classroom phrases previously listed here ("À bwɛ̀, mwɛ̀n!",
+ * "Mbi vǝ̀, wòn!", "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀ …", "Tɔ̀ŋtɛ̀ …") were platform-invented, NOT from
+ * the ingested trusted sources, and the user confirmed the greetings are wrong.
+ * They must not appear anywhere on the platform. Kom phrases can only enter via
+ * the Content Ingestion portal (tutors, parents, educational authorities —
+ * native speakers) or a future cleared edition of the Ghesɨ̀nà primers.
+ */
 export const ATTESTED_PHRASES: Array<{
   kom: string; en: string; fr: string; source: string; ilt: string;
-}> = [
-  {
-    kom: "À bwɛ̀, mwɛ̀n! Nà wù dà?",
-    en: "Hello, friend! How are you?",
-    fr: "Bonjour, l'ami ! Comment vas-tu ?",
-    source: "Master Prompt v2.0 §7.3 (Kwe greeting, verbatim)",
-    ilt: "communication",
-  },
-  {
-    kom: "Mbi vǝ̀, wòn! Wù yé dì?",
-    en: "I am fine, thank you! And you?",
-    fr: "Je vais bien, merci ! Et toi ?",
-    source: "Master Prompt v2.0 §7.3 (Kwe reply, verbatim)",
-    ilt: "communication",
-  },
-  {
-    kom: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀ kɨ̏n e-ghɔ̀ ghà kɨ woyn.",
-    en: "Let us begin today's lesson, children.",
-    fr: "Commençons la leçon d'aujourd'hui, les enfants.",
-    source: "Master Prompt v2.0 §7.3 (Kwe instruction, verbatim)",
-    ilt: "school",
-  },
-  {
-    kom: "Tɔ̀ŋtɛ̀ ghɔ̀m ghɨ mè nǐ e-bwɔ̀.",
-    en: "Repeat after me and say it well.",
-    fr: "Répète après moi et dis-le bien.",
-    source: "Master Prompt v2.0 §7.3 (Kwe challenge, verbatim)",
-    ilt: "school",
-  },
-];
+}> = [];
 
-/** Wiktionary attested additions (retrieved 2026-09-11, see wikt_*_tr.json) */
-export const WIKTIONARY_EXTRA: Array<{ kom: string; en: string; source: string }> = [
-  { kom: "mu", en: "water", source: "en.wiktionary.org — water/translations (Kom (Cameroon))" },
-  { kom: "wi", en: "woman", source: "en.wiktionary.org — woman/translations (Kom (Cameroon))" },
-];
+/**
+ * Wiktionary additions — QUARANTINED (trusted-sources policy, user directive).
+ * en.wiktionary.org is a community source the user did not designate as trusted,
+ * so its Kom forms (mu 'water', wi 'woman') no longer feed the lexicon. The raw
+ * harvest stays in scripts/kom-resources-raw/wikt_*.json for native-speaker
+ * validation through the Content Ingestion portal. Note: 'water' remains fully
+ * attested via Hyman (muú, noun class 6a).
+ */
+export const WIKTIONARY_EXTRA: Array<{ kom: string; en: string; source: string }> = [];

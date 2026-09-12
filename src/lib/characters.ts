@@ -9,7 +9,10 @@ export interface Character {
   color: string;
   // §4.3 language matrix — "EN, FR, Kom, Lamnso'" etc.
   languages: string[];
-  greeting: { en: string; fr: string; ewo: string; bkm?: string; lns?: string };
+  // TRUSTED-SOURCES POLICY: greetings ship in EN/FR only. Kom/Lamnso'/Ewondo
+  // greetings were removed — none is attested in the ingested trusted sources;
+  // they can only return via the Content Ingestion portal (native speakers).
+  greeting: { en: string; fr: string };
 }
 
 export const CHARACTERS: Character[] = [
@@ -20,9 +23,7 @@ export const CHARACTERS: Character[] = [
     color: "#B45309", // warm brown
     languages: ["en", "fr", "bkm", "lns", "byv"], // §4.3: pan-Cameroonian wisdom keeper + v3.0 8-language pack
     greeting: {
-      en: "Welcome, young scholar!", fr: "Bienvenue, jeune savant !", ewo: "Ndoge, mone sem!",
-      bkm: "À bwɛ̀, mwɛ̀n!", // §2.3 Good morning, child!
-      lns: "Mbi̶ vǝ̀, wòn!", // §2.4 Good morning, dear!
+      en: "Welcome, young scholar!", fr: "Bienvenue, jeune savant !",
     },
   },
   {
@@ -30,8 +31,8 @@ export const CHARACTERS: Character[] = [
     role: { en: "Curious Monkey", fr: "Singe Curieux" },
     traits: { en: "Playful, energetic, child-like", fr: "Joueur, énergique, enfantin" },
     color: "#92400E",
-    languages: ["en", "fr", "ewo"], // §4.3: forest region (South/Centre)
-    greeting: { en: "Let's play and learn!", fr: "Jouons et apprenons !", ewo: "Minal me Dutu!" },
+    languages: ["en", "fr"], // §4.3: forest region (South/Centre)
+    greeting: { en: "Let's play and learn!", fr: "Jouons et apprenons !" },
   },
   {
     id: "ngo", name: "Ngo", emoji: "👧🏾",
@@ -40,9 +41,7 @@ export const CHARACTERS: Character[] = [
     color: "#9D174D",
     languages: ["en", "fr", "bkm", "lns", "byv"], // §4.3: Grassfields (West/Northwest/Southwest) + v3.0 8-language pack
     greeting: {
-      en: "You can do this with me!", fr: "Tu peux le faire avec moi !", ewo: "Ñemed wo!",
-      bkm: "À bwɛ̀! M̀ bɛ̀!", // Good morning! I am fine!
-      lns: "Mbi̶ vǝ̀! Mǝ̀ yé!", // Good morning! I am fine!
+      en: "You can do this with me!", fr: "Tu peux le faire avec moi !",
     },
   },
   {
@@ -50,8 +49,8 @@ export const CHARACTERS: Character[] = [
     role: { en: "Resourceful Boy", fr: "Garçon Débrouillard" },
     traits: { en: "Adventurous, questioning, friendly", fr: "Aventurier, curieux, aimable" },
     color: "#065F46",
-    languages: ["en", "fr", "dla"], // §4.3: coastal region (Littoral/Southwest, Duala)
-    greeting: { en: "Ready for an adventure?", fr: "Prêt pour une aventure ?", ewo: "Bana mvetome?" },
+    languages: ["en", "fr"], // §4.3: coastal region (Littoral/Southwest, Duala)
+    greeting: { en: "Ready for an adventure?", fr: "Prêt pour une aventure ?" },
   },
 ];
 

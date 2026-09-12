@@ -14,7 +14,7 @@ import { t } from "@/lib/i18n";
 import { PatternBand, CharacterBubble, MicButton, Spinner, StatPill } from "./shared";
 import { getCharacter } from "@/lib/characters";
 import { VOICE_LANGUAGES, isGrassfields, isPlaceholderPhrase } from "@/lib/data/grassfields";
-import { WavRecorder, speak, playWavBase64, transcribe, speakFallback } from "@/lib/voice-client";
+import { WavRecorder, speak, playWavBase64, speakFallback } from "@/lib/voice-client";
 import { trackEvent } from "@/lib/analytics";
 import { playCorrect, playIncorrect, playBadge, playCelebration, playLevelUp, playXp, startAmbient, stopAmbient } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
@@ -71,7 +71,6 @@ export function LessonPlayer() {
   const [stage, setStage] = React.useState<Stage>("digital"); // v4.0 component stage
   const [loading, setLoading] = React.useState(true);
   const [phase, setPhase] = React.useState<Phase>("hook");
-  const [hookDone, setHookDone] = React.useState(false);
   // Hook listening language (§7.3: learner may hear the hook in en/fr/bkm/lns/byv)
   const [hookLang, setHookLang] = React.useState<string>("en");
 
@@ -327,7 +326,7 @@ export function LessonPlayer() {
     : va.hook.text;
   const hookIsPlaceholder = isPlaceholderPhrase(hookText);
   const hookLanguages = (va.hook.languages || ["en", "fr"]).filter((l) =>
-    l === "bkm" ? !!va.hook.textBkm : l === "lns" ? !!va.hook.textLns : l === "byv" ? !!va.hook.textByv : l === "ewo" ? true : true
+    l === "bkm" ? !!va.hook.textBkm : l === "lns" ? !!va.hook.textLns : l === "byv" ? !!va.hook.textByv : true
   );
 
   // ---------- Practice handlers ----------
@@ -496,39 +495,53 @@ export function LessonPlayer() {
       <div className="sticky top-[52px] z-30 border-b border-amber-200 bg-[#FFFBEB]/95 backdrop-blur">
         {stage === "digital" ? (
           <div className="mx-auto flex max-w-3xl items-center gap-1.5 px-3 py-2">
-            {PHASES.map((p, i) => (
-              <React.Fragment key={p}>
-                <button
-                  onClick={() => { if (PHASES.indexOf(phase) > i) setPhase(p); }}
-                  className={cn(
-                    "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
-                    phase === p ? "border-amber-600 bg-amber-600 text-white shadow" : "border-amber-200 bg-white text-amber-700"
-                  )}
-                  aria-current={phase === p ? "step" : undefined}
-                >
-                  <span aria-hidden>{phaseMeta[p].icon}</span>
-                  <span className="hidden sm:inline">{phaseMeta[p].label}</span>
-                </button>
-                {i < PHASES.length - 1 && <span className="h-0.5 flex-1 bg-amber-200" aria-hidden />}
-              </React.Fragment>
-            ))}
+            {PHASES.map((p, i) => {
+              const locked = PHASES.indexOf(phase) < i; // forward phases unlock in order
+              return (
+                <React.Fragment key={p}>
+                  <button
+                    onClick={() => { if (!locked) setPhase(p); }}
+                    disabled={locked}
+                    title={locked ? (lang === "fr" ? "Termine d'abord les phases précédentes" : "Complete the earlier phases first") : undefined}
+                    className={cn(
+                      "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
+                      phase === p ? "border-amber-600 bg-amber-600 text-white shadow"
+                        : locked ? "cursor-not-allowed border-amber-100 bg-amber-50/60 text-amber-300 opacity-60"
+                        : "border-amber-200 bg-white text-amber-700 hover:border-amber-400"
+                    )}
+                    aria-current={phase === p ? "step" : undefined}
+                    aria-disabled={locked}
+                  >
+                    <span aria-hidden>{locked ? "🔒" : phaseMeta[p].icon}</span>
+                    <span className="hidden sm:inline">{phaseMeta[p].label}</span>
+                  </button>
+                  {i < PHASES.length - 1 && <span className="h-0.5 flex-1 bg-amber-200" aria-hidden />}
+                </React.Fragment>
+              );
+            })}
           </div>
         ) : (
           <div className="mx-auto flex max-w-3xl items-center gap-1.5 px-3 py-2">
             {STAGES.map((s, i) => {
               const done = (s === "digital" && !!awarded) || (s === "diy" && !!diyAwarded) || (s === "voice_practice" && !!vpAwarded);
               const meta = s === "digital" ? { icon: "💻", label: t("digitalLesson", lang) } : s === "diy" ? { icon: "🔨", label: t("diyPractical", lang) } : { icon: "🎙️", label: t("voicePractice", lang) };
+              const locked = STAGES.indexOf(stage) < i;
               return (
                 <React.Fragment key={s}>
                   <button
-                    onClick={() => { if (STAGES.indexOf(stage) > i) { setStage(s); if (s === "digital") setPhase("celebrate"); } }}
+                    onClick={() => { if (!locked) { setStage(s); if (s === "digital") setPhase("celebrate"); } }}
+                    disabled={locked}
+                    title={locked ? (lang === "fr" ? "Termine d'abord les composants précédents" : "Complete the earlier components first") : undefined}
                     className={cn(
                       "flex min-h-[34px] items-center gap-1 rounded-full border-2 px-2.5 text-[11px] font-bold transition-all sm:text-xs",
-                      stage === s ? "border-orange-600 bg-orange-600 text-white shadow" : "border-orange-200 bg-white text-orange-700"
+                      stage === s ? "border-orange-600 bg-orange-600 text-white shadow"
+                        : locked ? "cursor-not-allowed border-orange-100 bg-orange-50/60 text-orange-300 opacity-60"
+                        : "border-orange-200 bg-white text-orange-700 hover:border-orange-400"
                     )}
                     aria-current={stage === s ? "step" : undefined}
+                    aria-disabled={locked}
                   >
-                    <span aria-hidden>{done ? "✓" : meta.icon}</span>
+                    <span aria-hidden>{done ? "✓" : locked ? "🔒" : meta.icon}</span>
                     <span className="hidden sm:inline">{meta.label}</span>
                   </button>
                   {i < STAGES.length - 1 && <span className="h-0.5 flex-1 bg-orange-200" aria-hidden />}
@@ -595,7 +608,7 @@ export function LessonPlayer() {
                 textFr={hookText}
                 lang={hookLang === "fr" ? "fr" : "en"}
                 speakLang={hookLang}
-                onSpeakDone={() => setHookDone(true)}
+                
               />
             )}
             {isGrassfields(hookLang) && (
@@ -628,7 +641,7 @@ export function LessonPlayer() {
               characterId={va.hook.character}
               text={va.instruction.text}
               textFr={va.instruction.textFr}
-              lang={lang === "ewo" ? "en" : lang}
+              lang={lang}
               autoSpeak={false}
               compact
             />
@@ -835,7 +848,7 @@ export function LessonPlayer() {
               characterId={va.celebration.character}
               text={va.celebration.text}
               textFr={va.celebration.textFr}
-              lang={lang === "ewo" ? "en" : lang}
+              lang={lang}
               autoSpeak={false}
             />
             <Button
@@ -888,7 +901,7 @@ export function LessonPlayer() {
               </Button>
             )}
             <div className="flex gap-2">
-              <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
+              <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
                 🔄 {lang === "fr" ? "Rejouer" : "Replay"}
               </Button>
               <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
@@ -975,7 +988,7 @@ export function LessonPlayer() {
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
+                    <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
                       🔄 {lang === "fr" ? "Rejouer" : "Replay"}
                     </Button>
                     <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
@@ -1016,10 +1029,13 @@ export function LessonPlayer() {
   );
 }
 
-/** Standalone voice challenge recorder (for lessons without STS scenario) */
+/** Standalone voice challenge recorder (for lessons without STS scenario).
+ *  v4.2 fix: the recording is now PLAYABLE back to the learner — previously
+ *  the audio was silently discarded after release. */
 function VoiceChallengeRecorder({ onDone, lang }: { onDone: () => void; lang: Lang }) {
   const [recording, setRecording] = React.useState(false);
   const [saved, setSaved] = React.useState(false);
+  const [recordingUrl, setRecordingUrl] = React.useState<string | null>(null);
   const recRef = React.useRef<WavRecorder | null>(null);
 
   async function down() {
@@ -1032,13 +1048,22 @@ function VoiceChallengeRecorder({ onDone, lang }: { onDone: () => void; lang: La
   function up() {
     if (!recRef.current) return;
     setRecording(false);
-    recRef.current.stop(); // demo capture — human-in-the-loop portfolio piece
+    const { wavBase64 } = recRef.current.stop();
+    if (wavBase64) setRecordingUrl(`data:audio/wav;base64,${wavBase64}`);
     setSaved(true);
     playBadge();
   }
   return (
     <div className="flex flex-col items-center gap-3">
       <MicButton recording={recording} onDown={down} onUp={up} label={t("record", lang)} />
+      {saved && recordingUrl && (
+        <div className="flex flex-col items-center gap-1.5" role="status">
+          <span className="text-xs font-bold text-lime-800">
+            {lang === "fr" ? "🎧 Ton enregistrement — écoute-toi !" : "🎧 Your recording — listen to yourself!"}
+          </span>
+          <audio controls src={recordingUrl} className="h-10 w-64 max-w-full" aria-label={lang === "fr" ? "Lecture de mon enregistrement" : "Playback of my recording"} />
+        </div>
+      )}
       {saved && (
         <Button className="h-12 bg-lime-700 px-8 font-extrabold hover:bg-lime-800" onClick={onDone}>
           ✓ {t("complete", lang)}

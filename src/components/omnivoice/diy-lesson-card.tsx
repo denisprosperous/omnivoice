@@ -31,11 +31,14 @@ export function DIYLessonCard({
   lesson,
   lang,
   onComplete,
+  completeLabel,
   compact,
 }: {
   lesson: DIYLesson;
   lang: string;
   onComplete?: () => void;
+  /** label for the completion CTA (defaults to "Voice Practice →" in lesson flow) */
+  completeLabel?: string;
   compact?: boolean;
 }) {
   const fr = lang === "fr";
@@ -209,7 +212,7 @@ export function DIYLessonCard({
                 onClick={onComplete}
                 className="mt-2 h-12 bg-lime-700 px-6 text-base font-extrabold hover:bg-lime-800"
               >
-                🎙️ {fr ? "Pratique vocale →" : "Voice Practice →"}
+                🎙️ {completeLabel || (fr ? "Pratique vocale →" : "Voice Practice →")}
               </Button>
             )}
           </>

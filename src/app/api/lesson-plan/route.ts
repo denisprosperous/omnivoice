@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
     const stage: string = body.stage || "class3";
     const week: number = Number(body.week) || 1;
     const language: string = body.language || "en";
+    const voiceLanguage: string = body.voiceLanguage || "en";
 
     const subjectRow = await db.subject.findUnique({ where: { id: subject } });
     const scheme = await db.schemeWeek.findFirst({ where: { subjectId: subject, stage: "class3", week } });
@@ -49,8 +50,8 @@ export async function POST(req: NextRequest) {
   expected_learning_outcomes: string[], teaching_strategies: string[],
   didactic_materials: { physical: string[], digital: string[] },
   voice_assets: {
-    hook: { character: 'kwe'|'mbi'|'ngo'|'kong', text: string (English), textFr: string, textBkm: string, textLns: string, languages: ["en","fr","bkm","lns"] },
-    instruction: { text: string, textFr: string, textBkm: string, textLns: string },
+    hook: { character: 'kwe'|'mbi'|'ngo'|'kong', text: string (English), textFr: string, textBkm?: string, textLns?: string, languages: string[] },
+    instruction: { text: string, textFr: string, textBkm?: string, textLns?: string },
     learn_content: { title: string, titleFr: string, lines: string[], linesFr: string[], visual: string },
     practice_prompts: Array<{ prompt: string, promptFr: string, promptBkm?: string, promptLns?: string, target: string, targetBkm?: string, targetLns?: string, evaluation: string, kind?: 'repeat'|'answer'|'count'|'open' }>,
     feedback: { correct: string, incorrect: string, encouragement: string },
@@ -58,7 +59,7 @@ export async function POST(req: NextRequest) {
     background_music: string },
   voice_interactions: Array<{ type: string, prompt: string, asr_target: string, evaluation_criteria: string[] }>,
   sts_scenario: { description: string, descriptionFr: string, character: string, opener: string },
-  gamification: { mechanics: string[] (at least 2), xp_points: number, badge_name: string, badge_code: string, voice_challenge: { description: string, descriptionFr: string, descriptionBkm: string, descriptionLns: string, evaluation: string } },
+  gamification: { mechanics: string[] (at least 2), xp_points: number, badge_name: string, badge_code: string, voice_challenge: { description: string, descriptionFr: string, descriptionBkm?: string, descriptionLns?: string, evaluation: string } },
   activities: Array<{ phase: 'Voice Hook'|'Listen & Learn'|'Speak & Practice'|'Apply & Create'|'Celebrate', duration: string, description: string, descriptionFr: string }>,
   assessment: { criteria: string[] (include 'Tone accuracy (Grassfields)' when Grassfields practice present), methods: string[] },
   offline_capability: { downloadable: boolean, size_mb: number, components: string[], grassfields_language_packs: { bkm: string, lns: string } },
@@ -66,11 +67,11 @@ export async function POST(req: NextRequest) {
   native_speaker_review: string (one of 'validated' | 'pending' — Grassfields text requires native-speaker validation per Directive 9) }
 Rules:
 1. EXTENDED LESSON REQUIREMENTS (v4.0 §4.3): (a) Digital Lesson — natural Kokoro voice hook with a character, 3-5 interactive phases, multilingual EN/FR/Kom/Lamnso' (the voice_assets + activities you generate ARE the digital component); (b) DIY Practical — generated in a companion call with locally available materials, 3-5 steps with voice guidance and safety; (c) Voice Practice — the sts_scenario you generate becomes the speech-to-speech practice with pronunciation/tone/fluency evaluation; make the description progressive. The platform assembles the final §4.2 extended_lesson JSON from these blocks.
-2. 3-5 practice_prompts with simple ASR targets. For any Grassfields prompt use ONLY well-attested GACL-compliant phrases (letters ɛ ɔ ŋ ɨ ʉ ə, tone diacritics on syllable centers: Kom low tone à, falling â, high unmarked; vowel length as gemination). Common anchors: Kom "À bwɛ̀" (good morning), "Bɛ̀ŋ" (thank you), "Nà wù dà?" (how are you?), "M̀ bɛ̀" (I am fine); Lamnso' "Mbi̶ vǝ̀" (good morning), "Bíŋ" (thank you), "Wù yé dì?" (how are you?), "Mǝ̀ yé" (I am fine). If unsure of a translation, omit the bkm/lns fields rather than invent.
+2. 3-5 practice_prompts with simple ASR targets. TRUSTED-SOURCES POLICY (critical): NEVER invent Kom, Lamnso' or Ewondo words/phrases — the platform only lists content attested by its trusted sources. The ONLY allowed Kom forms (Hyman, UC Berkeley, Tables 1-9) are: wáyn (child), ghóyn (children), bì (dog), bì-se (dogs), muú (water), fe-tám (fruit), fe-ghâm (mat), fe-búʔ (gorilla), fe-nywɨ́n (bird), te-fôyn (chiefs), te-bìì (kolanuts), te-dzɨ́ʔ (termites), e-wé (market), e-ndo (house), e-mbam (snake), e-nyám (animal), ŋgvɨ̀ (hen), ndoŋ (horn), njàm (axe), káyn (monkey), gwén (farm), lóm (husband), a-túʔ (head), a-tâʔ (snail), e-twâʔ (snails), i-sóŋ (tooth), a-sóŋ (teeth), a-tâʔ variants, ká (future marker), nè (with), sè (to), féé (fall), e-lwéŋ (bamboo). NO Lamnso' or Ewondo forms are attested yet — omit their fields entirely. Greetings and dialogues in national languages are NOT permitted (they await native-speaker ingestion); instead build practice around the attested Kom words above, their tone patterns (high unmarked, falling â, low à) and noun classes. If unsure, omit the bkm/lns fields rather than invent.
 3. Every Grassfields interaction must list "tone_accuracy" in evaluation_criteria.
 4. offline_capability.grassfields_language_packs: bkm="kom_language_pack_50mb.zip", lns="lamnso_language_pack_50mb.zip".
 5. ${language === "fr" ? "Write learner-facing text in French; keep English where the subject is English." : "Write learner-facing text in simple English; keep French translations in the Fr fields."} Age-appropriate for the requested level. Cultural examples from Cameroon (Douala, Yaoundé, Wouri river, Bamenda, Garoua, egusi, fufu, achu, calabashes, markets) and North West Grassfields contexts for language content.
-6. Reference metadata: Kom (${komInfo?.division}, ${komInfo?.speakers}); Lamnso' (${lamnsoInfo?.division}, ${lamnsoInfo?.speakers}).
+6. Reference metadata: Kom (${komInfo?.division}, ${komInfo?.speakers}); Lamnso' (${lamnsoInfo?.division}, ${lamnsoInfo?.speakers}). The lesson's voice/learning language is "${voiceLanguage}" — if it is a national language, build all language practice strictly from the attested Kom forms in Rule 2 and state the language name in the sub_theme; if the language has no attested forms (Lamnso', Ewondo, Bayangi, …), focus the lesson on the attested Kom anchor words and note that the target language's own forms await native-speaker ingestion. Never invent forms in ANY language.
 7. STRICT JSON: every key and every string value MUST be double-quoted ("duration": "8 min", "total_xp": 100). Never write bare values like 5-10 min, speech_to_speech unquoted, or trailing commas. No comments, no markdown.`;
 
     const user = `Create a lesson plan for: subject=${subjectName}; level=${STAGE_LABELS[stage] || stage}; integrated_learning_theme=${ilt?.nameEn || "The Home"}; week=${week}. ${schemeInfo} The plan must directly implement the curriculum contents and expected learning outcomes listed.`;

@@ -4,8 +4,9 @@
  *
  * SOURCES (attestation chain):
  *  - Hyman, L.M. (UC Berkeley) Tables 1–9 — 44 tone-marked words w/ noun classes
- *  - en.wiktionary.org Kom (Cameroon) translations — corroboration + additions
- *  - Master Prompt v2.0 §7.3 verbatim phrases — 4
+ *  - Master Prompt v2.0 §7.3 phrases — REMOVED (trusted-sources policy: the
+ *    user confirmed the platform-invented greetings are wrong; Kom phrases now
+ *    enter only via the Content Ingestion portal)
  *  - Jones (2001) Provisional Kom–English Lexicon (225pp) — CLOUDFLARE-GATED;
  *    entries awaiting its content carry word: null + PENDING_NATIVE_REVIEW.
  *    The platform never fabricates Kom lexemes (Directive 9).
@@ -97,12 +98,16 @@ const ILT_CULTURAL: Record<string, string> = {
   communication: "Greetings and polite speech carry strong social value in Kom culture.",
 };
 
+/**
+ * Cultural notes — TRUSTED-SOURCES POLICY. Only Hyman-attested forms and
+ * noun-class facts are cited; invented ethnographic claims (eight-day market
+ * cycles, kola welcome customs, porridge staples) were removed and can only
+ * return via native-speaker ingestion.
+ */
 const CULTURAL_OVERRIDES: Record<string, string> = {
-  "kola nut": "Kola nuts (te-bìì) are presented to welcome visitors and seal engagements in Kom.",
-  "porridge": "Corn porridge (aru) is a staple breakfast across Boyo Division.",
-  "greeting": "Greeting elders in Kom is compulsory; skipping a greeting is disrespectful.",
-  "chief": "The Fon of Laikom is the paramount chief of Kom; te-fôyn is the attested plural 'chiefs'.",
-  "market": "e-wé — eight-day markets rotate across Kom villages.",
+  "kola nut": "te-bìì — 'kolanuts', attested by Hyman (Table 1, noun class 13). Cultural usage notes await native-speaker ingestion.",
+  "market": "e-wé — 'market', attested by Hyman with the initial vowel (augment). Usage and market-day customs await native-speaker ingestion.",
+  "chief": "te-fôyn — 'chiefs', attested by Hyman (Table 2, noun class 13, pattern M-HL).",
 };
 
 export function buildKomLexicon(): LexEntry[] {

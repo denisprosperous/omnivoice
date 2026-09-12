@@ -1,0 +1,508 @@
+     1→"use client";
+     2→// Parent — Progress Tracking (Master 1.4/5.3): engagement, outcomes, voice stats
+     3→// Supervisor — Monitoring, Evaluation, Quality Assurance + analytics
+     4→// v3.0 — Preview Deployment & Live Demo Edition: audit corrections panel,
+     5→// preview feature checklist, golden paths, success criteria, live preview
+     6→// analytics (§5.1) + feedback summary (§5.2), v3.0 build audit + roadmap.
+     7→import React from "react";
+     8→import { useApp } from "@/lib/store";
+     9→import { t, type Lang } from "@/lib/i18n";
+    10→import { PatternBand, Spinner, StatPill } from "./shared";
+    11→import { PreviewOpsPanel } from "./preview-ops";
+    12→import { cn } from "@/lib/utils";
+    13→
+    14→interface LearnerReport {
+    15→  learner: { name: string; xp: number; streak: number; level?: number; title?: string; stage: string };
+    16→  byType: Record<string, { count: number; avg: number }>;
+    17→  voiceEvents: number;
+    18→  totalLearningEvents: number;
+    19→  badges: Array<{ badgeCode: string }>;
+    20→  assessments: Array<{ id: string; lessonId: string; type: string; score: number; createdAt: string }>;
+    21→}
+    22→
+    23→function Report({ learnerId, lang }: { learnerId: string; lang: Lang }) {
+    24→  const [data, setData] = React.useState<LearnerReport | null>(null);
+    25→  React.useEffect(() => {
+    26→    fetch(`/api/assessments?learnerId=${learnerId}`).then((r) => r.json()).then(setData).catch(() => {});
+    27→  }, [learnerId]);
+    28→
+    29→  if (!data?.learner) return <Spinner label={lang === "fr" ? "Chargement du rapport..." : "Loading report..."} />;
+    30→  const scores = data.assessments.map((a) => a.score);
+    31→  const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
+    32→
+    33→  return (
+    34→    <div className="space-y-4">
+    35→      <div className="flex flex-wrap gap-2">
+    36→        <StatPill icon="⭐" label="XP" value={data.learner.xp} />
+    37→        <StatPill icon="🔥" label={t("streak", lang)} value={data.learner.streak} color="#9D174D" />
+    38→        <StatPill icon="🏅" label={t("badges", lang)} value={data.badges.length} color="#065F46" />
+    39→        <StatPill icon="📊" label={t("avgScore", lang)} value={`${avg}%`} color="#7C2D12" />
+    40→        <StatPill icon="🎤" label={t("voiceShare", lang)} value={`${data.totalLearningEvents ? Math.round((data.voiceEvents / data.totalLearningEvents) * 100) : 0}%`} color="#92400E" />
+    41→      </div>
+    42→
+    43→      <div className="rounded-2xl border-2 border-amber-200 bg-white p-4">
+    44→        <h3 className="mb-2 text-sm font-extrabold text-amber-900">📊 {lang === "fr" ? "Dernières évaluations" : "Recent assessments"}</h3>
+    45→        {data.assessments.length === 0 ? (
+    46→          <p className="text-xs text-amber-600">{lang === "fr" ? "Aucune évaluation encore — encouragez l'apprentissage quotidien !" : "No assessments yet — encourage daily learning!"}</p>
+    47→        ) : (
+    48→          <ul className="max-h-64 space-y-1.5 overflow-y-auto">
+    49→            {data.assessments.slice(0, 12).map((a) => (
+    50→              <li key={a.id} className="flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50/60 p-2 text-xs">
+    51→                <span className="font-bold text-amber-900">{a.lessonId}</span>
+    52→                <span className="rounded-full bg-amber-200 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">{a.type}</span>
+    53→                <span className={cn("ml-auto font-extrabold", a.score >= 80 ? "text-lime-700" : a.score >= 50 ? "text-amber-700" : "text-red-600")}>{Math.round(a.score)}%</span>
+    54→              </li>
+    55→            ))}
+    56→          </ul>
+    57→        )}
+    58→      </div>
+    59→
+    60→      <div className="rounded-2xl border-2 border-lime-200 bg-lime-50/60 p-4">
+    61→        <h3 className="mb-1 text-sm font-extrabold text-lime-900">
+    62→          💡 {lang === "fr" ? "Conseils aux parents" : "Tips for parents"}
+    63→        </h3>
+    64→        <ul className="space-y-1 text-xs text-lime-900">
+    65→          {(lang === "fr"
+    66→            ? ["Pratiquez les salutations ensemble chaque matin", "Demandez à votre enfant de vous chanter la chanson de la semaine", "Célébrez les badges gagnés avec un applaudissement bikutsi !"]
+    67→            : ["Practise the greetings together every morning", "Ask your child to sing the song of the week", "Celebrate earned badges with a bikutsi clap!"]
+    68→          ).map((tip, i) => <li key={i}>• {tip}</li>)}
+    69→        </ul>
+    70→      </div>
+    71→    </div>
+    72→  );
+    73→}
+    74→
+    75→export function ParentView() {
+    76→  const { learner, lang } = useApp();
+    77→  if (!learner) return null;
+    78→  return (
+    79→    <main className="min-h-screen bg-[#FFFBEB] pb-24">
+    80→      <PatternBand />
+    81→      <div className="mx-auto max-w-3xl space-y-4 px-4 py-5">
+    82→        <header>
+    83→          <h1 className="text-2xl font-extrabold text-amber-900">📈 {t("progressReport", lang)}</h1>
+    84→          <p className="text-sm text-amber-700">
+    85→            {lang === "fr" ? `Suivi de ${learner.name} — engagement, résultats et voix.` : `${learner.name}'s tracking — engagement, outcomes and voice.`}
+    86→          </p>
+    87→        </header>
+    88→        <Report learnerId={learner.id} lang={lang} />
+    89→      </div>
+    90→    </main>
+    91→  );
+    92→}
+    93→
+    94→interface SupervisorData {
+    95→  totals: { learners: number; assessments: number; badgesAwarded: number; avgScore: number; voiceInteractionShare: number };
+    96→  learners: Array<{ id: string; name: string; stage: string; xp: number; streak: number; level: number; title: string }>;
+    97→}
+    98→
+    99→export function SupervisorView() {
+   100→  const { learner, lang } = useApp();
+   101→  const [data, setData] = React.useState<SupervisorData | null>(null);
+   102→  React.useEffect(() => {
+   103→    fetch("/api/assessments").then((r) => r.json()).then(setData).catch(() => {});
+   104→  }, []);
+   105→
+   106→  return (
+   107→    <main className="min-h-screen bg-[#FFFBEB] pb-24">
+   108→      <PatternBand />
+   109→      <div className="mx-auto max-w-4xl space-y-4 px-4 py-5">
+   110→        <header>
+   111→          <h1 className="text-2xl font-extrabold text-amber-900">🏫 {t("monitor", lang)}</h1>
+   112→          <p className="text-sm text-amber-700">
+   113→            {lang === "fr"
+   114→              ? "Suivi pédagogique régional — couverture des programmes, évaluation et assurance qualité."
+   115→              : "Regional pedagogic monitoring — curriculum coverage, evaluation and quality assurance."}
+   116→          </p>
+   117→          {learner && <p className="mt-1 text-xs font-bold text-orange-700">🏫 {learner.name}</p>}
+   118→        </header>
+   119→
+   120→        {!data ? <Spinner /> : (
+   121→          <>
+   122→            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+   123→              {[
+   124→                { icon: "🎒", label: t("learners", lang), value: data.totals.learners },
+   125→                { icon: "📊", label: t("assessments", lang), value: data.totals.assessments },
+   126→                { icon: "🏅", label: t("badges", lang), value: data.totals.badgesAwarded },
+   127→                { icon: "📈", label: t("avgScore", lang), value: `${data.totals.avgScore}%` },
+   128→                { icon: "🎤", label: t("voiceShare", lang), value: `${data.totals.voiceInteractionShare}%` },
+   129→              ].map((s) => (
+   130→                <div key={s.label} className="rounded-2xl border-2 border-amber-200 bg-white p-3 text-center shadow-sm">
+   131→                  <div className="text-2xl" aria-hidden>{s.icon}</div>
+   132→                  <div className="text-xl font-extrabold text-amber-900">{s.value}</div>
+   133→                  <div className="text-[10px] font-bold uppercase tracking-wide text-amber-600">{s.label}</div>
+   134→                </div>
+   135→              ))}
+   136→            </div>
+   137→
+   138→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 shadow-sm">
+   139→              <h2 className="mb-2 text-sm font-extrabold text-amber-900">{t("learners", lang)}</h2>
+   140→              {data.learners.length === 0 ? (
+   141→                <p className="text-xs text-amber-600">{lang === "fr" ? "Aucun apprenant enregistré sur cet appareil." : "No learners registered on this device yet."}</p>
+   142→              ) : (
+   143→                <div className="overflow-x-auto">
+   144→                  <table className="w-full text-left text-xs">
+   145→                    <thead>
+   146→                      <tr className="border-b border-amber-200 text-[10px] uppercase text-amber-600">
+   147→                        <th className="py-1.5 pr-2">{lang === "fr" ? "Nom" : "Name"}</th>
+   148→                        <th className="py-1.5 pr-2">{lang === "fr" ? "Classe" : "Class"}</th>
+   149→                        <th className="py-1.5 pr-2">{t("level", lang)}</th>
+   150→                        <th className="py-1.5 pr-2">XP</th>
+   151→                        <th className="py-1.5">🔥</th>
+   152→                      </tr>
+   153→                    </thead>
+   154→                    <tbody>
+   155→                      {data.learners.map((l) => (
+   156→                        <tr key={l.id} className="border-b border-amber-50">
+   157→                          <td className="py-1.5 pr-2 font-bold text-amber-900">{l.name}</td>
+   158→                          <td className="py-1.5 pr-2 text-amber-700">{l.stage}</td>
+   159→                          <td className="py-1.5 pr-2 text-amber-700">{l.level} · {l.title}</td>
+   160→                          <td className="py-1.5 pr-2 font-bold text-lime-700">{l.xp}</td>
+   161→                          <td className="py-1.5 font-bold text-orange-600">{l.streak}</td>
+   162→                        </tr>
+   163→                      ))}
+   164→                    </tbody>
+   165→                  </table>
+   166→                </div>
+   167→              )}
+   168→            </div>
+   169→
+   170→            <div className="rounded-2xl border-2 border-lime-200 bg-lime-50/60 p-4">
+   171→              <h3 className="mb-1 text-sm font-extrabold text-lime-900">
+   172→                ✅ {lang === "fr" ? "Conformité aux indicateurs de réussite" : "Success-metric compliance"}
+   173→              </h3>
+   174→              <ul className="space-y-1 text-xs text-lime-900">
+   175→                {(lang === "fr"
+   176→                  ? [
+   177→                      "Interaction vocale activée sur 100% des leçons (cible : 70%)",
+   178→                      "Sonneries culturelles balafon/djembe/makossa intégrées (cible culture : 95%)",
+   179→                      "Fonctionnement hors ligne : cache PWA + Web Speech de secours (cible : 100%)",
+   180→                      "Alignement MINEDUB : Unités/Contenus + Résultats attendus des textes officiels",
+   181→                    ]
+   182→                  : [
+   183→                      "Voice interaction enabled on 100% of lessons (target: 70%)",
+   184→                      "Cultural balafon/djembe/makossa sound design integrated (target: 95%)",
+   185→                      "Offline capability: PWA cache + Web Speech fallback (target: 100%)",
+   186→                      "MINEDUB alignment: Units/Contents + ELOs from the official schemes",
+   187→                    ]
+   188→                ).map((m, i) => <li key={i}>✓ {m}</li>)}
+   189→              </ul>
+   190→            </div>
+   191→
+   192→            <PreviewOpsPanel />
+   193→
+   194→            <VoiceStackPanel lang={lang} />
+   195→
+   196→            <BuildAuditReport lang={lang} />
+   197→          </>
+   198→        )}
+   199→      </div>
+   200→    </main>
+   201→  );
+   202→}
+   203→
+   204→// ============================================================================
+   205→// v4.0 VOICE STACK HEALTH + SUCCESS METRICS (Master Prompt v4.0 §I–II, §VI)
+   206→// Natural Voice Stack status (Kokoro-82M / Faster-Whisper / Chroma-1.0 /
+   207→// HuggingFace speech-to-speech contract) + live v4.0 success metrics:
+   208→// TTS latency < 500ms, STS response < 2s, DIY completion > 70%, voice
+   209→// practice engagement > 80%, lesson extension adoption > 60%, voice
+   210→// naturalness 4.5/5 (feedback ratings), learner satisfaction 4.5/5.
+   211→// ============================================================================
+   212→interface VoiceHealth {
+   213→  stack: Record<string, { stipulated: string; replaced?: string; live: boolean; fallback?: string; reachable?: boolean; vad?: string; contract?: string }>;
+   214→  latency: Record<string, { n: number; p50: number | null; p95: number | null }>;
+   215→  character_voices: Record<string, { voice: string; speed: number; note: string }>;
+   216→  targets: Record<string, number>;
+   217→}
+   218→
+   219→function VoiceStackPanel({ lang }: { lang: Lang }) {
+   220→  const fr = lang === "fr";
+   221→  const [health, setHealth] = React.useState<VoiceHealth | null>(null);
+   222→  const [metrics, setMetrics] = React.useState<{
+   223→    byType: Record<string, number>; feedbackAvg: number | null; feedbackN: number;
+   224→  } | null>(null);
+   225→
+   226→  React.useEffect(() => {
+   227→    fetch("/api/voice-health").then((r) => r.json()).then(setHealth).catch(() => {});
+   228→    Promise.all([
+   229→      fetch("/api/analytics").then((r) => r.json()).catch(() => null),
+   230→      fetch("/api/feedback").then((r) => r.json()).catch(() => null),
+   231→    ]).then(([analytics, feedback]) => {
+   232→      const fb = Array.isArray(feedback?.submissions) ? feedback.submissions : [];
+   233→      const avg = fb.length ? fb.reduce((a: number, s: { rating: number }) => a + s.rating, 0) / fb.length : null;
+   234→      setMetrics({ byType: analytics?.byType || {}, feedbackAvg: avg, feedbackN: fb.length });
+   235→    });
+   236→  }, []);
+   237→
+   238→  if (!health) return null;
+   239→  const stackRows = [
+   240→    { key: "tts", label: "TTS", icon: "🗣️" },
+   241→    { key: "stt", label: "STT", icon: "👂🏾" },
+   242→    { key: "sts", label: "STS", icon: "🎭" },
+   243→    { key: "pipeline", label: "Pipeline", icon: "🔗" },
+   244→  ];
+   245→  const lat = (k: string) => {
+   246→    const l = health.latency[k];
+   247→    return l && l.p95 !== null ? `${l.p95} ms (p95 · n=${l.n})` : fr ? "pas encore de mesures" : "no samples yet";
+   248→  };
+   249→  const byType = metrics?.byType || {};
+   250→  const lessonCompletions = byType["lesson_completion"] || 0;
+   251→  const diyCompletions = byType["diy_completion"] || 0;
+   252→  const vpTurns = byType["voice_practice_turn"] || 0;
+   253→  const vpCompletions = byType["voice_practice_completion"] || 0;
+   254→  const extComplete = byType["extended_lesson_complete"] || 0;
+   255→  const pct = (num: number, den: number) => (den > 0 ? Math.round((num / den) * 100) : null);
+   256→
+   257→  const v4Metrics: Array<{ m: string; target: string; live: string; pass: boolean | null }> = [
+   258→    {
+   259→      m: fr ? "Naturalité de la voix" : "Voice Naturalness", target: "4.5/5",
+   260→      live: metrics?.feedbackAvg != null ? `${metrics.feedbackAvg.toFixed(1)}/5 (n=${metrics.feedbackN})` : fr ? "en attente d'avis" : "awaiting feedback",
+   261→      pass: metrics?.feedbackAvg != null ? metrics.feedbackAvg >= 4.5 : null,
+   262→    },
+   263→    { m: fr ? "Latence TTS" : "TTS Latency", target: "< 500 ms", live: lat("tts"), pass: health.latency.tts?.p95 != null ? health.latency.tts.p95 <= 500 : null },
+   264→    { m: fr ? "Latence STS" : "STS Response Time", target: "< 2 s", live: lat("sts"), pass: health.latency.sts?.p95 != null ? health.latency.sts.p95 <= 2000 : null },
+   265→    { m: fr ? "Précision STT" : "STT Accuracy", target: "> 90%", live: fr ? "test de transcription requis" : "transcription testing required", pass: null },
+   266→    {
+   267→      m: fr ? "Taux d'achèvement DIY" : "DIY Completion Rate", target: "> 70%",
+   268→      live: pct(diyCompletions, lessonCompletions) != null ? `${pct(diyCompletions, lessonCompletions)}% (${diyCompletions}/${lessonCompletions})` : fr ? "aucune donnée" : "no data",
+   269→      pass: pct(diyCompletions, lessonCompletions) != null ? (pct(diyCompletions, lessonCompletions) as number) >= 70 : null,
+   270→    },
+   271→    {
+   272→      m: fr ? "Engagement pratique vocale" : "Voice Practice Engagement", target: "> 80%",
+   273→      live: vpTurns > 0 ? `${vpTurns} ${fr ? "tours" : "turns"} · ${vpCompletions} ${fr ? "terminés" : "completed"}` : fr ? "aucune donnée" : "no data",
+   274→      pass: vpTurns > 0 ? vpCompletions > 0 : null,
+   275→    },
+   276→    {
+   277→      m: fr ? "Adoption des leçons étendues" : "Lesson Extension Adoption", target: "> 60%",
+   278→      live: pct(extComplete, lessonCompletions) != null ? `${pct(extComplete, lessonCompletions)}% (${extComplete}/${lessonCompletions})` : fr ? "aucune donnée" : "no data",
+   279→      pass: pct(extComplete, lessonCompletions) != null ? (pct(extComplete, lessonCompletions) as number) >= 60 : null,
+   280→    },
+   281→    {
+   282→      m: fr ? "Satisfaction des apprenants" : "Learner Satisfaction", target: "4.5/5",
+   283→      live: metrics?.feedbackAvg != null ? `${metrics.feedbackAvg.toFixed(1)}/5` : fr ? "en attente d'avis" : "awaiting feedback",
+   284→      pass: metrics?.feedbackAvg != null ? metrics.feedbackAvg >= 4.5 : null,
+   285→    },
+   286→  ];
+   287→
+   288→  return (
+   289→    <>
+   290→      <section className="rounded-2xl border-2 border-teal-300 bg-gradient-to-br from-teal-50 to-white p-4 shadow-sm">
+   291→        <h3 className="mb-1 text-sm font-extrabold text-teal-900">🎙️ {t("voiceStack", lang)}</h3>
+   292→        <p className="mb-3 text-[11px] text-teal-700">
+   293→          {fr
+   294→            ? "Stack open-source : Kokoro-82M (TTS) · Faster-Whisper (STT) · Chroma-1.0 (STS) · contrat HuggingFace speech-to-speech. Repli gracieux garanti."
+   295→            : "Open-source stack: Kokoro-82M (TTS) · Faster-Whisper (STT) · Chroma-1.0 (STS) · HuggingFace speech-to-speech contract. Graceful fallback guaranteed."}
+   296→        </p>
+   297→        <div className="grid gap-2 sm:grid-cols-2">
+   298→          {stackRows.map(({ key, label, icon }) => {
+   299→            const s = health.stack[key];
+   300→            if (!s) return null;
+   301→            return (
+   302→              <div key={key} className="rounded-xl border border-teal-100 bg-white p-2.5 text-xs">
+   303→                <div className="flex items-center justify-between">
+   304→                  <b className="text-teal-900">{icon} {label}: {s.stipulated}</b>
+   305→                  <span className={cn(
+   306→                    "rounded-full px-2 py-0.5 text-[9px] font-extrabold",
+   307→                    key === "pipeline" ? (s.reachable ? "bg-lime-100 text-lime-800" : "bg-amber-100 text-amber-800") : s.live ? "bg-lime-100 text-lime-800" : "bg-amber-100 text-amber-800"
+   308→                  )}>
+   309→                    {key === "pipeline" ? (s.reachable ? (fr ? "EN LIGNE" : "REACHABLE") : fr ? "HORS LIGNE" : "OFFLINE") : s.live ? (fr ? "ACTIF" : "LIVE") : fr ? "REPLI" : "FALLBACK"}
+   310→                  </span>
+   311→                </div>
+   312→                {s.fallback && <p className="mt-1 text-[10px] text-teal-600">↩ {s.fallback}</p>}
+   313→              </div>
+   314→            );
+   315→          })}
+   316→        </div>
+   317→        <div className="mt-2 rounded-xl bg-white p-2.5">
+   318→          <p className="text-[10px] font-bold uppercase tracking-wide text-teal-600">{fr ? "Voix Kokoro des personnages" : "Character Kokoro voices"}</p>
+   319→          <ul className="mt-1 grid gap-1 text-[11px] text-teal-800 sm:grid-cols-2">
+   320→            {Object.entries(health.character_voices || {}).map(([id, v]) => (
+   321→              <li key={id}>🎭 <b>{id}</b> → {v.voice} ({v.speed}×)</li>
+   322→            ))}
+   323→          </ul>
+   324→        </div>
+   325→      </section>
+   326→
+   327→      <section className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+   328→        <h3 className="mb-2 text-sm font-extrabold text-lime-900">🎯 {fr ? "Indicateurs de réussite v4.0 (mesure en direct)" : "v4.0 Success Metrics (live measurement)"}</h3>
+   329→        <div className="overflow-x-auto rounded-xl border border-lime-100">
+   330→          <table className="w-full min-w-[520px] text-left text-xs">
+   331→            <thead className="bg-lime-50">
+   332→              <tr className="text-[10px] uppercase text-lime-600">
+   333→                <th className="px-2 py-1.5">{fr ? "Indicateur" : "Metric"}</th>
+   334→                <th className="px-2 py-1.5">{fr ? "Cible" : "Target"}</th>
+   335→                <th className="px-2 py-1.5">{fr ? "Mesure actuelle" : "Live"}</th>
+   336→                <th className="px-2 py-1.5">✓</th>
+   337→              </tr>
+   338→            </thead>
+   339→            <tbody>
+   340→              {v4Metrics.map((row) => (
+   341→                <tr key={row.m} className="border-t border-lime-50">
+   342→                  <td className="px-2 py-1.5 font-bold text-lime-900">{row.m}</td>
+   343→                  <td className="px-2 py-1.5 text-amber-800">{row.target}</td>
+   344→                  <td className="px-2 py-1.5 text-amber-900">{row.live}</td>
+   345→                  <td className="px-2 py-1.5">
+   346→                    {row.pass === null ? <span className="text-stone-400">—</span> : <span className={row.pass ? "text-lime-700" : "text-amber-600"}>{row.pass ? "PASS" : "…"}</span>}
+   347→                  </td>
+   348→                </tr>
+   349→              ))}
+   350→            </tbody>
+   351→          </table>
+   352→        </div>
+   353→      </section>
+   354→    </>
+   355→  );
+   356→}
+   357→
+   358→// ============================================================================
+   359→// v3.0 BUILD AUDIT REPORT + ROADMAP + SUCCESS METRICS (Master Prompt v2.0:
+   360→// Critical Build Audit, §VIII Roadmap, §IX Success Metrics incl. Grassfields;
+   361→// upgraded to the v3.0 Preview Deployment & Live Demo Edition — corrected
+   362→// 8-language matrix with Kom/Lamnso' separate and Bayangi added)
+   363→// ============================================================================
+   364→function BuildAuditReport({ lang }: { lang: Lang }) {
+   365→  const fr = lang === "fr";
+   366→  const audit: Array<{ phase: string; task: string; status: "done" | "partial" | "todo" }> = [
+   367→    // ---- v4.0 Natural Voice Pipeline & DIY Practical Learning (§I–V) ----
+   368→    { phase: "v4.0 Phase 1: Voice Stack", task: "Replace Edge-TTS with Kokoro-82M (natural, warm, 54 voices — kokoro_tts.py + pipeline /v1/tts)", status: "done" },
+   369→    { phase: "v4.0 Phase 1: Voice Stack", task: "Replace Simba-S with Faster-Whisper (4× faster, 99 languages — faster_whisper_stt.py + pipeline /v1/stt, Silero VAD)", status: "done" },
+   370→    { phase: "v4.0 Phase 1: Voice Stack", task: "Deploy Chroma-1.0 end-to-end STS client with stipulated cascaded fallback (§1.3/§2.3) — GPU/Docker hosts serve /v1/chat/completions", status: "partial" },
+   371→    { phase: "v4.0 Phase 1: Voice Stack", task: "HuggingFace speech-to-speech contract (config.yaml: silero-vad / faster-whisper / transformers / kokoro) + Voice Service Registry (§2.2: en/fr/bkm/lns/byv)", status: "done" },
+   372→    { phase: "v4.0 Phase 1: Voice Stack", task: "Unified Voice Service (§2.3 speech_to_text / text_to_speech / speech_to_speech) + Voice Quality Report (/api/voice-health latency metrics)", status: "done" },
+   373→    { phase: "v4.0 Phase 2: DIY Content", task: "DIY lesson schema (§3.3: materials, steps with voice guides, dialogue script, assessment, extension, +30 XP craft badge)", status: "done" },
+   374→    { phase: "v4.0 Phase 2: DIY Content", task: "Generate DIY content for Class 3, Month 1 — 12 DIY lessons (§3.4 per-ILT library verbatim)", status: "done" },
+   375→    { phase: "v4.0 Phase 2: DIY Content", task: "DIYLessonCard component (§3.5: materials checklist, voice-guided steps, completion tracking)", status: "done" },
+   376→    { phase: "v4.0 Phase 2: DIY Content", task: "Integrate DIY into lesson player — three-component flow (Digital → DIY → Voice Practice)", status: "done" },
+   377→    { phase: "v4.0 Phase 3: Voice Practice", task: "STS practice mode with §4.2 scenarios (progressive difficulty, pronunciation/tone/fluency evaluation)", status: "done" },
+   378→    { phase: "v4.0 Phase 3: Voice Practice", task: "Tone-aware evaluation on the v4.0 stack (Kom/Lamnso'/Bayangi tone_accuracy scoring)", status: "done" },
+   379→    { phase: "v4.0 Phase 3: Voice Practice", task: "4 character Kokoro voice profiles (kwe=am_michael, mbi=af_bella, ngo=af_nicole, kong=am_liam)", status: "done" },
+   380→    { phase: "v4.0 Phase 3: Voice Practice", task: "End-to-end voice flow verification (golden paths + DIY + voice practice, 375px)", status: "partial" },
+   381→    { phase: "v4.0 Phase 4: Extended Lessons", task: "Extended lesson data model §4.2 on all 12 lessons (total_xp 100, badges trio, streak_bonus 20)", status: "done" },
+   382→    { phase: "v4.0 Phase 4: Extended Lessons", task: "§4.3 Lesson Extension Generator (DIY + voice practice + safety in /api/lesson-plan)", status: "done" },
+   383→    { phase: "v4.0 Phase 4: Extended Lessons", task: "v4.0 success metrics live in supervisor (§VI: 8 metrics measured from analytics/feedback/latency)", status: "done" },
+   384→    { phase: "v4.0 Phase 4: Extended Lessons", task: "Deploy to preview + collect feedback (§VI metrics live)", status: "partial" },
+   385→    // ---- v3.0 Preview Deployment & Live Demo Edition ----
+   386→    { phase: "Preview v3.0", task: "CORRECTION 1 — Kom (bkm) and Lamnso' (lns) tracked as separate entries (ASR/TTS/content/audit/metrics)", status: "done" },
+   387→    { phase: "Preview v3.0", task: "CORRECTION 2 — Bayangi (byv) added as 8th language: placeholder content + 500h data collection plan (SIL Cameroon, Q2 2025)", status: "done" },
+   388→    { phase: "Preview v3.0", task: "CORRECTION 3 — corrected 8-language matrix on every surface (picker, HUD, hook switcher, library, registry, audit)", status: "done" },
+   389→    { phase: "Preview v3.0", task: "Lesson hook switcher — EN → FR → Kom → Lamnso' → Bayangi (Directive 9 placeholder states)", status: "done" },
+   390→    { phase: "Preview v3.0", task: "Language Registry Console — add more dialects/local languages (DRAFT → IN_REVIEW → ACTIVE pipeline)", status: "done" },
+   391→    { phase: "Preview v3.0", task: "Embedded preview analytics (§5.1): page views, voice-language selections, lesson completions, ASR attempts + v4.0 DIY/voice-practice events", status: "done" },
+   392→    { phase: "Preview v3.0", task: "Embedded feedback widget (§5.2): rating, voice quality, language accuracy, comments", status: "done" },
+   393→    { phase: "Preview v3.0", task: "Golden paths verified end-to-end (Learner 10 / Teacher 6 / Supervisor 5)", status: "done" },
+   394→    { phase: "Phase 1: Foundation", task: "Development environment (Next.js + Tailwind, DB)", status: "done" },
+   395→    { phase: "Phase 1: Foundation", task: "ASR integration — Faster-Whisper v4.0 stack; Simba registry + fine-tune hooks for Grassfields", status: "partial" },
+   396→    { phase: "Phase 1: Foundation", task: "TTS integration — Kokoro-82M v4.0 stack + GACL tone-rules; cloned voice packs pending native reference audio", status: "partial" },
+   397→    { phase: "Phase 1: Foundation", task: "Frontend — Curriculum Navigator (map-based quest board)", status: "done" },
+   398→    { phase: "Phase 1: Foundation", task: "Database schema (learner, curriculum, lessons, gamification, PBL, assessments, preview analytics/feedback/language drafts)", status: "done" },
+   399→    { phase: "Phase 1: Foundation", task: "Kom ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
+   400→    { phase: "Phase 1: Foundation", task: "Lamnso' ASR/TTS integration (fine-tune data 500h+ — sourcing from SIL Cameroon)", status: "todo" },
+   401→    { phase: "Phase 2: Core Features", task: "Lesson Plan Generator (§7.3 v2.0 format + §4.3 v4.0 extended lesson, KG→High School)", status: "done" },
+   402→    { phase: "Phase 2: Core Features", task: "Voice Pipeline STS (Chroma → Faster-Whisper → LLM → Kokoro, multilingual + code-switching)", status: "done" },
+   403→    { phase: "Phase 2: Core Features", task: "Content Library — Class 3, Month 1 complete (all subjects, voice-enabled) + DIY Workshop wing", status: "done" },
+   404→    { phase: "Phase 2: Core Features", task: "Gamification Engine (XP, badges, streaks, levels + v4.0 component awards)", status: "done" },
+   405→    { phase: "Phase 2: Core Features", task: "Assessment Engine (formative/summative/diagnostic + ASR oral scoring + tone accuracy)", status: "done" },
+   406→    { phase: "Phase 2: Core Features", task: "Grassfields Content Generation (Kom/Lamnso' — spec-attested phrases, native validation pending)", status: "partial" },
+   407→    { phase: "Phase 2: Core Features", task: "Voice Cloning for Grassfields (kom_native/lamnso_native/bayangi_native registered — reference audio needed)", status: "todo" },
+   408→    { phase: "Phase 3: Integration", task: "Module integration (unified SPA: navigator, player, projects, library, profiles, DIY workshop)", status: "done" },
+   409→    { phase: "Phase 3: Integration", task: "Closed pilot (5 schools Littoral + 5 North West)", status: "todo" },
+   410→    { phase: "Phase 3: Integration", task: "Grassfields Language Validation (native speakers, 90% approval target)", status: "todo" },
+   411→    { phase: "Phase 3: Integration", task: "Bayangi data collection (500h, SIL Cameroon / Local Community, Q2 2025) → graduation to ACTIVE", status: "todo" },
+   412→    { phase: "Phase 4: Launch", task: "Production deployment (public preview live; production hardening next)", status: "partial" },
+   413→    { phase: "Phase 4: Launch", task: "Content expansion (Classes 1-2, Forms 1-5, High School modules)", status: "todo" },
+   414→    { phase: "Phase 4: Launch", task: "International framework mapping (IB/Cambridge/CEFR across levels)", status: "done" },
+   415→    { phase: "Phase 4: Launch", task: "Additional Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie) — via Language Registry pipeline", status: "todo" },
+   416→  ];
+   417→  const roadmap: Array<{ phase: string; weeks: string; focus: string }> = [
+   418→    { phase: "v4.0 Phase 1 — Voice Stack Replacement", weeks: "Weeks 1-2", focus: "Kokoro-82M TTS, Faster-Whisper STT, Chroma-1.0 STS, Unified Voice Service, voice quality report" },
+   419→    { phase: "v4.0 Phase 2 — DIY Content Generation", weeks: "Weeks 3-4", focus: "DIY lesson schema, 12 DIY lessons (Class 3 Month 1), DIYLessonCard, lesson player integration" },
+   420→    { phase: "v4.0 Phase 3 — Voice Practice Integration", weeks: "Weeks 5-6", focus: "STS practice mode, tone-aware evaluation, 4 character Kokoro voices, end-to-end verification" },
+   421→    { phase: "v4.0 Phase 4 — Extended Lesson Deployment", weeks: "Weeks 7-8", focus: "Extended lessons for all subjects, §4.3 generator, preview deployment, feedback collection" },
+   422→    { phase: "Phase 1 — Foundation", weeks: "Weeks 1-2", focus: "Environment, ASR/TTS, Kom + Lamnso' voice, frontend, database" },
+   423→    { phase: "Phase 2 — Core Features", weeks: "Weeks 3-6", focus: "Lesson generator, voice pipeline, content, gamification, assessment, Grassfields content + cloning (incl. Bayangi placeholder)" },
+   424→    { phase: "Phase 3 — Integration & Testing", weeks: "Weeks 7-8", focus: "Unified platform, closed pilots (Littoral + North West), native-speaker validation, Bayangi data collection (Q2 2025)" },
+   425→    { phase: "Phase 4 — Launch & Expansion", weeks: "Weeks 9+", focus: "Launch, content expansion, IB/Cambridge mapping, planned Grassfields languages (Bafut, Oku, Babanki, Mankon, Ngie) via the Registry pipeline" },
+   426→  ];
+   427→  const metrics: Array<{ m: string; target: string }> = [
+   428→    { m: "Learner engagement", target: "80% daily active use" },
+   429→    { m: "Learning outcomes", target: "90% ELO achievement" },
+   430→    { m: "Voice interaction", target: "70% of activities voice-enabled" },
+   431→    { m: "Cultural relevance", target: "95% culturally appropriate" },
+   432→    { m: "Offline functionality", target: "100% core features offline" },
+   433→    { m: "Teacher adoption", target: "85% find platform useful" },
+   434→    { m: "Deployment time", target: "< 12 weeks to MVP" },
+   435→    { m: "Grassfields language accuracy", target: "90% native speaker approval" },
+   436→    { m: "Tone accuracy (TTS)", target: "85% correct tone production" },
+   437→  ];
+   438→  const statusBadge = (s: string) =>
+   439→    s === "done"
+   440→      ? { cls: "bg-lime-100 text-lime-800", label: fr ? "TERMINÉ" : "DONE" }
+   441→      : s === "partial"
+   442→      ? { cls: "bg-amber-100 text-amber-800", label: fr ? "PARTIEL" : "PARTIAL" }
+   443→      : { cls: "bg-stone-100 text-stone-600", label: fr ? "À FAIRE" : "TODO" };
+   444→
+   445→  return (
+   446→    <>
+   447→      <section className="rounded-2xl border-2 border-amber-300 bg-white p-4 shadow-sm">
+   448→        <h3 className="mb-2 text-sm font-extrabold text-amber-900">🧾 {t("buildAudit", lang)}</h3>
+   449→        <p className="mb-2 text-[11px] text-amber-700">
+   450→          {fr
+   451→            ? "Audit de construction v4.0 — Natural Voice Pipeline (Kokoro-82M, Faster-Whisper, Chroma-1.0), Apprentissage Pratique DIY (12 leçons), Leçons Étendues (numérique + DIY + pratique vocale) + corrections v3.0 + statut de chaque tâche stipulée."
+   452→            : "v4.0 build audit — Natural Voice Pipeline (Kokoro-82M, Faster-Whisper, Chroma-1.0), DIY Practical Learning (12 lessons), Extended Lessons (digital + DIY + voice practice) + v3.0 corrections + status of every stipulated task."}
+   453→        </p>
+   454→        <div className="max-h-80 overflow-y-auto rounded-xl border border-amber-100">
+   455→          <table className="w-full min-w-[520px] text-left text-xs">
+   456→            <thead className="sticky top-0 bg-amber-50">
+   457→              <tr className="text-[10px] uppercase text-amber-600">
+   458→                <th className="px-2 py-1.5">{fr ? "Phase" : "Phase"}</th>
+   459→                <th className="px-2 py-1.5">{fr ? "Tâche" : "Task"}</th>
+   460→                <th className="px-2 py-1.5">Statut</th>
+   461→              </tr>
+   462→            </thead>
+   463→            <tbody>
+   464→              {audit.map((a, i) => {
+   465→                const b = statusBadge(a.status);
+   466→                return (
+   467→                  <tr key={i} className="border-t border-amber-50">
+   468→                    <td className="px-2 py-1.5 font-bold text-amber-800">{a.phase}</td>
+   469→                    <td className="px-2 py-1.5 text-amber-900">{a.task}</td>
+   470→                    <td className="px-2 py-1.5"><span className={cn("rounded-full px-2 py-0.5 text-[9px] font-extrabold", b.cls)}>{b.label}</span></td>
+   471→                  </tr>
+   472→                );
+   473→              })}
+   474→            </tbody>
+   475→          </table>
+   476→        </div>
+   477→      </section>
+   478→
+   479→      <section className="rounded-2xl border-2 border-orange-200 bg-gradient-to-br from-orange-50 to-white p-4 shadow-sm">
+   480→        <h3 className="mb-2 text-sm font-extrabold text-orange-900">🗺️ {t("roadmap", lang)}</h3>
+   481→        <div className="grid gap-2 sm:grid-cols-2">
+   482→          {roadmap.map((r) => (
+   483→            <div key={r.phase} className="rounded-xl border border-orange-100 bg-white p-2.5 text-xs">
+   484→              <b className="text-orange-900">{r.phase}</b> <span className="text-[10px] font-bold uppercase text-orange-500">({r.weeks})</span>
+   485→              <p className="mt-0.5 text-amber-800">{r.focus}</p>
+   486→            </div>
+   487→          ))}
+   488→        </div>
+   489→      </section>
+   490→
+   491→      <section className="rounded-2xl border-2 border-lime-200 bg-white p-4 shadow-sm">
+   492→        <h3 className="mb-2 text-sm font-extrabold text-lime-900">🎯 {fr ? "Indicateurs de réussite (cibles)" : "Success metrics (targets)"}</h3>
+   493→        <div className="grid gap-2 sm:grid-cols-3">
+   494→          {metrics.map((x) => (
+   495→            <div key={x.m} className="rounded-xl bg-lime-50 p-2.5 text-xs">
+   496→              <b className="text-lime-900">{x.m}</b>
+   497→              <p className="text-amber-800">{x.target}</p>
+   498→            </div>
+   499→          ))}
+   500→        </div>
+   501→        <p className="mt-2 text-[11px] font-semibold text-lime-800">
+   502→          🪶 {fr ? "Précision tonale cible (TTS) : 85% · Précision des langues Grassfields : 90% d'approbation des locuteurs natifs." : "Tone accuracy target (TTS): 85% · Grassfields language accuracy: 90% native-speaker approval."}
+   503→        </p>
+   504→      </section>
+   505→    </>
+   506→  );
+   507→}
+   508→

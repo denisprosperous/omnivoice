@@ -109,6 +109,8 @@ export function MicButton({
   onUp: () => void;
   label: string;
 }) {
+  // v4.2 fix — keyboard-operable: Enter/Space press-and-hold mirrors the mouse
+  // and touch behaviour, so the mic is reachable without a pointer.
   return (
     <button
       type="button"
@@ -117,8 +119,23 @@ export function MicButton({
       disabled={disabled}
       onMouseDown={onDown}
       onMouseUp={onUp}
+      onMouseLeave={() => { if (recording) onUp(); }}
       onTouchStart={(e) => { e.preventDefault(); onDown(); }}
       onTouchEnd={(e) => { e.preventDefault(); onUp(); }}
+      onKeyDown={(e) => {
+        if (disabled) return;
+        if ((e.key === "Enter" || e.key === " ") && !e.repeat) {
+          e.preventDefault();
+          onDown();
+        }
+      }}
+      onKeyUp={(e) => {
+        if (disabled) return;
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onUp();
+        }
+      }}
       className={cn(
         "flex h-20 w-20 items-center justify-center rounded-full border-4 text-3xl shadow-lg transition-all active:scale-95 disabled:opacity-40",
         recording ? "animate-pulse border-red-300 bg-red-500 text-white" : "border-amber-300 bg-amber-500 text-white hover:bg-amber-600"

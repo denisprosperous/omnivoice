@@ -6,7 +6,7 @@ import { useApp, type Role } from "@/lib/store";
 import { t, type Lang } from "@/lib/i18n";
 import { CHARACTERS } from "@/lib/characters";
 import { LEVELS } from "@/lib/data/curriculum";
-import { VOICE_LANGUAGES, type LanguageStatus } from "@/lib/data/grassfields";
+import { NationalLanguageSelect } from "./national-language-select";
 import { trackEvent } from "@/lib/analytics";
 import { PatternBand, Spinner } from "./shared";
 import { playBadge } from "@/lib/sound-engine";
@@ -18,6 +18,7 @@ const AVATARS = ["🦁", "🐘", "🦅", "🐆", "🦒", "🦏", "🐒", "🦉",
 
 export function Landing() {
   const { setView, setLearner, lang, setLang, voiceLang, setVoiceLang } = useApp();
+  const fr = lang === "fr";
   const [role, setRole] = React.useState<Role>("learner");
   const [name, setName] = React.useState("");
   const [stage, setStage] = React.useState("class3");
@@ -39,7 +40,7 @@ export function Landing() {
           avatar,
           stage,
           iscedLevel: level?.isced ?? 1,
-          language: lang === "ewo" ? "en" : lang, // UI language; ewo used for phrases
+          language: lang, // UI language (EN/FR — trusted interface languages)
           voiceLang,
         }),
       });
@@ -63,13 +64,6 @@ export function Landing() {
     { isced: 2, label: "Lower Secondary (ISCED 2)", labelFr: "1er cycle Secondaire (CITE 2)" },
     { isced: 3, label: "Upper Secondary (ISCED 3)", labelFr: "2nd cycle Secondaire (CITE 3)" },
   ];
-
-  const statusBadge = (status: LanguageStatus | string) => {
-    if (status === "ACTIVE") return { label: t("statusActive", lang), cls: "bg-lime-600 text-white" };
-    if (status === "ACTIVE_PLACEHOLDER") return { label: t("statusNew", lang), cls: "bg-orange-500 text-white" };
-    if (status === "PLANNED") return { label: t("statusPlanned", lang), cls: "bg-stone-200 text-stone-600" };
-    return { label: "DRAFT", cls: "bg-sky-600 text-white" };
-  };
 
   return (
     <main className="min-h-screen bg-[#FFFBEB]">
@@ -183,14 +177,13 @@ export function Landing() {
             </div>
           )}
 
-          {/* Language (UI) */}
+          {/* Language (UI) — EN/FR (trusted interface languages) */}
           <div className="mb-5">
             <h3 className="mb-2 text-sm font-bold text-amber-900">{t("chooseLanguage", lang)}</h3>
             <div className="flex gap-2" role="radiogroup" aria-label={t("chooseLanguage", lang)}>
               {([
                 { id: "en", label: "English", flag: "🇬🇧" },
                 { id: "fr", label: "Français", flag: "🇫🇷" },
-                { id: "ewo", label: "Ewondo (National)", flag: "🇨🇲" },
               ] as Array<{ id: Lang; label: string; flag: string }>).map((l) => (
                 <button
                   key={l.id}
@@ -209,33 +202,21 @@ export function Landing() {
             </div>
           </div>
 
-          {/* Voice Language — Grassfields Languages Expansion Pack (v2.0 §2) */}
+          {/* National language — DROPDOWN MENU (user directive: "Kom, Ewondo as
+              well as others should be here") — registry-driven with status badges */}
           <div className="mb-6">
-            <h3 className="mb-1 text-sm font-bold text-amber-900">🪶 {t("voiceLanguage", lang)}</h3>
+            <h3 className="mb-1 text-sm font-bold text-amber-900">🇨🇲 {t("voiceLanguage", lang)}</h3>
             <p className="mb-2 text-xs text-amber-700">{t("voiceLanguageHint", lang)}</p>
-            <div className="mb-2 flex flex-wrap gap-1.5" role="radiogroup" aria-label={t("voiceLanguage", lang)}>
-              {VOICE_LANGUAGES.map((l) => {
-                const badge = "status" in l ? statusBadge(l.status) : null;
-                return (
-                  <button
-                    key={l.id}
-                    onClick={() => setVoiceLang(l.id)}
-                    role="radio"
-                    aria-checked={voiceLang === l.id}
-                    className={cn(
-                      "min-h-[40px] rounded-xl border-2 px-3 py-1.5 text-xs font-bold transition-all",
-                      voiceLang === l.id ? "border-lime-700 bg-lime-50 text-lime-900 shadow-sm" : "border-lime-200 bg-white text-lime-800 hover:border-lime-500"
-                    )}
-                  >
-                    <span className="mr-1" aria-hidden>{l.flag}</span>
-                    {l.label}
-                    {badge && <span className={cn("ml-1.5 rounded-full px-1.5 py-0.5 text-[8px] font-extrabold uppercase align-middle", badge.cls)}>{badge.label}</span>}
-                  </button>
-                );
-              })}
-            </div>
-            <p className="rounded-xl bg-lime-50 p-2.5 text-[11px] leading-relaxed text-lime-900">
-              <b>{t("expansionPack", lang)}:</b> {t("expansionIntro", lang)}
+            <NationalLanguageSelect
+              value={voiceLang}
+              onChange={(code) => setVoiceLang(code)}
+              lang={lang}
+              includeInterfaceLanguages
+            />
+            <p className="mt-2 rounded-xl bg-lime-50 p-2.5 text-[11px] leading-relaxed text-lime-900">
+              <b>{fr ? "Contenu de confiance" : "Trusted content"}:</b> {fr
+                ? "la plateforme n'affiche que des mots et phrases attestés (Hyman/UC Berkeley, archives SIL) ou validés par des locuteurs natifs via le portail d'ingestion. Ajoutez votre langue dans Bibliothèque → Console du Registre / Ingestion."
+                : "the platform lists only attested words and phrases (Hyman/UC Berkeley, SIL archives) or content validated by native speakers via the ingestion portal. Add your language in Library → Registry Console / Ingestion."}
             </p>
           </div>
 

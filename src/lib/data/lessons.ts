@@ -160,19 +160,14 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "Good morning, young one! Can you help me greet my friends?",
         textFr: "Bonjour, jeune ami ! Peux-tu m'aider à saluer mes amis ?",
-        // §7.3 verbatim — GACL tone-marked Kom & Lamnso' + v3.0 Bayangi placeholder
-        textBkm: "À bwɛ̀, mwɛ̀n! Nà wù dà?",
-        textLns: "Mbi̶ vǝ̀, wòn! Wù yé dì?",
-        textByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
-        languages: ["en", "fr", "bkm", "lns", "byv"],
+        // TRUSTED-SOURCES POLICY: the Kom/Lamnso'/Bayangi hook lines previously
+        // here were platform-invented greetings — removed by user directive.
+        // National-language greetings return only via the ingestion portal.
+        languages: ["en", "fr"],
       },
       instruction: {
         text: "Listen carefully and repeat after me.",
         textFr: "Écoute bien et répète après moi.",
-        // §7.3 verbatim
-        textBkm: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.",
-        textLns: "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀.",
-        textByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
       },
       learn_content: {
         title: "Greetings all day long",
@@ -194,10 +189,10 @@ export const LESSONS: LessonPlan[] = [
         visual: "greetings-scene", // morning kitchen, afternoon market, night compound
       },
       practice_prompts: [
-        { prompt: "Say: Good morning!", promptFr: "Dis : Good morning !", promptBkm: "Bì: À bwɛ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", promptByv: "[To be documented] — listen to Kom instead: Bì: À bwɛ̀!", target: "good morning", targetBkm: "à bwɛ̀", targetLns: "mbi̶ vǝ̀", targetByv: "[to be documented]", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say: Good morning!", promptFr: "Dis : Good morning !", target: "good morning", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "Say: Good afternoon!", target: "good afternoon", evaluation: "pronunciation_accuracy", kind: "repeat" },
         { prompt: "What do you say at night?", target: "good night", evaluation: "comprehension", kind: "answer" },
-        { prompt: "Say: I am fine, thank you!", promptBkm: "Bì: M̀ bɛ̀, bɛ̀ŋ!", promptLns: "Bì: Mǝ̀ yé, bíŋ!", target: "i am fine thank you", targetBkm: "m̀ bɛ̀ bɛ̀ŋ", targetLns: "mǝ̀ yé bíŋ", evaluation: "pronunciation_accuracy", kind: "repeat" },
+        { prompt: "Say: I am fine, thank you!", target: "i am fine thank you", evaluation: "pronunciation_accuracy", kind: "repeat" },
       ],
       feedback: FEEDBACK_DEFAULT,
       celebration: {
@@ -221,10 +216,6 @@ export const LESSONS: LessonPlan[] = [
       voice_challenge: {
         description: "Record yourself greeting 3 different people (morning, afternoon, night)",
         descriptionFr: "Enregistre-toi en train de saluer 3 personnes différentes (matin, après-midi, soir)",
-        // §7.3 verbatim — multilingual voice challenge + v3.0 Bayangi placeholder
-        descriptionBkm: "Tɔ̀ŋtɛ̀ nà wù bì ɔ̀ bɔ̀ŋɔ̀ 3",
-        descriptionLns: "Tɔ̀ŋtɛ̀ nǝ̀ wù bì ǝ̀ bɔ̀ŋɔ̀ 3",
-        descriptionByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
         evaluation: "asr_completion",
       },
     },
@@ -239,7 +230,7 @@ export const LESSONS: LessonPlan[] = [
       criteria: ["Fluency in speaking", "Audibility", "Willingness to take turns", "Correct greeting for the time of day", "Tone accuracy (Grassfields)"],
       methods: ["Observation checklist", "ASR accuracy score", "Voice recording portfolio"],
     },
-    native_speaker_review: "validated", // all Grassfields strings verbatim from Master Prompt §7.3
+    native_speaker_review: "pending", // Grassfields strings were removed (trusted-sources policy); national-language lines return via ingestion
     differentiation: [
       "Shy learners may whisper to the mic first, then speak louder",
       "Advanced learners add 'How was your night?' to their greetings",
@@ -266,7 +257,7 @@ export const LESSONS: LessonPlan[] = [
         character: "mbi",
         text: "Hello hello! Mbi found a song in the sitting room! Clap with me!",
         textFr: "Bonjour bonjour ! Mbi a trouvé une chanson dans le salon ! Tape des mains avec moi !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Listen to the song, then sing it back to me.", textFr: "Écoute la chanson, puis chante-la pour moi." },
       learn_content: {
@@ -349,7 +340,7 @@ export const LESSONS: LessonPlan[] = [
         character: "ngo",
         text: "My mother sent me to count the pots in the kitchen! Will you count with me up to 100?",
         textFr: "Ma mère m'envoie compter les marmites dans la cuisine ! Tu comptes avec moi jusqu'à 100 ?",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Count aloud with Ngo. The AI is listening — speak clearly!", textFr: "Compte à voix haute avec Ngo. L'IA écoute — parle clairement !" },
       learn_content: {
@@ -429,7 +420,7 @@ export const LESSONS: LessonPlan[] = [
         character: "kong",
         text: "Kwe says our body is like a machine! Touch your head, then say HEAD loudly!",
         textFr: "Kwe dit que notre corps est une machine ! Touche ta tête, puis dis HEAD fort !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Touch the body part and say its name into the microphone.", textFr: "Touche la partie du corps et dis son nom dans le micro." },
       learn_content: {
@@ -508,7 +499,7 @@ export const LESSONS: LessonPlan[] = [
         character: "ngo",
         text: "Bonjour ! Je suis Ngo. Sais-tu saluer en français ? Essayons ensemble !",
         textFr: "Bonjour ! Je suis Ngo. Sais-tu saluer en français ? Essayons ensemble !",
-        languages: ["fr", "en", "ewo"],
+        languages: ["fr", "en"],
       },
       instruction: { text: "Écoute, puis répète après moi avec une belle voix.", textFr: "Écoute, puis répète après moi avec une belle voix." },
       learn_content: {
@@ -589,7 +580,7 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "Do you know why the flag has green, red and yellow? Come, let me tell you a story of our country!",
         textFr: "Sais-tu pourquoi le drapeau a du vert, du rouge et du jaune ? Viens, je te raconte l'histoire de notre pays !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Listen to the story, then answer with your clear voice.", textFr: "Écoute l'histoire, puis réponds avec ta voix claire." },
       learn_content: {
@@ -659,68 +650,72 @@ export const LESSONS: LessonPlan[] = [
     sub_theme: "Mfam — Greetings in our National Languages (Grassfields focus)",
     ib_learner_profile: ["Open-minded", "Communicators"],
     expected_learning_outcomes: [
-      "Greet people in Ewondo, Kom and Lamnso' at different periods of the day",
-      "Distinguish high and low tones in national language words",
-      "Name family members in Ewondo",
+      "Read and say attested Kom words with their tone patterns (wáyn, muú, bì, fe-ghâm, nè)",
+      "Distinguish high, falling and low tones in Kom words",
+      "Name the national languages of Cameroon and where they are spoken",
     ],
     teaching_strategies: ["Native speaker modelling", "Tone practice", "Call and response"],
     voice_assets: {
       hook: {
         character: "kwe",
-        text: "Ndoge! Mood ñemed! (Good morning!) À bwɛ̀! Mbi̶ vǝ̀! Let us greet the way our grandparents do — in Ewondo, in Kom, in Lamnso'!",
-        textFr: "Ndoge ! Mood ñemed ! (Bonjour !) À bwɛ̀ ! Mbi̶ vǝ̀ ! Saluons comme nos grands-parents — en ewondo, en kom, en lamnso' !",
-        // §2.3/§2.4 attested phrases + v3.0 Bayangi placeholder
-        textBkm: "À bwɛ̀! Nà wù dà?",
-        textLns: "Mbi̶ vǝ̀! Wù yé dì?",
-        textByv: "[To be documented with Bayangi native speakers — data collection Q2 2025]",
-        languages: ["ewo", "en", "fr", "bkm", "lns", "byv"],
+        // TRUSTED-SOURCES POLICY: only Hyman-attested Kom words appear here.
+        // Greeting formulas were removed — none is attested in the ingested
+        // trusted sources; they arrive via the Content Ingestion portal.
+        text: "Let us meet our national languages! In Kom we already read wáyn (child), bì (dog) and muú (water). Greetings come when native speakers share them through the Content Ingestion portal!",
+        textFr: "Découvrons nos langues nationales ! En kom nous lisons déjà wáyn (enfant), bì (chien) et muú (eau). Les salutations arriveront quand les locuteurs natifs les partageront via le portail d'ingestion !",
+        textBkm: "wáyn · bì · muú · fe-ghâm · nè (attested: Hyman, UC Berkeley)",
+        languages: ["en", "fr", "bkm"],
       },
-      instruction: { text: "Listen to the tone, then repeat exactly — high tone rises, low tone stays.", textFr: "Écoute le ton, puis répète exactement — ton haut monte, ton bas reste.", textBkm: "Yɛ̀ŋtɛ̀ bɔ̀ŋɔ̀, bì nà m̀.", textLns: "Bíŋtɛ̀ bɔ̀ŋɔ̀, bì nǝ̀ mǝ̀." },
+      // TRUSTED-SOURCES POLICY: instruction ships in EN/FR; the Kom line uses
+      // only attested words (no invented classroom phrases).
+      instruction: { text: "Listen to the tone, then repeat exactly — high tone rises, low tone stays.", textFr: "Écoute le ton, puis répète exactement — ton haut monte, ton bas reste.", textBkm: "wáyn · bì · muú" },
       learn_content: {
-        title: "Greetings across Cameroon — Grassfields voices",
-        titleFr: "Salutations à travers le Cameroun — voix des Grassfields",
+        title: "Our national languages — attested Kom words first",
+        titleFr: "Nos langues nationales — d'abord les mots kom attestés",
         lines: [
-          "Ewondo: Mood ñemed! — Good morning! (ntónde = morning)",
-          "Kom (Itaŋikom): À bwɛ̀ — Good morning · Bɛ̀ŋ — Thank you (3 tones: high unmarked, falling â, low à)",
-          "Lamnso': Mbi̶ vǝ̀ — Good morning · Bíŋ — Thank you (vowel length matters: sú “wash” vs súü “harvest completely”)",
-          "Kom: Nà wù dà? — How are you? · M̀ bɛ̀ — I am fine",
-          "Lamnso': Wù yé dì? — How are you? · Mǝ̀ yé — I am fine",
-          "Bayangi (Banyangi): greetings to be documented — Manyu Division, South West (data collection Q2 2025)",
-          "Ewondo family: Mame — my mother · Mtala — my father · Nyaa — grandmother",
-          "Tone matters: ñém (to refuse) vs ñém (to be sweet) — the tone changes the meaning! (GACL marked)",
+          "Kom (Itaŋikom): wáyn — child (cl. 1) · ghóyn — children (cl. 2) — Hyman, UC Berkeley",
+          "Kom: bì — dog (cl. 9) · bì-se — dogs (cl. 10) — the plural changes the class prefix!",
+          "Kom: muú — water (cl. 6a) · fe-tám — fruit (cl. 19, M-H)",
+          "Kom tone marks: high = unmarked (ká 'will') · falling â (tâʔ in a-tâʔ 'snail') · low à (nè 'with')",
+          "Kom: e-wé — market · e-ndo — house (words that carry an initial vowel)",
+          "Lamnso': our trusted sources hold no Lamnso' words yet — they arrive with the Nso Language Organisation ingestion drive",
+          "Ewondo: national language of the Centre Region — content pending ingestion from native speakers",
+          "Greetings in every national language: to be documented WITH native speakers — submit them in Library → Content Ingestion",
         ],
         linesFr: [
-          "Ewondo : Mood ñemed ! — Bonjour ! (ntónde = matin)",
-          "Kom (Itaŋikom) : À bwɛ̀ — Bonjour · Bɛ̀ŋ — Merci (3 tons : haut non marqué, descendant â, bas à)",
-          "Lamnso' : Mbi̶ vǝ̀ — Bonjour · Bíŋ — Merci (la longueur compte : sú “laver” vs súü “récolter complètement”)",
-          "Kom : Nà wù dà? — Comment vas-tu ? · M̀ bɛ̀ — Je vais bien",
-          "Lamnso' : Wù yé dì? — Comment vas-tu ? · Mǝ̀ yé — Je vais bien",
-          "Bayangi (Banyangi) : greetings to be documented — Manyu Division, South West (data collection Q2 2025)",
-          "Famille ewondo : Mame — ma mère · Mtala — mon père · Nyaa — grand-mère",
-          "Le ton compte : le ton change le sens ! (orthographe GACL)",
+          "Kom (Itaŋikom) : wáyn — enfant (cl. 1) · ghóyn — enfants (cl. 2) — Hyman, UC Berkeley",
+          "Kom : bì — chien (cl. 9) · bì-se — chiens (cl. 10) — le pluriel change le préfixe de classe !",
+          "Kom : muú — eau (cl. 6a) · fe-tám — fruit (cl. 19, M-H)",
+          "Marques de tons du kom : haut = non marqué (ká) · descendant â (tâʔ de a-tâʔ « escargot ») · bas à (nè « avec »)",
+          "Kom : e-wé — marché · e-ndo — maison (mots à voyelle initiale)",
+          "Lamnso' : nos sources de confiance ne contiennent encore aucun mot lamnso' — ils viendront avec la collecte Nso Language Organisation",
+          "Ewondo : langue nationale de la région du Centre — contenu en attente d'ingestion par les locuteurs natifs",
+          "Salutations dans chaque langue nationale : à documenter AVEC les locuteurs natifs — proposez-les dans Bibliothèque → Ingestion de contenu",
         ],
         visual: "grassfields-family",
       },
       practice_prompts: [
-        { prompt: "Say: Mood ñemed!", promptByv: "[To be documented] — Bayangi greetings arrive after native-speaker documentation (Q2 2025). Try Kom: À bwɛ̀!", target: "mood nemed", targetByv: "[to be documented]", evaluation: "pronunciation_accuracy", kind: "repeat" },
-        { prompt: "Say in Kom: À bwɛ̀!", promptBkm: "Bì: À bwɛ̀!", target: "à bwɛ", targetBkm: "à bwɛ̀", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
-        { prompt: "Say in Lamnso': Mbi̶ vǝ̀!", promptLns: "Bì: Mbi̶ vǝ̀!", target: "mbi vǝ", targetLns: "mbi̶ vǝ̀", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
-        { prompt: "Say in Kom: Bɛ̀ŋ (thank you)", promptBkm: "Bì: Bɛ̀ŋ!", target: "bɛ̀ŋ", targetBkm: "bɛ̀ŋ", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
-        { prompt: "How do you say 'my mother' in Ewondo? Say it!", target: "mame", evaluation: "comprehension", kind: "answer" },
+        // Every target is a Hyman-attested word with its tone pattern (§6.5 tone-aware scoring).
+        { prompt: "Say in Kom: wáyn (child)", promptBkm: "wáyn", target: "wayn", targetBkm: "wáyn", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
+        { prompt: "Say in Kom: muú (water)", promptBkm: "muú", target: "muu", targetBkm: "muú", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
+        { prompt: "Say in Kom: bì (dog)", promptBkm: "bì", target: "bi", targetBkm: "bì", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
+        { prompt: "Say in Kom: fe-ghâm (mat) — hear the falling â", promptBkm: "fe-ghâm", target: "fe-gham", targetBkm: "fe-ghâm", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
+        { prompt: "Say in Kom: nè (with) — low tone stays down", promptBkm: "nè", target: "ne", targetBkm: "nè", evaluation: "pronunciation_accuracy+tone", kind: "repeat" },
       ],
       feedback: FEEDBACK_DEFAULT,
       celebration: {
         character: "kwe",
-        text: "Ayeba! Bɛ̀ŋ! Bíŋ! (Well done in three languages!) You carry our languages forward — Culture Keeper!",
-        textFr: "Ayeba ! Bɛ̀ŋ ! Bíŋ ! (Bien joué en trois langues !) Tu fais vivre nos langues — Gardien de la Culture !",
+        text: "Wonderful! You read real Kom words with their tones — you carry our languages forward, Culture Keeper!",
+        textFr: "Formidable ! Tu lis de vrais mots kom avec leurs tons — tu fais vivre nos langues, Gardien de la Culture !",
       },
       background_music: "village_morning_loop.wav",
     },
     sts_scenario: {
-      description: "Kwe converses in simple Ewondo, Kom or Lamnso' greetings; learner responds (code-switching welcome)",
-      descriptionFr: "Kwe converse en ewondo, kom ou lamnso' simple ; l'apprenant répond (l'alternance de langues est bienvenue)",
+      description: "Kwe practises attested Kom words with you — tone pairs, noun classes and code-switching welcome",
+      descriptionFr: "Kwe s'exerce avec toi aux mots kom attestés — paires tonales, classes nominales ; l'alternance de langues est bienvenue",
       character: "kwe",
-      opener: "Ndoge! Mood ñemed? À bwɛ̀! Nà wù dà? (Hello! Did you wake well? Good morning! How are you?)",
+      // Opener uses ONLY attested Kom words (Hyman) — no invented greetings.
+      opener: "Hello! In Kom we say wáyn for child and muú for water. Say them with me — wáyn… muú!",
     },
     gamification: {
       mechanics: ["Points", "Badge", "Voice Challenge", "Choice"],
@@ -728,25 +723,24 @@ export const LESSONS: LessonPlan[] = [
       badge_name: "Culture Keeper",
       badge_code: "culture-keeper",
       voice_challenge: {
-        description: "Record all the greetings — Ewondo, Kom and Lamnso' — in one clip",
-        descriptionFr: "Enregistre toutes les salutations — ewondo, kom et lamnso' — en une fois",
-        descriptionBkm: "Tɔ̀ŋtɛ̀ nà wù bì ɔ̀ bɔ̀ŋɔ̀ 3",
-        descriptionLns: "Tɔ̀ŋtɛ̀ nǝ̀ wù bì ǝ̀ bɔ̀ŋɔ̀ 3",
+        description: "Record yourself saying five attested Kom words with their tones (wáyn, muú, bì, fe-ghâm, nè)",
+        descriptionFr: "Enregistre cinq mots kom attestés avec leurs tons (wáyn, muú, bì, fe-ghâm, nè)",
+        descriptionBkm: "wáyn · muú · bì · fe-ghâm · nè",
         evaluation: "asr_completion",
       },
     },
     activities: [
-      { phase: "Voice Hook", duration: "1 min", description: "Kwe opens with real greetings from three Cameroonian languages", descriptionFr: "Kwe ouvre avec de vraies salutions en trois langues camerounaises" },
-      { phase: "Listen & Learn", duration: "2-3 min", description: "Greetings in Ewondo, Kom (3 tones) and Lamnso' (vowel length), family words, tone pairs (GACL)", descriptionFr: "Salutions en ewondo, kom (3 tons) et lamnso' (longueur vocalique), mots de la famille, paires tonales (GACL)" },
-      { phase: "Speak & Practice", duration: "2-3 min", description: "Repeat with tone awareness; ASR scores pronunciation AND tone accuracy", descriptionFr: "Répéter avec attention aux tons ; l'ASR note prononciation ET précision tonale" },
-      { phase: "Apply & Create", duration: "2-3 min", description: "Greet Kwe choosing a language — morning or afternoon, code-switching welcome", descriptionFr: "Salue Kwe dans la langue choisie — matin ou après-midi, alternance bienvenue" },
+      { phase: "Voice Hook", duration: "1 min", description: "Kwe opens with real attested Kom words and announces the greetings ingestion drive", descriptionFr: "Kwe ouvre avec de vrais mots kom attestés et annonce la collecte des salutations" },
+      { phase: "Listen & Learn", duration: "2-3 min", description: "Attested Kom words with noun classes and tone marks (Hyman), tone practice, national-language map", descriptionFr: "Mots kom attestés avec classes nominales et marques de tons (Hyman), pratique tonale, carte des langues nationales" },
+      { phase: "Speak & Practice", duration: "2-3 min", description: "Repeat attested words with tone awareness; ASR scores pronunciation AND tone accuracy", descriptionFr: "Répéter les mots attestés avec attention aux tons ; l'ASR note prononciation ET précision tonale" },
+      { phase: "Apply & Create", duration: "2-3 min", description: "Role-play with Kwe using attested Kom words; code-switching welcome", descriptionFr: "Jeu de rôle avec Kwe à partir des mots kom attestés ; alternance bienvenue" },
       { phase: "Celebrate", duration: "1 min", description: "Culture Keeper badge + mvet string celebration", descriptionFr: "Badge Gardien de la Culture + célébration mvet" },
     ],
     assessment: { criteria: ["Tone accuracy (Grassfields)", "Pronunciation", "Willingness to speak a national language"], methods: ["ASR accuracy score", "Observation checklist"] },
-    native_speaker_review: "validated", // all Grassfields strings from Master Prompt §2.3/§2.4/§7.3 tables
+    native_speaker_review: "pending", // Kom words attested via Hyman (UC Berkeley); greetings pending native-speaker ingestion
     differentiation: ["Tone visualised as rising/falling arrows for hearing support", "Learners from other regions may share greetings in their own national language", "Bayangi speakers: your greetings are being documented (data collection Q2 2025) — Bafut, Oku, Babanki, Mankon and Ngie arrive in Phase 4 of the roadmap"],
-    cultural_notes: "Kom, Lamnso', Bayangi, Bafut, Oku, Babanki, Mankon and Ngie are Grassfields languages. Bayangi (Banyangi) is spoken in Manyu Division, South West Region, and its community is known for traditional dances and masquerade traditions. Tone is phonemically contrastive — in Kom, three tones (high unmarked, falling â, low à) and in Lamnso' vowel length changes meaning (sú “to wash” vs súü “to harvest completely”), exactly as marked in the General Alphabet of Cameroonian Languages (GACL, 1979).",
-    cultural_notesFr: "Le kom, le lamnso', le bayangi, le bafut, l'oku, le babanki, le mankon et le ngie sont des langues des Grassfields. Le bayangi (banyangi) est parlé dans la division de Manyu (Sud-Ouest) ; sa communauté est connue pour ses danses traditionnelles et ses sociétés masquées. Le ton y est distinctif — trois tons en kom (haut non marqué, descendant â, bas à) et, en lamnso', la longueur vocalique change le sens (sú “laver” vs súü “récolter complètement”), comme marqué dans l'Alphabet Général des Langues Camerounaises (AGLC, 1979).",
+    cultural_notes: "Kom, Lamnso\u0027, Bayangi, Bafut, Oku, Babanki, Mankon and Ngie are Grassfields languages; Ewondo is a Bantu (Beti) language of the Centre Region. Bayangi (Banyangi) is spoken in Manyu Division, South West Region. Tone is phonemically contrastive in Kom — three tones (high unmarked, falling â, low à), as attested in Hyman\u0027s Kom paper (UC Berkeley) and marked per the General Alphabet of Cameroonian Languages (GACL, 1979). Greeting formulas are documented WITH native speakers through the platform\u0027s Content Ingestion portal — never invented.",
+    cultural_notesFr: "Le kom, le lamnso\u0027, le bayangi, le bafut, l\u0027oku, le babanki, le mankon et le ngie sont des langues des Grassfields ; l\u0027ewondo est une langue bantoue (beti) de la région du Centre. Le bayangi (banyangi) est parlé dans la division de Manyu (Sud-Ouest). Le ton y est distinctif — trois tons en kom (haut non marqué, descendant â, bas à), comme attesté dans le papier de Hyman (UC Berkeley) et marqué selon l\u0027Alphabet Général des Langues Camerounaises (AGLC, 1979). Les formules de salutation sont documentées AVEC les locuteurs natifs via le portail d\u0027ingestion — jamais inventées.",
   }),
 
   // ================= ARTS — Week 1: Painting materials + NW dance =================
@@ -762,7 +756,7 @@ export const LESSONS: LessonPlan[] = [
         character: "mbi",
         text: "Ngo's mother paints calabashes! Can you name what she needs? Then we dance the North West way!",
         textFr: "La mère de Ngo peint des calebasses ! Peux-tu nommer ce dont elle a besoin ? Ensuite on danse comme au Nord-Ouest !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Say each material after me, then clap the rhythm.", textFr: "Répète chaque matériel après moi, puis tape le rythme." },
       learn_content: {
@@ -831,7 +825,7 @@ export const LESSONS: LessonPlan[] = [
         character: "kong",
         text: "On your marks, get set... GO! Today we run like the athletes of the Mount Cameroon race!",
         textFr: "À vos marques, prêts... PARTEZ ! Aujourd'hui nous courons comme les athlètes de la course du Mont Cameroun !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Listen to the definition, then say it back while you march!", textFr: "Écoute la définition, puis répète-la en marchant !" },
       learn_content: {
@@ -900,7 +894,7 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "You are talking to me through a computer right now! Can you name its parts?",
         textFr: "Tu me parles à travers un ordinateur ! Peux-tu nommer ses parties ?",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Look at the picture, then say the name of each part.", textFr: "Regarde l'image, puis dis le nom de chaque partie." },
       learn_content: {
@@ -975,7 +969,7 @@ export const LESSONS: LessonPlan[] = [
         character: "ngo",
         text: "Grandmother sings while we fold the mats! This song is from her grandmother too. Sing it with me!",
         textFr: "Grand-mère chante en pliant les nattes ! Cette chanson vient de sa grand-mère aussi. Chante avec moi !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Listen to grandma's song, then sing it back.", textFr: "Écoute la chanson de grand-mère, puis chante-la." },
       learn_content: {
@@ -1051,7 +1045,7 @@ export const LESSONS: LessonPlan[] = [
         character: "kwe",
         text: "Time to arrange the shelf! Cups with cups, spoons with spoons — that is a SET!",
         textFr: "Rangons l'étagère ! Les tasses avec les tasses, les cuillères avec les cuillères — voilà un ENSEMBLE !",
-        languages: ["en", "fr", "ewo"],
+        languages: ["en", "fr"],
       },
       instruction: { text: "Answer Kwe's questions with a loud, clear voice.", textFr: "Réponds aux questions de Kwe d'une voix forte et claire." },
       learn_content: {
@@ -1177,8 +1171,8 @@ const VOICE_PRACTICE: Record<string, { character: string; scenarios: string[]; s
   },
   nat_class3_home_w1: {
     character: "ngo",
-    scenarios: ["Greet in Kom: say 'À bwɛ̀'", "Greet in Lamnso': say 'Mbi̶ vǝ̀'", "Answer 'Nà wù dà?' with 'M̀ bɛ̀'"],
-    scenariosFr: ["Salue en kom : dis « À bwɛ̀ »", "Salue en lamnso' : dis « Mbi̶ vǝ̀ »", "Réponds à « Nà wù dà ? » avec « M̀ bɛ̀ »"],
+    scenarios: ["Say the Kom word for child: wáyn", "Say the Kom word for water: muú", "Say the Kom word for dog: bì"],
+    scenariosFr: ["Dis le mot kom pour enfant : wáyn", "Dis le mot kom pour eau : muú", "Dis le mot kom pour chien : bì"],
   },
   art_class3_home_w1: {
     character: "ngo",

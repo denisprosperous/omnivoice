@@ -242,3 +242,33 @@ model ReadingPassage {
 
   @@index([stage])
 }
+
+// ============================================================================
+// TRUSTED CONTENT INGESTION (user directive: "option to ingest trusted data
+// from tutors, parents and educational authorities").
+// Contributors submit words/phrases/greetings/stories WITH a source citation
+// and (for national languages) a native-speaker confirmation. Submissions
+// enter as DRAFT → IN_REVIEW (pedagogic/supervisor check) → ACTIVE (published
+// to the platform) or REJECTED. Only ACTIVE content is displayed to learners.
+// ============================================================================
+model ContentSubmission {
+  id               String   @id @default(cuid())
+  contributorName  String
+  contributorRole  String   @default("tutor") // tutor | parent | authority | other
+  contact          String   @default("")     // optional email/phone
+  lang             String   // language code: bkm | lns | byv | ewo | bfd | oku | bbk | mgo | ngi | <draft code>
+  contentType      String   @default("greeting") // greeting | word | phrase | dialogue | song | story | correction
+  nativeText       String   // the text in the national language
+  translationEn    String   @default("")
+  translationFr    String   @default("")
+  source           String   // required citation (who/where it comes from)
+  nativeSpeakerConfirmed Boolean @default(false) // Directive 9 gate for Grassfields/Ewondo content
+  notes            String   @default("")
+  status           String   @default("DRAFT") // DRAFT | IN_REVIEW | ACTIVE | REJECTED
+  reviewerNote     String   @default("")
+  reviewedAt       DateTime?
+  createdAt        DateTime @default(now())
+
+  @@index([lang])
+  @@index([status])
+}

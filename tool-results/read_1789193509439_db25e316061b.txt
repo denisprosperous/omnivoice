@@ -1,0 +1,503 @@
+   548→          {plan.gamification.mechanics.map((m) => (
+   549→            <StatPill key={m} icon="🎮" label="mechanic" value={m} color="#7C2D12" />
+   550→          ))}
+   551→        </div>
+   552→
+   553→        {/* PHASE 1 — Voice Hook (multilingual per §7.3) — Digital component */}
+   554→        {stage === "digital" && phase === "hook" && (
+   555→          <section aria-label={phaseMeta.hook.label} className="space-y-4">
+   556→            <h1 className="text-xl font-extrabold text-amber-900 sm:text-2xl">
+   557→              {shown(va.learn_content.title, va.learn_content.titleFr)}
+   558→            </h1>
+   559→            {/* Hook language switcher — listen in en/fr/bkm/lns (§7.3 voice hook) */}
+   560→            {hookLanguages.length > 1 && (
+   561→              <div className="flex flex-wrap items-center gap-1.5 rounded-xl border-2 border-lime-200 bg-lime-50/60 p-2">
+   562→                <span className="px-1 text-[11px] font-bold uppercase tracking-wide text-lime-800">🪶 {t("hookLanguage", lang)}:</span>
+   563→                {hookLanguages.map((l) => {
+   564→                  const vl = VOICE_LANGUAGES.find((v) => v.id === l);
+   565→                  return (
+   566→                    <button
+   567→                      key={l}
+   568→                      onClick={() => setHookLang(l)}
+   569→                      aria-pressed={hookLang === l}
+   570→                      className={cn(
+   571→                        "min-h-[32px] rounded-full border-2 px-2.5 text-[11px] font-bold transition-all",
+   572→                        hookLang === l ? "border-lime-700 bg-lime-700 text-white" : "border-lime-300 bg-white text-lime-800 hover:border-lime-500"
+   573→                      )}
+   574→                    >
+   575→                      {vl ? vl.label : l}
+   576→                    </button>
+   577→                  );
+   578→                })}
+   579→              </div>
+   580→            )}
+   581→            {hookIsPlaceholder ? (
+   582→              // v3.0 Directive 9 gate — Bayangi placeholder: documented-by-natives notice,
+   583→              // never synthesized placeholder audio.
+   584→              <div className="rounded-2xl border-2 border-dashed border-lime-400 bg-lime-50/80 p-4" role="status">
+   585→                <p className="text-sm font-extrabold text-lime-900">🪶 Bayangi (Banyangi) — {t("pendingDocumentation", lang)}</p>
+   586→                <p className="mt-1 text-xs leading-relaxed text-lime-800">{hookText}</p>
+   587→                <p className="mt-2 text-[11px] font-semibold text-lime-700">
+   588→                  ⏳ {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+   589→                </p>
+   590→              </div>
+   591→            ) : (
+   592→              <CharacterBubble
+   593→                characterId={va.hook.character}
+   594→                text={hookText}
+   595→                textFr={hookText}
+   596→                lang={hookLang === "fr" ? "fr" : "en"}
+   597→                speakLang={hookLang}
+   598→                onSpeakDone={() => setHookDone(true)}
+   599→              />
+   600→            )}
+   601→            {isGrassfields(hookLang) && (
+   602→              <p className="rounded-xl bg-lime-50 px-3 py-2 text-[11px] font-semibold text-lime-900">
+   603→                🪶 GACL tone-marked {VOICE_LANGUAGES.find((v) => v.id === hookLang)?.label || hookLang} · {t("codeSwitch", lang)}
+   604→                {hookIsPlaceholder && <span className="ml-1">· ⏳ {t("pendingDocumentation", lang)}</span>}
+   605→                {!hookIsPlaceholder && plan.native_speaker_review === "validated" && <span className="ml-1">· ✅ {t("nativeReview", lang)}</span>}
+   606→              </p>
+   607→            )}
+   608→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4">
+   609→              <h3 className="mb-1 text-sm font-bold text-amber-900">📖 {lang === "fr" ? "Histoire du thème" : "Theme story"}</h3>
+   610→              <p className="text-sm leading-relaxed text-amber-800">
+   611→                {shown(plan.cultural_notes, plan.cultural_notesFr)}
+   612→              </p>
+   613→            </div>
+   614→            <Button
+   615→              onClick={() => { playXp(); setPhase("listen"); }}
+   616→              className="h-14 w-full bg-amber-600 text-lg font-extrabold hover:bg-amber-700"
+   617→              size="lg"
+   618→            >
+   619→              {shown("Begin the quest →", "Commencer la quête →")}
+   620→            </Button>
+   621→          </section>
+   622→        )}
+   623→
+   624→        {/* PHASE 2 — Listen & Learn */}
+   625→        {stage === "digital" && phase === "listen" && (
+   626→          <section aria-label={phaseMeta.listen.label} className="space-y-4">
+   627→            <CharacterBubble
+   628→              characterId={va.hook.character}
+   629→              text={va.instruction.text}
+   630→              textFr={va.instruction.textFr}
+   631→              lang={lang === "ewo" ? "en" : lang}
+   632→              autoSpeak={false}
+   633→              compact
+   634→            />
+   635→            <div className="rounded-2xl border-2 border-lime-200 bg-gradient-to-br from-lime-50 to-white p-4 shadow-sm">
+   636→              <h3 className="mb-3 text-lg font-extrabold text-lime-900">
+   637→                {shown(va.learn_content.title, va.learn_content.titleFr)}
+   638→              </h3>
+   639→              <ul className="space-y-2.5">
+   640→                {va.learn_content.lines.map((line, i) => (
+   641→                  <li key={i} className="flex items-start gap-2 rounded-xl bg-white p-3 shadow-sm">
+   642→                    <button
+   643→                      onClick={() => void speak(lang === "fr" ? va.learn_content.linesFr[i] || line : line, va.hook.character, lang === "fr" ? "fr" : "en")}
+   644→                      className="mt-0.5 shrink-0 rounded-full bg-lime-100 p-1.5 text-lime-700 hover:bg-lime-200"
+   645→                      aria-label="Listen to this line"
+   646→                    >
+   647→                      🔊
+   648→                    </button>
+   649→                    <span className="text-sm leading-relaxed text-amber-900">
+   650→                      {lang === "fr" ? va.learn_content.linesFr[i] || line : line}
+   651→                    </span>
+   652→                  </li>
+   653→                ))}
+   654→              </ul>
+   655→            </div>
+   656→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 text-xs text-amber-700">
+   657→              🖼️ <b>{lang === "fr" ? "Visuel" : "Visual"}</b>: {va.learn_content.visual} · 🎵 <b>BGM</b>: {va.background_music}
+   658→            </div>
+   659→            <Button onClick={() => { playXp(); setPhase("speak"); }} className="h-14 w-full bg-lime-700 text-lg font-extrabold hover:bg-lime-800" size="lg">
+   660→              {shown("I am ready to speak →", "Je suis prêt à parler →")}
+   661→            </Button>
+   662→          </section>
+   663→        )}
+   664→
+   665→        {/* PHASE 3 — Speak & Practice (tone-aware ASR per §6.5) */}
+   666→        {stage === "digital" && phase === "speak" && activePrompt && (
+   667→          <section aria-label={phaseMeta.speak.label} className="space-y-4">
+   668→            <div className="rounded-2xl border-2 border-rose-200 bg-gradient-to-br from-rose-50 to-white p-5 text-center shadow-sm">
+   669→              <div className="mb-1 text-xs font-bold uppercase tracking-wide text-rose-500">
+   670→                {lang === "fr" ? `Invite ${promptIdx + 1} / ${prompts.length}` : `Prompt ${promptIdx + 1} / ${prompts.length}`}
+   671→                {activePrompt.isGf && <span className="ml-1 rounded-full bg-lime-100 px-2 py-0.5 text-[10px] text-lime-800">🪶 {VOICE_LANGUAGES.find((v) => v.id === voiceLang)?.label || voiceLang}</span>}
+   672→              </div>
+   673→              <p className="mb-1 text-xl font-extrabold text-rose-900">
+   674→                {activePrompt.prompt}
+   675→              </p>
+   676→              <p className="text-sm font-semibold text-rose-600/80">
+   677→                {lang === "fr" ? "Objectif" : "Target"}: “{activePrompt.target}”
+   678→              </p>
+   679→
+   680→              {isPlaceholderPhrase(activePrompt.prompt) ? (
+   681→                // v3.0 Directive 9 gate — Bayangi practice placeholder: no synthetic
+   682→                // evaluation of undocumented phrases; learner is routed to an attested language.
+   683→                <div className="my-5 rounded-xl border-2 border-dashed border-lime-400 bg-lime-50/80 p-4 text-left" role="status">
+   684→                  <p className="text-sm font-bold text-lime-900">⏳ {t("pendingDocumentation", lang)}</p>
+   685→                  <p className="mt-1 text-xs leading-relaxed text-lime-800">{activePrompt.prompt}</p>
+   686→                  <p className="mt-2 text-[11px] font-semibold text-lime-700">
+   687→                    📋 {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+   688→                  </p>
+   689→                  <div className="mt-3 flex justify-end">
+   690→                    <Button size="sm" className="h-9 bg-lime-700 text-white hover:bg-lime-800" onClick={nextPrompt}>
+   691→                      {promptIdx < prompts.length - 1 ? `${t("next", lang)} →` : `${t("apply", lang)} →`}
+   692→                    </Button>
+   693→                  </div>
+   694→                </div>
+   695→              ) : (
+   696→                <div className="my-5 flex flex-col items-center gap-2">
+   697→                  <MicButton
+   698→                    recording={recording}
+   699→                    disabled={evaluating}
+   700→                    onDown={startRecording}
+   701→                    onUp={stopRecording}
+   702→                    label={recording ? t("stop", lang) : t("holdToTalk", lang)}
+   703→                  />
+   704→                  <span className="text-xs font-semibold text-rose-500">
+   705→                    {recording ? t("speakNow", lang) : evaluating ? t("listening", lang) : t("holdToTalk", lang)}
+   706→                  </span>
+   707→                </div>
+   708→              )}
+   709→
+   710→              {result && (
+   711→                <div
+   712→                  className={cn(
+   713→                    "mx-auto max-w-md rounded-xl border-2 p-3 text-left text-sm",
+   714→                    result.verdict === "correct" ? "border-lime-300 bg-lime-50 text-lime-900" : "border-amber-300 bg-amber-50 text-amber-900"
+   715→                  )}
+   716→                  role="status"
+   717→                >
+   718→                  <div className="mb-1 flex items-center justify-between">
+   719→                    <b>{result.verdict === "correct" ? `✨ ${t("correct", lang)}` : result.verdict === "close" ? `👍 ${t("wellDone", lang)}` : `🥁 ${t("tryAgain", lang)}`}</b>
+   720→                    <span className="rounded-full bg-white px-2 py-0.5 text-xs font-bold">{result.accuracy}%</span>
+   721→                  </div>
+   722→                  <p>{result.message}</p>
+   723→                  {result.toneAware && typeof result.toneAccuracy === "number" && (
+   724→                    <p className="mt-1 text-xs font-bold text-lime-800">
+   725→                      🪶 {t("toneAccuracy", lang)}: {result.toneAccuracy}%
+   726→                    </p>
+   727→                  )}
+   728→                  <p className="mt-1 text-xs opacity-70">
+   729→                    ASR: “{result.transcription || "—"}” → {lang === "fr" ? "cible" : "target"}: “{activePrompt.target}”
+   730→                  </p>
+   731→                  <div className="mt-2 flex gap-2">
+   732→                    <Button size="sm" variant="outline" className="h-9 border-rose-300 text-rose-700" onClick={() => setResult(null)}>
+   733→                      🔄 {t("tryAgain", lang)}
+   734→                    </Button>
+   735→                    <Button size="sm" className="h-9 bg-lime-700 text-white hover:bg-lime-800" onClick={nextPrompt}>
+   736→                      {promptIdx < prompts.length - 1 ? `${t("next", lang)} →` : `${t("apply", lang)} →`}
+   737→                    </Button>
+   738→                  </div>
+   739→                </div>
+   740→              )}
+   741→            </div>
+   742→            <div className="text-center text-2xl" aria-hidden aria-label={`${stars} stars`}>
+   743→              {"⭐".repeat(Math.min(stars, 12)) || "🎤"}
+   744→            </div>
+   745→          </section>
+   746→        )}
+   747→
+   748→        {/* PHASE 4 — Apply & Create (STS role-play) */}
+   749→        {stage === "digital" && phase === "apply" && (
+   750→          <section aria-label={phaseMeta.apply.label} className="space-y-4">
+   751→            {plan.sts_scenario ? (
+   752→              <div className="rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-4 shadow-sm">
+   753→                <h3 className="mb-1 text-lg font-extrabold text-purple-900">
+   754→                  🎭 {t("speakingQuest", lang)}
+   755→                </h3>
+   756→                <p className="mb-3 text-sm text-purple-800">
+   757→                  {shown(plan.sts_scenario.description, plan.sts_scenario.descriptionFr)}
+   758→                </p>
+   759→                {!stsOpened ? (
+   760→                  <Button onClick={openSts} className="h-13 w-full bg-purple-700 text-base font-extrabold hover:bg-purple-800" size="lg">
+   761→                    ▶ {t("greetKwe", lang)} {getCharacter(plan.sts_scenario.character).name} {getCharacter(plan.sts_scenario.character).emoji}
+   762→                  </Button>
+   763→                ) : (
+   764→                  <>
+   765→                    <div className="mb-3 max-h-64 space-y-2 overflow-y-auto rounded-xl bg-white p-3" role="log" aria-live="polite">
+   766→                      {stsHistory.map((h, i) => (
+   767→                        <div key={i} className={cn("flex", h.role === "user" ? "justify-end" : "justify-start")}>
+   768→                          <div
+   769→                            className={cn(
+   770→                              "max-w-[85%] rounded-2xl px-3 py-2 text-sm",
+   771→                              h.role === "user" ? "bg-purple-600 text-white" : "bg-amber-100 text-amber-900"
+   772→                            )}
+   773→                          >
+   774→                            {h.content}
+   775→                          </div>
+   776→                        </div>
+   777→                      ))}
+   778→                      {stsBusy && <Spinner label={t("listening", lang)} />}
+   779→                    </div>
+   780→                    <div className="flex flex-col items-center gap-2">
+   781→                      <MicButton
+   782→                        recording={recording}
+   783→                        disabled={stsBusy}
+   784→                        onDown={stsTurn}
+   785→                        onUp={stsStop}
+   786→                        label={recording ? t("stop", lang) : t("holdToTalk", lang)}
+   787→                      />
+   788→                      <span className="text-xs font-semibold text-purple-500">
+   789→                        {recording ? t("speakNow", lang) : stsBusy ? t("listening", lang) : t("holdToTalk", lang)}
+   790→                      </span>
+   791→                    </div>
+   792→                    <Button variant="outline" className="mt-3 w-full border-purple-300 text-purple-800" onClick={() => { playXp(); setPhase("celebrate"); }}>
+   793→                      {t("complete", lang)} → 🎉
+   794→                    </Button>
+   795→                  </>
+   796→                )}
+   797→              </div>
+   798→            ) : (
+   799→              <div className="rounded-2xl border-2 border-purple-200 bg-white p-5 text-center">
+   800→                {voiceLang === "byv" && plan.gamification.voice_challenge.descriptionByv && isPlaceholderPhrase(plan.gamification.voice_challenge.descriptionByv) ? (
+   801→                  // v3.0 Directive 9 gate — Bayangi voice challenge pending documentation
+   802→                  <div role="status">
+   803→                    <p className="mb-3 text-sm font-extrabold text-purple-900">⏳ {t("pendingDocumentation", lang)}</p>
+   804→                    <p className="mb-3 text-sm leading-relaxed text-purple-800">{plan.gamification.voice_challenge.descriptionByv}</p>
+   805→                    <p className="mb-4 text-[11px] font-semibold text-purple-600">
+   806→                      📋 {t("dataCollection", lang)}: 500h · SIL Cameroon / Local Community · Q2 2025
+   807→                    </p>
+   808→                    <Button onClick={() => { playXp(); setPhase("celebrate"); }} className="h-12 w-full bg-purple-700 text-base font-extrabold hover:bg-purple-800">
+   809→                      {t("complete", lang)} →
+   810→                    </Button>
+   811→                  </div>
+   812→                ) : (
+   813→                  <>
+   814→                    <p className="mb-3 text-sm text-purple-800">
+   815→                      {lang === "fr"
+   816→                        ? "Défi vocal : enregistre-toi en appliquant ce que tu as appris !"
+   817→                        : plan.gamification.voice_challenge.description}
+   818→                    </p>
+   819→                    <p className="mb-4 text-lg font-extrabold text-purple-900">
+   820→                      🎙️ {shown(plan.gamification.voice_challenge.description, plan.gamification.voice_challenge.descriptionFr)}
+   821→                    </p>
+   822→                    <VoiceChallengeRecorder onDone={() => { playXp(); setPhase("celebrate"); }} lang={lang} />
+   823→                  </>
+   824→                )}
+   825→              </div>
+   826→            )}
+   827→          </section>
+   828→        )}
+   829→
+   830→        {/* PHASE 5 — Celebrate */}
+   831→        {stage === "digital" && phase === "celebrate" && !awarded && (
+   832→          <section aria-label={phaseMeta.celebrate.label} className="space-y-4 text-center">
+   833→            <div className="text-6xl" aria-hidden>🎉</div>
+   834→            <CharacterBubble
+   835→              characterId={va.celebration.character}
+   836→              text={va.celebration.text}
+   837→              textFr={va.celebration.textFr}
+   838→              lang={lang === "ewo" ? "en" : lang}
+   839→              autoSpeak={false}
+   840→            />
+   841→            <Button
+   842→              onClick={async () => { playCelebration(); await finishLesson(); }}
+   843→              className="h-16 w-full bg-gradient-to-r from-amber-600 to-orange-600 text-xl font-extrabold hover:from-amber-700 hover:to-orange-700"
+   844→              size="lg"
+   845→            >
+   846→              🏅 {lang === "fr" ? "Réclamer ma récompense" : "Claim my reward"}
+   847→            </Button>
+   848→          </section>
+   849→        )}
+   850→
+   851→        {stage === "digital" && phase === "celebrate" && awarded && (
+   852→          <section className="space-y-4 text-center" aria-live="polite">
+   853→            <div className="animate-bounce text-7xl" aria-hidden>{awarded.badge ? "🏅" : "⭐"}</div>
+   854→            <h2 className="text-2xl font-extrabold text-amber-900">
+   855→              +{awarded.xp} XP {awarded.badge && `· ${lang === "fr" ? "Badge débloqué" : "Badge unlocked"}: ${awarded.badge}`}
+   856→            </h2>
+   857→            {awarded.levelUp && (
+   858→              <p className="text-lg font-bold text-orange-700">
+   859→                🚀 {lang === "fr" ? "Niveau" : "Level"} {awarded.levelUp.level} — {awarded.levelUp.title}!
+   860→              </p>
+   861→            )}
+   862→            <div className="rounded-2xl border-2 border-amber-200 bg-white p-4 text-left">
+   863→              <h3 className="mb-2 text-sm font-bold text-amber-900">📊 {lang === "fr" ? "Évaluation" : "Assessment"}</h3>
+   864→              <ul className="space-y-1 text-xs text-amber-800">
+   865→                {plan.assessment.criteria.map((c) => <li key={c}>✓ {c}</li>)}
+   866→                <li className="pt-1 font-bold">
+   867→                  {lang === "fr" ? "Score ASR moyen" : "Average ASR score"}: {(() => { const ok = scores.filter(Number.isFinite); return ok.length ? Math.round(ok.reduce((a, b) => a + b, 0) / ok.length) : "—"; })()}%
+   868→                </li>
+   869→              </ul>
+   870→              <p className="mt-2 text-[11px] text-amber-600">
+   871→                💾 {lang === "fr" ? "Téléchargeable hors ligne" : "Offline downloadable"} · ~{plan.offline_capability.size_mb} MB · {plan.offline_capability.components.join(", ")}
+   872→              </p>
+   873→              {plan.offline_capability.grassfields_language_packs && (
+   874→                <p className="mt-1 text-[11px] font-semibold text-lime-800">
+   875→                  🪶 {t("languagePacks", lang)}: {plan.offline_capability.grassfields_language_packs.bkm} · {plan.offline_capability.grassfields_language_packs.lns}
+   876→                  {plan.offline_capability.grassfields_language_packs.byv && <> · {plan.offline_capability.grassfields_language_packs.byv}</>}
+   877→                </p>
+   878→              )}
+   879→            </div>
+   880→            {/* v4.0 §4.1 — continue to the DIY Practical component */}
+   881→            {extended?.diy && (
+   882→              <Button
+   883→                onClick={() => { playXp(); trackEvent("page_view", { view: "lesson_diy", lessonId: plan.lesson_id }); setStage("diy"); }}
+   884→                className="h-14 w-full bg-orange-600 text-lg font-extrabold hover:bg-orange-700"
+   885→                size="lg"
+   886→              >
+   887→                🔨 {t("startDiy", lang)} → +{extended.diy.gamification.xp_points} XP
+   888→              </Button>
+   889→            )}
+   890→            <div className="flex gap-2">
+   891→              <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
+   892→                🔄 {lang === "fr" ? "Rejouer" : "Replay"}
+   893→              </Button>
+   894→              <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
+   895→                🗺️ {t("dashboard", lang)}
+   896→              </Button>
+   897→            </div>
+   898→          </section>
+   899→        )}
+   900→
+   901→        {/* ---- v4.0 COMPONENT 2 — DIY Practical (§III / §3.5 DIYLessonCard) ---- */}
+   902→        {stage === "diy" && extended?.diy && (
+   903→          <section aria-label={t("diyPractical", lang)} className="space-y-4">
+   904→            <p className="rounded-2xl border-2 border-orange-200 bg-orange-50/70 p-3 text-center text-sm font-bold text-orange-900">
+   905→              🔨 {t("diyIntro", lang)}
+   906→            </p>
+   907→            {diyAwarded && (
+   908→              <div className="rounded-2xl border-2 border-lime-300 bg-lime-50/80 p-3 text-center" role="status">
+   909→                <p className="text-sm font-extrabold text-lime-900">
+   910→                  +{diyAwarded.xp} XP {diyAwarded.badge && `· ${lang === "fr" ? "Badge débloqué" : "Badge unlocked"}: ${diyAwarded.badge}`}
+   911→                </p>
+   912→              </div>
+   913→            )}
+   914→            <DIYLessonCard lesson={extended.diy} lang={lang} onComplete={completeDiy} />
+   915→          </section>
+   916→        )}
+   917→
+   918→        {/* ---- v4.0 COMPONENT 3 — Voice Practice (§4.2 speech_to_speech) ---- */}
+   919→        {stage === "voice_practice" && (
+   920→          <section aria-label={t("voicePractice", lang)} className="space-y-4">
+   921→            <div className="rounded-2xl border-2 border-teal-300 bg-gradient-to-br from-teal-50 to-white p-4 shadow-sm">
+   922→              <h3 className="mb-1 text-lg font-extrabold text-teal-900">🎙️ {t("voicePractice", lang)}</h3>
+   923→              <p className="mb-3 text-xs font-semibold text-teal-700">
+   924→                {lang === "fr"
+   925→                  ? "Conversation speech-to-speech avec ton personnage — prononciation, précision tonale et fluidité évaluées."
+   926→                  : "Speech-to-speech conversation with your character — pronunciation, tone accuracy and fluency evaluated."}
+   927→              </p>
+   928→              {/* §4.2 evaluation block */}
+   929→              <div className="mb-3 flex flex-wrap gap-1.5">
+   930→                {["pronunciation", "tone_accuracy", "fluency"].map((k) => (
+   931→                  <span key={k} className="rounded-full bg-teal-100 px-2 py-0.5 text-[10px] font-bold text-teal-800">
+   932→                    ✓ {k.replace("_", " ")} {t("evaluationOn", lang).toLowerCase()}
+   933→                  </span>
+   934→                ))}
+   935→              </div>
+   936→              {/* §4.2 scenarios — progressive difficulty */}
+   937→              <p className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-teal-600">{t("practiceScenarios", lang)}</p>
+   938→              <div className="mb-3 flex flex-wrap gap-1.5">
+   939→                {(extended?.components.voice_practice.scenarios || [plan.sts_scenario?.description || "Talk with your character"]).map((s, i) => {
+   940→                  const done = vpDone.includes(i);
+   941→                  return (
+   942→                    <button
+   943→                      key={i}
+   944→                      onClick={() => { if (!stsBusy) { setVpScenario(i); setStsHistory([]); } }}
+   945→                      aria-pressed={vpScenario === i}
+   946→                      className={cn(
+   947→                        "min-h-[32px] rounded-full border-2 px-2.5 text-[11px] font-bold transition-all",
+   948→                        done
+   949→                          ? "border-lime-500 bg-lime-600 text-white"
+   950→                          : vpScenario === i
+   951→                          ? "border-teal-600 bg-teal-600 text-white"
+   952→                          : "border-teal-200 bg-white text-teal-800 hover:border-teal-400"
+   953→                      )}
+   954→                    >
+   955→                      {done ? "✓ " : `${i + 1}. `}{lang === "fr" ? extended?.components.voice_practice.scenariosFr[i] || s : s}
+   956→                    </button>
+   957→                  );
+   958→                })}
+   959→              </div>
+   960→
+   961→              {vpAwarded ? (
+   962→                // §4.2 gamification — total 100 XP, badges trio, streak bonus 20
+   963→                <div className="space-y-3 text-center" aria-live="polite">
+   964→                  <div className="animate-bounce text-6xl" aria-hidden>🏆</div>
+   965→                  <h4 className="text-xl font-extrabold text-teal-900">🏆 {t("extendedComplete", lang)}</h4>
+   966→                  <div className="rounded-2xl border-2 border-lime-300 bg-lime-50/80 p-4 text-left">
+   967→                    <p className="mb-2 text-sm font-extrabold text-lime-900">
+   968→                      {t("totalXp", lang)}: 100 · {t("streakBonus", lang)}: +{vpAwarded.bonus} XP
+   969→                    </p>
+   970→                    <p className="mb-1 text-xs font-bold text-lime-800">{lang === "fr" ? "Badges" : "Badges"}:</p>
+   971→                    <div className="flex flex-wrap gap-1.5">
+   972→                      {vpAwarded.badges.map((b) => (
+   973→                        <span key={b} className="rounded-full bg-amber-200 px-2.5 py-1 text-[11px] font-extrabold text-amber-900">🏅 {b}</span>
+   974→                      ))}
+   975→                    </div>
+   976→                  </div>
+   977→                  <div className="flex gap-2">
+   978→                    <Button variant="outline" className="h-12 flex-1 border-amber-300 text-amber-800" onClick={() => { setPhase("hook"); setHookDone(false); setPromptIdx(0); setResult(null); setStsHistory([]); setStsOpened(false); setAwarded(null); setStars(0); setScores([]); setStage("digital"); setDiyAwarded(null); setVpDone([]); setVpScenario(0); setVpAwarded(null); }}>
+   979→                      🔄 {lang === "fr" ? "Rejouer" : "Replay"}
+   980→                    </Button>
+   981→                    <Button className="h-12 flex-1 bg-amber-600 font-extrabold hover:bg-amber-700" onClick={() => { playLevelUp(); setView("learner"); }}>
+   982→                      🗺️ {t("dashboard", lang)}
+   983→                    </Button>
+   984→                  </div>
+   985→                </div>
+   986→              ) : (
+   987→                <>
+   988→                  <div className="mb-3 max-h-56 space-y-2 overflow-y-auto rounded-xl bg-white p-3" role="log" aria-live="polite">
+   989→                    {stsHistory.length === 0 && (
+   990→                      <p className="text-center text-xs font-semibold text-teal-600">
+   991→                        🎯 {vpScenarioText(vpScenario)}
+   992→                      </p>
+   993→                    )}
+   994→                    {stsHistory.map((h, i) => (
+   995→                      <div key={i} className={cn("flex", h.role === "user" ? "justify-end" : "justify-start")}>
+   996→                        <div className={cn("max-w-[85%] rounded-2xl px-3 py-2 text-sm", h.role === "user" ? "bg-teal-600 text-white" : "bg-amber-100 text-amber-900")}>
+   997→                          {h.content}
+   998→                        </div>
+   999→                      </div>
+  1000→                    ))}
+  1001→                    {stsBusy && <Spinner label={t("listening", lang)} />}
+  1002→                  </div>
+  1003→                  <div className="flex flex-col items-center gap-2">
+  1004→                    <MicButton recording={recording} disabled={stsBusy} onDown={vpStart} onUp={vpStop} label={recording ? t("stop", lang) : t("holdToTalk", lang)} />
+  1005→                    <span className="text-xs font-semibold text-teal-600">
+  1006→                      {recording ? t("speakNow", lang) : stsBusy ? t("listening", lang) : t("holdToTalk", lang)}
+  1007→                    </span>
+  1008→                  </div>
+  1009→                </>
+  1010→              )}
+  1011→            </div>
+  1012→          </section>
+  1013→        )}
+  1014→      </div>
+  1015→    </main>
+  1016→  );
+  1017→}
+  1018→
+  1019→/** Standalone voice challenge recorder (for lessons without STS scenario) */
+  1020→function VoiceChallengeRecorder({ onDone, lang }: { onDone: () => void; lang: Lang }) {
+  1021→  const [recording, setRecording] = React.useState(false);
+  1022→  const [saved, setSaved] = React.useState(false);
+  1023→  const recRef = React.useRef<WavRecorder | null>(null);
+  1024→
+  1025→  async function down() {
+  1026→    recRef.current = new WavRecorder();
+  1027→    try {
+  1028→      await recRef.current.start();
+  1029→      setRecording(true);
+  1030→    } catch { /* mic unavailable */ }
+  1031→  }
+  1032→  function up() {
+  1033→    if (!recRef.current) return;
+  1034→    setRecording(false);
+  1035→    recRef.current.stop(); // demo capture — human-in-the-loop portfolio piece
+  1036→    setSaved(true);
+  1037→    playBadge();
+  1038→  }
+  1039→  return (
+  1040→    <div className="flex flex-col items-center gap-3">
+  1041→      <MicButton recording={recording} onDown={down} onUp={up} label={t("record", lang)} />
+  1042→      {saved && (
+  1043→        <Button className="h-12 bg-lime-700 px-8 font-extrabold hover:bg-lime-800" onClick={onDone}>
+  1044→          ✓ {t("complete", lang)}
+  1045→        </Button>
+  1046→      )}
+  1047→    </div>
+  1048→  );
+  1049→}
+  1050→

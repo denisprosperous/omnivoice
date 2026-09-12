@@ -20,6 +20,7 @@ const SUBJECT_ICONS: Record<string, LucideIcon> = {
 interface LessonCard {
   id: string; subjectId: string; subTheme: string; week: number; month: number;
   titleEn: string; titleFr: string; cefr: string; xp: number; badgeCode: string;
+  iltId: string;
   mechanics: string[]; practiceCount: number;
 }
 interface Subject { id: string; nameEn: string; nameFr: string; domain: string; weighting: number; color: string; icon: string }
@@ -78,12 +79,19 @@ export function LearnerDashboard() {
   }, [learner, lang]);
 
   const activeIltData = ilts.find((i) => i.id === activeIlt) || ilts[0];
-  const iltLessons = lessons.filter((l) => l.month === 1); // Month 1 complete (stipulated MVP scope)
+  // v4.2 fix — ILT chips now actually FILTER the quest board (they previously
+  // only swapped the story text, which read as broken buttons). Month 1 is the
+  // stipulated MVP scope; lessons are matched to the selected ILT first and
+  // fall back to the whole month when an ILT has no built lessons yet.
+  const monthLessons = lessons.filter((l) => l.month === 1);
+  const iltLessons = monthLessons.filter((l) => l.iltId === (activeIltData?.id || activeIlt));
+  const effectiveLessons = iltLessons.length > 0 ? iltLessons : monthLessons;
+  const iltHasLessons = iltLessons.length > 0;
   const grouped = React.useMemo(() => {
     const map: Record<string, LessonCard[]> = {};
-    for (const l of iltLessons) (map[l.subjectId] = map[l.subjectId] || []).push(l);
+    for (const l of effectiveLessons) (map[l.subjectId] = map[l.subjectId] || []).push(l);
     return map;
-  }, [iltLessons]);
+  }, [effectiveLessons]);
 
   if (!learner) return null;
 
@@ -153,6 +161,13 @@ export function LearnerDashboard() {
             🛠️ {t("projects", lang)}
           </Button>
         </div>
+        {!iltHasLessons && (
+          <p className="mb-3 rounded-xl bg-amber-50 p-2.5 text-xs font-semibold text-amber-800" role="status">
+            {lang === "fr"
+              ? `Le thème « ${activeIltData?.nameFr || ""} » n'a pas encore de leçons construites — voici toutes les leçons du Mois 1. Ton enseignant peut en générer via le Générateur de Leçons.`
+              : `The “${activeIltData?.nameEn || ""}” theme has no built lessons yet — showing all Month-1 lessons. Your teacher can generate more via the Lesson Plan Generator.`}
+          </p>
+        )}
 
         {loading ? (
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
