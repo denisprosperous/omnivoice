@@ -199,3 +199,23 @@ Stage Summary:
 - Voice selection is live: recorded native narrator + community slots + Kokoro EN/FR voices, Directive-9 enforced in UI and API.
 - kom_training_corpus/ ingested judiciously; 45 agent proposals parked in the moderation queue; numbers corrections live in the lexicon.
 - Push to GitHub PENDING credentials: no remote configured and no token/SSH in the sandbox. Commit created locally; to publish: git remote add origin git@github.com:<user>/omnivoice.git && git push -u origin main (or provide an HTTPS token).
+
+---
+Task ID: v4.4-github-push
+Agent: Super Z (main agent)
+Task: Push OMNIVOICE to git@github.com:denisprosperous//omnivoice.git (user command: git remote add origin ... && git push -u origin main).
+
+Work Log:
+- Committed pending runtime state first: 3a881c3 "v4.4 runtime state: ingested Kom scripture + voice registry in SQLite" (db/custom.db).
+- NORMALIZED the user-supplied URL: double slash "denisprosperous//omnivoice.git" would be rejected by GitHub; remote set to git@github.com:denisprosperous/omnivoice.git.
+- Repo probe via HTTPS ls-remote: exit 0, zero refs -> repository exists on GitHub and is EMPTY; branch main will be the first push.
+- Sandbox constraint: no openssh binary and no root (apt lock denied), no gh CLI, no tokens, no ~/.ssh. SSH keypair generated with python cryptography in OpenSSH format (~/.ssh/id_ed25519, ed25519, passphrase empty) via scripts/gen_ssh_key.py.
+- Built pure-Python SSH transport scripts/git_ssh_paramiko.py (paramiko 5.0.0, pip-installed) as a GIT_SSH shim: parses git's host/args, connects with the sandbox key, execs git-upload-pack/git-receive-pack, pumps stdin/stdout/stderr, returns remote exit status.
+- Push attempt through the shim: transport reached github.com:22 and got a clean paramiko.AuthenticationException -> AUTH FAILED = only the public key registration is missing; everything else (remote, commits, transport) is ready.
+- Verified push payload: .git 54MB; largest tracked files are the 28 normalized Matthew audio chapters (public/audio/bkm/matthew/mat_NN_kom_24k.mp3, ~36MB total) + curriculum PDFs — the real Kom audio ships with the repo as intended.
+- PUBLIC KEY for the user to register: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK3pM86ejb3lUpN/vbr+O+u8O8a4eoXMK2IFj9TH3I1y omnivoice-sandbox
+- Alternative offered to user: paste a GitHub PAT (contents read/write) for an instant HTTPS push (git+libcurl needs no ssh binary).
+
+Stage Summary:
+- Push is ONE user action away: add the sandbox public key at https://github.com/denisprosperous/omnivoice/settings/keys/new with "Allow write access" ticked (deploy keys are read-only by default), then I re-run GIT_SSH=scripts/git_ssh_paramiko.py git push -u origin main. Or supply a PAT for the HTTPS path.
+- All v4.4 deliverables are committed locally on main: Kom Audio Bible (28 chapters, 1,067 verses, NIV parallel, 186 min native audio), voice/speaker selection (VoiceRegistry + VoiceSelect, Directive-9 enforced), kom_training_corpus ingestion, 45 proposals in moderation queue, UI fixes + trusted-sources purge from the previous batch.
