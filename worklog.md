@@ -235,3 +235,28 @@ Work Log:
 Stage Summary:
 - OMNIVOICE is live on GitHub: https://github.com/denisprosperous/omnivoice (branch main).
 - For future pushes: same inline-helper pattern with the classic token (no ssh binary in sandbox; HTTPS+PAT is the reliable path; paramiko GIT_SSH shim also available if a write-enabled deploy key is registered).
+
+---
+Task ID: v4.4-documentation
+Agent: Super Z (main agent)
+Task: Write an elaborate README + full documentation suite following best practices; commit and push to GitHub.
+
+Work Log:
+- Ground-truth pass: verified package.json scripts/deps, 23 API route signatures (methods per route), 18 Prisma models, 9-language registry matrix (src/lib/data/grassfields.ts), voice registry (7 voices), KomToneEngine exports, corpus layout, seed scripts, audio inventory, .env/next.config.
+- FRESH SCREENSHOTS (docs/images/): captured current build via agent-browser at 1440x900 — landing, navigator-kom, audio-bible (station + NATIVE RECORDING voice selector), audio-bible-chapter (Matthew 1 Kom verses + NIV + player), voice-picker (Profile Directive-9 groups), corpus-kb (16-stage course + manifest). Old scripts/*.png screenshots were PRE-PURGE (showed removed invented greetings) — deliberately not used.
+- README.md: badges, copyright callout, screenshot gallery, TOC, Why OmniVoice (3-front problem statement), feature highlights (Audio Bible / voice selection / curriculum engine / KomToneEngine / ingestion / corpus / registry), 9-language status table, Audio Bible spec table, voice registry table with Directive-9 status, content-integrity section (trusted-source whitelist + purge history), mermaid architecture diagram + 4 request flows, tech stack, project tree, quickstart (clone→seed→dev), npm scripts table, API overview, docs index, QA protocol, versioned roadmap (v4.0-v4.4 delivered), contributing rules, attribution/license.
+- docs/ARCHITECTURE.md: layer map (ASCII), 18-model data-model table, 3-store state strategy, 4 key request flows (pronunciation/STS/scripture/ingestion), KomToneEngine internals (TBUs, HTS, LTS, 40/60 scoring), speech-stack policy table, offline strategy, 6 data-integrity safeguards.
+- docs/API.md: full reference — every route with methods, params, payloads, response shapes; Directive-9 gate behavior (422 recordedOnly); ingestion schema incl. mandatory source + nativeSpeakerConfirmed; scripture copyright block.
+- docs/CURRICULUM.md: official alignment (2018 Level I, Littoral ILP Level II, ISCED 0-3, GACL 1979, CBA), stage ladder, ILT/domain weighting 60/5/20/5/10, 6.3 lesson-plan JSON format, 5-phase flow, gamification (31 badges, 23 skill nodes), DIY bundle model (Digital 5-10min + DIY 15-30min + Voice Practice 5-10min), PBL, CBA assessment, National Languages & Culture subject.
+- docs/INGESTION.md: contributor roles, 8 content types, Golden Rule (source or silence), step-by-step submission, DRAFT->IN_REVIEW->ACTIVE|REJECTED workflow, 5 quality gates, Directive 9 voice recordings, PR path, moderator handbook.
+- docs/CORPUS.md: design principles, full collection map, populated collections (numbers incl. 500/900 corrections, 17-stage pedagogy, 45 pending synthesis, 28-entry real-audio index, 29 phoneme slots), Bible.is harvest->normalize->ingest pipeline diagram, conflicts log, agent expansion protocol, access channels.
+- docs/ATTRIBUTION.md: third-party copyright table (Bible Society of Cameroon 2004, FCBH 2007, Biblica NIV), use posture + removal path, linguistic whitelist (Hyman, SIL, Kom NT, OLAC/Wayback, GACL), community sources, software licenses.
+- CONTRIBUTING.md: code PR checklist (lint+tsc+desktop/mobile+0 console errors+no-op button ban+EN/FR strings+zod), language-data rules, language/voice addition guides, bug reporting, code of conduct.
+- LICENSE: proprietary notice with explicit third-party scripture copyrights and removal path.
+- .env.example: DATABASE_URL (had to add !.env.example exception to .gitignore .env* rule).
+- Note: npx tsc --noEmit flags pre-existing template leftovers (examples/websocket/ socket.io, scripts/test_sdk.ts) outside src/ — unchanged, consistent with the "tsc src clean" discipline.
+- GIT: commit 9aaf417 (docs suite + images + license + env example); pushed to origin main a58c247..9aaf417 via classic-token inline credential helper.
+
+Stage Summary:
+- Repository now carries a complete, best-practice documentation set that matches the true state of the platform (no invented facts; every number verified against code/data).
+- https://github.com/denisprosperous/omnivoice — README with live screenshots of the Kom Audio Bible, voice selection and corpus KB.
