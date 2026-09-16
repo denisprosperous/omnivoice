@@ -28,6 +28,8 @@ import { RegistryConsole, statusLabel } from "./registry-console";
 import { IngestionPortal } from "./ingestion-portal";
 import { CurriculumContentView } from "./curriculum-content";
 import { DiyWorkshop } from "./diy-workshop";
+import { ScripturePlayer } from "./scripture-player";
+import { CorpusViewer } from "./corpus-viewer";
 import {
   KOM_LITERATURE, KOM_LANGUAGE_DESCRIPTIONS, KOM_LEXICAL_RESOURCES, KOM_SCRIPTURE,
   KOM_ATTESTED_VOCAB, KOM_ATTESTED_VOCAB_SOURCE, KOM_TONE_ANALYSIS,
@@ -47,7 +49,7 @@ interface Subject { id: string; nameEn: string; nameFr: string; domain: string; 
 
 export function LibraryView() {
   const { lang } = useApp();
-  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "ingest" | "diy" | "v42">("schemes");
+  const [wing, setWing] = React.useState<"schemes" | "grassfields" | "registry" | "ingest" | "diy" | "v42" | "scripture" | "corpus">("schemes");
   const [weeks, setWeeks] = React.useState<SchemeWeek[]>([]);
   const [subjects, setSubjects] = React.useState<Subject[]>([]);
   const [domains, setDomains] = React.useState<Array<{ name: string; weighting: number }>>([]);
@@ -136,6 +138,24 @@ export function LibraryView() {
             🔨 {t("diyWorkshop", lang)}
           </button>
           <button
+            role="tab" aria-selected={wing === "scripture"} onClick={() => setWing("scripture")}
+            className={cn(
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
+              wing === "scripture" ? "border-emerald-700 bg-emerald-700 text-white shadow" : "border-emerald-200 bg-white text-emerald-800 hover:border-emerald-500"
+            )}
+          >
+            🎧 {fr ? "Bible audio (Kom)" : "Audio Bible (Kom)"}
+          </button>
+          <button
+            role="tab" aria-selected={wing === "corpus"} onClick={() => setWing("corpus")}
+            className={cn(
+              "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
+              wing === "corpus" ? "border-cyan-700 bg-cyan-700 text-white shadow" : "border-cyan-200 bg-white text-cyan-800 hover:border-cyan-500"
+            )}
+          >
+            🗃️ {fr ? "Corpus kom (KB)" : "Kom Corpus (KB)"}
+          </button>
+          <button
             role="tab" aria-selected={wing === "v42"} onClick={() => setWing("v42")}
             className={cn(
               "min-h-[40px] rounded-full border-2 px-3.5 text-xs font-bold transition-all sm:px-4 sm:text-sm",
@@ -150,6 +170,10 @@ export function LibraryView() {
           <RegistryConsole />
         ) : wing === "ingest" ? (
           <IngestionPortal />
+        ) : wing === "scripture" ? (
+          <ScripturePlayer />
+        ) : wing === "corpus" ? (
+          <CorpusViewer />
         ) : wing === "diy" ? (
           <DiyWorkshop />
         ) : wing === "v42" ? (

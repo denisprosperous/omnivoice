@@ -1,0 +1,170 @@
+{
+ "1": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___01_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=1778822&Expires=1789586150&Signature=Ve2oOQ2voxm8ZmxFtNTMlYSvZTHgqnkRuhu72mQqVlkFbkljNnh-L8PA2k6B2JVxMQoHkOv643KU-qtQuJDEKqdXbWM~q3nESJn2dU5SpnyxVBUuEkrBTaB5xZCzOwXmuQPpaf37Vd21rPloRhSvFIzqn9af6lMGzcvChFoTnfSOSnqbcVyMP8uUfAi94i~EsL99nXTwQibJjeBUA6cn8l6TEnKwAdzfXls-AV6HVyMBbWMAPSVURGD79ojlKs7Vpj~ub4oAT8VHiclNa8INUhce0waAADgZw4evBxWrmT9D4BlaEDPDH1QxI8x6yW6l3ol014G-gC2TM7c-KFJt4g__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 251,
+  "filesize": 2027520,
+  "fileset": "BKMBSCN2DA"
+ },
+ "2": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___02_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=8809899&Expires=1789613473&Signature=ct~Ij8vZbKo8zOYq4c1SsY1EFT81osSic4GYSlQG599YZb3fYpVsyHV6nhGZxRwy80UY5kav0ZQp59YxObqo1enFwCItVf03Yl6R8GlRpKLOE9kUEe0GYWQKOEhVtUoJqL9uG7mQ70sjfIeMOaMZxa8ulFJCftoXjhb7Wb4AvPb-xJ9o26uEFYzJuxlOcN-J2R~xSWGhDjI1JHo0lrtLVWORzxKIe~wDTOex2mIC4bQ-ARSN4U34Iu5QfkDH71lv30h-c~xw8D4CAOL1nqGjAZ3yLRYXTnamftHbzgpMvbPyulK3z~~7RRIX0K5x6o3ym9J2XgZAvejm7ZsXu2Fdtg__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 286,
+  "filesize": 2312192,
+  "fileset": "BKMBSCN2DA"
+ },
+ "3": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___03_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=7605743&Expires=1789613475&Signature=YQtZ0jfiyQKFmhoao8hVRruSZZUvJvdtdP3DvMu1Fvm1ZBq-SxVdZo9R~Nf0CyMDTTat9aKiH9v7IQQ8TM-L-yk30Y60XVV68bKRXDw-chmYKrb~2tkPLdawatpaIdw69mxmhX~uS-8hwMVWX67TI9MMC45dRiuSEFVTknfDwnd~IJEsKWe5dm-bp3mUt3saXaLTLGp93ChLgM~CACnRxVwYo9ilmGYvo7cwy9PdY1xyWWyGJgVxCtk7dnzzzQX-8o67NoQGKjbEsW5uDXDB3VlckQNEAgcyo2TrFRRXclBxl4p0BtArEebYdwgQLJ0u3MAmM2lRkdg3rJSvgcjFyA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 206,
+  "filesize": 1675264,
+  "fileset": "BKMBSCN2DA"
+ },
+ "4": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___04_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=7197235&Expires=1789613476&Signature=JG~0S7dEtQuRZOTrh0zM6TdlXlRV6jxRN0w30t7ZMdxHupr9jUUlxAtf5h1m2GElCCThnupxvgGNfs0VdPtYcDaANqU1vP4Z~amRzYwAwvd5ir-lkvTjOfF5byPdrEMHWMctlx5NJZ8u7coaBaeBX3VFqoOec5-TOG4Fme41QMxbtq058WHv5RZwWGCnXSHCukcTS90NwF4oc4~OIiVVdH9U5Cw3iOmBCIHCVe-NuzV-k0wyuD4nT9u0s0dYFJ5k~e5zuHcNArfKMlM5pz9wAhb5w5uLJRStC5F8jNF56kHatTz6jNoOGrzhLjp2R0eZ3E7qagM6cssU5BeFhfnr6Q__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 267,
+  "filesize": 2162688,
+  "fileset": "BKMBSCN2DA"
+ },
+ "5": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___05_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=4057266&Expires=1789586089&Signature=YgVA1BYQFslkdu3JgGCyjDL62l6WasoK2H~Ngjp2vwbEfjnvWo6w9yU2NOpG3myszaSCdwojmz1omU0iPmRLipGipJWPE3sY7TEZyMNtsyx4nIDGdWLxx5uPtaibwqu5Bl8YfjQa15PXXqivluMQn0OsaEyBkRSmgn~l-JOze1KPrVj1KY06iKaK8d8cp6gKkXGS-ieN42NcrxtZ0BQlUge86utKMZUL3AfXIn29HEApHilX2Mcwf-fpkel6m5yZ6rKOCtrKwqnd7lcEPDg7x~QtRGi3G3FNQk6WROUYoYH~fEyHiKgix9ULZmnSuoDM1QJT6oPbjhpd-1dch8lI6w__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 493,
+  "filesize": 3971072,
+  "fileset": "BKMBSCN2DA"
+ },
+ "6": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___06_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=9961470&Expires=1789586695&Signature=Oad4RfBB3PAA1F0nRH76KyZC4~6B07oxBaWH04uOgTD1Htn4G1Sh7WCCx6NQGOfHPNIGJNBR-gnKOThsLgrZ7gJf~JnOUzouSMwEVpJPgfIh71mYJdQsH7SO7InZDu9RdkmMp11kR3Nc7SZ5L8Hkrizm9v2t-PUaLnpFqMhKyxBMNExcdLLE0xQCWyUOd~ID7SgTHERsA~HaQhtzkmwnulhDdHeoZN8khsGr8IdUAiPd1oA1q3jR45rJAvlg2Jv8gBHaOB3EyEpuMc8wkm84Yeoay6mTFm9f9TUzybn0I1PWxrzOibysoTDI0UTy5FijwikAMAiZNUyaINcmOHNfFw__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 361,
+  "filesize": 2908160,
+  "fileset": "BKMBSCN2DA"
+ },
+ "7": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___07_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=4029271&Expires=1789613482&Signature=cT0mi1pF~pG1iqznR6vmdZF2WOJYn4Mn9xjfC6lmXReabfZaJ3prtRlNnf61mblwcDeGKOzNcfvLQpkqqFxAQWhCUUW-RMfXRq1WJ0Vkzyu7De68lEjQNPnmcOcMD8LLiSyj~kIVRpz29eRFs6uQpQfBT1YVEXJPgT32sli9SbJR4Bc04q42okkuunJwD4RvoIWmoM6sBZVSmy3N0y7pHBVvuSjUbjwfptIjehLyBPqXaLVyqxuwuU7Boj5kfj7wzwV7Srkr22YJwtgbq-~bzXobKSmbpdKaiCsi9WG9kd2sf4OSnpFEQBZ64TQPqJNwZBg80VyVQ3fl7yFkPtEHWA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 279,
+  "filesize": 2252800,
+  "fileset": "BKMBSCN2DA"
+ },
+ "8": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___08_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=2569083&Expires=1789587618&Signature=CRW9E1FAqZ9c~tCsV4l0rErp7tF~an8DXlYWE87CNOkHSzHaiq4SkwOdd3AcDVAWDKsSQauA1kEmyfBFji4wQTMD92BdP2gsKNx16mumGWAQwLX-Tjt~II5evQ-UNgB0Q7EAUccZRdvvpLiZQNLtJefm2B~tN16wKn2V60R05y4Llj6V5ZOuSJEN0cAeMQcIXr2B5bt7c32DEzVDEF9JvIADypGgbws1G--ps-4ZBqxEjPqQpzzPEFktF9R318DEPOKByIFbyHisw4ELpEmHOgnpyq2lG5LA683S0I9697GT8AxI54A1dUHQYLk7XWN9zOSzqn3n3qYXHCeOqv4ggA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 340,
+  "filesize": 2740224,
+  "fileset": "BKMBSCN2DA"
+ },
+ "9": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___09_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=6477562&Expires=1789613485&Signature=RCiMh4adf0fG7BMDwvb8DbruZvqH0EMMl~MagVQ4apUfytM4YwTeFOIDG5suchgQf0CLp9eaFluCj~w37~3Noy1i49xIWwcweysaa40XcGIjGW7fzybmsFGllmlFmRNUaMJqji8zQbiVHJTh7IE-qnkeCURpJjZwzv1PiJl~0lsx7iIyfgtVp~Ug8s5dQE8pZ-8tow-mqhCEcOZmrqAKunWKTVoRRwQnjwis9KieyplzkYtU2TXyCviO6uNZQb2qxT7EbpxLOlCsPjeTsXtSIUJRTWgM8N3qj-VLUuVCAyZaA1pBzEvtP6Ml9eZevPy1lNryQEcXj2SYT8KU3h~5nw__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 369,
+  "filesize": 2971648,
+  "fileset": "BKMBSCN2DA"
+ },
+ "10": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___10_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=7034658&Expires=1789613487&Signature=T~ImbHoyPIzuYd81sMsSXw2H6IZlQaY~aINC27VWIKOQON8iYvgJ6RwKoUJuYjsnmdwRpFOW-xR8K~0iJ71bKVqP6ygKZjZK-Y~GqB1n6vaHL40JJ1s40gKjbC2bgZ26g7t2yYVp5nXr89l8~S1l7yc5ayudhLEOHAJpiHynUlwbuIRtH6zHNkeQGIUfLjpwpoKOq5QYZLiyq39Cgh3r7xKIVOQsXDSTtD-I2VGqydb9yCfRfIUawrrdwpee26ei3IJ6H~E-gO61rzRYXMMEVZpX-COLR0FP0gHaAxTLVFOlwccTPXMTXllRaxQdRSgUb-6I1dsY7QgvM0u34CWTdw__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 400,
+  "filesize": 3227648,
+  "fileset": "BKMBSCN2DA"
+ },
+ "11": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___11_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=9965147&Expires=1789613489&Signature=XVRC~tDyFO8C5K3oU~F~fateQ-jxjQ6RvNpaSVgG1ZmyLznjvI54JZQ-xahHH9Ly8zt0RC5UpNXIRPPIqT5w-mD1k3oTFMEDrTl9Dhm~p-qioZLb9wAIjxX1BZi6wjc18W3SUGzCqYm5KlkU0OFpGqh4TmgSumMIyu1KJuPqnnZll7cV-X5630k5QfGoLmev~7wKmTOWJ2i1U14K1NKpa470VskAUhe6gsmXSeGX7I7w0unG7eD8NRGk5rQDKZybqKpACMFGARzuN1F9KziajD0ESJdA52ePnBGUAX9ooeaEb~TSea1A7mR45AAshT-GctmzHXF4jwFLggrdiondqw__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 555,
+  "filesize": 2459648,
+  "fileset": "BKMBSCN2DA"
+ },
+ "12": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___12_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=2084850&Expires=1789613491&Signature=AErb0A5TkDk9GUwVyHcV9qVUEyLuGo3tINWq0ge1H-kNgRsby6U~LqtEOuVhptNnotnP9EMeulmOluhtHn6Zr6yFnzScqRScawuHQLklzLXA4KIW3JpMn~r1Rg2IOhyu45EjG8~FAmjCaE~S-4ij~LC6HbBvIZqZvPnY~0njUrh~ERkTG82vtbxrmv~IKlXjWk1yPWhw99NkX1umVMsPSi4ySc-KRulldrufbJ2bMTI5AfJP--w0z1Ge-DEJ-f9OGAzuvvxc3JswNY6NjpsP20OHhLX2pxe5bh7AYVOJI4G6TbNLCPC1L183bQ7ih7o0rC0lP-60bfVdKwlOaRINqg__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 403,
+  "filesize": 4347904,
+  "fileset": "BKMBSCN2DA"
+ },
+ "13": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___13_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=5897696&Expires=1789613498&Signature=DuCNBcJ0Owu6aLHsbDq~eEJnFglf9RLzWMthD0eLruWPheWmwf~VXzP-ZYp9-h-ZY2LtfkJyIosHGIz4RRtwuOcboCQo6u~wHycNgQ8Mvz7H9mJvaUxjAEd1dONZIF4pWDg~ZTu~B7mxail2tbeh104uRtlhGB3XBgIDqp0reD7dR~kAc0wN2TPSxc1NLlxmWRCZoFhFbjJ~n8hiMCzDmGa1KhoVSZrfhsnMbmcq9EFnA95R4kZX0IO7E8B6oCXsg0WlYZUBrKm-OONby8hcl0i9L4lmlPeOI2afkjj1uc~wsCuke8gBF~qv0xGwU88utGzIDzSvxhbwKivg-Y2VDQ__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 459,
+  "filesize": 4835328,
+  "fileset": "BKMBSCN2DA"
+ },
+ "14": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___14_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=4315302&Expires=1789613499&Signature=a3dyxUvcuKllGmwH-9JMVC8Md0cH6Yl7HoyI354WiHKLdY5gJwhej0-U9Jwb0R4Yye2rxZXSJReSeIVHW7nbJEnCzmlcI4a60PdDLhCIJ41UROKTLE6j~tvOwIEQJ9ygkKPR7rgo9lGMWCMCoFa9Voodf5bzhE9vjV5ZKoxXC2zYkKPkQ~zvF~EO7Tv7cIeOyb-kFAnJmiY-8dolRsg7o4GZswP70C1r3vMKAa1LXCv84PLFLnBeqoQijT70FF3u~rlFWXKHfclz2Hgeb2iicDvhTjDR9LqLRzike~AnlWwsQxYMoRBYc5M~3UFIbA8F86eWydSFvKDiIOcge8nzYA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 474,
+  "filesize": 2842624,
+  "fileset": "BKMBSCN2DA"
+ },
+ "15": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___15_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=2662782&Expires=1789613501&Signature=QM0jTbNnAMUO3-6mKx-Pwk30JuOf5pBKXSNC7zniRfn2bJn6OPEfrN3x6yvwFClCxPb50FgIjVOwBD8rKsUAonUTF1URbUb62Ev9SggvxRh~98RzPtgE-7iUwP66udYDJ~RcBXcGe6UtdUV5x2XNygsAb9LlD5XMqWX-TOw1X35xNHnOMi7nTNfb6nYljxQQSkg~qxG1QtHfwKI5bNPp~TU-mAv1fIcMFT3AFou9QdPZYv6murqHqYUFU-sYX4VShR76Xh6LWd973a5xglwlIngThP2UUzzo9pGQDdON4xeraIW4ZaPUt-ovxKCXb~Aew7MHHLNlqe~EiUFY5zNv0g__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 491,
+  "filesize": 3002368,
+  "fileset": "BKMBSCN2DA"
+ },
+ "16": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___16_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=6021796&Expires=1789613503&Signature=ce9A5qkP0oleA88eK436cHx20lCKg0q1tJsAcjUqvaM2PzU88kalCE~5R3v~DpWuCI5l7-woOxTii0JIVh5~TgSiY4ZvajFTHwLCSj~ta0WsX10cRBS1bel1lgC~kklz3VRjwSJgD2kUqhMG8UYeZjf9jm2s~juFbi0ZNMes1-1pY7YwngjGTCYfAei3lozyZjoOwKtqtV4APPJisfzX0E7adOdG4jjXUC1jnWHzia6KWpO6eO-zg8YZ~D2RPBB4N7JnovDwueNkpMLfMW~OoXWRNU0RHM-D0Kb7kFzOu8TESuY14ezcDzBYGCd5k66oEE8bdGwNaQxWB9rZbRaOTA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 757,
+  "filesize": 2357248,
+  "fileset": "BKMBSCN2DA"
+ },
+ "17": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___17_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=9299583&Expires=1789613505&Signature=edvlTfkcns9IIjP6JomKEmwhRXEu5yUNiYEzL9P7aBt~BTyNP4i9Jao13mXYYobeVLlUp0pCM-1oae9GQNQTgvX~q6GxtvZnr6Azw8ycKfBC37~EpQL28po8r-NufN0KUX0yWnancv6Grt71vN2~Oyu3dQYqD3c~IQoh6rU~wY7hel0DkusGzWfjImV~Kp5yrWaszmTgCN4GPUi3tT09cKZcXFT~~2b54RzSpQjFccMYohyBDjTRmENA~Sd8xH6u0oH35rpwBLuL2X~PMPPsrlaE2vKcbqp2e4v6VQxUlz~vICvORAiVN~Q69KML7aUx-dvQi2aY-mBE8-rj7Y4RHg__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 709,
+  "filesize": 2377728,
+  "fileset": "BKMBSCN2DA"
+ },
+ "18": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___18_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=6034214&Expires=1789613506&Signature=bv37IpavslPyg~SQ7OhXbXJluCpaXHJhrCtUHccyDrGMk41qRF61pwQHH2KLBBg8wYY-nTVNp4BngtJ5WPORX-Zc~m9gOp7fTrUU072BIyPoCHHWwa7s7twfCnBLX8ef2ndwlA852XfgZCKEuh99I7PQyaU1DwuVhQ3PINAIlw-nVZF0B6DwmwpSnquCKUcokkLrazLO~3xhSX7ZBgQ6HU3FpYKW30DqQo71Gvhs3UWeGYsoDCr6PuPZn7h2u0NN9I~NWieJIDQuOH3TcMyWJOWRR69BF5ZT1ro9Tc-AFMOdJp9QCmuX5mJ7GLmdRoFwKUZiSJvQ-nrey0OTSEcwSg__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 242,
+  "filesize": 3186688,
+  "fileset": "BKMBSCN2DA"
+ },
+ "19": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___19_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=7237591&Expires=1789613508&Signature=HcXq2a4J-hihU6QybgcKZSIMHGoKxdyQUeFGGfjZm-fp9aXOJMD3Lq4u1AvatRCGgDawWfEVgeTfBXdie6zO0sz3laqvBMmUL52Vc3PFGWyN9NmMsTCKj0j-WrckRa9JR7H78FBbs2jeWYfajpEx53EiXUe6Xs56P3hUAk1UfOprBZtwHNoGaZH3jj1Tt91KLBR-kgS0nAi1L7IkrMfiBNTzy6CZ8fdV3MidjwmMej6kXk~arHoKeIcQL~YrdcKcrhoJLO9r7iveGc4coJYrk2ZKJ3SgUR3RRbnnv5SvjjovRn35ISvxadA2JqmB-ANeMfzeb15sP0z84YehOQeOQg__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 389,
+  "filesize": 2707456,
+  "fileset": "BKMBSCN2DA"
+ },
+ "20": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___20_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=5623806&Expires=1789613510&Signature=Kj5hQ2B-pq5R8OfYW9R0JR7f3eU0B43GB-m1NuGfBapN7visa21Xoz0IPY~fQsc4BCX1DyLwPdnT8NZVxHu8sCkiAPfJuMOcruLctKn5ohDDCqmLt6mc9RJAd~A5BuwDfPY~BylkFS8WuAA~SV0jxWdHP444a~u1I8fCL5v7oOT15YXdZoP4nRd2jyCHMGJELilsnJLys9pFz583kJpAdw2A~6~BB4k7L6pdIcyFQaD28lA9tu~bQDunIUCPD8cHpxcvMpl9KgPfqa99mU5HW2kE7vDAV5JQvK25Sd~TMuuvFuHCy865l3ugrbk2Q7EtoDkmQezRFuMrCk65bEyx0A__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 302,
+  "filesize": 2828288,
+  "fileset": "BKMBSCN2DA"
+ },
+ "21": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___21_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=109926&Expires=1789613512&Signature=d0~Mvav~5WLI3xLBtewwccN58Z729DQWn7ZjtNcLYjz3-yd3BZnIDMMLHUnDyQLAz5KDCUNE2soL~KofQQqv4WmUlLRFb9s7-ciAnNiv7hk0qJoKkjzGxenWERn6SwEU2Xfl4HSNv8u~4AC6HIM6fhHQ2Djso8zwMPjCBRYr6dELDkUZpG6UbEnCu9akTXWTuHuyDry8mEOsY9n5i0p6qJTkxZHAlEZvwgEvLfkReCOTdPcQwo7kL-XBPf6kFQXOoYyA1JfLx-LcDpHomoxTB9cE60urKMEQqdbcBLvp3CjAPMew4CjPBZkF0f60nN4z7oAtNVWgjjGpsDx3Bzx0nw__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 349,
+  "filesize": 4460544,
+  "fileset": "BKMBSCN2DA"
+ },
+ "22": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___22_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=9417224&Expires=1789613514&Signature=RsBT89IUPfiDiMSAMbNHa~N~9OYvsVs5Wjo-BELRB8xaTHA1MLJWr7LfuyKGyDlCubi~JCGg9S4tE6zVk4CyIILjt9Jou-zYWKaGZaHv~v8m8HJf4jNwjVgK1uEx9dL0XYnsquRgbrqKjgE-cTE3qhg8mgoh5q8C2CMs4Q~yiGZHYgMJyZYPeZPho7KUOWcoMnEILozxWvjgdQMRV3vRqevxZqdxE6Z9wFkZtGmGhNDPMoRgEBpyM7AG8btEKUzSecTiZpL2ZjNjkk~VgccoUjAY9hIVER~nW-96MmPmFnwnsWZW1vTGIKJKl2awI4Cldt2I3Dg0GFtQJSImf5ZR0Q__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 729,
+  "filesize": 3244032,
+  "fileset": "BKMBSCN2DA"
+ },
+ "23": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___23_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=2405180&Expires=1789613515&Signature=JvTWzRrBubD928DFNVGhnzw0qaUtuMP7bpSEy7DEXd0~nwoZR2B5b5oNg9sOu667-5y1jJG9wrX78ysAml2Pa~jY11RzEovGebELuzvBfIpALRcXpSD2BHhf5Qn~L3eJUzzEutl5K2vHO8aQaQoH8L9-TRX825k2ydAkw6A~VqpZYX7HrctQ3L3nJyxIQnK3a8iK2gryIfPxanir7cn5p7GhXrgyc6G32R98Sk~l8HmxKz34jxOf2sfQfZr7NEeihyxYSRCmbK23mrqPd3WPccsoy~TU85rPHsE3Up4Xo~nSyU1x9T8umhJan8WHDHj2QAnI~XEMxtd8Rq8XLY26JA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 453,
+  "filesize": 3698688,
+  "fileset": "BKMBSCN2DA"
+ },
+ "24": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___24_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=2918887&Expires=1789613517&Signature=WYoWExF044lTE-dqW~CsB9C2W~tRm48624wLNRld3NOgF8gjVp6HJobV3H7FzE9Ios8igkruuxE4zODo9~-7TqcvFfLQ1i7po1GyuQiXE-xThRmiREJsdgbhkeKXpDQjNFafCBXgQPo76YpjNAnwUUOPV2niU0wMuY3aqhxCkWpE-3aaaespr2DJ8Cp7kNXo3Td68~Zp01FBYNx2HMMjZkaUsaHarH5FZyhgVtyDSzVY8ZJc3VzrdFXI3fXYVR~1qGiEN~YJKjs9zQ~ZcBzaJbcxlOoyrmEuj4fFAo73M8il-ciLr7ZIEH6pKpyoyOkTHT~cxmldpf-Mn6e2Qk6TWQ__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 215,
+  "filesize": 3811328,
+  "fileset": "BKMBSCN2DA"
+ },
+ "25": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___25_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=3869922&Expires=1789613519&Signature=TO-Hjljcja89iLzYoAtTrS~-ocIKD60OVCORxrDSll3nl2GMxBjfr5INqo7vGTzfYMzPSMPP~wLQc0c-B5jMjIM0QmNpndEx56-8IjvF1YzYmpg2Hi-aWRGlswuqIU4sMwHTOwmKN1vjAex1Jq4Dnbygkv-1IG7ROJqRosBwi~blfBdthOAdenLD2vW~MnWRQJZxIOaID~4PDLnEK7gP3-xTxdxWNtiYKtB7h2AGp25AC8MdNpEcUlwhq7df6iFgp7dEtScsArnxY0otW66vI2OCQgj7YR269SGg37TKboHfQGL6QrsfSAyErXdq8YnX1tVVHSXKitN5zj5AS~Z4sQ__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 740,
+  "filesize": 3948544,
+  "fileset": "BKMBSCN2DA"
+ },
+ "26": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___26_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=6973507&Expires=1789613521&Signature=eBvcfCneUoJKtmUsFKHGsazEvBcal4kfBtyPBy7CV7y4KzIDwbm6xUgYb1R-cxRGF1bcBu10ublP460hzIzzfKqL6mWH2ljQq814cl-dqQ84pS~ZKvbdvKUeakHaIuce-bzkWk-b2G4CJVweGMh4jjJu~NcBUmQ3vKy2eDHaLpCAr3A1JbQHAfexIQcyc7lfZZNb4h2DKfyVw-~eJGJ3-U2eCE5DU1BaLa0xkpSoe-c0A~2ZLeW40aAijHvDGHeVvbvRZiKRTFBZF7eQu0HPEhR01M3DFX1MsFQ6f6qmBs0Hc~tQ0ZoAK7uEHQh~XEgHA43cYrYUZXlfWD6rGQR3Ng__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 479,
+  "filesize": 6082560,
+  "fileset": "BKMBSCN2DA"
+ },
+ "27": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___27_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=2238181&Expires=1789613523&Signature=QfVfOux9FT2lueiFvjIIegSEDvkcPFx~tWXlDd~k7C11hze2h4QlQKBjG2rhKkp1e18rp4p71JJX3aamtwiIpa5wI2I0GrAR62pfSq0mgABmxWBZEMq6ixaVcP12MZYmevWxeGqCiLtHHVEfuSPDEUbX288wYKKnx0eXjP0EoxEYGm~OS9qchR3vEiKLkOu70InwGeF2WcpeXPuSGXLun~erq5VxW-RuNpjvYHXvgdc0T-phnsw2rZZ0XwVa5voNrW5d6xI9LgLVcvJ6CnHG1eB2JWdTTV0aZvJGviFHuiUy2hkIt~x3e1Zh~7RQBwXToJyuxNPkM1nyX~JpB0kW0Q__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 472,
+  "filesize": 5691392,
+  "fileset": "BKMBSCN2DA"
+ },
+ "28": {
+  "path": "https://d1gd73roq7kqw6.cloudfront.net/audio/BKMBSC/BKMBSCN2DA/B01___28_Matthieu____BKMBSCN2DA.mp3?x-amz-transaction=97579&Expires=1789613524&Signature=VS4urnfy5lzKTZaIwcy3O1elBaY129rxyHi7gCdWkQWSewRQhC0rtsdgT~L4IHy1VYsg3M-DTcnsrt51f~RxrIlURLedXRlGrZlvj-5zZ~KbBGyurBULT3pHbHnwJAIUpkLIMiZ6sa2PZ1xiaCVtIfTNAkXqxJxwrQ0igcT6sAIKc1TZ2Ue3PN0XkLeSeevVBEkNN0yPNUI2qJiHFBKzYnipNtQ7JYxtnzWS4Gb7sjM7MhHtCGgXi0386pPwnsu-pVfA5VLdzzAvECx6j5es~SCN5Amth73WPcDwgaGNOZIde2UCGhjUHg-MmG0efY3JYQvr9sBUTXFubun3lbD-cA__&Key-Pair-Id=APKAI4ULLVMANLYYPTLQ",
+  "duration_s": 469,
+  "filesize": 1961984,
+  "fileset": "BKMBSCN2DA"
+ }
+}

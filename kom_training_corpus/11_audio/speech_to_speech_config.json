@@ -1,0 +1,40 @@
+{
+ "pipeline": "modular",
+ "latency_budget_ms": 2000,
+ "components": {
+  "vad": {
+   "provider": "silero",
+   "threshold": 0.5,
+   "min_speech_duration_ms": 250,
+   "max_speech_duration_s": 30
+  },
+  "asr": {
+   "provider": "faster-whisper",
+   "model": "small",
+   "language": "bkm",
+   "speed": 0.9,
+   "vad_filter": true
+  },
+  "llm": {
+   "provider": "kom-llm",
+   "max_tokens": 256,
+   "temperature": 0.7
+  },
+  "tts": {
+   "provider": "kokoro-82m",
+   "sample_rate": 22050,
+   "voice_id": "kom_native (cloned; REQUIRES 5-10s native reference audio — Directive 9)",
+   "speed": 0.9
+  }
+ },
+ "fallbacks": {
+  "if_asr_low_confidence": "ask_user_to_repeat",
+  "if_llm_times_out": "return_canned_response",
+  "if_tts_fails": "return_text"
+ },
+ "native_audio_available": {
+  "bkm": "28 chapter narrations of Matthew (Bible.is) — usable as reference material for future cloning, subject to licence clearance",
+  "lns": null,
+  "byv": null
+ }
+}

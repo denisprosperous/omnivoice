@@ -1,0 +1,45 @@
+{
+ "golden_rule": "The agent may PROPOSE new knowledge, but may NEVER commit new knowledge to the training corpus without human moderation. All proposals go to 10_synthesis/pending_moderation.jsonl.",
+ "expansion_types": [
+  {
+   "type": "phonological_rule",
+   "min_evidence": 2,
+   "basis": "attested examples in corpus"
+  },
+  {
+   "type": "morphological_pattern",
+   "min_evidence": 2,
+   "basis": "attested paradigms in corpus"
+  },
+  {
+   "type": "lexical_gap",
+   "min_evidence": 2,
+   "basis": "proposed term must use only attested morphemes"
+  },
+  {
+   "type": "grammatical_pattern",
+   "min_evidence": 3,
+   "basis": "attested sentences with same structure"
+  },
+  {
+   "type": "cultural_note",
+   "min_evidence": 1,
+   "basis": "attested cultural practice from trusted source"
+  }
+ ],
+ "algorithm_steps": [
+  "classify_gap",
+  "gather_evidence",
+  "formulate_hypothesis",
+  "check_conflicts",
+  "assign_confidence",
+  "write_pending_entry",
+  "notify_moderator",
+  "STOP"
+ ],
+ "forbidden": [
+  "commit_to_training_corpus_without_moderation",
+  "use_in_lesson_generation_before_approval",
+  "wait_for_human_moderation_bypass"
+ ]
+}

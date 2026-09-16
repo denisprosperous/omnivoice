@@ -1,0 +1,282 @@
+[
+ {
+  "id": 1,
+  "grapheme": "'",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 2,
+  "grapheme": "a",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 3,
+  "grapheme": "b",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 4,
+  "grapheme": "ch",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 5,
+  "grapheme": "d",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 6,
+  "grapheme": "e",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 7,
+  "grapheme": "f",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 8,
+  "grapheme": "g",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 9,
+  "grapheme": "gb",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 10,
+  "grapheme": "gh",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 11,
+  "grapheme": "gw",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 12,
+  "grapheme": "gy",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 13,
+  "grapheme": "i",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 14,
+  "grapheme": "k",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 15,
+  "grapheme": "kp",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 16,
+  "grapheme": "kw",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 17,
+  "grapheme": "ky",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 18,
+  "grapheme": "m",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 19,
+  "grapheme": "n",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 20,
+  "grapheme": "ng",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 21,
+  "grapheme": "ny",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 22,
+  "grapheme": "o",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 23,
+  "grapheme": "p",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 24,
+  "grapheme": "s",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 25,
+  "grapheme": "sh",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 26,
+  "grapheme": "t",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 27,
+  "grapheme": "ts",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 28,
+  "grapheme": "u",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 29,
+  "grapheme": "u'",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 30,
+  "grapheme": "w",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 31,
+  "grapheme": "y",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 32,
+  "grapheme": "ä",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 33,
+  "grapheme": "ö",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 34,
+  "grapheme": "ŋ",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ },
+ {
+  "id": 35,
+  "grapheme": "ɨ",
+  "ipa": null,
+  "audio_path": null,
+  "status": "awaiting_native_recording",
+  "note": "Directive 9: audio must come from native speakers (e.g. ingestion portal uploads); never synthesized"
+ }
+]

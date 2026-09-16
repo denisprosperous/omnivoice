@@ -1,0 +1,12 @@
+{
+ "gates": [
+  "every_entry_has_source_field",
+  "every_entry_has_moderation_status",
+  "every_kom_text_preserves_diacritics",
+  "every_ipa_uses_correct_unicode",
+  "synthesis_never_live_without_moderation",
+  "audio_files_must_exist",
+  "no_synthetic_grassfields_speech_directive_9"
+ ],
+ "validation_pseudocode": "validate_schema(entry, schema): required fields present; source in VALID_SOURCES; moderation_status in [verified|pending|conflict]; grapheme.ipa wrapped in slashes; number.number is int"
+}

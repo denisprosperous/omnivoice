@@ -56,6 +56,7 @@ const TYPE_OPTIONS = [
   { id: "song", en: "Song / Rhyme", fr: "Chanson / Comptine" },
   { id: "story", en: "Story / Folktale", fr: "Histoire / Conte" },
   { id: "correction", en: "Correction of existing content", fr: "Correction d'un contenu existant" },
+  { id: "synthesis", en: "Agent synthesis proposal (pending moderation)", fr: "Proposition de synthèse de l'agent (modération requise)" },
 ];
 
 const SUBMISSION_STATUS: Record<string, { cls: string }> = {

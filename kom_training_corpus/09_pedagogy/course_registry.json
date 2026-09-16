@@ -1,0 +1,78 @@
+{
+ "version": "1.0",
+ "courses": [
+  {
+   "course_id": "kom_101",
+   "language": "Kom (Itaŋikom)",
+   "iso_code": "bkm",
+   "display_name": "Kom Language Foundations",
+   "level": "beginner",
+   "total_stages": 16,
+   "total_lessons": 120,
+   "estimated_hours": 40,
+   "prerequisites": [],
+   "data_source": "/kom_training_corpus/",
+   "audio_source": "/kom_training_corpus/11_audio/",
+   "assessment_engine": "standard",
+   "speech_engine": "modular_s2s",
+   "status": "active"
+  }
+ ],
+ "future_courses": [
+  {
+   "language": "Lamnso'",
+   "iso_code": "lns",
+   "status": "active (separate v4.0 track)"
+  },
+  {
+   "language": "Bayangi",
+   "iso_code": "byv",
+   "status": "active (placeholder audio; 500h data collection)"
+  },
+  {
+   "language": "Bafut",
+   "iso_code": "bfd",
+   "status": "planned"
+  },
+  {
+   "language": "Oku",
+   "iso_code": "oku",
+   "status": "planned"
+  },
+  {
+   "language": "Babanki",
+   "iso_code": "bbk",
+   "status": "planned"
+  },
+  {
+   "language": "Mankon",
+   "iso_code": "mgo",
+   "status": "planned"
+  },
+  {
+   "language": "Ngie",
+   "iso_code": "ngi",
+   "status": "planned"
+  },
+  {
+   "language": "Ewondo",
+   "iso_code": "ewo",
+   "status": "planned (Bantu Beti A.70 — not Grassfields)"
+  },
+  {
+   "language": "Bassa",
+   "iso_code": "bas",
+   "status": "planned"
+  },
+  {
+   "language": "Ghomala'",
+   "iso_code": "bbj",
+   "status": "planned"
+  },
+  {
+   "language": "Duala",
+   "iso_code": "dua",
+   "status": "planned"
+  }
+ ]
+}

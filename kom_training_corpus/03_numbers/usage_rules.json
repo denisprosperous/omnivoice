@@ -1,0 +1,26 @@
+[
+ {
+  "rule": "hundreds_200_900",
+  "pattern": "ighi i [units-form]",
+  "examples": [
+   "ighi i bö (200)",
+   "ighi i tal (300)",
+   "ighi i kä (400)",
+   "ighi i täyn (500)"
+  ],
+  "source": "GS (PKG Part 0)",
+  "moderation_status": "verified"
+ },
+ {
+  "rule": "hundred_stem",
+  "pattern": "ivi = 100",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "rule": "thousand_stem",
+  "pattern": "nkam = 1000",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ }
+]

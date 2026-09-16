@@ -6,6 +6,7 @@
 export type PreviewEventType =
   | "page_view"
   | "voice_language_selection"
+  | "voice_selection"
   | "lesson_completion"
   | "asr_attempt"
   | "feedback_open"

@@ -1,14 +1,17 @@
 /**
  * OMNIVOICE v4.2 §6.4 — Kom NT listening stations.
  *
- * Audio is the REAL recorded Kom NT (2004) streamed via the access points
- * harvested from find.bible (bible.is + Digital Bible Library). The platform
- * never synthesizes scripture narration (Directive 9 + licence), so each
- * station wires: external streaming link + comprehension + vocabulary
- * extraction (from the attested lexicon) + retelling.
+ * The Kom NT audio (2004, Bible Society of Cameroon) is NOW INGESTED for the
+ * Gospel of Matthew: 28 chapter narrations hosted in /audio/bkm/matthew/ and
+ * playable in the Library's 🎧 Audio Bible (Kom) wing (Bible.is fileset
+ * BKMBSCN2DA, audio ℗ 2007 Hosanna / Faith Comes By Hearing — harvested and
+ * re-encoded 24kbps mono, 2026-09-16). Mark/Luke stations below still stream
+ * via the external access points (find.bible / bible.is). The platform never
+ * synthesizes scripture narration (Directive 9 + licence).
  *
- * Licence note: bible.is / DBL streaming requires production licence
- * clearance — surfaced in the supervisor resource inventory.
+ * Licence note: local hosting of the Matthew narrations derives from the
+ * bible.is stream; production rollout still requires the licence clearance
+ * documented in the supervisor resource inventory.
  */
 
 export interface StationQuestion {

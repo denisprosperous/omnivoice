@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { kokoroTTS, getVoiceConfig, VOICE_REGISTRY_V4, CHARACTER_KOKORO_VOICES } from "@/lib/server/voice-v4";
 import { CharacterId } from "@/lib/server/voice";
 import { isGrassfields } from "@/lib/data/grassfields";
+import { PLATFORM_VOICES } from "@/lib/data/voices";
 
 export const maxDuration = 60;
 
@@ -23,11 +24,36 @@ export async function POST(req: NextRequest) {
     const lang: string = body.lang || body.language || "en";
     const character = (body.character || "kwe") as CharacterId;
 
+    // Resolve a platform voice id (voices.ts registry) to its synthesis voice.
+    // Recorded native voices (Directive 9) NEVER synthesize — the route
+    // reports recordedOnly so clients can play real files instead.
+    let voice = body.voice as string | undefined;
+    let recordedOnly = false;
+    const pv = voice ? PLATFORM_VOICES.find((v) => v.id === voice) : undefined;
+    if (pv) {
+      if (pv.engine === "native-recording") {
+        recordedOnly = true;
+        voice = undefined;
+      } else {
+        voice = pv.kokoroVoice;
+      }
+    }
+    if (recordedOnly) {
+      return NextResponse.json(
+        {
+          recordedOnly: true,
+          voiceId: body.voice,
+          note: "This voice is a REAL native recording (Directive 9) — no synthetic audio is generated for it. Play the recorded files via /api/scripture or the Audio Bible station.",
+        },
+        { status: 200 }
+      );
+    }
+
     const out = await kokoroTTS({
       text: text.slice(0, 900),
       language: lang,
       character,
-      voice: body.voice,
+      voice,
       speed: typeof body.speed === "number" ? body.speed : undefined,
     });
 

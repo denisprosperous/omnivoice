@@ -52,3 +52,8 @@ prompt
 server.log
 # Skills directory
 /skills/
+# Bible.is harvest — raw 64kbps audio + JS chunk evidence stay local (90MB);
+# normalized 24kbps audio ships in public/audio/, harvest JSONs in scripts/bibleis-raw/
+scripts/bibleis-raw/harvest/audio_raw/
+scripts/bibleis-raw/chunks/
+tool-results/

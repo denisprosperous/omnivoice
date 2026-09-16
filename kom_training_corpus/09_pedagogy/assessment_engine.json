@@ -1,0 +1,26 @@
+{
+ "question_types": [
+  "multiple_choice_text",
+  "multiple_choice_audio",
+  "audio_to_grapheme",
+  "grapheme_to_audio",
+  "tone_identification",
+  "word_recognition",
+  "sentence_assembly",
+  "translation_kom_to_english",
+  "translation_english_to_kom",
+  "free_speaking"
+ ],
+ "scoring": {
+  "partial_credit": true,
+  "tone_marking_weight": 0.3,
+  "vowel_length_weight": 0.2,
+  "consonant_accuracy_weight": 0.5
+ },
+ "feedback": {
+  "immediate": true,
+  "explanation_depth": "detailed",
+  "audio_playback": true,
+  "example_sentences": true
+ }
+}

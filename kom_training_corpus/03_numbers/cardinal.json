@@ -1,0 +1,92 @@
+[
+ {
+  "number": 100,
+  "kom": "ivi",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 200,
+  "kom": "ighi i bö",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 300,
+  "kom": "ighi i tal",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 400,
+  "kom": "ighi i kä",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 500,
+  "kom": "ighi i täyn",
+  "ipa": "/ìɣì ì tæjn/",
+  "literal": "hundreds of five",
+  "type": "cardinal",
+  "source": "GS (PKG Part 0 correction: täyn with diaeresis, per [GS] Chart 12 and [TONE] §4.2)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 600,
+  "kom": "ighi i ntufa",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 700,
+  "kom": "ighi i nsombö",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 800,
+  "kom": "ighi i nfama",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 900,
+  "kom": "ighi i bulamö'",
+  "ipa": "/ìɣì ì bulamɔʔ/",
+  "literal": "hundreds of nine",
+  "type": "cardinal",
+  "source": "GS (PKG Part 0 correction: untruncated form, pattern ighi i [number])",
+  "moderation_status": "verified"
+ },
+ {
+  "number": 1000,
+  "kom": "nkam",
+  "ipa": null,
+  "literal": null,
+  "type": "cardinal",
+  "source": "GS (user PKG 2026-09-16)",
+  "moderation_status": "verified"
+ }
+]

@@ -15,7 +15,7 @@ import { db } from "@/lib/db";
  *                  Only ACTIVE content is ever shown to learners.
  */
 
-const VALID_TYPES = ["greeting", "word", "phrase", "dialogue", "song", "story", "correction"];
+const VALID_TYPES = ["greeting", "word", "phrase", "dialogue", "song", "story", "correction", "synthesis"];
 const VALID_ROLES = ["tutor", "parent", "authority", "other"];
 const VALID_STATUS = ["DRAFT", "IN_REVIEW", "ACTIVE", "REJECTED"];
 

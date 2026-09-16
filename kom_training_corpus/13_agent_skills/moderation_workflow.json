@@ -1,0 +1,54 @@
+{
+ "roles": [
+  "native_speaker_moderator",
+  "linguist_moderator",
+  "admin"
+ ],
+ "states": [
+  "pending",
+  "under_review",
+  "approved",
+  "rejected",
+  "needs_revision"
+ ],
+ "platform_mapping": {
+  "pending": "DRAFT",
+  "under_review": "IN_REVIEW",
+  "approved": "ACTIVE",
+  "rejected": "REJECTED",
+  "needs_revision": "DRAFT + reviewerNote"
+ },
+ "transitions": [
+  {
+   "from": "pending",
+   "to": "under_review",
+   "action": "assign_moderator"
+  },
+  {
+   "from": "under_review",
+   "to": "approved",
+   "action": "approve"
+  },
+  {
+   "from": "under_review",
+   "to": "rejected",
+   "action": "reject"
+  },
+  {
+   "from": "under_review",
+   "to": "needs_revision",
+   "action": "request_revision"
+  },
+  {
+   "from": "needs_revision",
+   "to": "pending",
+   "action": "agent_revises"
+  }
+ ],
+ "approval_criteria": [
+  "native_speaker_verifies_accuracy",
+  "linguist_verifies_consistency_with_existing_grammar",
+  "no_conflict_with_existing_entries",
+  "evidence_chain_complete"
+ ]
+}

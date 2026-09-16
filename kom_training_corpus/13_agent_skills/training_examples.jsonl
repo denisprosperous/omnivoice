@@ -1,0 +1,10 @@
+{"task": "ingestion", "input": "Load manifest.json", "output": "Loaded 13 collections, 4100+ records"}
+{"task": "validation", "input": "Validate grapheme entry", "output": "Pass: all required fields present"}
+{"task": "validation", "input": "Validate grapheme entry missing 'ipa'", "output": "Fail: missing field 'ipa'"}
+{"task": "lesson_generation", "input": "Generate Stage 1 Lesson 1", "output": "Lesson with 6 steps: intro, presentation, guided practice, independent practice, assessment, summary"}
+{"task": "expansion", "input": "Find pattern in ko' → ko'si, fi → fisi", "output": {"type": "morphological_pattern", "content": "-si suffix forms causative verbs", "confidence": "high", "status": "pending"}}
+{"task": "expansion", "input": "Propose term for 'hospital'", "output": {"type": "lexical_gap", "content": "ndo nga n", "confidence": "medium", "status": "pending"}}
+{"task": "expansion", "input": "Find pattern in one example", "output": {"status": "insufficient_evidence", "evidence_count": 1}}
+{"task": "conflict_check", "input": "Proposed rule contradicts existing rule", "output": {"status": "conflict", "conflicts": ["Rule X contradicts Rule Y"]}}
+{"task": "moderation", "input": "Pending entry approved by moderator", "output": "Moved to approved.jsonl, added to training corpus"}
+{"task": "moderation", "input": "Pending entry rejected", "output": "Moved to rejected.jsonl, feedback sent to agent"}

@@ -29,6 +29,8 @@ interface AppState {
   learner: LearnerState | null;
   lang: Lang;
   voiceLang: string;
+  /** selected voice/speaker id from the platform voice registry (voices.ts) */
+  voiceId: string;
   soundOn: boolean;
   online: boolean;
   setView: (v: View) => void;
@@ -36,6 +38,7 @@ interface AppState {
   setLearner: (l: LearnerState | null) => void;
   setLang: (l: Lang) => void;
   setVoiceLang: (l: string) => void;
+  setVoiceId: (id: string) => void;
   toggleSound: () => void;
   setOnline: (o: boolean) => void;
 }
@@ -48,6 +51,7 @@ export const useApp = create<AppState>()(
       learner: null,
       lang: "en",
       voiceLang: "en",
+      voiceId: "voice_kwe",
       soundOn: true,
       online: true,
       setView: (view) => set({ view }),
@@ -79,12 +83,16 @@ export const useApp = create<AppState>()(
         }
         return { voiceLang };
       }),
+      setVoiceId: (voiceId) => set((s) => {
+        if (s.voiceId !== voiceId) trackEvent("voice_selection", { from: s.voiceId, to: voiceId });
+        return { voiceId };
+      }),
       toggleSound: () => set((s) => ({ soundOn: !s.soundOn })),
       setOnline: (online) => set({ online }),
     }),
     {
       name: "omnivoice-app",
-      partialize: (s) => ({ learner: s.learner, lang: s.lang, voiceLang: s.voiceLang, soundOn: s.soundOn }),
+      partialize: (s) => ({ learner: s.learner, lang: s.lang, voiceLang: s.voiceLang, voiceId: s.voiceId, soundOn: s.soundOn }),
     }
   )
 );

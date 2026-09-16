@@ -1,0 +1,168 @@
+{
+ "corpus_id": "kom_itangikom_v1",
+ "corpus_name": "Kom (Itanjikom) Language Training Corpus",
+ "version": "1.1.0",
+ "language": {
+  "name": "Kom",
+  "autonym": "Itaŋikom",
+  "iso_code": "bkm",
+  "family": "Niger-Congo > Benue-Congo > Bantoid > Grassfields Bantu > Ring > Central Ring",
+  "location": "Boyo Division, Northwest Region, Cameroon",
+  "speakers_estimate": "150,000+ (2001)",
+  "dialects": [
+   "Major (95%)",
+   "Mbesa (minor)",
+   "Ake (minor)"
+  ]
+ },
+ "sources": [
+  {
+   "id": "LEX",
+   "citation": "Jones, Randy. 2001. Provisional Kom-English Lexicon. SIL.",
+   "status": "cf-gated (PDF blocked by Cloudflare/Turnstile; exact URL on record)"
+  },
+  {
+   "id": "GS",
+   "citation": "Shultz, George. 1997. Kom Language Grammar Sketch Part 1. SIL.",
+   "status": "cf-gated; numeric data ingested via user-provided package 2026-09-16"
+  },
+  {
+   "id": "PHON",
+   "citation": "Shultz, George. 1993. Notes on the Phonology of the Kom Language. SIL.",
+   "status": "cf-gated"
+  },
+  {
+   "id": "TONE",
+   "citation": "Jones, J. Randall. 1997. Tone in the Kom Noun Phrase Part II. SIL.",
+   "status": "cf-gated"
+  },
+  {
+   "id": "HYM",
+   "citation": "Hyman, Larry M. Initial Vowel and Prefix Tone in Kom. UC Berkeley [Draft].",
+   "status": "fetched (local PDF)"
+  },
+  {
+   "id": "LIT",
+   "citation": "Chuo, Kain Godfrey & Trammell, Kristine Marion. 2007. Kom Reader 1.2. SIL.",
+   "status": "bibliographic record fetched"
+  },
+  {
+   "id": "GHS",
+   "citation": "Chia & Ngong Mbeh. 1996. Ghesɨ̀nà yeʼi itaŋikom 1. NACALCO/SIL.",
+   "status": "fetched (HTML)"
+  },
+  {
+   "id": "NT",
+   "citation": "Ŋwàʼlɨ̀ àkòyn aghɨ̀ Jisos Christ (Kom New Testament). 2004. The Bible Society of Cameroon.",
+   "status": "fetched: text (Bible.is BKMBSC) + audio (BKMBSCN2DA)"
+  },
+  {
+   "id": "OMNI",
+   "citation": "Omniglot Kom orthography chart (Wolfram Siegel)",
+   "status": "external"
+  },
+  {
+   "id": "PKG",
+   "citation": "User-provided Master Ingestion Package (platform build spec), uploaded 2026-09-16.",
+   "status": "fetched (authoritative for numbers + synthesis proposals)"
+  },
+  {
+   "id": "BIBAUD",
+   "citation": "Bible.is Kom Audio Bible — http://live.bible.is/bible/BKMBSC/MAT/1 (fileset BKMBSCN2DA, audio_drama, NT, 64kbps mp3). Audio ℗ 2007 Hosanna / Faith Comes By Hearing.",
+   "status": "fetched: 28 chapters Matthew, verse-aligned with NIV (ENGNIV)"
+  }
+ ],
+ "file_index": {
+  "03_numbers/cardinal.json": {
+   "records": 11,
+   "schema": "number",
+   "note": "hundreds paradigm 100-1000 incl. 500/900 corrections (Part 0)"
+  },
+  "03_numbers/usage_rules.json": {
+   "records": 3,
+   "schema": "number_rule"
+  },
+  "09_pedagogy/course_registry.json": {
+   "records": 1,
+   "schema": "course_registry"
+  },
+  "09_pedagogy/curriculum.json": {
+   "records": 17,
+   "schema": "stage"
+  },
+  "09_pedagogy/lesson_engine.json": {
+   "records": 1,
+   "schema": "lesson_engine"
+  },
+  "09_pedagogy/assessment_engine.json": {
+   "records": 1,
+   "schema": "assessment_engine"
+  },
+  "10_synthesis/pending_moderation.jsonl": {
+   "records": 45,
+   "schema": "synthesis_entry",
+   "note": "Part 5 proposals — ALL pending native-speaker moderation (Golden Rule)"
+  },
+  "11_audio/phoneme_map.json": {
+   "records": 29,
+   "schema": "grapheme_audio_slot",
+   "note": "slots reserved; audio pending native recordings (Directive 9)"
+  },
+  "11_audio/word_audio_index.jsonl": {
+   "records": 28,
+   "schema": "audio_entry",
+   "note": "REAL native audio: Kom NT Matthew chapter narrations (Bible.is BKMBSCN2DA)"
+  },
+  "11_audio/speech_to_speech_config.json": {
+   "records": 1,
+   "schema": "s2s_config"
+  },
+  "12_conflicts/unresolved.jsonl": {
+   "records": 5,
+   "schema": "conflict",
+   "note": "Kom/NIV verse-division differences in Matthew"
+  },
+  "13_agent_skills/expansion_protocol.json": {
+   "records": 1,
+   "schema": "protocol"
+  },
+  "13_agent_skills/moderation_workflow.json": {
+   "records": 1,
+   "schema": "workflow"
+  },
+  "13_agent_skills/quality_gates.json": {
+   "records": 1,
+   "schema": "gates"
+  },
+  "13_agent_skills/training_examples.jsonl": {
+   "records": 10,
+   "schema": "training_example"
+  }
+ },
+ "schema_scaffold_pending_data": {
+  "01_alphabet/graphemes.json": "29 graphemes — data not in ingestion package; must be keyed from GS/PHON originals (cf-gated) or native speaker sessions",
+  "02_phonology/": "consonants/vowels tables — same as above",
+  "05_syntax/": "phrase-structure files — from GS (cf-gated)",
+  "06_tone/": "tone paradigms — from TONE/HYM (partially available via Hyman fetch)",
+  "07_lexicon/": "4000+ entries — from LEX (cf-gated); Phase-1 500-entry platform lexicon lives in src/lib/data/lexicon.ts (50 attested / 450 awaiting)",
+  "08_reader/": "16 stories — from LIT PDF (cf-gated); Ghesɨ̀nà 1 raw HTML on record in scripts/kom-resources-raw/"
+ },
+ "quality_gates": [
+  "every_entry_has_source_field",
+  "every_entry_has_moderation_status",
+  "every_kom_text_preserves_diacritics",
+  "every_ipa_uses_correct_unicode",
+  "synthesis_entries_never_ship_live_without_moderation",
+  "audio_entries_point_to_existing_files",
+  "no_synthetic_grassfields_speech_directive_9"
+ ],
+ "ingestion_order": [
+  "manifest.json",
+  "03_numbers/",
+  "09_pedagogy/",
+  "13_agent_skills/",
+  "11_audio/",
+  "10_synthesis/",
+  "12_conflicts/"
+ ]
+}

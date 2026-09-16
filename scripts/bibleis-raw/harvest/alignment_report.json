@@ -1,0 +1,284 @@
+{
+ "chapters": [
+  {
+   "chapter": 1,
+   "kom_verses": 25,
+   "niv_verses": 25,
+   "aligned": true,
+   "audio_duration_s": 250.5,
+   "audio_api_duration_s": 251,
+   "audio_bytes": 847900
+  },
+  {
+   "chapter": 2,
+   "kom_verses": 22,
+   "niv_verses": 23,
+   "aligned": false,
+   "audio_duration_s": 286.1,
+   "audio_api_duration_s": 286,
+   "audio_bytes": 954715
+  },
+  {
+   "chapter": 3,
+   "kom_verses": 17,
+   "niv_verses": 17,
+   "aligned": true,
+   "audio_duration_s": 206.5,
+   "audio_api_duration_s": 206,
+   "audio_bytes": 715695
+  },
+  {
+   "chapter": 4,
+   "kom_verses": 25,
+   "niv_verses": 25,
+   "aligned": true,
+   "audio_duration_s": 267.4,
+   "audio_api_duration_s": 267,
+   "audio_bytes": 898604
+  },
+  {
+   "chapter": 5,
+   "kom_verses": 48,
+   "niv_verses": 48,
+   "aligned": true,
+   "audio_duration_s": 493.5,
+   "audio_api_duration_s": 493,
+   "audio_bytes": 1576717
+  },
+  {
+   "chapter": 6,
+   "kom_verses": 34,
+   "niv_verses": 34,
+   "aligned": true,
+   "audio_duration_s": 360.6,
+   "audio_api_duration_s": 361,
+   "audio_bytes": 1178062
+  },
+  {
+   "chapter": 7,
+   "kom_verses": 29,
+   "niv_verses": 29,
+   "aligned": true,
+   "audio_duration_s": 278.6,
+   "audio_api_duration_s": 279,
+   "audio_bytes": 931989
+  },
+  {
+   "chapter": 8,
+   "kom_verses": 34,
+   "niv_verses": 34,
+   "aligned": true,
+   "audio_duration_s": 339.6,
+   "audio_api_duration_s": 340,
+   "audio_bytes": 1114976
+  },
+  {
+   "chapter": 9,
+   "kom_verses": 38,
+   "niv_verses": 38,
+   "aligned": true,
+   "audio_duration_s": 368.6,
+   "audio_api_duration_s": 369,
+   "audio_bytes": 1202042
+  },
+  {
+   "chapter": 10,
+   "kom_verses": 41,
+   "niv_verses": 42,
+   "aligned": false,
+   "audio_duration_s": 400.5,
+   "audio_api_duration_s": 400,
+   "audio_bytes": 1297808
+  },
+  {
+   "chapter": 11,
+   "kom_verses": 30,
+   "niv_verses": 30,
+   "aligned": true,
+   "audio_duration_s": 304.6,
+   "audio_api_duration_s": 555,
+   "audio_bytes": 1010122
+  },
+  {
+   "chapter": 12,
+   "kom_verses": 50,
+   "niv_verses": 50,
+   "aligned": true,
+   "audio_duration_s": 540.6,
+   "audio_api_duration_s": 403,
+   "audio_bytes": 1718092
+  },
+  {
+   "chapter": 13,
+   "kom_verses": 58,
+   "niv_verses": 58,
+   "aligned": true,
+   "audio_duration_s": 601.5,
+   "audio_api_duration_s": 459,
+   "audio_bytes": 1900923
+  },
+  {
+   "chapter": 14,
+   "kom_verses": 36,
+   "niv_verses": 36,
+   "aligned": true,
+   "audio_duration_s": 352.5,
+   "audio_api_duration_s": 474,
+   "audio_bytes": 1153847
+  },
+  {
+   "chapter": 15,
+   "kom_verses": 39,
+   "niv_verses": 39,
+   "aligned": true,
+   "audio_duration_s": 372.5,
+   "audio_api_duration_s": 491,
+   "audio_bytes": 1213720
+  },
+  {
+   "chapter": 16,
+   "kom_verses": 28,
+   "niv_verses": 28,
+   "aligned": true,
+   "audio_duration_s": 291.6,
+   "audio_api_duration_s": 757,
+   "audio_bytes": 971095
+  },
+  {
+   "chapter": 17,
+   "kom_verses": 27,
+   "niv_verses": 26,
+   "aligned": false,
+   "audio_duration_s": 294.2,
+   "audio_api_duration_s": 709,
+   "audio_bytes": 979010
+  },
+  {
+   "chapter": 18,
+   "kom_verses": 35,
+   "niv_verses": 34,
+   "aligned": false,
+   "audio_duration_s": 395.5,
+   "audio_api_duration_s": 242,
+   "audio_bytes": 1282840
+  },
+  {
+   "chapter": 19,
+   "kom_verses": 30,
+   "niv_verses": 30,
+   "aligned": true,
+   "audio_duration_s": 335.5,
+   "audio_api_duration_s": 389,
+   "audio_bytes": 1102830
+  },
+  {
+   "chapter": 20,
+   "kom_verses": 34,
+   "niv_verses": 34,
+   "aligned": true,
+   "audio_duration_s": 350.5,
+   "audio_api_duration_s": 302,
+   "audio_bytes": 1147813
+  },
+  {
+   "chapter": 21,
+   "kom_verses": 46,
+   "niv_verses": 46,
+   "aligned": true,
+   "audio_duration_s": 554.6,
+   "audio_api_duration_s": 349,
+   "audio_bytes": 1760097
+  },
+  {
+   "chapter": 22,
+   "kom_verses": 46,
+   "niv_verses": 46,
+   "aligned": true,
+   "audio_duration_s": 402.5,
+   "audio_api_duration_s": 729,
+   "audio_bytes": 1303921
+  },
+  {
+   "chapter": 23,
+   "kom_verses": 38,
+   "niv_verses": 38,
+   "aligned": true,
+   "audio_duration_s": 459.5,
+   "audio_api_duration_s": 453,
+   "audio_bytes": 1474762
+  },
+  {
+   "chapter": 24,
+   "kom_verses": 51,
+   "niv_verses": 51,
+   "aligned": true,
+   "audio_duration_s": 473.6,
+   "audio_api_duration_s": 215,
+   "audio_bytes": 1517002
+  },
+  {
+   "chapter": 25,
+   "kom_verses": 45,
+   "niv_verses": 46,
+   "aligned": false,
+   "audio_duration_s": 490.6,
+   "audio_api_duration_s": 740,
+   "audio_bytes": 1567941
+  },
+  {
+   "chapter": 26,
+   "kom_verses": 75,
+   "niv_verses": 75,
+   "aligned": true,
+   "audio_duration_s": 757.5,
+   "audio_api_duration_s": 479,
+   "audio_bytes": 2368698
+  },
+  {
+   "chapter": 27,
+   "kom_verses": 66,
+   "niv_verses": 66,
+   "aligned": true,
+   "audio_duration_s": 708.6,
+   "audio_api_duration_s": 472,
+   "audio_bytes": 2222073
+  },
+  {
+   "chapter": 28,
+   "kom_verses": 20,
+   "niv_verses": 20,
+   "aligned": true,
+   "audio_duration_s": 242.3,
+   "audio_api_duration_s": 469,
+   "audio_bytes": 823294
+  }
+ ],
+ "issues": [
+  "MAT 2: kom 22 vs niv 23 verses",
+  "MAT 10: kom 41 vs niv 42 verses",
+  "MAT 11: duration mismatch ffmpeg 304.6 vs api 555",
+  "MAT 12: duration mismatch ffmpeg 540.6 vs api 403",
+  "MAT 13: duration mismatch ffmpeg 601.5 vs api 459",
+  "MAT 14: duration mismatch ffmpeg 352.5 vs api 474",
+  "MAT 15: duration mismatch ffmpeg 372.5 vs api 491",
+  "MAT 16: duration mismatch ffmpeg 291.6 vs api 757",
+  "MAT 17: kom 27 vs niv 26 verses",
+  "MAT 17: duration mismatch ffmpeg 294.2 vs api 709",
+  "MAT 18: kom 35 vs niv 34 verses",
+  "MAT 18: duration mismatch ffmpeg 395.5 vs api 242",
+  "MAT 19: duration mismatch ffmpeg 335.5 vs api 389",
+  "MAT 20: duration mismatch ffmpeg 350.5 vs api 302",
+  "MAT 21: duration mismatch ffmpeg 554.6 vs api 349",
+  "MAT 22: duration mismatch ffmpeg 402.5 vs api 729",
+  "MAT 23: duration mismatch ffmpeg 459.5 vs api 453",
+  "MAT 24: duration mismatch ffmpeg 473.6 vs api 215",
+  "MAT 25: kom 45 vs niv 46 verses",
+  "MAT 25: duration mismatch ffmpeg 490.6 vs api 740",
+  "MAT 26: duration mismatch ffmpeg 757.5 vs api 479",
+  "MAT 27: duration mismatch ffmpeg 708.6 vs api 472",
+  "MAT 28: duration mismatch ffmpeg 242.3 vs api 469"
+ ],
+ "total_verses": 1067,
+ "total_audio_mb": 36.2,
+ "total_duration_s": 11180.1
+}

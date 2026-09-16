@@ -7,6 +7,8 @@ import { t } from "@/lib/i18n";
 import { PatternBand, Spinner, XpBar } from "./shared";
 import { AVATARS_LIST } from "./avatars";
 import { NationalLanguageSelect } from "./national-language-select";
+import { VoiceSelect, VoicePreviewButton, kindBadge } from "./voice-select";
+import { PLATFORM_VOICES } from "@/lib/data/voices";
 import { playBadge } from "@/lib/sound-engine";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -16,7 +18,7 @@ interface Skill { skillCode: string; mastery: number }
 interface AssessmentRow { id: string; lessonId: string; type: string; score: number; createdAt: string }
 
 export function ProfileView() {
-  const { learner, lang, setLang, voiceLang, setVoiceLang, setLearner } = useApp();
+  const { learner, lang, setLang, voiceLang, setVoiceLang, setLearner, voiceId, setVoiceId } = useApp();
   const [badges, setBadges] = React.useState<BadgeDef[]>([]);
   const [earned, setEarned] = React.useState<string[]>([]);
   const [skills, setSkills] = React.useState<Skill[]>([]);
@@ -137,6 +139,45 @@ export function ProfileView() {
             <div>
               <h3 className="mb-1.5 text-xs font-bold uppercase tracking-wide text-lime-700">🇨🇲 {fr ? "Langue nationale (leçons et voix)" : "National language (lessons & voice)"}</h3>
               <NationalLanguageSelect value={voiceLang} onChange={(code) => setVoiceLang(code)} lang={lang} />
+            </div>
+          </div>
+        </section>
+
+        {/* Voice settings — the platform voice picker (recorded native speakers + TTS) */}
+        <section className="rounded-2xl border-2 border-amber-300 bg-white p-5 shadow-sm" aria-label="Voice settings">
+          <h2 className="mb-1 text-lg font-extrabold text-amber-900">🎙️ {fr ? "Voix" : "Voice"}</h2>
+          <p className="mb-3 text-xs text-amber-700">
+            {fr
+              ? "Choisis la voix de la plateforme : vrais enregistrements natifs pour les langues nationales (jamais synthétisés — Directive 9), voix synthétiques pour l'interface EN/FR."
+              : "Pick the platform voice: real native recordings for national languages (never synthesized — Directive 9), synthetic voices for the EN/FR interface."}
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <h3 className="mb-1.5 text-xs font-bold uppercase tracking-wide text-amber-600">{fr ? "Voix sélectionnée" : "Selected voice"}</h3>
+              <VoiceSelect value={voiceId} onChange={setVoiceId} lang={lang} />
+            </div>
+            <div>
+              <h3 className="mb-1.5 text-xs font-bold uppercase tracking-wide text-amber-600">{fr ? "Voix disponibles" : "Available voices"}</h3>
+              <ul className="space-y-1.5">
+                {PLATFORM_VOICES.map((v) => {
+                  const chip = kindBadge(v);
+                  const selected = v.id === voiceId;
+                  return (
+                    <li key={v.id} className={cn("flex items-center gap-2 rounded-xl border p-2", selected ? "border-amber-500 bg-amber-50" : "border-amber-100 bg-white")}>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-xs font-extrabold text-amber-950">{fr ? v.nameFr : v.name}</p>
+                        <p className="text-[10px] font-bold text-stone-500">{v.langLabel} · {fr ? v.noteFr : v.note}</p>
+                      </div>
+                      {chip && (
+                        <span className={cn("shrink-0 rounded-full px-1.5 py-0.5 text-[8px] font-extrabold uppercase", chip.cls)}>{chip.label}</span>
+                      )}
+                      {v.id === voiceId ? (
+                        <VoicePreviewButton voice={v} lang={lang} />
+                      ) : null}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </section>

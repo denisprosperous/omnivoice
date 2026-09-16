@@ -1,0 +1,223 @@
+{
+ "course_id": "kom_101",
+ "display_name": "Kom Language Foundations",
+ "level": "beginner",
+ "total_stages": 16,
+ "total_lessons": 120,
+ "estimated_hours": 40,
+ "prerequisites": [],
+ "data_source": "/kom_training_corpus/",
+ "audio_source": "/kom_training_corpus/11_audio/",
+ "assessment_engine": "standard",
+ "speech_engine": "modular_s2s",
+ "status": "active",
+ "stages": [
+  {
+   "stage": 0,
+   "name": "Orientation",
+   "lessons": 1,
+   "objectives": [
+    "Introduce Kom language",
+    "Explain tones",
+    "Set expectations"
+   ],
+   "content_source": "01_alphabet/",
+   "mastery_gate": null
+  },
+  {
+   "stage": 1,
+   "name": "Vowels",
+   "lessons": 9,
+   "objectives": [
+    "Identify all 9 vowels",
+    "Produce vowel sounds",
+    "Recognize tone markings on vowels"
+   ],
+   "content_source": "02_phonology/vowels.json",
+   "mastery_gate": "stage_1_vowels"
+  },
+  {
+   "stage": 2,
+   "name": "Single Consonants",
+   "lessons": 15,
+   "objectives": [
+    "Identify all 15 single consonants",
+    "Blend consonant + vowel",
+    "Recognize consonant allophones"
+   ],
+   "content_source": "02_phonology/consonants.json",
+   "mastery_gate": "stage_2_consonants"
+  },
+  {
+   "stage": 3,
+   "name": "Digraphs & Special Characters",
+   "lessons": 6,
+   "objectives": [
+    "Identify 6 digraphs",
+    "Identify 3 special characters (ɨ, ŋ, ')",
+    "Distinguish digraphs from similar sounds"
+   ],
+   "content_source": "01_alphabet/graphemes.json",
+   "mastery_gate": "stage_3_digraphs"
+  },
+  {
+   "stage": 4,
+   "name": "Tone Mastery",
+   "lessons": 3,
+   "objectives": [
+    "Identify high tone (unmarked)",
+    "Identify low tone (grave)",
+    "Identify high-low falling tone (circumflex)",
+    "Produce tone distinctions"
+   ],
+   "content_source": "06_tone/isolation_patterns.json",
+   "mastery_gate": "stage_4_tones"
+  },
+  {
+   "stage": 5,
+   "name": "Word Building",
+   "lessons": 10,
+   "objectives": [
+    "Combine syllables into words",
+    "Recognize noun classes",
+    "Produce 100+ words"
+   ],
+   "content_source": "07_lexicon/",
+   "mastery_gate": "stage_5_words"
+  },
+  {
+   "stage": 6,
+   "name": "Simple Sentences",
+   "lessons": 15,
+   "objectives": [
+    "Construct SVO sentences",
+    "Use tense markers",
+    "Form questions",
+    "Use negation"
+   ],
+   "content_source": "05_syntax/",
+   "mastery_gate": "stage_6_sentences"
+  },
+  {
+   "stage": 7,
+   "name": "Paragraph Comprehension",
+   "lessons": 16,
+   "objectives": [
+    "Read Kom paragraphs",
+    "Answer comprehension questions",
+    "Translate simple passages"
+   ],
+   "content_source": "08_reader/",
+   "mastery_gate": "stage_7_paragraphs"
+  },
+  {
+   "stage": 8,
+   "name": "Possessive Adjectives",
+   "lessons": 6,
+   "objectives": [
+    "Use possessive paradigms",
+    "Match possessives to noun classes"
+   ],
+   "content_source": "06_tone/possessive_paradigms.json",
+   "mastery_gate": "stage_8_possessives"
+  },
+  {
+   "stage": 9,
+   "name": "Numeric Adjectives",
+   "lessons": 4,
+   "objectives": [
+    "Count 1-10",
+    "Use numbers with nouns",
+    "Apply numeric adjective tone rules"
+   ],
+   "content_source": "06_tone/numeric_paradigms.json",
+   "mastery_gate": "stage_9_numerics"
+  },
+  {
+   "stage": 10,
+   "name": "Descriptive Adjectives",
+   "lessons": 6,
+   "objectives": [
+    "Form adjectives from verbs",
+    "Apply -ni suffix",
+    "Match adjective to noun class"
+   ],
+   "content_source": "06_tone/descriptive_paradigms.json",
+   "mastery_gate": "stage_10_descriptives"
+  },
+  {
+   "stage": 11,
+   "name": "Demonstrative Adjectives",
+   "lessons": 4,
+   "objectives": [
+    "Use this/that/these/those",
+    "Apply demonstrative tone types A-D",
+    "Use anaphoric na"
+   ],
+   "content_source": "06_tone/demonstrative_paradigms.json",
+   "mastery_gate": "stage_11_demonstratives"
+  },
+  {
+   "stage": 12,
+   "name": "Interrogative Adjectives",
+   "lessons": 4,
+   "objectives": [
+    "Use nda/gha/ka",
+    "Form content questions",
+    "Apply interrogative tone rules"
+   ],
+   "content_source": "06_tone/interrogative_paradigms.json",
+   "mastery_gate": "stage_12_interrogatives"
+  },
+  {
+   "stage": 13,
+   "name": "Complex Sentences",
+   "lessons": 8,
+   "objectives": [
+    "Use complementizers",
+    "Use relativizers",
+    "Use adverbializers",
+    "Coordinate clauses"
+   ],
+   "content_source": "05_syntax/",
+   "mastery_gate": "stage_13_complex"
+  },
+  {
+   "stage": 14,
+   "name": "Cultural Topics",
+   "lessons": 8,
+   "objectives": [
+    "Learn cultural vocabulary",
+    "Understand cultural practices",
+    "Read cultural texts"
+   ],
+   "content_source": "07_lexicon/ + 08_reader/",
+   "mastery_gate": "stage_14_culture"
+  },
+  {
+   "stage": 15,
+   "name": "Conversation Practice",
+   "lessons": 8,
+   "objectives": [
+    "Hold basic conversations",
+    "Use speech-to-speech",
+    "Handle common scenarios"
+   ],
+   "content_source": "11_audio/ + 10_synthesis/",
+   "mastery_gate": "stage_15_conversation"
+  },
+  {
+   "stage": 16,
+   "name": "Advanced Reading",
+   "lessons": 6,
+   "objectives": [
+    "Read authentic Kom texts",
+    "Discuss cultural topics",
+    "Write simple paragraphs"
+   ],
+   "content_source": "08_reader/",
+   "mastery_gate": "stage_16_advanced"
+  }
+ ],
+ "note": "Source spec labels the course \"16 stages / 120 lessons\" (§2.3) but enumerates stages 0-16 (17 rows) whose lessons sum to 129 — both values preserved verbatim; the UI computes from the stage list."
+}

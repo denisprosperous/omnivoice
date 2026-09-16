@@ -86,22 +86,25 @@ export function encodeWav(samples: Float32Array, sampleRate: number): string {
   return btoa(binary);
 }
 
-/** Play base64 WAV with an optional persona pitch rate (Web Audio). Returns stop fn. */
+/** Play base64 WAV with an optional persona pitch rate (Web Audio). Returns stop fn (idempotent). */
 export function playWavBase64(b64: string, pitchRate = 1, onEnded?: () => void): () => void {
   const bin = atob(b64);
   const bytes = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
   const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
   const ac = new AC();
+  let closed = false;
+  const closeOnce = () => { if (!closed) { closed = true; void ac.close(); } };
   void ac.decodeAudioData(bytes.buffer.slice(0)).then((buf) => {
+    if (closed) { onEnded?.(); return; }
     const source: AudioBufferSourceNode = ac.createBufferSource();
     source.buffer = buf;
     source.playbackRate.value = pitchRate;
     source.connect(ac.destination);
-    source.onended = () => { void ac.close(); onEnded?.(); };
+    source.onended = () => { closeOnce(); onEnded?.(); };
     source.start();
-  }).catch(() => { void ac.close(); onEnded?.(); });
-  return () => { void ac.close(); onEnded?.(); };
+  }).catch(() => { closeOnce(); onEnded?.(); });
+  return () => { closeOnce(); onEnded?.(); };
 }
 
 /** Web Speech API TTS — offline-capable fallback with per-character pitch */
@@ -123,14 +126,17 @@ export function speakFallback(text: string, lang = "en-US", pitch = 1, rate = 1,
 }
 
 /** Fetch TTS audio from server; fall back to Web Speech when unavailable (offline).
- * lang routes Grassfields languages through the tone-aware synthesis path (§6.5). */
-export async function speak(text: string, character: string, lang = "en"): Promise<{ played: "server" | "fallback" | "none" }> {
+ * lang routes Grassfields languages through the tone-aware synthesis path (§6.5).
+ * voiceId routes through the platform voice registry (voices.ts) — recorded
+ * native voices are never synthesized, so Grassfields content keeps its
+ * recorded audio; the picker only routes synthetic voices for EN/FR. */
+export async function speak(text: string, character: string, lang = "en", voiceId?: string): Promise<{ played: "server" | "fallback" | "none" }> {
   const personaPitch: Record<string, number> = { kwe: 0.8, mbi: 1.3, ngo: 1.05, kong: 0.9 };
   try {
     const res = await fetch("/api/tts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, character, lang }),
+      body: JSON.stringify({ text, character, lang, voice: voiceId }),
     });
     if (!res.ok) throw new Error("tts unavailable");
     const data = await res.json();
