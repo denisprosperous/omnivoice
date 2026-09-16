@@ -1,0 +1,54 @@
+OMNIVOICE ACADEMY — PROPRIETARY LICENSE
+Copyright (c) 2026 The OmniVoice Project. All Rights Reserved.
+
+This source code and its accompanying documentation, screenshots and
+configuration (the "Platform Software") are the property of the OmniVoice
+project owner. No right is granted to copy, modify, distribute, sublicense
+or sell the Platform Software without prior written permission from the
+owner. To grant broader rights (e.g. an MIT or Apache-2.0 license for NGO
+or ministry adoption), replace this file.
+
+THIRD-PARTY COPYRIGHTED WORKS HOSTED IN THIS REPOSITORY
+
+The following works remain the property of their respective rights
+holders and are included for non-commercial educational access and
+preservation of access in low-bandwidth environments:
+
+  1. Kom New Testament text (Matthew) —
+     (c) 2004 The Bible Society of Cameroon (via Bible.is, fileset BKMBSC).
+  2. Kom Bible audio narration (28 chapters, drama fileset) —
+     (p) 2007 Hosanna / Faith Comes By Hearing (via Bible.is, fileset
+     BKMBSCN2DA).
+  3. New International Version (NIV) parallel text —
+     NIV(R) (c) 1973, 1978, 1984, 2011 by Biblica, Inc.(R)
+     (via Bible.is, fileset ENGNIV).
+
+These terms do not grant any license to redistribute the above works
+outside this repository. Rights holders may request removal of their
+material by opening a repository issue.
+
+THIRD-PARTY OPEN-SOURCE SOFTWARE
+
+The Platform Software depends on open-source packages distributed under
+their own licenses (MIT, Apache-2.0, BSD, ISC), including Next.js, React,
+TypeScript, Prisma, Tailwind CSS, Radix UI/shadcn/ui, Kokoro, and
+Faster-Whisper. Nothing in this file limits those licenses. See
+docs/ATTRIBUTION.md for the full list.
+
+LINGUISTIC SOURCES
+
+National-language content derives from the trusted sources listed in
+docs/ATTRIBUTION.md (Hyman/UC Berkeley Kom studies; SIL Cameroon
+publications incl. Ghesina ye'i itangikom; GACL 1979; OLAC archives) and
+from community contributions with mandatory citation. Attribution and
+source citation accompany the content wherever it is displayed.
+
+WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR ITS USE.
