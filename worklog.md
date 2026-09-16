@@ -219,3 +219,19 @@ Work Log:
 Stage Summary:
 - Push is ONE user action away: add the sandbox public key at https://github.com/denisprosperous/omnivoice/settings/keys/new with "Allow write access" ticked (deploy keys are read-only by default), then I re-run GIT_SSH=scripts/git_ssh_paramiko.py git push -u origin main. Or supply a PAT for the HTTPS path.
 - All v4.4 deliverables are committed locally on main: Kom Audio Bible (28 chapters, 1,067 verses, NIV parallel, 186 min native audio), voice/speaker selection (VoiceRegistry + VoiceSelect, Directive-9 enforced), kom_training_corpus ingestion, 45 proposals in moderation queue, UI fixes + trusted-sources purge from the previous batch.
+
+---
+Task ID: v4.4-github-push-complete
+Agent: Super Z (main agent)
+Task: Execute the GitHub push after credentials unblocked.
+
+Work Log:
+- Fine-grained PAT attempts failed twice with 403 (Contents permission read-only); diagnosed via API (token authenticated as owner, read OK) and informed the user with 3 unblock options (fine-grained permission fix / classic token / SSH deploy key).
+- User supplied classic PAT (repo scope). Push executed with inline credential helper (token NOT persisted in .git/config, masked in all output).
+- RESULT: * [new branch] main -> main — first push landed; branch main is the repo default; upstream tracking set (branch.main -> origin/main).
+- Verified via ls-remote: origin/main = 252f353 = local HEAD (includes the two platform runtime-state auto-commits). Local and remote fully in sync.
+- Push payload delivered: complete OMNIVOICE codebase — v4.4 Kom Audio Bible (28 Matthew chapters, 1,067 Kom verses, NIV parallel, 186 min native audio in public/audio/bkm/matthew/), voice/speaker selection (VoiceRegistry, VoiceSelect, Directive-9 enforced server-side), kom_training_corpus ingestion, ingestion portal (tutor/parent/authority workflow), trusted-sources content purge, curriculum PDFs, full v4.0-v4.4 history (54MB).
+
+Stage Summary:
+- OMNIVOICE is live on GitHub: https://github.com/denisprosperous/omnivoice (branch main).
+- For future pushes: same inline-helper pattern with the classic token (no ssh binary in sandbox; HTTPS+PAT is the reliable path; paramiko GIT_SSH shim also available if a write-enabled deploy key is registered).
